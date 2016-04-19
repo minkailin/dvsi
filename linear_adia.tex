@@ -1,0 +1,269 @@
+\section{Analytic results with finite cooling times}\label{analytical}  
+
+%\subsection{Isothermal perturbations}\label{iso_pert}
+Previous analytic studies of the VSI have largely focused on isothermal
+perturbations, with infinitely rapid cooling, as discussed in the introduction.  We further explore
+this $\beta = 0$ limit in Appendix \ref{iso_discuss} both to further develop intuition for this 
+idealized case and to establish a connection with previous 
+works.  However our main interest is the effect of finite cooling times, which
+we explore analytically in this section.  
+
+In \S\ref{relax_pert} we show that even an infinitesimal increase in the cooling time,
+starting from $\beta = 0$, slows the growth rate of the VSI.  In \S\ref{disp_relax} we 
+derive exact solutions to the simplified VSI model developed above (Eq.\ \ref{nearly_iso_explicit}).
+In \S\ref{iso_vsi_beta_crit} we reach our main result, the maximum cooling time above which 
+VSI growth is suppressed.
+
+
+%Isothermal perturbations correspond to $\beta = 0$ or $\gamma=1$ so 
+%that $\chi = 1$. This case has been investigated by \citetalias{nelson13},
+%\citetalias{mcnally14} and \citetalias{barker15}.  
+%
+%In Appendix \ref{iso_discuss}, we collect some useful results for
+%isothermal  perturbations. This includes a necessary condition for
+%instability (there must be vertical shear) and an upper bound to the
+%instability growth rate (it is limited by the maximum vertical shear
+%rate in the disk). Neither of these actually require the thin-disk
+%form of the density field described above.  
+%We also develop solutions in the thin-disk
+%limit, but without assuming low frequency from the onset. 
+%The methods used in Appendix \ref{iso_discuss} and results obtained
+%therein motivates the solution procedure employed in the following
+%sections, and are provided for ease of reference. We refer the reader
+%to \citetalias{barker15} for a more detailed treatment of isothermal 
+%perturbations. %which also account for more general boundary
+%               %conditions than that considered below 
+
+\subsection{Introducing a small but finite
+  cooling time}\label{relax_pert}
+We are interested in finite thermal relaxation
+timescales $\beta > 0$, but it is instructive to
+first ask  the more analytically tractable question: how 
+do the eigenfrequencies and eigenfunctions change when we change
+$\beta$ from zero to a small but finite value? For 
+sufficiently small $\beta$ we expect the solution to only differ
+slightly from a case with $\beta\equiv 0$. We thus perturb a solution
+for $\beta=0$ to see the effect of finite cooling.  
+
+For definiteness, let us consider the simple solution 
+\begin{align}
+  \beta\equiv 0, \quad \delta v_z = 1,\quad \hat{\upsilon}^2 = \frac{1 +
+  \ii h q \hat{k}}{1+\hat{k}^2}, \label{pert_basic} 
+\end{align}
+which solves Eq. \ref{nearly_iso_explicit} since $\delta
+v_z=$constant and $\chi=1$ so that $B=C=0$. 
+This is the lowest order VSI mode, the `fundamental corrugation mode',
+where the vertical velocity is constant throughout the disk
+column. Hereafter we shall simply call it the fundamental
+mode. 
+
+The fundamental mode has been observed to dominate numerical simulations
+\citep[\citetalias{nelson13}]{stoll14}, and are the ones we find to typically 
+dominate in numerical calculations with increasing $\beta$
+(\S\ref{therm_relax_eff}) for moderate    
+values of $\khat$, as well as in PPDs 
+with a realistic estimate for thermal timescales
+(\S\ref{application}). We will see later that consideration of low
+order modes in fact provides a useful way to characterize the effect
+of increasing the thermal timescale on the VSI. 
+
+We linearize Eq. \ref{nearly_iso_explicit} about the above
+solution for $\beta\equiv0$ and write 
+\begin{align}\label{nearly_iso_pert}
+  \beta \to 0 + \delta\beta,\, \delta v_z\to \delta v_z+\delta
+  v_{z1},\,\hat{\upsilon} \to \hat{\upsilon} + \delta\hat{\upsilon}, 
+\end{align}
+which implies 
+\begin{align}
+  \chi \to 1 + \delta\chi = 1 + \ii \hat{\upsilon}\left(\gamma-1\right)\delta\beta,
+\end{align}
+with $\delta v_z$ and $\hat{\upsilon}$ given by Eq. \ref{pert_basic}. We
+may then seek  
+\begin{align}
+  \delta v_{z1} = a \zhat^2 + b,
+\end{align}
+where $a$, $b$ are constants. 
+
+We insert Eq. \ref{nearly_iso_pert} into
+Eq. \ref{nearly_iso_explicit}, keeping only first order terms, and
+solve for $\delta\hat{\upsilon}$ using the above expressions for $\delta\chi$
+and $\hat{\upsilon}$. We find imaginary part of $\delta\hat{\upsilon}$
+is 
+% yield the requirements, after
+% balancing constants and coefficients of $\zhat^2$, 
+% \begin{align}
+%   0 &= 2a + 2\hat{\upsilon}\left(1+\khat^2\right)\delta\hat{\upsilon} +
+%   \left(\hat{\upsilon}^2 -1\right)\delta\chi, \\
+%   0&= 2a\left(1+\ii h q \khat\right) - \left(\khat^2 - \ii h
+%     q \khat\right)\delta\chi.
+% \end{align}
+% This gives 
+% \begin{align}\label{nearly_iso_dsig}
+%   \delta \hat{\upsilon} =
+%   -\frac{\ii\left(\gamma-1\right)\hat{k}^2\left(\ii h
+%       q - \hat{k}\right)^2}{2\left(1+\ii h q \hat{k}\right)\left(1+\hat{k}^2\right)^2}\delta\beta.
+% \end{align}
+% The imaginary part of Eq. \ref{nearly_iso_dsig} is
+\begin{align}
+  \delta\hat{\sigma} =
+  -\frac{\left(\gamma-1\right)\hat{k}^2 \left(\hat{k}^2 -
+      2h^2q^2\hat{k}^2 - h^2q^2\right)}{2\left(1+h^2 q^2
+      \hat{k}^2\right)\left(1+\hat{k}^2\right)^2}\delta\beta.  
+\end{align}
+Since $h \ll 1$, introducing finite cooling $\delta\beta>0$
+implies $\delta\hat{\sigma} < 0$, i.e. stabilization, since $\gamma>1$. 
+% Interestingly, for both
+% $\hat{k}\to0$ and $\hat{k}\to\infty$ we find $\delta\hat{\nu}\to0$, so
+% stabilization by small finite cooling is ineffective at very large or
+% very small scales. 
+
+A finite cooling time allow buoyancy
+forces to stabilize vertical motions in sub-adiabatically stratified
+disks. The $\zhat^2$ dependence in $\delta v_{z1}$ makes  
+sense because it becomes significant at large $|\zhat|$, i.e. away from
+the midplane where the effect of buoyancy first appears as $\beta$ is
+increased from zero (since $N_z^2\propto z^2$ for a thin disk, see
+Eq. \ref{nzsq_def}).   
+
+\subsection{Explicit solutions and dispersion relation}\label{disp_relax}
+We now solve Eq. \ref{nearly_iso_explicit} explicitly. We first write  
+\begin{align}
+  \delta v_z(\zhat) =
+  g(\zhat)\exp\left(\frac{\lambda\zhat^2}{2}\right), \label{adia_ansatz}
+\end{align}
+where $\lambda$ is a constant to be chosen for convenience. Inserting
+Eq. \ref{adia_ansatz} into Eq. \ref{nearly_iso_explicit} gives
+\begin{align}
+  0 = g^{\prime\prime} - \hat{z}\left(A - 2\lambda\right)g^\prime + \left(B +
+    \lambda\right)g
+  +\left(\lambda^2 - \lambda A - C\right)\zhat^2 g.
+\end{align}
+We choose $\lambda$ to make the coefficient of $\zhat^2g$
+vanish, and impose the vertical kinetic energy density
+$\rho|\delta v_z|^2\propto |g|^2 \exp{\left(\real\lambda -
+    1/2\right)\zhat^2}$ to remain finite as $|\zhat|\to\infty$. 
+Then assuming $g(\zhat)$ is a polynomial, we require  
+\begin{align}
+  \real\lambda < \frac{1}{2}, 
+\end{align}
+which amounts to choosing 
+\begin{align}
+  \lambda = \frac{1}{2}\left(A - \sqrt{A^2 + 4C}\right).  
+\end{align} 
+
+
+Eq. \ref{nearly_iso_explicit} becomes 
+\begin{align}
+  0 = g^{\prime\prime} - \hat{z}\left(A - 2\lambda\right)g^\prime +
+  \left(B + \lambda\right)g.
+\end{align}
+We seek polynomial solutions 
+\begin{align}
+  g(\zhat) = \sum_{m=0}^M b_m \zhat^m,
+\end{align}
+which requires
+\begin{align}
+  B(\hat{\upsilon}) + \lambda(\hat{\upsilon}) =
+  M\left[A-2\lambda(\hat{\upsilon})\right].\label{adia_disp0} 
+\end{align}
+For ease of analysis, we re-arrange Eq. \ref{adia_disp0} and square it
+to obtain a polynomial in $\hat{\upsilon}$,  
+\begin{align}
+  0 = \sum_{l=0}^{6}c_l\hat{\upsilon}^l,\label{relax_disp}
+\end{align}
+where the coefficients $c_l$ are given in Appendix \ref{relax_coeff}.
+The dispersion relation $\hat{\upsilon}=\hat{\upsilon}(\khat)$ is
+complicated and generally requires a numerical solution. However,
+simple results may be obtained in limiting cases which we consider
+below.  
+
+\subsection{The critical cooling time derived}\label{iso_vsi_beta_crit}
+Here we estimate the maximum thermal relaxation timescale 
+$\beta_c$ that allows growth of the VSI. In Appendix \ref{disp_neut_limit}
+we derive the following relation between $\beta_c$ and the wave
+frequency $\hat{\omega}_c$, \emph{assuming} marginal stability to the
+VSI:  
+\begin{subequations}\begin{align}
+    \left(\hat{\omega}_c\khat\right)^4  =& \left(\hat{\omega}_c\khat\right)^2 
+  + M(M+1)\left(1-h^2q^2\khat^2\right) ,\label{relax_cond_simp1}  \\
+  \left(\hat{\omega}_c\khat\right)^2 = & \frac{\beta_c}{h q} (\gamma-1)(1+2M)^2
+  \left(\hat{\omega}_c\khat\right) \label{relax_cond_simp2}\\
+  &- 2M(M+1) . \notag
+\end{align}\end{subequations}
+These equations consider $\khat^2\gg 1$ and %, $M\lesssim O(1)$; 
+assumes $|\hat{\omega}\khat| $ is $O(1)$ and $\beta_c\ll 1$.   Note that 
+Eq. \ref{relax_cond_simp1} reduces to the  
+dispersion relation for low-frequency inertial waves in the absence of
+vertical shear (see Appendix \ref{stable_novshear} for details). 
+%marginal stability requires hqk \leq 1
+ 
+We are most interested in the longest cooling time which allows growth
+for any $M$. In Appendix \ref{max_cool}, we find that if
+$|hq\khat|\leq 1$, so that marginal stability exists, then $\beta_c$
+decreases with increasing $M$.    
+%\begin{align}
+%  |hq\khat|^2 \leq 1 \Rightarrow \frac{d\beta_c}{dM} < 0 \quad \forall
+%  M\geq 0. \label{bcrit_gen}
+%\end{align}
+%Eq. \ref{bcrit_gen} indicates that higher $M$ modes have lower $\beta_c$,
+%i.e.\ require faster cooling for VSI growth. This trend is confirmed
+%numerically in \S\ref{therm_relax_eff}.  
+The VSI criterion is then set by $\beta_c$ for the
+fundamental mode ($M = 0$), for which the exact solution to 
+Eq. \ref{relax_cond_simp1} --- \ref{relax_cond_simp2} is
+$\hat{\omega}_c\khat = \beta_c(\gamma-1)/hq = -1$. We thus find the
+cooling criterion for VSI growth is    
+ \begin{align}\label{iso_vsi_cond}
+   \beta <   \beta_\mathrm{crit}  \equiv
+   \frac{h|q|}{\gamma-1} . 
+ \end{align}
+ The thin disk approximation, $h \ll 1$, indicates that $\beta_\mathrm{crit} \ll
+ 1$, as assumed to obtain Eq. \ref{relax_cond_simp1}---\ref{relax_cond_simp2}. 
+ We heuristically explain $\beta_\mathrm{crit}$ in \S\ref{vsi_require}, and numerically
+ test its validity in \S\ref{bcrit_num_test}.  
+ 
+
+
+% This is clarified in Appendix
+% \ref{bcrit_alt}.  
+ 
+
+
+
+% For $M=0$, it is straight foward to solve Eq. \ref{relax_cond_simp1} 
+% --- \ref{relax_cond_simp2} exactly and obtain the maximum cooling time
+% for the fundamental mode, $\beta_\mathrm{crit}$
+% (Eq. \ref{iso_vsi_cond}), which shows that $\beta_\mathrm{crit}\ll 1$
+% because we consider thin disks.  
+
+% Eq. \ref{relax_cond_simp1} admits the following   
+% approximate solution for the frequency 
+% if $\mathrm{min}(1,M)\times|hq\khat|^2\lesssim 1$, 
+% \begin{align}
+%   % \left(\hat{\omega}_c\khat\right)^2 \simeq (M+1)\left[1  + O( M|h q \khat|^2)\right]  \label{marg_freq_approx}
+%   \left(\hat{\omega}_c\khat\right)^2 \simeq (M+1)\left(1 -
+%     \frac{M|h q \khat|^2}{2M+1}\right).  \label{marg_freq_approx}
+% \end{align}  
+% (Equality holds for $M=0$.)  
+% Note that Eq. \ref{marg_freq_approx} reduces to the dispersion
+% relation for low-frequency inertial waves in the absence of vertical
+% shear (see Appendix \ref{stable_novshear} for details). 
+% If we further assume $|hq\khat|^2\ll 1$, we obtain from
+% Eq. \ref{relax_cond_simp2}---\ref{marg_freq_approx} that  
+% \begin{align}\label{bcrit_gen} 
+%   \beta_c &\simeq  \frac{h|q|}{(\gamma - 1)}\frac{\sqrt{1+M}}{(1+2M)}.   
+% %  \frac{\sqrt{1+M}}{(1+2M)}
+% %  \left[1 + \frac{M(2M-1)|h q   \khat|^2}{2(2M+1)^2}\right].
+% %  &\lesssim \beta_\mathrm{crit}%\notag
+% %>>>>>>> 8816838e4a06974fc61d74b84a2474adaeee3ebc
+% \end{align}
+% Eq. \ref{bcrit_gen} indicates that higher $M$ modes have lower $\beta_c$,
+% i.e.\ require faster cooling for VSI growth. 
+%\footnote{
+%In fact, this conclusion does not require $\theta\equiv|hq\khat|^2$ to be extremely 
+%small. By retaining terms proportional to
+% $\theta$, we find $\beta_c\to \beta_c \times 
+%  \left[1 + M(2M-1)\theta/2(2M+1)^2 \right]$. Since $\theta\lesssim 1$ by assumption, 
+% $\mathrm{max}(\beta_c)$ still occurs at $M=0$.}.     
+%(and the trend holds even when the restrictive assumption
+%on $|h q \hat{k}|$ is dropped). 

@@ -1,0 +1,171 @@
+\section{Caveats and Neglected Effects}\label{caveats} 
+%We highlight below some outstanding issues that should be addressed in
+%future works. 
+
+\subsection{Viscosity}\label{caveats_visc}
+% Depending on where the VSI operates in a
+% disk, additional effects may become important. For example, in the
+% outer parts of a PPD, where we estimate the VSI 
+% operates, disk self-gravity (SG) may play a role. Vertical
+% SG may favor the VSI by increasing $|\p_z\Omega|$ through
+% enhancing the density stratification 
+% (Eq. \ref{vertical_shear}). %sg in pert? no because kx>>1. but maybe for kx~1 
+
+Our neglect of viscosity is valid in a laminar disk, because molecular viscosity is so small.
+However, turbulence could act as an effective viscosity which preferentially damps 
+small scale modes.   Since the goal of VSI is to drive turbulent transport,
+the most relevant modes for sustaining the VSI should be able to overcome
+turbulent damping.
+
+To roughly estimate the wavelengths which are prone to damping, we
+consider 
+%An important effect of viscosity is setting a minimum wavelength (or 
+%maximum wavenumber) for which the VSI is relevant. Disturbances with
+%large $\khat\equiv k_xH$ may be subject to viscous decay. Adopting 
+the standard
+prescription for the kinematic viscosity $\nu = \alpha c_s H$
+\citep{shakura73}, in terms of the dimensionless $\alpha$ 
+parameter. The viscous timescale for a perturbation lengthscale  
+$l\sim 1/k_x = H/\khat$ is $t_\mathrm{visc} = 1/\alpha\khat^2\Omega $. 
+For significant growth, $t_\mathrm{visc}$ should be longer than the
+characteristic VSI growth timescale $1/(h|q|\Omega)$, i.e.\ 
+$\khat^2\lesssim |q|h/\alpha$. With $h \sim 0.05$, $q = -1$  and
+ $\alpha$ from simulations \citepalias{nelson13},
+we estimate that growth requires $\khat\lesssim 20$ for
+$\alpha\sim 10^{-4}$ or $\khat\lesssim 70$ for $\alpha\sim
+10^{-5}$. 
+
+This argument justifies our focus on moderate
+wavenumbers, $\khat=O(10)$. Future work should consider
+the viscous effects in more detail, to better understand
+how the VSI operates in nature and in simulations.
+
+%suggestion: Keep this idea to yourself, since you don't have a result yet.
+% In particular, viscous
+%heating may influence the thermodynamic dependence of the VSI. 
+
+
+\subsection{Convective overstability}
+The VSI bears some similarity to the `convective overstability'
+ (CONO, \citealp{klahr14, lyra14}).   Both instabilities rely on thermal relaxation to 
+overcome the stability of disks to adiabatic perturbations, i.e.\ the Solberg-Hoiland
+criteria (see \S\ref{solberg}).
+
+The key differences are that the CONO neglects vertical buoyancy
+and requires an imaginary horizontal buoyancy,
+\begin{align}\label{Nr}
+N_r^2 \equiv -{1 \over \rho C_P}{\p P \over \p r} {\p S \over \p r} < 0\, .
+\end{align}
+Since vertical buoyancy is an important stabilizing influence for the VSI, it should
+be considered in future studies of CONO.
+
+The sign of $N_r^2$ depends on disk parameters.  To demonstrate that the parameters needed for $N_r^2 <0$
+are somewhat extreme, or at least non-standard, we consider the midplane of vertically isothermal disks with 
+$\Sigma \propto r^n$ so that $n = p+q/2 + 3/2$. Using Eqs. \ref{dSdr} and \ref{Nr} with $\gamma = 1.4$,
+$N_r^2 < 0$ requires $n> 3(1/2 + q)$.  For standard disk temperature laws, this requirement implies
+a flat or rising surface density profile, e.g.\ $n = 3/14$ for $q = -3/7$ or $n = 0$ for $q = -1/2$.
+Since standard $\Sigma$ profiles decline with radius, CONO is most like to operate at 
+special locations, like the outside edges of disk gaps or holes and/or shadowed regions where $q < -1/2$.
+
+Perhaps due to these physical differences, CONO operates in different regimes of parameter
+space than the VSI.  The CONO grows best for longer wavelengths $\khat \lesssim 1$ and longer 
+cooling times $\beta \sim 1$. 
+
+Future work should aim to understand these related instabilities in the same framework, thereby 
+explaining the key differences.
+
+
+
+
+%We have focused on parameter regimes relevant to the VSI,
+%namely perturbations with small radial lengthscales 
+%($k_xH\gtrsim 1$) in disks with short thermal timescales
+%($t_c\Omega\ll 1$). This excludes the `convective overstability'
+%recently discussed by \cite{klahr14} and \cite{lyra14} in vertically
+%unstratified disk models.   
+%
+%The convective overstability corresponds to slowly growing epicyclic motions.
+%It is most effective for $t_c\Omega \sim 1$ and disturbances with
+%$|k_x|\ll |k_z|$, where $k_z$ is a vertical wavenumber. These
+%conditions are mutually exclusive with the VSI.  
+%The maximum growth rate for convective overstability is given by 
+%\begin{align}
+%  \sigma_\mathrm{conv,max} = -\frac{N^2_r}{4\Omega}\label{max_conv_gen}
+%\end{align}
+%\citep{lyra14}, where $N_r^2 = -(c_p\rho)^{-1}\p_rP\p_rS$ is the
+%square of the radial buoyancy frequency
+%(cf. Eq. \ref{nzsq_def}). Thus, growth requires $N_r^2<0$.  
+%%Evaluating Eq. \ref{max_conv_gen} at the midplane of our disk models,
+%%we find  
+%%\begin{align}
+%%  \sigma_\mathrm{conv,max} =
+%%  -\frac{ h^2\OmK}{4\gamma\Gamma}\left(p+q\right)
+%%  \left[\left(\gamma-1\right)p-q\right]. \label{max_conv}
+%%\end{align}
+%In fact, for the MMSN considered in this work, convective
+%overstability does not apply because 
+%$N_r^2>0$.   
+%
+%For more general disk structures convective overstability is
+%possible, in principle. The models adopted for our numerical study in
+%\S\ref{numerical} do satisfy $N_r^2<0$, but convective overstability
+%require perturbations with long radial lengthscales,
+%$k_xH\ll 1$, for which radially global disk models would be more 
+%self-consistent. 
+
+\subsection{Radiative transfer} 
+Our relatively simple treatment of cooling with an idealized dust opacity
+could certainly be generalized in future works.  In hotter disks, gas phase opacities
+must be considered.   In cold disks, there are many choices for the dust opacity, which 
+varies with grain sizes and compositions. Changing dust properties would alter 
+the viability of the VSI for better or worse.  The radiative transfer itself
+could be calculated with higher levels of sophistication, as is already being done in
+numerical simulations of the VSI \citep{stoll14}.
+
+
+\section{Summary and discussion}\label{summary}
+In this paper we study the vertical shear instability (VSI) with a focus the 
+role of radiative cooling.  In turn we assess the viability of the VSI 
+as an angular momentum transport mechanism in protoplanetary disks (PPDs).
+
+Our linear, axisymmetric analysis of the VSI 
+considers (uniquely to our knowledge) finite cooling times in a vertically global model.  
+In order for vertical shear to drive the VSI, short cooling times are needed to weaken 
+the stabilizing effects of vertical buoyancy. Our main analytical finding, which we confirm numerically, 
+is the critical cooling  timescale above which VSI growth is suppressed, Eqs.\ \ref{prelim_bcrit} and \ref{iso_vsi_cond}.
+
+
+Our main focus is irradiated, vertically isothermal disks which have strong vertical buoyancy.
+The critical cooling time is thus short, shorter than the orbital time by a factor of the disk
+aspect ratio.  This finding is consistent with, and helps explain, the results of recent numerical simulations \citepalias{nelson13}.
+We briefly consider  vertically non-isothermal disks in \S\ref{nonvertiso}.
+
+In applying our results to PPDs, we pay particular attention to the transition from 
+optically thick radiative diffusion to optically thin Newtonian cooling.  The largest obstacle to VSI occurs in 
+high density inner disk, $\lesssim 1$ -- 5AU, where radiative diffusion times are slow.  Shorter wavelength disturbances
+ cool faster, so long as they remain optically thick.  In the inner disk, however, our VSI cooling criterion requires 
+ wavelengths that are too short to drive significant transport.  The best hope for the VSI in inner disk is a low surface density, which speeds radiative diffusion by lengthening the photon mean free path.  This option naturally begs 
+ the question of what accretion mechanism lowered the surface density in the first place. 
+ 
+ In the outer disk, the VSI tends to cool in the optically thin limit.  The main issue is whether the opacity 
+ is high enough for optically thin cooling to be sufficiently fast.  Our standard opacity assumes a Solar abundances of small dust.
+ In this case, the VSI can operate from $\sim 5$ -- 100AU.  
+A factor of 10 reduction in the opacity, for instance by locking
+ small dust into planetesimals and planetary cores \citep{youdin13}, makes cooling times too slow for VSI growth.  
+ In this case cooling is too slow not just in the outer disk, but into  $< 1$ AU.
+ 
+ An enhanced opacity makes optically thin cooling faster and radiative diffusion slower.  This shift favors VSI growth 
+ in the outer disk at the expense of the inner disk, pushing the inner limit of VSI growth further out.
+ The standard choice --- corresponding to Solar abundances in a standard MMSN disk --- allows the VSI 
+ to grow over the widest range of relevant disk radii.
+ 
+ Our detailed study of the spectrum of VSI modes confirms that some artificial `surface modes' are 
+ triggered by imposed vertical boundaries \citepalias{nelson13, barker15}.  Domain size
+ convergence studies are thus essential.  Fortunately, our results show that longer cooling times 
+  stifle the growth of surface modes.  Thus, at least in some cases, more realistic radiative transfer also produces more reliable dynamics.
+ 
+ The VSI deserves further study as a viable mechanism to drive at least low levels of accretion in cold disks.
+ 
+
+
+
