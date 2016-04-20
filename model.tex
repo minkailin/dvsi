@@ -1,457 +1,152 @@
-\section{Governing equations and disk models}\label{setup}
-An inviscid, non-self-gravitating disk orbiting a central star of mass $M_*$
-obeys the three-dimensional fluid equations:
+\section{Single fluid description of well-coupled dusty gas}\label{setup} 
+
+\cite{laibe14}, Eq. 84 --- 85, 87: 
+
 \begin{align}
-  &\frac{\p\rho}{\p t} + \nabla\cdot{\left(\rho\bm{v}\right)} = 0,\label{full_mass}\\
-  &\frac{\p\bm{v}}{\p t} + \bm{v}\cdot\nabla\bm{v} =
-  -\frac{1}{\rho}\nabla P - \nabla\Phi_*,\\
-  &\frac{\p P}{\p t} + \bm{v}\cdot\nabla P  = - \gamma P
-  \nabla\cdot\bm{v} - \Lambda % \frac{\rho}{t_c}\left(\frac{P}{\rho} -
-    % \left.\frac{P}{\rho}\right|_{t=0}\right)
-  , \label{full_energy}
+  &\frac{D\rho}{Dt} = -\rho\nabla\cdot\bm{v}, \label{masseq}\\ 
+  &\frac{D\bm{v}}{Dt} = - \nabla\Phi - \frac{1}{\rho}\nabla
+  P, \label{momeq}\\ 
+  &\frac{D\epsilon}{Dt} = -\frac{1}{\rho} \nabla \cdot \left(\epsilon 
+  \tstop \nabla P \right),\label{dusteq}  
 \end{align}
-where $\rho$ is the mass density, $\bm{v}$ is the velocity field (the
-rotation frequency being $\Omega=v_\phi/r$), $P$
-is the pressure, $\gamma$ is the constant adiabatic index, and $\Phi_*
-= -GM_*(r^2 + z^2)^{-1/2}$ is the gravitational potential of the
-central star with $G$ as the gravitational constant. The cylindrical
-co-ordinates $(r,\phi, z)$ are centered on the star. 
-In the energy equation (Eq.\ \ref{full_energy}) the sink term
-$\Lambda$ includes non-adiabatic cooling and (negative) heating. 
-The gas temperature $T$ obeys the ideal gas 
-equation of state,  
+where $D/Dt \equiv \p_t + \bm{v}\cdot\nabla$ is the Lagragian
+derivative; 
 \begin{align}
-P = \frac{\mathcal{R}}{\mu}\rho T,
+  \rho \equiv \rhog + \rhod
 \end{align}
-where $\mathcal{R}$ is the gas constant and $\mu$ is the mean molecular
-weight.    
-
-\subsection{Thermal relaxation}
-We model radiative effects as thermal
-relaxation with a timescale $t_c$, i.e.,
-\begin{align}\label{thermal_relax}
-  \Lambda  \equiv \frac{\rho\mathcal{R}}{\mu}\frac{T - T_\mathrm{eq}}{t_c},
-\end{align}
-where $T_\mathrm{eq}=T_\mathrm{eq}(r,z)$ is the equilibrium temperature.  We 
-define the dimensionless cooling time 
-\begin{align}\label{beta_def}
-  \beta \equiv \OmK t_c
-\end{align}
-relative to the Keplerian frequency, $\OmK=\sqrt{GM_*/r^3}$.  We 
-use the terms `thermal relaxation' and `cooling' interchangeably
-throughout this paper.   
-
-For most of this paper we will take $\beta$ as a constant input
-parameter, so that we can vary the thermodynamic response of the
-disk from isothermal ($\beta\ll 1$) to adiabatic ($\beta \gg 1$) in a
-controlled manner. However, in \S\ref{application} 
-we will consider a more realistic model for $\beta$ in
-PPDs with a dust opacity (as in Fig.\  \ref{bcrit_mmsn2d}).  
- 
-% using Eq.\(\ref{beta_mmsn_simp}), which   
-% Fig. \ref{bcrit_mmsn2d} shows that in this model $\beta >> 1$ in the 
-% dense inner disk and near the midplane, but that rapid cooling ($\beta \ll 1$)
-%is possible elsewhere.  Furthermore short wavelength perturbations can cool 
-%quicker ...
- 
-% \emph{TODO: $k_x$ is in Fig. \ref{bcrit_mmsn2d} but not explained yet...}
-
-% based on physical thermal
-%timescales, in which case $\beta$ is non-constant and is determined by
-%the equilibrium disk properties and the perturbation lengthscales of
-%interest (e.g. Fig. \ref{bcrit_mmsn2d}). 
-
-
-
-\subsection{Baroclinic disk equilibria}\label{eqm}
-The equilibrium disk is steady and axisymmetric with density,
-pressure and rotation profiles $\rho(r,z)$, $P(r,z)$ and
-$\Omega(r,z)$, respectively. These functions satisfy  
-\begin{subequations}\begin{align}
-  0 &= \frac{1}{\rho}\frac{\p P}{\p z} + \frac{\p \Phi_*}{\p z},\label{vert_equilibrium}\\
-  r\Omega^2&= \frac{1}{\rho}\frac{\p P}{\p r} + \frac{\p \Phi_*}{\p
-    r}.\label{hori_equilibrium} 
-\end{align} \end{subequations}
-A unique solution requires additional assumptions about disk structure.  We choose
-\begin{subequations}\begin{align}
- \rho(r,0) &\equiv \rho_0(r) = \rho_{00}\left(\frac{r}{r_0}\right)^p, \\
- T(r,0) &\equiv T_0(r) = T_{00}\left(\frac{r}{r_0}\right)^q, \\
- P(r,z) & = K(r)\rho^{\Gamma}(r,z). \label{eqm_press}
-\end{align} \end{subequations}
-where $r_0$ is a fiducial radius and $p$ and $q$ are the standard power-law indices
-for midplane density and temperature, respectively. Without loss of
-generality we take $q<0$, as is typical in PPDs.   
-The polytropic index $\Gamma$ 
-parametrizes the vertical stratification with $\Gamma = 1$ ($\Gamma = \gamma$)
-describing vertically isothermal (adiabatic) disks, respectively.  The ideal gas
-law requires $K = \rho_0^{1-\Gamma}\mathcal{R} T_0/\mu$.
-
-%These equations allows us to choose any midplane density 
-%distribution $\rho_0(r)\equiv \rho(r,0)$. In this work we assume a
-%power-law profile, 
-%\begin{align}
-%  \rho_0(r) = \rho_{00}\left(\frac{r}{r_0}\right)^p,
-%\end{align}
-%where $\rho_{00}$ is the midplane density at the fiducial radius
-%$r=r_0$ and $p$ is the power-law index.  
-
-%We consider disk equilibria in which the pressure $P$ and density
-%$\rho$ are related by   
-%\begin{align}
-%  P(r,z) &= 
-%  \frac{c_{s0}^2(r)}{\Gamma}\rho_0(r)^{1-\Gamma}\rho^\Gamma(r,z),\notag\\
-%  & \equiv K(r)\rho^{\Gamma}(r,z). \label{eqm_press}
-%\end{align}
-%where the polytropic index $\Gamma$ is a  constant parameter  and the
-%function $c_{s0}(r)$ is prescribed below. Choosing $\Gamma=1$ gives  a 
-%locally vertically isothermal disk and $c_{s0}(r)$ is the mid-plane
-%sound-speed. 
-%It shall be convenient to define the function $c_s(r,z)$ 
-
-We further define a modified sound speed
+is the total density with $\rhog$ and $\rhod$ being the gas and dust
+density, respectively; 
 \begin{align}
-	c_s \equiv \sqrt{\Gamma P /\rho } , 
-% c_s^2\equiv % \frac{dP}{d\rho} =
-%  c_{s0}^2(r)\left(\frac{\rho}{\rho_0}\right)^{\Gamma-1} =
-%  \frac{\Gamma P}{\rho},  
+  \bm{v} \equiv \frac{\rhog\bm{v}_\mathrm{g} +
+    \rhod\bm{v}_\mathrm{d}}{\rho}
 \end{align}
-which in general differs from the  isothermal, $c_\mathrm{iso} =
-c_s/\sqrt{\Gamma}$, and adiabatic $c_\mathrm{ad} =
-c_s\sqrt{\gamma/\Gamma}$, sound speeds. 
-We also introduce the characteristic scale-height, $H = c_s(r,0)/\OmK$
-and disk aspect-ratio
-%We take $c_{s0}(r)$ to be another power-law:  
-%\begin{align}
-%  c_{s0}^2(r)=c_{s00}^2\left(\frac{r}{r_0}\right)^q, 
-%\end{align}
-%where $c_{s00}\equiv c_{s0}(r_0)$  and $q$ is the temperature power-law index, and
-%define   
+is the center-of-mass velocity with $\bm{v}_\mathrm{g}$ and
+$\bm{v}_\mathrm{d}$ being the gas and dust velocities, respectively; 
+and 
 \begin{align}
-   h(r) \equiv %\frac{c_{s0}(r)}{v_k(r)} \equiv
-  \frac{H}{r} \propto r^{(1+q)/2}
+  \epsilon = \frac{\rhod}{\rho} 
 \end{align}
-We are interested in thin disks with $ h \ll 1$.
+is the dust fraction; and $\tstop$ is the stopping time. 
 
+\subsection{Locally isothermal equation of state for the gas} 
 
-\subsubsection{Density structure}
-The equilibrium density field follows from vertical hydrostatic equilibrium (Eq.\ \ref{vert_equilibrium}).
-The solution for $\Gamma\neq1$ is
-\begin{align}\label{eqm_dens}
-  &\left(\frac{\rho}{\rho_0}\right)^{\Gamma-1} = 1 +
-  \frac{\left(\Gamma-1\right)}{ h^2}\left(\frac{1}{\sqrt{1+z^2/r^2}}-1\right).
+\begin{align}\label{eos}
+  P = c_s^2(r,z)\rhog = c_s^{2}(1 - \epsilon)\rho,   
 \end{align}
-Note that for $\Gamma > 1 +  h^2$ there is a disk surface $H_s$
-where $\rho(r,H_s)=0$; and $H_s \simeq \sqrt{2/(\Gamma-1)}H$ for $h\ll 1$.
-%For $h \ll 1$, this surface is located at $H_s \simeq \sqrt{2/(\Gamma-1)}H$. 
-% Note that for $\Gamma\neq1$ the disk has a surface $z=H(r)$ such that
-% $\rho(r,H)=0$. If we parametrize
-% \begin{align}
-%   H(r)\equiv h r,
-% \end{align}
-% then the imposed sound-speed and disk thickness are related by 
-% \begin{align}
-%   h^2(r) = \left[1-\frac{ h^2(r)}{\Gamma-1}\right]^{-2}-1. 
-% \end{align}
 
-The vertically isothermal case, $\Gamma = 1$, can be calculated either 
-as a special case or by taking the limit of Eq. \ref{eqm_dens} as $\Gamma\to 1$,    
-\begin{subequations}\begin{align}
- \frac{\rho(r,z)}{\rho_0(r)} &=
-  \exp{\left[\frac{1}{ h^2}\left(\frac{1}{\sqrt{1+z^2/r^2}}-1\right)\right]},   \\
-  & \simeq \exp {\left( - {z^2 \over 2 H^2}\right)} \quad\text{for } |z|\ll r \label{rhoisothin}. 
-  \end{align}\end{subequations}
-Eq.\ \ref{rhoisothin} is the approximate form of the density field in the thin-disk limit.  
-We will primarily focus on 
-vertically isothermal disks, the relevant case for passively irradiated
-PPDs \citep{chiang97}. 
+$c_s$ is a prescribed sound-speed profile fixed in time. 
 
- 
- \subsubsection{Rotation and vertical shear profiles}\label{vshear_def}
-The equilibrium rotation field, $\Omega(r,z)$ follows from the density field and centrifugal balance (Eq.\ \ref{hori_equilibrium}),
-giving 
-\begin{align}\label{eqm_rot}
-  \frac{\Omega^2(r,z)}{\OmK^2(r)}=1 +
-  \frac{p+q}{\Gamma} h^2(r) 
-  +\frac{s}{\Gamma} \left(1-\frac{1}{\sqrt{1+z^2/r^2}}\right), 
-\end{align}
-for all $\Gamma$, where $s\equiv q+p(1-\Gamma)$.  We also refer to the
-epicyclic frequency $\kappa$ defined via
-\begin{align}\label{kap2_def}
-\kappa^2 \equiv \frac{1}{r^3}\frac{\p}{\p r}\left(r^4\Omega^2\right) = \frac{1}{r^3}\frac{\p j^2}{\p r}, 
-\end{align}
-where $j$ is the specific angular momentum. 
+\subsection{Effective energy equation for the mixture with a
+  stationary temperature profile}   
+Eliminate $\epsilon$ in favor of $P$,
 
-The vertical shear rate follows from Eq. \ref{eqm_rot}, 
 \begin{align}
-  r\frac{\p\Omega^2}{\p z} = \frac{sz}{\Gamma r}  \frac{\OmK^2}{
-    \left(1+z^2/r^2\right)^{3/2}} . \label{vertical_shear_ex} 
+  \epsilon = 1 - \frac{P}{c_s^2(r,z)\rho}, 
 \end{align}
-For $\Gamma = 1$, notice that $s/\Gamma = q$ is the only disk parameter that affects vertical shear.
-Vertical shear increases linearly with height near the midplane, and $|\p_z \Omega^2|$ is maximized at
-$\mathrm{min}(r/\sqrt{2},H_s)$, which is expected to limit the maximum VSI growth rate. 
-%the smaller of $r/\sqrt{2}$ or $H_s$. 
 
-A more general expression for vertical shear holds for vertical polytropes 
-(which satisfy Eq.\ \ref{eqm_press}), with no assumed radial structure:
+Eq. \ref{dusteq} becomes
+
 \begin{align}
-  r\frac{\p\Omega^2}{\p z} = - \rho^{\Gamma-1}\frac{\p\ln\rho}{\p
-    z}\frac{dK}{dr} = - \frac{g_z}{\Gamma}\frac{d\ln K}{dr}, \label{vertical_shear}
+\frac{DP}{Dt} = - P \nabla\cdot\bm{v} + P\bm{v}\cdot\nabla\ln{c_s^2} +
+c_s^2 \nabla\cdot\left[\tstop\left(1 - \frac{P}{c_s^2\rho}\right)\nabla
+  P\right]. \label{eff_energy}
 \end{align}
-where $g_z = \p_z P/\rho$.
 
-%\subsubsection{Vertically isothermal disks}
-%For $\Gamma=1$ the equilibrium density and rotation profiles are
-%given, respectivley, by 
-%\begin{align}
-%  \frac{\rho(r,z)}{\rho_0(r)} &=
-%  \exp{\left[\frac{1}{ h^2}\left(\frac{1}{\sqrt{1+z^2/r^2}}-1\right)\right]},\\    
-%  \frac{\Omega^2(r,z)}{\OmK^2(r)}& =1+ (p+q) h^2(r) + q\left(1 -
-%    \frac{1}{\sqrt{1+z^2/r^2}}\right),\label{vertiso_eqm}
-%\end{align}
-%which may be obtained from Eq. \ref{eqm_dens} and Eq. \ref{eqm_rot} by
-%taking the limit $\Gamma\to 1$. We will, in fact, primarily focus on
-%vertically isothermal disks which is the relevant case for passively irradiated
-%PPDs \citep{chiang97}. 
+This is the energy equation for an ideal gas of adiabatic index
+$\gamma=1$, with additional source terms due to the imposed
+temperature profile, as well as dust-gas friction.  
 
+Eq. \ref{eff_energy} can be written in conservative form,
 
-%\subsection{Vertical shear}\label{vshear_def}
-%Note that the disk is in general baroclinic with $\Omega =
-%\Omega(r,z)$. This is explicit from Eq. \ref{eqm_rot} and Eq. \ref{vertiso_eqm}, but is also 
-%implied by Eq. \ref{vert_equilibrium}---\ref{hori_equilibrium} and 
-%Eq. \ref{eqm_press},  
-%\begin{align}
-%  r\frac{\p\Omega^2}{\p z} = - \rho^{\Gamma-1}\frac{\p\ln\rho}{\p
-%    z}\frac{dK}{dr} = - \frac{g_z}{\Gamma}\frac{d\ln K}{dr}.\label{vertical_shear}
-%\end{align}
-%For the above disk models,
-%\begin{align}
-%  r\frac{\p\Omega^2}{\p z} = \frac{sz\OmK^2}{\Gamma
-%    r\left(1+z^2/r^2\right)^{3/2}}. \label{vertical_shear_ex} 
-%\end{align}
-%Note that at fixed $r$ there is a maximum vertical shear rate at $|z|=r/\sqrt{2}$,
-%which is expected to limit the growth rate of instabilities associated with vertical shear. 
+\begin{align*}
+  \frac{\p P}{ \p t} + \nabla\cdot\left\{P\left[\bm{v} -
+      \tstop\left(c_s^2 - \frac{P}{\rho}\right)\nabla\ln{P}\right]
+    \right\}\\
+  = \left[P\bm{v} - \tstop\left(c_s^2 - \frac{P}{\rho}\right)\nabla
+    P\right]\cdot\nabla\ln{c_s^2}. 
+\end{align*}
+note: non-linear in $P$
 
-\subsection{Entropy gradients and vertical buoyancy}
-The gradients of specific entropy, $S\equiv
-C_P\ln{P^{1/\gamma}/\rho}$, in our disk models are
-\begin{subequations}
+\section{Equilibrium}
+
 \begin{align}
-  &\frac{\p S}{\p r} = C_P\left[\frac{s}{\gamma r} +
-    \left(\frac{\Gamma}{\gamma}-1\right)\frac{\p \ln{\rho}}{\p
-       r}\right], \label{dSdr}\\
-  &\frac{\p S}{\p z} = C_P
-  \left(\frac{\Gamma}{\gamma}-1\right)\frac{\p \ln{\rho}}{\p z} = {C_P g_z \over c_s^2} {\Gamma - \gamma \over \gamma},\label{dSdz}
-\end{align} 
-\end{subequations}
- where $C_P$ is the heat capacity at
-constant pressure. 
+  r\Omega^2 &= \frac{\p \Phi}{\p r} + \frac{1}{\rho}\frac{\p P}{\p
+    r},\\
+  0 & = \frac{\p\Phi}{\p z} + \frac{1}{\rho}\frac{\p P}{\p z}.
+\end{align}
 
-The vertical buoyancy frequency $N_z$ is 
+\subsection{Vertical shear}
+
+\begin{align}\label{vshear}
+  r\frac{\p \Omega^2}{\p z} = \frac{\p\ln{\rho}}{\p r}\frac{\p}{\p
+    z}\left[c_s^2(1-\epsilon)\right] - \frac{\p\ln{\rho}}{\p z}
+  \frac{\p}{\p r} \left[c_s^2(1-\epsilon)\right]. 
+\end{align}
+
+
+\section{Limiting behaviours}
+
+\subsection{Strictly isothermal gas perfectly coupled to dust}  
+When $c_s^2$ is a constant and $\tstop=0$, the dusty gas equations are
+exactly equivalent to that for adiabatic hydrodyamics with unit adiabatic
+index. Although the gas is strictly isothermal, the mixture behaves 
+adiabatically because the dust fraction $\epsilon$ is advected with
+the gas (i.e. evolves like an entropy when there is no heating or
+cooling). 
+
+In this case one may immediately apply the Solberg-Hoiland
+criteria to assess axisymmtric \emph{stability}:  
+
 \begin{align}
-  N_z^2 \equiv - C_P^{-1}g_z \frac{\p S}{\p z} = {g_z^2 \over c_s^2}{\gamma - \Gamma \over \gamma}. %c_s^2 \left(\frac{\gamma -
-   %   \Gamma}{\gamma}\right)\left(\frac{\p\ln\rho}{\p z}\right)^2,  
-    \label{nzsq_def}
+  \kappa^2 - \frac{1}{\rho}\nabla P \cdot \nabla s &> 0,\\
+  -\frac{1}{\rho}\frac{\p P}{\p z} \left(\kappa^2 \frac{\p s}{\p z} -
+  r\frac{\p\Omega^2}{\p z}\frac{\p s}{\p r}\right) &>0, 
+\end{align}  
+where 
+\begin{align}
+  s \equiv \ln \frac{P}{\rho} = \ln{(1-\epsilon)} 
 \end{align}
-We only consider convectively stable disks with with $\Gamma <
-\gamma$ and  $N_z^2\geq0$. % , and the disk is 
-% convectively stable in the vertical direction. 
+may be interpreted as the mixture entropy. The first equality is
+similar to the usual defintion for gas entropy (with unit adiabatic
+index). The second follows from the imposed equation of state,
+Eq. \ref{eos}, with a constant sound-speed. 
 
-\subsection{Stability without cooling}\label{solberg}
-In the absence of cooling, axisymmetric stability is ensured
-if both Solberg-Hoiland criteria  are satisfied:
-\begin{subequations}\begin{align}
-  \kappa^2 - \frac{1}{\rho C_P}\nabla P \cdot \nabla S &> 0,\\
-  -\frac{\p P}{\p z}\left(\frac{\p j^2}{\p r}\frac{\p S}{ \p z} -
-    \frac{\p j^2}{\p z}\frac{\p S}{\p r} \right)&>0 \label{second_SH} 
-\end{align}\end{subequations}
-\citep{tassoul78}. %, where $j=r^2\Omega$ is the specific angular
-%momentum. %and $\kappa = r^{-3} \p_r j^2 $ is the epicyclic frequency.  
-For rotationally-supported, thin disks %  pressure gradients are small 
-% compared to rotation, so 
-the first criterion is easily satisfied. 
-Thus, we consider the second
-criterion. 
-Without loss of generality (since Eq. \ref{second_SH} is even in $z$), we consider $z>0$
-so that $\p_zP<0$. With $\p_r j^2\simeq r^3\OmK^2$ and
-using Eq. \ref{vertical_shear} for $\p_zj^2$  we find that
-\begin{align}\label{solberg2}
-  % \gamma - \Gamma > \frac{s h^2}{\Gamma}
-  % \left(\frac{\rho}{\rho_0}\right)^{\Gamma-1} \left[s
-  %   -\left(\gamma-\Gamma\right)\frac{\p\ln{\rho}}{\p\ln{r}} \right]. 
-  \gamma - \Gamma > \frac{ h^2}{\Gamma}
-  \left(\frac{\rho}{\rho_0}\right)^{\Gamma-1} \left[s^2
-    -s\left(\gamma-\Gamma\right)\frac{\p\ln{\rho}}{\p\ln{r}} \right]
-\end{align} 
-implies stability. For typical model parameters, the right hand
-side is $O(h^2) \lesssim 10^{-2}$. The left hand side is positive and order
-unity %if the disk is convectively stable, and not
-%very close to convective instability  {\bf($\gamma-\Gamma\geq0.1$ in
-  %the disk models considered)}. 
-  {\bf in our disk models (with $\gamma-\Gamma\geq0.1$)
-  implying strong stability to convection, see Eq.\ \ref{nzsq_def}.}
-  This stable stratification is
-expected for irradiated disks  \citep{chiang97}. 
-Thus, adiabatic disturbances {\bf in a standard, irradiated disk}
- are stable to a disk's vertical shear,
-%{\bf for typical values of  $\gamma-\Gamma$},  
-explaining why the VSI requires cooling. 
-
-\section{Linear problem}\label{linear} 
-This section presents the two sets of equations we use to study the
-linear development of the VSI.  Both sets are radially local and vertically global 
-with a finite cooling time.
-The first set, presented in \S\ref{sec:radlocal}, is more general and used 
-for numerical calculations.  The second set, in \S\ref{sec:simplified}, makes
-additional approximations  about disk structure and wave frequency.  This simplified
-set is used to obtain analytic results.
-
-
-\subsection{Radially local approximation}\label{sec:radlocal}
-We consider axisymmetric perturbations to the above disk equilibria.    
-The growth of the VSI is strongest for short radial wavelengths, as compared
- to the disk radius \citepalias{nelson13,barker15}.  We thus perform a
- standard two step process to obtain linearized equations in the radially local 
- approximation (e.g., \citealp{goldreich67}, who also consider vertically localized perturbations).  
- 
- We first expand all fluid variables 
- into the equilibrium value plus an Eulerian perturbation denoted by $\delta$, e.g.\ 
- $\delta \rho$ for the perturbed density, and drop all non-linear perturbations.  Second, we perform
- a Taylor expansion about a fiducial radius $r_0$ with the local radial coordinate
- $x = r - r_0$, keeping only the leading order terms in $x/r_0$.  We also relabel 
- (trivially for axisymmetric perturbations) the azimuthal direction as $y$.  
- 
- Perturbations take the form of a radial plane wave with arbitrary vertical dependence, 
- e.g.\
- \begin{align}
-  \delta\rho \rightarrow \delta\rho(z)\exp{\left(\ii k_x x - \ii\upsilon
-      t\right)},    
+The stability conditions are thus
+\begin{align}
+  \kappa^2 + c_s^2 \nabla\ln{\rhog}\cdot\nabla\epsilon &> 0,  \\
+  -c_s^2\frac{\p\ln{\rhog}}{\p z}\left(-\kappa^2\frac{\p\epsilon}{\p
+    z} + r\frac{\p\Omega^2}{\p z}\frac{\p \epsilon}{\p r} \right) & > 0. 
 \end{align}
-where $\upsilon = \omega + \ii \sigma$ is a (generally) complex frequency, 
-with $\omega$ and $\sigma$ being
-the real frequency and growth rate, respectively, and $k_x$ is a real 
-radial wavenumber.  We take $k_x>0$ without loss of generality, 
-assume $k_xr_0 \gg 1$ and neglect curvature terms. 
-Henceforth all unperturbed fluid variables, including 
-gradients such as $\p_z \Omega$, refer to  equilibrium values at $(r_0, z)$.
+For accretion disks, $\rhog$ and $\epsilon$ are expected to decrease
+outwards and away from the midplane, implying 
+$\nabla\rhog\cdot\nabla\epsilon>0$, so the first criterion is
+typically satisifed. 
 
-We further define the perturbation variables  $W \equiv \delta P /\rho$ 
-and $Q \equiv c_s^2\delta\rho/\rho$.  With this procedure the linearized
-system of equations are
-\begin{subequations}\label{lin_all}\begin{align}
-  \ii\upsilon \frac{Q}{c_s^2}  &=  \ii k_x \delta v_x + \frac{d\dd
-    v_z}{dz} + \frac{\p\ln{\rho}}{\p z}\delta v_z + \zeta
-  \frac{\p\ln{\rho}}{\p r} \delta v_x,\label{lin_mass}\\
-  \ii\upsilon \delta v_x  &= \ii k_x W - 2\Omega\delta v_y -
-  \zeta\frac{1}{\rho}\frac{\p P}{\p r}\frac{Q}{c_s^2}\label{lin_vx}\\
-   \ii \upsilon\delta v_y &= r_0\frac{\p \Omega}{\p z}\delta v_z +
-  \frac{\kappa^2}{2\Omega}\delta v_x, \label{lin_vy}\\
-   \ii\upsilon\delta v_z &= \frac{dW}{dz} +
-  \frac{\p\ln{\rho}}{\p z}\left(W-Q\right), \label{lin_vz}\\
-  \ii \upsilon W &= c_s^2\frac{\p\ln{\rho}}{\p z}\delta v_z +
-  c_s^2\frac{\gamma}{\Gamma} \left(\ii k_x\delta v_x + \frac{d\delta
-      v_z}{dz}\right) \notag\\
-  &+ \frac{1}{t_c}\left(W - \frac{Q}{\Gamma}\right) +
-  \zeta\frac{1}{\rho}\frac{\p P}{\p r}\delta v_x.\label{lin_energy}
-  % -&\ii\upsilon W + \frac{1}{t_c}\left(W-\frac{Q}{\Gamma}\right) = -\ii\upsilon\frac{\gamma}{\Gamma} Q +
-  % c_s^2\frac{d\ln{\rho}}{dz}\left(\frac{\gamma}{\Gamma}-1\right)\delta v_z.\label{lin_energy}
-\end{align}\end{subequations}
-This is a set of ordinary differential equations (ODEs) in
-$z$.  %boundary conditions for well posed problem 
-Solutions to these 
-are presented in \S\ref{numerical} and \S\ref{application}.   The coefficient $ \zeta = 1$ is 
-introduced simply to label terms with explicit radial gradients of the equilibrium state, 
-which again are evaluated at $(r_0, z)$. For clarity, hereafter we drop the subscript $0$.    
-We will consider the effects of ignoring these radial gradients below. 
+To evaulate the second criterion, we can consider $z>0$ without loss
+of generality. Then $\p_z\rhog,\p_z\rhod <0$, so $\p_z\rho<0$. We
+assume $\p_r\rho <0$ and $\p_z\epsilon, \p_r\epsilon <0$ as
+well\footnote{Due to dust sedimentation and inwards migration.}. Then,
+inserting the vertical shear profile, Eq. \ref{vshear}, we find the
+second criterion becomes   
 
+\begin{align} 
+  \kappa^2\left|\frac{\p\epsilon}{\p z}\right| + c_s^2\left|\frac{\p
+    \epsilon}{\p r}\frac{\p\epsilon}{\p z}\frac{\p\ln{\rho}}{\p
+    r}\right| - c_s^2 \left(\frac{\p\epsilon}{\p
+    r}\right)^2\left|\frac{\p\ln{\rho}}{\p z}\right| > 0.  \label{criterion2}
+\end{align}
 
-%We consider axisymmetric perturbations to the above equilibria in the
-%form 
-%\begin{align}
-%  \rho \to \rho(r, z) + \delta\rho(r,z)\exp{\left(\ii k_rr - \ii\upsilon
-%      t\right)},    
-%\end{align}
-%and similarly for other fluid variables, where $\upsilon = \omega + \ii
-%\sigma$ is a (generally) complex frequency, with $\omega$ and $\sigma$ being
-%the real frequency and growth rate, respectively, and $k_r$ is a real 
-%radial wavenumber. We take $k_r>0$ without loss of generality. 
+This equation shows that the vertical gradient in dust-fraction (and
+thus the dust-to-gas ratio $\rhod/\rhog$) has a stabilizing effect for
+axisymmetric perturbations. Instead, the only way to destabilize the
+system is a sufficiently large radial gradient in the dust-fraction
+and/or vertical (total) density gradient (the last term).  
 
-%The VSI is expected to operate for perturbations with small radial
-%wavelengths \citepalias{nelson13,barker15}. We thus linearize 
-%Eq. \ref{full_mass}---\ref{full_energy} assuming perturbations 
-%in the above form with radially slowly-varying
-%amplitudes and $k_r r \gg 1$, so that the radial dependence of $\delta\rho(r,z)$, etc.,
-%may be neglected, as well as curvature terms. Henceforth we are
-%considering solutions at some fiducial radius $r=r_0$.  
-%\citetalias{barker15} have validated this 
-% approximation for the VSI by comparison with the linear problem in
-% global cylindrical disk geometry. 
+Note that Eq. \ref{criterion2} is only applicable for the assume disk
+structure described above: decreasing dust and gas densities, as well
+as the dust-fraction, away from the star and away from the
+midplane. For less typical disk structures, one must evalulate above the
+critera seperately. 
 
-%In order to emphasize the radially local approximation, we introduce
-%the local Cartesian co-ordinates $(x,y,z)$ corresponding to the the
-%local $(r,\phi,z)$ directions, respectively.  
-%We thus linearize 
-%and replace  
-% The linearized fluid equations in cylindrical co-ordinates are  
-% \begin{align}
-%   \ii\upsilon\delta\rho &= \frac{\rho}{r}\frac{\p}{\p r}\left(r\delta v_r\right) + \frac{\p}{\p
-%     z}\left(\rho\delta v_z\right)  + \zeta\frac{\p\rho}{\p r}\delta v_r,\label{full_mass1}\\
-%   \ii\upsilon\delta v_r &= \frac{1}{\rho}\frac{\p\delta P}{\p r} - 2\Omega
-%   \delta v_\phi - \zeta\frac{\delta\rho}{\rho^2}\frac{\p P}{\p r},\\ 
-%   \ii\upsilon\delta v_\phi  &= \frac{\kappa^2}{2\Omega}\delta v_r +
-%   r\frac{\p\Omega}{\p z}\delta v_z,\\
-%   \ii \upsilon\delta v_z &= \frac{1}{\rho}\frac{\p\delta P}{\p z} -
-%   \frac{\delta \rho}{\rho^2}\frac{\p P}{\p z},\\
-%   \ii\upsilon\delta P &=\frac{\p P}{\p z}\delta v_z + \gamma P
-%   \left[\frac{1}{r}\frac{\p}{\p r}\left(r\delta v_r\right) + \frac{\p
-%       \delta v_z}{\p z}\right]\notag \\
-%   &+ \frac{1}{t_c}\left(\delta P -  
-%     \frac{P}{\rho}\delta\rho\right) + \zeta \frac{\p P}{\p r}\delta v_r,\label{full_energy1}
-% \end{align}
-% where the coefficients $\zeta=1$ are inserted to label terms
-% associated with the background radial disk structure. 
-% This approach has been adopted
-% in recent linear calculations of the VSI
-% \cite{nelson13,mcnally14,barker15} because unstable modes have short
-% radial lengthscales. 
-%We consider perturbations with small radial length-scales 
-%so that we can ignore the radial variations in the background
-%structure and radial gradients. 
-%We thus evaluate all coefficients in
-%Eq. \ref{full_mass1}---\ref{full_energy1} at the fiducial radius
-%$r=r_0$. However, the full vertical dependence of the coefficients are
-%retained. % Then we can assume perturbations have spatial dependence in
-% the form 
-% \begin{align}
-%   \delta \rho(r,z) \to \delta\rho(z)\exp{\ii k_r r}.
-% \end{align}
-% We take $k_r>0$ without loss of generality, and further assume $k_rr\gg1$ so that curvature terms can also be 
-% ignored.       
-%Then writing $\delta P /\rho \equiv W$, $c_s^2\delta\rho/\rho\equiv
-%Q$ and making the notation change $k_r\to k_x$,  the
-%linearized system of equations are 
-%\begin{align}
-%  \ii\upsilon \frac{Q}{c_s^2}  &=  \ii k_x \delta v_x + \frac{d\dd
-%    v_z}{dz} + \frac{\p\ln{\rho}}{\p z}\delta v_z + \zeta
-%  \frac{\p\ln{\rho}}{\p r} \delta v_x,\label{lin_mass}\\
-%  \ii\upsilon \delta v_x  &= \ii k_x W - 2\Omega\delta v_y -
-%  \zeta\frac{1}{\rho}\frac{\p P}{\p r}\frac{Q}{c_s^2}\label{lin_vx}\\
-%   \ii \upsilon\delta v_y &= r\frac{\p \Omega}{\p z}\delta v_z +
-%  \frac{\kappa^2}{2\Omega}\delta v_x, \label{lin_vy}\\
-%   \ii\upsilon\delta v_z &= \frac{dW}{dz} +
-%  \frac{\p\ln{\rho}}{\p z}\left(W-Q\right), \label{lin_vz}\\
-%  \ii \upsilon W &= c_s^2\frac{\p\ln{\rho}}{\p z}\delta v_z +
-%  c_s^2\frac{\gamma}{\Gamma} \left(\ii k_x\delta v_x + \frac{d\delta
-%      v_z}{dz}\right) \notag\\
-%  &+ \frac{1}{t_c}\left(W - \frac{Q}{\Gamma}\right) +
-%  \zeta\frac{1}{\rho}\frac{\p P}{\p r}\delta v_x,\label{lin_energy}
-%  % -&\ii\upsilon W + \frac{1}{t_c}\left(W-\frac{Q}{\Gamma}\right) = -\ii\upsilon\frac{\gamma}{\Gamma} Q +
-%  % c_s^2\frac{d\ln{\rho}}{dz}\left(\frac{\gamma}{\Gamma}-1\right)\delta v_z.\label{lin_energy}
-%\end{align}
-%where the coefficients $\zeta=1$ are inserted to label terms
-%associated with the background radial disk structure. 
-%It is understood that the quantities $\rho,\,c_s^2,\,\Omega,\kappa,\, 
-%\p_z\Omega,\, \p_r\ln{\rho} $ and $ \p_r P$ are evaluated at $r=r_0$
-%using their expressions in the global disk given in \S\ref{setup}. Thus, they are functions of $z$ only. 
-%Eq. \ref{lin_mass}---\ref{lin_energy} will form the basis of our numerical
-%study, but for analytical discussion
-%we will make further simplifications, as discussed next.
+\subsection{Locally isothermal gas perfectly coupled to dust} 
+$c_s(r,z)$ is non-uniform, but $\tstop=0$. 
