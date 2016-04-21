@@ -78,10 +78,17 @@ note: non-linear in $P$
 \subsection{Vertical shear}
 
 \begin{align}\label{vshear}
-  r\frac{\p \Omega^2}{\p z} = \frac{\p\ln{\rho}}{\p r}\frac{\p}{\p
+  r\frac{\p \Omega^2}{\p z} &= \frac{\p\ln{\rho}}{\p r}\frac{\p}{\p
     z}\left[c_s^2(1-\epsilon)\right] - \frac{\p\ln{\rho}}{\p z}
-  \frac{\p}{\p r} \left[c_s^2(1-\epsilon)\right]. 
+  \frac{\p}{\p r} \left[c_s^2(1-\epsilon)\right]\\  
+  & = \frac{1}{\rho}\left(\frac{\p P}{\p r}\frac{\p s}{\p z} -\frac{\p
+    P}{\p z}\frac{\p s}{\p r} \right),\notag
 \end{align}
+where
+\begin{align}
+   s \equiv \ln \frac{P}{\rho}
+\end{align}
+may be interpreted as the mixture entropy.
 
 
 \section{Limiting behaviours}
@@ -100,16 +107,20 @@ criteria to assess axisymmtric \emph{stability}:
 \begin{align}
   \kappa^2 - \frac{1}{\rho}\nabla P \cdot \nabla s &> 0,\\
   -\frac{1}{\rho}\frac{\p P}{\p z} \left(\kappa^2 \frac{\p s}{\p z} -
-  r\frac{\p\Omega^2}{\p z}\frac{\p s}{\p r}\right) &>0, 
+  r\frac{\p\Omega^2}{\p z}\frac{\p s}{\p r}\right) &>0. 
 \end{align}  
-where 
-\begin{align}
-  s \equiv \ln \frac{P}{\rho} = \ln{(1-\epsilon)} 
-\end{align}
-may be interpreted as the mixture entropy. The first equality is
-similar to the usual defintion for gas entropy (with unit adiabatic
-index). The second follows from the imposed equation of state,
-Eq. \ref{eos}, with a constant sound-speed. 
+Here we may take $s=\ln{1-\epsilon}$ from the definition of $s$ and
+the equation of state (Eq. \ref{eos}) with constant sound-speed. 
+
+
+
+%\begin{align}
+%  s \equiv \ln \frac{P}{\rho} = \ln{(1-\epsilon)} 
+%\end{align}
+% The first equality is
+%similar to the usual defintion for gas entropy (with unit adiabatic
+%index). The second follows from the imposed equation of state,
+%Eq. \ref{eos}, with a constant sound-speed. 
 
 The stability conditions are thus
 \begin{align}
@@ -149,4 +160,20 @@ midplane. For less typical disk structures, one must evalulate above the
 critera seperately. 
 
 \subsection{Locally isothermal gas perfectly coupled to dust} 
-$c_s(r,z)$ is non-uniform, but $\tstop=0$. 
+$c_s(r,z)$ is non-uniform, but $\tstop=0$. Integral relation for
+linear, axisymmetric waves with frequency $\sigma$ (see Appendix \ref{var_prin})
+\begin{align}
+&  \sigma^2\int\rho\left(|\dd v_r|^2 + |\dd v_z|^2\right)dV \notag\\
+&= \int\left[ \rho
+  |\dd v_r|^2A + \rho  \dd v_z \dd v_r^* B + \rho \dd v_z^*\dd v_r C +
+  \rho |\dd v_z|^2 D\phantom{\frac{1}{1}}\right. \notag\\
+&\phantom{===}  \left. + \frac{1}{P}\left|\nabla\cdot\left(P\dd
+  \bm{v}\right)\right|^2\right]dV - \int P
+  \left(\nabla\cdot\dd\bm{v}^*\right)\left(\dd\bm{v}\cdot\nabla\ln{c_s^2}\right)dV.
+\end{align}
+The real coefficients $A,B,C,D$ can be read off
+Eq. \ref{integral_ex}. If $c_s$ is constant, $\sigma$ is real, and 
+the first integral leads to the usual Solberg-Hoiland criteria for
+axisymmetric stability. However, when $c_s$ is non-uniform, $\sigma$
+is generally complex, implying instability. This is the usual vertical
+shear instability. 

@@ -1,0 +1,94 @@
+\section{Variational principle for locally isothermal gas perfectly
+  coupled to dust}\label{var_prin}
+
+Consider axisymmetric disturbances of the form
+\begin{align}
+  \delta\rho(r,z)\exp{\left(-\ii\sigma\right)}. 
+\end{align}
+Linearized equations for dusty gas with $\tstop=0$, and using the
+pressure equation in place of the dust-fraction
+(Eq. \ref{masseq}---\ref{momeq}, Eq. \ref{eff_energy}): 
+
+\begin{align}
+  \ii\sigma\frac{\delta\rho}{\rho} &= \nabla\cdot\dd\bm{v} +
+  \dd\bm{v}\cdot\nabla\ln{\rho},\\
+  \ii\sigma\frac{\delta P}{P} &= \nabla\cdot\dd\bm{v} +
+  \dd\bm{v}\cdot\nabla\ln{P} - \dd\bm{v}\cdot\nabla\ln{c_s^2},\\
+  -\ii\sigma\dd v_r  &= 2\Omega\dd v_\phi + 
+  \delta\bm{F}\cdot\hat{\bm{r}},\\
+  \ii\sigma\dd v_\phi &= \frac{\kappa^2}{2\Omega}\dd v_r + \frac{\p
+    v_\phi}{\p z}\dd v_z,\\
+  -\ii\sigma\dd v_z &=  \delta\bm{F}\cdot\hat{\bm{z}},
+\end{align} 
+with
+\begin{align}
+  \delta \bm{F} \equiv \frac{\dd\rho}{\rho^2}\nabla P -
+  \frac{1}{\rho}\nabla\dd P.
+\end{align}
+Note that for the axisymmetric problem, $\dd\bm{F}$ is purely
+meridional. 
+From the linearized meridional momentum equations, we find 
+\begin{align}
+  \sigma^2\int\rho\left(|\dd v_r|^2 + |\dd v_z|^2\right)dV = \int\left( \rho
+  \kappa^2 |\dd v_r|^2 + \rho r\frac{\p \Omega^2}{\p z} \dd v_z \dd
+  v_r^*  + \ii \rho \dd \bm{F}\cdot\dd\bm{v}^*
+  \right)dV,
+\end{align}
+where the integral is taken over the volume of the fluid. Integrating
+by parts and ignoring surface integrals, the last term is
+\begin{align}
+  \int \ii\sigma\rho \dd \bm{F}\cdot\dd\bm{v}^*dV &=\int\left( \ii\sigma \frac{\dd
+    \rho}{\rho}\dd\bm{v}^*\cdot \nabla P - \ii\sigma \dd
+  \bm{v}^*\cdot\nabla \dd P  \right)dV\notag\\
+&= \int\left( \ii\sigma \frac{\dd
+    \rho}{\rho}\dd\bm{v}^*\cdot\nabla P + \ii\sigma \dd
+ P  \nabla\cdot \dd \bm{v}^*  \right)dV\notag\\
+ & = \int\left[
+   \left(
+   \ii\sigma \frac{\dd P}{P} - \dd\bm{v}\cdot\nabla s + \dd
+   \bm{v} \cdot \nabla \ln{c_s^2}
+   \right)\dd\bm{v}^*\cdot\nabla P  + \ii\sigma \dd
+   P  \nabla\cdot \dd \bm{v}^*
+   \right]dV\notag\\
+ & = \int\left[
+   \ii\sigma\frac{\dd P}{P}\nabla\cdot\left(P\dd\bm{v}^*\right) +
+   \left(\dd\bm{v}^*\cdot\nabla P\right) \left(\dd\bm{v} \cdot \nabla
+   \ln{c_s^2}   -  \dd\bm{v}\cdot\nabla s\right) 
+   \right]dV\notag\\
+ & = \int\left\{
+   \left[\frac{1}{P}\nabla\cdot\left(P\dd\bm{v}\right) -
+   \dd\bm{v}\cdot\nabla\ln{c_s^2}\right]\nabla\cdot\left(P\dd\bm{v}^*\right)
+   +\left(\dd\bm{v}^*\cdot\nabla P\right)\left(\dd\bm{v} \cdot \nabla
+   \ln{c_s^2}   -  \dd\bm{v}\cdot\nabla s \right)
+   \right\}dV \notag\\
+   &=\int\left[
+     \frac{1}{P}\left|\nabla\cdot\left(P\dd\bm{v}\right)\right|^2 -
+     \left(\dd\bm{v}^*\cdot\nabla P\right)\left(\dd\bm{v}\cdot\nabla s
+     \right) -
+     P\left(\nabla\cdot\dd\bm{v}^*\right)\left(\dd\bm{v}\cdot\nabla\ln{c_s^2}\right) 
+     \right]dV,
+\end{align}
+where we recall $s\equiv\ln{(P/\rho)}$. Hence,
+\begin{align}\label{integral_ex}
+  &\sigma^2\int\rho\left(|\dd v_r|^2 + |\dd v_z|^2\right)dV \notag\\
+&=  \int\left\{
+  \rho |\dd v_r|^2 \left(\kappa^2 - \frac{1}{\rho}\frac{\p P}{\p
+    r}\frac{\p s}{\p r}\right)
+  + \rho |\dd v_z|^2\left(-\frac{1}{\rho}\frac{\p P}{\p
+    z}\frac{\p s}{\p z}\right)
+   + \rho \dd v_z \dd v_r^*\left(r\frac{\p\Omega^2}{\p z} -
+  \frac{1}{\rho}\frac{\p P}{\p
+    r}\frac{\p s}{\p z}\right) 
+  + \rho \dd v_z^*\dd v_r \left(-\frac{1}{\rho}\frac{\p P}{\p
+    z}\frac{\p s}{\p r}\right)\right. \notag\\
+&\phantom{==\int}\left.+
+  \frac{1}{P}\left|\nabla\cdot\left(P\dd\bm{v}\right)\right|^2
+  \right\}dV -\int P\left(\nabla\cdot\dd\bm{v}^*\right)\left(\dd\bm{v}\cdot\nabla\ln{c_s^2}\right)dV.
+\end{align}
+Note that the coefficients of the mixed terms are equal owing to the
+equilibrium state. 
+
+%If $c_s$ is constant then the second integral vanishes, $\sigma^2$
+%is real, and the first integral leads to the usual Solberg-Hoiland
+%criteria. However, for a stationary but non-uniform temperature
+%profile, the second  
