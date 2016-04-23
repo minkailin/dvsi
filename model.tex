@@ -132,7 +132,6 @@ criteria to assess axisymmtric \emph{stability}:
   \kappa^2 - \frac{1}{\rho}\nabla P \cdot \nabla s &> 0,\\
   -\frac{1}{\rho}\frac{\p P}{\p z} \left(\kappa^2 \frac{\p s}{\p z} -
   r\frac{\p\Omega^2}{\p z}\frac{\p s}{\p r}\right) &>0, 
-<<<<<<< HEAD
 \end{align}
 with $s = \ln{P/\rho^\gamma}$. These criteria are applicable to any adiabatic fluid. 
 For the present dusty problem, we may take 
@@ -207,20 +206,6 @@ is the characteristic aspect-ratio of the gas component.
 
 
 
-\begin{align} 
-  &1 + \frac{\tepsilon h_\mathrm{g}^2}{\left(1+
-    \tepsilon\right)^2}\frac{\p\ln{\rhog}}{\p\ln{r}}
-  \frac{\p\ln{\tepsilon}}{\p\ln{r}} +
-  \tepsilon\frac{z^2}{\widetilde{H}^2}>0,   \\ 
-&1 - \frac{\tepsilon
-  h_\mathrm{g}^2}{\left(1+\tepsilon\right)^2}
-  \frac{\p\ln{\tepsilon}}{\p\ln{r}}\left(-\frac{\p\ln{\rhog}}{\p\ln{r}}+\frac{\widetilde{H}^2}{H_\mathrm{g}^2}\frac{\p\ln{\tepsilon}}{\p\ln{r}}\right) > 0,
-\end{align}
-
-
-
-
-
 \subsubsection{Order-of-magnitude estimates}
 Let us assume the gas and dust distributions have a Gaussian
 distribution vertically,
@@ -260,21 +245,44 @@ and the gas sound-speed is
 \end{align}
 where $h_\mathrm{g}\ll1$ is the aspect-ratio of the gas component. 
 
-Inserting the above approximations into Eq. \ref{criterion2} and writing the result in terms of the
-dust-to-gas ratio $\tepsilon$,           
-we find 
-\begin{align}\label{ineq_est}
-  1 + \frac{\tepsilon h_\mathrm{g}^2}{\left(1 + \tepsilon\right)^2}
-  \left|\frac{\p\ln{\tepsilon}}{\p\ln{r}}\right| 
-  \left[
-    \left|\frac{\p\ln{\rhog}}{\p\ln{r}}\right| - \frac{\widetilde{H}^2}{H^2_\mathrm{g}}\left|\frac{\p\ln{\tepsilon}}{\p\ln{r}}\right|  
-    \right]>0
+
+
+
+
+
+
+
+%Inserting the above approximations into Eq. \ref{criterion2} and writing the result in terms of the
+%dust-to-gas ratio $\tepsilon$,           
+%we find 
+%\begin{align}\label{ineq_est}
+%  1 + \frac{\tepsilon h_\mathrm{g}^2}{\left(1 + \tepsilon\right)^2}
+%  \left|\frac{\p\ln{\tepsilon}}{\p\ln{r}}\right| 
+%  \left[
+%    \left|\frac{\p\ln{\rhog}}{\p\ln{r}}\right| - \frac{\widetilde{H}^2}{H^2_\mathrm{g}}\left|\frac{\p\ln{\tepsilon}}{\p\ln{r}}\right|  
+%    \right]>0
+%\end{align}
+%is required \emph{for stability.} 
+%This inequality is easily satisifed in typical disk models where 
+%the dust layer is much thinner than the gas scale-height, so
+%that $\widetilde{H}\sim H_\mathrm{d}\ll H_\mathrm{g}$, and where the radial profiles smoothly vary on a scale of $r$.
+%Then the magnitude the only destabilizing term (the third term) is negligible. According to Eq. \ref{ineq_est}, instability is on%ly possible if there is a rapid variation the radial profile of the dust-to-gas ratio.   
+
+
+
+\begin{align} 
+  &1 + \frac{\tepsilon}{\left(1+
+    \tepsilon\right)^2}\left(h_\mathrm{g}^2\frac{\p\ln{\rhog}}{\p\ln{r}}
+  \frac{\p\ln{\tepsilon}}{\p\ln{r}} + 
+  \frac{z^2}{\widetilde{H}^2}\right)>0,   \\ 
+&1 - \frac{\tepsilon
+  h_\mathrm{g}^2}{\left(1+\tepsilon\right)^2}
+  \frac{\p\ln{\tepsilon}}{\p\ln{r}}\left(-\frac{\p\ln{\rhog}}{\p\ln{r}}+\frac{\widetilde{H}^2}{H_\mathrm{g}^2}\frac{\p\ln{\tepsilon}}{\p\ln{r}}\right) > 0,
 \end{align}
-is required \emph{for stability.} 
-This inequality is easily satisifed in typical disk models where 
-the dust layer is much thinner than the gas scale-height, so
-that $\widetilde{H}\sim H_\mathrm{d}\ll H_\mathrm{g}$, and where the radial profiles smoothly vary on a scale of $r$.
-Then the magnitude the only destabilizing term (the third term) is negligible. According to Eq. \ref{ineq_est}, instability is only possible if there is a rapid variation the radial profile of the dust-to-gas ratio.   
+
+
+
+
 
 
 \subsection{Locally isothermal gas perfectly coupled to dust} 
