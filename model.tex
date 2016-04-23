@@ -113,7 +113,7 @@ where
 \begin{align}
    s \equiv \ln \frac{P}{\rho}
 \end{align}
-may be consider as a pseudo-entropy for the mixture. 
+is a pseudo-entropy for the mixture. 
 
 \section{Limiting behaviours}
 
@@ -207,13 +207,15 @@ is the characteristic aspect-ratio of the gas component.
 
 
 \subsubsection{Order-of-magnitude estimates}
-Let us assume the gas and dust distributions have a Gaussian
-distribution vertically,
+We evaluate the above stability criteria by assuming the gas and dust
+distributions have a Gaussian 
+distribution vertically, 
 \begin{align}
   \rho_\mathrm{g,d}(r,z) = \rho_\mathrm{g0,d0}(r) \exp
       {\left[-\frac{z^2}{2H^2_\mathrm{g,d}(r)}\right]}.
 \end{align}
-Then the dust-to-gas ratio is 
+We note that $H_\mathrm{g}=h_gr$ by definition. The dust-to-gas ratio
+is  
 \begin{align}
   \tepsilon = \tepsilon_0(r)
   \exp{\left[-\frac{z^2}{2\widetilde{H}^2(r)}\right]}, 
@@ -223,35 +225,10 @@ with $\tepsilon_0= \rho_\mathrm{d,0}/\rho_{g_0}$, and
   \frac{1}{\widetilde{H}^2} \equiv \frac{1}{H_\mathrm{d}^2} -
   \frac{1}{H_\mathrm{g}^2}. 
 \end{align}
-%We assume the dust layer is much thinner than the gas scale-height,
-%$H_\mathrm{d}\ll H_\mathrm{g}$, so that 
-%\begin{align}
-% \widetilde{H} \sim H_\mathrm{d}. 
-%\end{align} 
-
-We further assume
-%the gas and dust
-%distributions are smoothly varying in the radial direction so that  
-%\begin{align}
-%  \frac{\p}{\p r}\sim \frac{p}{r}, 
-%\end{align}
-the disk is roughly Keplerian so that
+We further assume the disk is approximately Keplerian so that
 \begin{align}
-  \kappa \sim \OmK, 
+  \kappa \simeq \Omega. 
 \end{align}
-and the gas sound-speed is 
-\begin{align}
-  c_s \sim h_\mathrm{g}r\OmK, 
-\end{align}
-where $h_\mathrm{g}\ll1$ is the aspect-ratio of the gas component. 
-
-
-
-
-
-
-
-
 %Inserting the above approximations into Eq. \ref{criterion2} and writing the result in terms of the
 %dust-to-gas ratio $\tepsilon$,           
 %we find 
@@ -267,21 +244,67 @@ where $h_\mathrm{g}\ll1$ is the aspect-ratio of the gas component.
 %the dust layer is much thinner than the gas scale-height, so
 %that $\widetilde{H}\sim H_\mathrm{d}\ll H_\mathrm{g}$, and where the radial profiles smoothly vary on a scale of $r$.
 %Then the magnitude the only destabilizing term (the third term) is negligible. According to Eq. \ref{ineq_est}, instability is on%ly possible if there is a rapid variation the radial profile of the dust-to-gas ratio.   
-
-
-
-\begin{align} 
+Then the above criteria becomes
+\begin{align}
   &1 + \frac{\tepsilon}{\left(1+
     \tepsilon\right)^2}\left(h_\mathrm{g}^2\frac{\p\ln{\rhog}}{\p\ln{r}}
   \frac{\p\ln{\tepsilon}}{\p\ln{r}} + 
-  \frac{z^2}{\widetilde{H}^2}\right)>0,   \\ 
+  \frac{z^2}{\widetilde{H}^2}\right)>0 \label{stability_est1},   \\ 
 &1 - \frac{\tepsilon
   h_\mathrm{g}^2}{\left(1+\tepsilon\right)^2}
-  \frac{\p\ln{\tepsilon}}{\p\ln{r}}\left(-\frac{\p\ln{\rhog}}{\p\ln{r}}+\frac{\widetilde{H}^2}{H_\mathrm{g}^2}\frac{\p\ln{\tepsilon}}{\p\ln{r}}\right) > 0,
+  \frac{\p\ln{\tepsilon}}{\p\ln{r}}\left(-\frac{\p\ln{\rhog}}{\p\ln{r}}+\frac{\widetilde{H}^2}{H_\mathrm{g}^2}\frac{\p\ln{\tepsilon}}{\p\ln{r}}\right)
+  > 0 \label{stability_est2},
+\end{align}
+\emph{for stability}. 
+
+Eq. \ref{stability_est1}---\ref{stability_est2} are easily satisfied
+in typical accretion disk models where radial gradients are $O(1/r)$ and
+$h_\mathrm{g},\tepsilon, \widetilde{H}/H_\mathrm{g}\ll 1$, since then the
+magnitude of the second term on the left-hand-side  of either
+inequality is much less than unity. Such disks are stable against
+axisymmetric perturbations.  
+
+\subsubsection{Possible instability at dust edges}
+Notice the left-hand-side of Eq. \ref{stability_est2} is a quadratic in
+$\p_r\tepsilon$. It is possible to
+violate this inequality for sufficiently large (in magnitude) radial
+gradients  in the dust-to-gas ratio, 
+\begin{align}
+  \frac{\p\ln{\tepsilon}}{\p\ln{r}} > S_+ \quad \mathrm{or} \quad 
+  \frac{\p\ln{\tepsilon}}{\p\ln{r}} < S_-,
+\end{align}
+\emph{for instability}, where
+\begin{align}\label{spm}
+S_\pm = \frac{1}{2}\frac{H_\mathrm{g}^2}{\widetilde{H}^2} 
+  \left[
+  \frac{\p\ln{\rhog}}{\p\ln{r}} \pm 
+  \sqrt{
+  \left(\frac{\p\ln{\rhog}}{\p\ln{r}}\right)^2 + 
+  4 \frac{\widetilde{H}^2}{H_\mathrm{g}^2}
+  \frac{\left(1+\tepsilon\right)^2}{\tepsilon h_\mathrm{g}^2}
+  }
+  \,\right]. 
 \end{align}
 
+Now, if $\p_r\rhog<0$, as typical in
+accretion models, then it is easier to achieve instability at a given
+radius for rapidly increasing dust-to-gas ratios ($\p_r\tepsilon >
+0$), and vice versa. 
+%This might occur, for example, when dust is
+%inserted in a finite radial range within a wider gaseous disk. 
+%Physically, one might expect
+%$\p_r\rhog\p_r\tepsilon > 0$ because 
 
-
+\emph{If} the $\p_r\rhog$ can be neglected in Eq. \ref{spm},
+then instability requires
+\begin{align}
+  \left|\frac{\p\ln{\tepsilon}}{\p r}\right| \gtrsim
+  \frac{1}{\widetilde{H}}\frac{\left(1+\tepsilon\right)}{\sqrt{\tepsilon}}. 
+\end{align}
+That is, if the dust-to-gas ratio varies on a lengthscale less than
+$O(\widetilde{H}\sqrt{\tepsilon})$ for $\tepsilon\ll 1$, or less than
+$O(\widetilde{H}/\sqrt{\tepsilon})$ for $\tepsilon\gg 1$, then the system is
+potentially unstable.   
 
 
 
