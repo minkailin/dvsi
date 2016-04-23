@@ -132,9 +132,14 @@ criteria to assess axisymmtric \emph{stability}:
   \kappa^2 - \frac{1}{\rho}\nabla P \cdot \nabla s &> 0,\\
   -\frac{1}{\rho}\frac{\p P}{\p z} \left(\kappa^2 \frac{\p s}{\p z} -
   r\frac{\p\Omega^2}{\p z}\frac{\p s}{\p r}\right) &>0, 
+<<<<<<< HEAD
 \end{align}
 with $s = \ln{P/\rho^\gamma}$. These criteria are applicable to any adiabatic fluid. 
 For the present dusty problem, we may take 
+where $\kappa^2 \equiv r^{-3}\p_r\left(r^4\Omega^2\right)$ is the
+square of the epicylic frequency. We assume $\kappa^2>0$. 
+These criteria are applicable to any adiabatic fluid when $s$
+is the usual definition of entropy. For the dusty problem, we may take 
 $s=\ln{(1-\epsilon)}+\mathrm{const.}$ from the definition of $s$ and  
 the equation of state (Eq. \ref{eos}) with uniform sound-speed. 
 
@@ -147,42 +152,73 @@ the equation of state (Eq. \ref{eos}) with uniform sound-speed.
 %Eq. \ref{eos}, with a constant sound-speed. 
 
 The stability conditions are thus
-\begin{align}
+\begin{align}\label{dusty_solberg}
   \kappa^2 + c_s^2 \nabla\ln{\rhog}\cdot\nabla\epsilon &> 0,  \\
   -c_s^2\frac{\p\ln{\rhog}}{\p z}\left(-\kappa^2\frac{\p\epsilon}{\p
     z} + r\frac{\p\Omega^2}{\p z}\frac{\p \epsilon}{\p r} \right) & > 0. 
 \end{align}
-In accretion disks, $\rhog$, $\rhod$ and $\epsilon$ are expected to
-decrease outwards and away from the midplane, 
-\begin{align*}  
-  \frac{\p\rhog}{\p |z|} < 0, \quad \frac{\p \rhog}{\p r} < 0,   
-\end{align*}
-and similarly for $\rhod$ and $\epsilon$. Thus 
-$\nabla\rhog\cdot\nabla\epsilon>0$, so the first criterion is
-typically satisifed. 
 
-To evaulate the second criterion, we can consider $z>0$ without loss
-of generality. Then, inserting the vertical shear profile, 
-Eq. \ref{vshear}, we find the second criterion becomes   
+In accretion disks, $\rhog$, $\rhod$ and $\epsilon$ are expected to
+decrease away from the mid-plane
+\begin{align*}  
+  \frac{\p\rhog}{\p |z|} < 0,
+%, \quad \frac{\p \rhog}{\p r} < 0,   
+\end{align*}
+and similarly for $\rhod$, $\epsilon$, and the dust-to-gas ratio $\tepsilon$. 
+We may thus evaluate the stability criteria at $z>0$ without loss of
+generality. We insert the vertical shear profile,
+Eq. \ref{vshear}, into Eq. \ref{dusty_solberg} and write the result 
+in terms of $\tepsilon$, to find 
 
 \begin{align} 
-  \kappa^2\left|\frac{\p\epsilon}{\p z}\right| + c_s^2\left|\frac{\p
-    \epsilon}{\p r}\frac{\p\epsilon}{\p z}\frac{\p\ln{\rho}}{\p
-    r}\right| - c_s^2 \left(\frac{\p\epsilon}{\p
-    r}\right)^2\left|\frac{\p\ln{\rho}}{\p z}\right| > 0.  \label{criterion2}
+  &1 + \frac{\tepsilon h_\mathrm{g}^2}{\left(1+
+    \tepsilon\right)^2}\frac{\Omega^2}{\kappa^2}\left(\frac{\p\ln{\rhog}}{\p\ln{r}}
+  \frac{\p\ln{\tepsilon}}{\p\ln{r}} + r^2\frac{\p\ln{\rhog}}{\p z}
+  \frac{\p\ln{\tepsilon}}{\p z} \right)>0,   \\
+&-\frac{\p\ln{\tepsilon}}{\p z} \notag\\
+  &- \frac{\tepsilon
+  h_\mathrm{g}^2}{\left(1+\tepsilon\right)^2}\frac{\Omega^2}{\kappa^2}
+\frac{\p\ln{\tepsilon}}{\p\ln{r}}\left( \frac{\p\ln{\rhog}}{\p\ln{r}}\frac{\p\ln{\tepsilon}}{\p
+    z} -\frac{\p\ln{\rhog}}{\p z}\frac{\p\ln{\tepsilon}}{\p\ln{
+    r}}\right) > 0,
+%  \kappa^2\left|\frac{\p\epsilon}{\p z}\right| + c_s^2\left|\frac{\p
+%    \epsilon}{\p r}\frac{\p\epsilon}{\p z}\frac{\p\ln{\rho}}{\p
+%    r}\right| - c_s^2 \left(\frac{\p\epsilon}{\p
+%    r}\right)^2\left|\frac{\p\ln{\rho}}{\p z}\right| > 0.  \label{criterion2}
+\end{align}
+as the stability criteria, where 
+\begin{align}
+  h_\mathrm{g}\equiv c_s/\left(r\Omega\right)
+\end{align}
+is the characteristic aspect-ratio of the gas component. 
+
+
+%This equation shows that the vertical gradient in dust-fraction (and
+%thus the dust-to-gas ratio $\rhod/\rhog$) has a stabilizing effect for
+%axisymmetric perturbations. Instead, the only way to destabilize the
+%system is a sufficiently large radial gradient in the dust-fraction
+%and/or vertical (total) density gradient (the last term).  
+
+%Note that Eq. \ref{criterion2} is only applicable for the assume disk
+%structure described above: decreasing dust and gas densities, as well
+%as the dust-fraction, away from the star and away from the
+%midplane. For less typical disk structures, one must evalulate above the
+%critera seperately. 
+
+
+
+\begin{align} 
+  &1 + \frac{\tepsilon h_\mathrm{g}^2}{\left(1+
+    \tepsilon\right)^2}\frac{\p\ln{\rhog}}{\p\ln{r}}
+  \frac{\p\ln{\tepsilon}}{\p\ln{r}} +
+  \tepsilon\frac{z^2}{\widetilde{H}^2}>0,   \\ 
+&1 - \frac{\tepsilon
+  h_\mathrm{g}^2}{\left(1+\tepsilon\right)^2}
+  \frac{\p\ln{\tepsilon}}{\p\ln{r}}\left(-\frac{\p\ln{\rhog}}{\p\ln{r}}+\frac{\widetilde{H}^2}{H_\mathrm{g}^2}\frac{\p\ln{\tepsilon}}{\p\ln{r}}\right) > 0,
 \end{align}
 
-This equation shows that the vertical gradient in dust-fraction (and
-thus the dust-to-gas ratio $\rhod/\rhog$) has a stabilizing effect for
-axisymmetric perturbations. Instead, the only way to destabilize the
-system is a sufficiently large radial gradient in the dust-fraction
-and/or vertical (total) density gradient (the last term).  
 
-Note that Eq. \ref{criterion2} is only applicable for the assume disk
-structure described above: decreasing dust and gas densities, as well
-as the dust-fraction, away from the star and away from the
-midplane. For less typical disk structures, one must evalulate above the
-critera seperately. 
+
 
 
 \subsubsection{Order-of-magnitude estimates}
