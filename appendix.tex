@@ -31,7 +31,7 @@ From the linearized meridional momentum equations, we find
 \begin{align}
   \sigma^2\int\rho\left(|\dd v_r|^2 + |\dd v_z|^2\right)dV = \int\left( \rho
   \kappa^2 |\dd v_r|^2 + \rho r\frac{\p \Omega^2}{\p z} \dd v_z \dd
-  v_r^*  + \ii \rho \dd \bm{F}\cdot\dd\bm{v}^*
+  v_r^*  + \ii\sigma \rho \dd \bm{F}\cdot\dd\bm{v}^*
   \right)dV,
 \end{align}
 where the integral is taken over the volume of the fluid. Integrating
@@ -92,3 +92,88 @@ equilibrium state.
 %is real, and the first integral leads to the usual Solberg-Hoiland
 %criteria. However, for a stationary but non-uniform temperature
 %profile, the second  
+
+\section{Explicit expressions for pressure forces and its divergence}
+Define
+\begin{align}
+  \bm{F} \equiv - \frac{\nabla P}{\rho}. 
+\end{align}
+For a locally isothermal equation of state, Eq. \ref{eos}, this
+becomes
+\begin{align}
+  \bm{F} = c_s^2\nabla \epsilon - c_s^2(1-\epsilon)\nabla\ln{\rho} -
+  (1-\epsilon)\nabla c_s^2,
+\end{align} 
+and its linearized form is
+\begin{align}
+  \dd\bm{F} = c_s^2\nabla\dd\epsilon + c_s^2\dd\epsilon\nabla\ln{\rho}
+  - c_s^2(1-\epsilon)\nabla\left(\frac{\dd\rho}{\rho}\right) +
+  \dd\epsilon\nabla c_s^2. 
+\end{align}
+The divergence of the above expressions are
+\begin{align}
+  \nabla\cdot\bm{F} &= 2 \nabla c_s^2\cdot\nabla\epsilon +
+  c_s^2\nabla^2\epsilon  - \left[(1-\epsilon)\nabla c_s^2 -
+    c_s^2\nabla\epsilon\right]\cdot\nabla\ln{\rho}
+ - c_s^2(1-\epsilon)\nabla^2\ln{\rho} - (1-\epsilon)\nabla^2 c_s^2,\\
+ \nabla\cdot\dd\bm{F} &= 2\nabla c_s^2\cdot\nabla\dd\epsilon +
+ c_s^2\nabla^2\dd\epsilon + \left(\dd\epsilon \nabla c_s^2 +
+ c_s^2\nabla\dd\epsilon\right)\cdot\nabla\ln{\rho} + c_s^2 \dd\epsilon
+ \nabla^2\ln{\rho}   + \dd\epsilon\nabla^2 c_s^2 \notag\\
+&\phantom{=}-c_s^2(1-\epsilon)\nabla^2\left(\frac{\dd\rho}{\rho}\right) - \left[(1-\epsilon)\nabla c_s^2 -
+    c_s^2\nabla\epsilon\right]\cdot\nabla \left(\frac{\dd\rho}{\rho}\right).
+\end{align}
+For a power-law prescription for the radial temperature
+profile $c_s^2\propto r^q$, we have
+\begin{align}
+  \nabla c_s^2 &= \frac{qc_s^2}{r}\hat{\bm{r}},\\
+  \nabla^2 c_s^2 & = \left(\frac{q}{r}\right)^2 c_s^2. 
+\end{align}
+
+
+
+\section{Linearized dust evolution equation}
+We consider small grains in the Epstein regime, with fixed internal
+density and size, so that
+\begin{align}
+  \tstop \propto \frac{1}{\rho c_s}
+\end{align}
+\citep{price15}. 
+Then the evolutionary equation for the dust-fraction $\epsilon$ is 
+\begin{align}\label{dust_epstein}
+  \frac{D\epsilon}{Dt} = \tstop c_s \nabla \cdot
+  \left(\frac{\epsilon}{c_s}\bm{F}\right). 
+\end{align} 
+Linearizing Eq. \ref{dust_epstein},
+\begin{align}
+  s \dd\epsilon + \dd\bm{v}\cdot\nabla\epsilon &= \tstop
+  \left(\dd\epsilon\nabla\cdot\bm{F} + \epsilon\nabla\cdot\dd\bm{F} +  
+  \nabla\dd\epsilon\cdot\bm{F} + \nabla \epsilon\cdot\dd\bm{F} -
+  \frac{1}{2}\dd\epsilon\bm{F}\cdot\nabla\ln{c_s^2} -
+  \frac{1}{2}\epsilon\dd\bm{F}\cdot\nabla\ln{c_s^2} \right)
+  \notag\\
+  &\phantom{=} - \tstop \left(\epsilon\nabla\cdot\bm{F} +
+  \nabla\epsilon\cdot\bm{F}-\frac{1}{2}\epsilon\bm{F}\cdot\nabla\ln{c_s^2}\right)\frac{\dd\rho}{\rho}.
+\end{align}
+
+
+\section{Conversion formulae}
+The gas density $\rhog$ and dust-to-gas ratio $\tepsilon$ is related
+to the total density $\rho$ and dust-fraction $\epsilon$ by
+\begin{align}
+  \ln{\rho} &= \ln{\rhog} + \ln{\left(1 + \tepsilon\right)},\\
+  \nabla\ln{\rho} &= \nabla\ln{\rhog} + \frac{\nabla\tepsilon}{1+
+    \tepsilon},\\
+  \nabla^2\ln{\rho} &= \nabla^2\ln{\rhog} +
+  \frac{\nabla^2\tepsilon}{1+\tepsilon} -
+  \frac{\left|\nabla\tepsilon\right|^2}{\left(1+\tepsilon\right)^2}, 
+\end{align}
+and
+\begin{align}
+  \epsilon &= \frac{\tepsilon}{1+ \tepsilon},\\
+ \nabla\epsilon & =
+ \frac{\nabla\tepsilon}{\left(1+\tepsilon\right)^2},\\
+ \nabla^2\epsilon &=
+ \frac{\nabla^2\tepsilon}{\left(1+\tepsilon\right)^2} -
+ \frac{2\left|\nabla\tepsilon\right|^2}{\left(1+\tepsilon\right)^3}. 
+\end{align}
