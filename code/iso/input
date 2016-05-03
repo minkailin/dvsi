@@ -1,0 +1,9 @@
+&params smallh_g    = 0.05	! aspect-ratio of gas layer 
+        rhog0_power  =-1.5  	! power law for mid-plane gas density
+	smallq      = 0.0  	! power law for imposed radial temperature profile 
+	delta       = 0.1  	! dust layer / gas scale-height	      
+	dgratio     = 0.01 	! dust to gas ratio at z=0 
+	smalld      = 1d0 	! negative of the radial power law for imposed dust-to-gas ratio profile	
+        tstop       = 0.02/     ! stopping time at the midplane 
+&grid   zmax        = 1.0       ! vertical domain size in Hg
+	nz          = 129  /    ! grid numbers = chebyshev resolution    
