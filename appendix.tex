@@ -1,33 +1,21 @@
 \section{Variational principle for locally isothermal gas
   well-coupled to dust}\label{var_prin}
 
-Consider axisymmetric disturbances of the form
-\begin{align}
-  \delta\rho(r,z)\exp{\left(-\ii\sigma\right)}. 
-\end{align}
-Linearized equations for dusty gas with $\tstop=0$, and using the
-pressure equation in place of the dust-fraction
-(Eq. \ref{masseq}---\ref{momeq}, Eq. \ref{eff_energy}): 
+The linearized equations for axisymmetric disturbances are 
 
 \begin{align}
   \ii\sigma\frac{\delta\rho}{\rho} &= \nabla\cdot\dd\bm{v} +
-  \dd\bm{v}\cdot\nabla\ln{\rho},\\
-  \ii\sigma\frac{\delta P}{P} &= \nabla\cdot\dd\bm{v} +
-  \dd\bm{v}\cdot\nabla\ln{P} - \dd\bm{v}\cdot\nabla\ln{c_s^2} - \frac{\dd\mathcal{C}}{P},\\
+  \dd\bm{v}\cdot\nabla\ln{\rho},\label{lin_mass_full}\\
+ \ii\sigma\frac{\delta P}{P} &= \nabla\cdot\dd\bm{v} +
+  \dd\bm{v}\cdot\nabla\ln{P} - \dd\bm{v}\cdot\nabla\ln{c_s^2} - \frac{\dd\mathcal{C}}{P}.\label{lin_energy_full}\\
   -\ii\sigma\dd v_r  &= 2\Omega\dd v_\phi + 
   \delta\bm{F}\cdot\hat{\bm{r}},\\
   \ii\sigma\dd v_\phi &= \frac{\kappa^2}{2\Omega}\dd v_r + \frac{\p
     v_\phi}{\p z}\dd v_z,\\
-  -\ii\sigma\dd v_z &=  \delta\bm{F}\cdot\hat{\bm{z}},
-\end{align} 
-with
-\begin{align}
-  \delta \bm{F} \equiv \frac{\dd\rho}{\rho^2}\nabla P -
-  \frac{1}{\rho}\nabla\dd P, 
-\end{align}
-and $\dd\mathcal{C}$ is the linearized dust-duffusion function (see Eq. \ref{dusty_cooling}).  
-Note that for the axisymmetric problem, $\dd\bm{F}$ is purely
-meridional. 
+  -\ii\sigma\dd v_z &=  \delta\bm{F}\cdot\hat{\bm{z}}.
+\end{align}  
+These equations do not assume the radially-local approximation used in
+the main text. 
 
 From the linearized meridional momentum equations, we find 
 \begin{align}
@@ -97,7 +85,7 @@ equilibrium state.
 %criteria. However, for a stationary but non-uniform temperature
 %profile, the second  
 
-\section{Linearized pressure forces and its divergence}
+\section{Linearized pressure forces and its divergence}\label{lin_press}
 Define
 \begin{align}
   \bm{F} \equiv - \frac{\nabla P}{\rho}. 
@@ -116,28 +104,16 @@ with divergence
   \frac{1}{\rho}\nabla^2\dd P. 
 \end{align}
 
-\subsection{Radially local approximation}
-We assume perturbations have small radial wavelengths compared to the
-local disk radius. We take a wave-like dependence $\sim \exp{\ii
-  k r}$ for the pertubations with $|kr|\gg 1$ so that curvature terms 
-may be neglected. We thus set $\p_r\to \ii k$ when, \emph{and only
-  when}, operating on the \emph{primitive} perturbations $\dd P,
-\dd\rho$ and $\dd\bm{v}$. %In the following expressions, we only
-%apply the radially local approximation at the last step. 
+%\subsection{Explicit expressions}
 
-\subsection{Explicit expressions}
-Introducing
-\begin{align}
-  W \equiv \frac{\dd\rho}{\rho}, \quad Q \equiv \frac{\dd P}{\rho},
-\end{align}
-the explicit forms for $\dd\bm{F}$ and $\nabla\cdot\dd\bm{F}$, in the
+The explicit forms for $\dd\bm{F}$ and $\nabla\cdot\dd\bm{F}$, in the
 radially-local approximation, are
 \begin{align}
   &\dd F_r = - W F_r - \ii k Q,\\
   &\dd F_z = - W F_z - \left[Q^\prime + Q
     \left(\ln{\rho}\right)^\prime\right]  = s\dd v_z, 
 \end{align} 
-where $^\prime = \p_z$ and the last equality is the linearized
+where the last equality is the linearized
 vertical momentum equation; and 
 \begin{align}
   \nabla\cdot\dd\bm{F} &= F_r\left(\p_r\ln{\rho} - \ii k \right)W - F_z
@@ -156,7 +132,7 @@ vertical momentum equation; and
 
 
 
-\section{Linearized dust diffusion}
+\section{Linearized dust diffusion}\label{lin_dust}
 We consider small grains in the Epstein regime, with fixed internal
 density and size, so that
 \begin{align}

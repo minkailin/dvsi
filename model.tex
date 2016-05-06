@@ -56,12 +56,13 @@ We eliminate $\epsilon$ in favor of $P$,
 then Eq. \ref{dusteq} becomes
 
 \begin{align}
-\frac{DP}{Dt} = - P \nabla\cdot\bm{v} + P\bm{v}\cdot\nabla\ln{c_s^2} +
-c_s^2 \nabla\cdot\left[\tstop\left(1 - \frac{P}{c_s^2\rho}\right)\nabla
-  P\right]. \label{eff_energy}
+\frac{DP}{Dt} &= - P \nabla\cdot\bm{v} + P\bm{v}\cdot\nabla\ln{c_s^2}
+                + \mathcal{C},  \label{eff_energy} \\
+\mathcal{C}&\equiv c_s^2 \nabla\cdot\left[\tstop\left(1 - \frac{P}{c_s^2\rho}\right)\nabla
+  P\right]
 \end{align}
 
-This is the energy equation for an ideal gas of adiabatic index
+Eq. \ref{eff_energy} is the energy equation for an ideal gas of adiabatic index
 $\gamma=1$, i.e. isothermal evolution, but now with additional source 
 terms due to the imposed temperature profile, as well as dust-gas
 friction.   
@@ -311,7 +312,8 @@ potentially unstable.
 When $c_s(r,z)$ is non-uniform but $\tstop=0$, simple stability
 criteria are not available. However, we may obtain an integral
 relation for linear, axisymmetric waves with frequency $\sigma$ (see
-Appendix \ref{var_prin}) in the form:  
+Appendix \ref{var_prin}, where we also account for finite $\tstop$) in
+the form:   
 \begin{align}
 &  \sigma^2\int\rho\left(|\dd v_r|^2 + |\dd v_z|^2\right)dV \notag\\
 &= \int\left[ \rho
@@ -335,16 +337,13 @@ the usual vertical shear instability in locally isothermal disks.
 Now consider $c_s^2=\mathrm{const.}$ but $\tstop\neq0$. In this case
 the effective energy equation is 
 \begin{align}\label{dusty_cooling}
-  \frac{DP}{Dt} &= - P \nabla \cdot \bm{v} + \mathcal{C},\\
-  \mathcal{C} & = \nabla\cdot\left[\tstop\left(c_s^2 -
-    \frac{P}{\rho}\right)\nabla P\right].           
+  \frac{DP}{Dt} &= - P \nabla \cdot \bm{v} + \mathcal{C}
 \end{align} 
 The function $\mathcal{C}$ can be considered as a cooling term. By
 analogy with enabling VSI in an adiabatic gas through cooling
 \citep{nelson13,lin15}, we may expect a `dusty VSI' to develop 
 if this term is large enough (physically meaning diffusion of the
 dust-fraction is strong). 
-
 
 Note that $\mathcal{C}$ is also responsible for the streaming
 instability  in the strong-drag limit \citep{laibe14}, though this
