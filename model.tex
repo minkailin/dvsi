@@ -31,10 +31,14 @@ is the dust-fraction and $\tepsilon=\rhod/\rhog$ is the usual
 dust-to-gas ratio. The gas pressure $P$ is given by the chosen 
 equation of state described below. The external potential $\Phi$ is
 that for a star of mass $M_*$ at the origin 
-\begin{align}
-  \Phi(r,z) =-\frac{GM_*}{\sqrt{r^2 + z^2}},
+\begin{align}\label{thin_disk_potential}
+  \Phi(r,z) =-\frac{GM_*}{\sqrt{r^2 + z^2}}\simeq
+  -\frac{GM_*}{r}\left(1 - \frac{z^2}{2r^2}\right), 
 \end{align}
-where $G$ is the gravitational constant. 
+where $G$ is the gravitational constant. The second equality is the 
+thin-disk approximation for the disk potential, appropriate for
+$|z|\ll r$. We shall adopt this approximate potential in order to
+obtain analytic expressions for the disk equilibria.  
 
 
 \subsection{Locally isothermal equation of state for the gas} 
@@ -59,9 +63,8 @@ then Eq. \ref{dusteq} becomes
 \frac{DP}{Dt} &= - P \nabla\cdot\bm{v} + P\bm{v}\cdot\nabla\ln{c_s^2}
                 + \mathcal{C},  \label{eff_energy} \\
 \mathcal{C}&\equiv c_s^2 \nabla\cdot\left[\tstop\left(1 - \frac{P}{c_s^2\rho}\right)\nabla
-  P\right]
+  P\right].
 \end{align}
-
 Eq. \ref{eff_energy} is the energy equation for an ideal gas of adiabatic index
 $\gamma=1$, i.e. isothermal evolution, but now with additional source 
 terms due to the imposed temperature profile, as well as dust-gas
@@ -80,7 +83,7 @@ energy flux has an additional contribution from the pressure
 gradient. The term on the right-hand-side, owing to the imposed
 temperature profile, can be interpreted as an external heat source. 
 
-\section{Equilibrium}
+\section{Equilibrium}\label{eqm}
 To obtain an axisymmetric steady state with $\rho(r,z)$ and 
 $\bm{v}=r\Omega(r,z)\hat{\bm{\phi}}$ where $\Omega = v_\phi/r$, 
 we need to solve 
@@ -99,20 +102,83 @@ can be neglected, then one may just solve
 Eq. \ref{steady_momr}---\ref{steady_momz} with a prescribed (initial)
 distribution of the dust fraction $\epsilon(r,z)$. 
 
+\subsection{Disk structure with a prescribed dust distribution} 
+We assume a Gaussian profile in the dust-to-gas ratio, 
+\begin{align}\label{dust_gauss}
+  \tepsilon(r,z) = \tepsilon_0
+  \exp{\left(-\frac{z^2}{2\widetilde{H}^2}\right)}. 
+\end{align}
+For simplicity we assume the dust-to-gas ratio at the mid-plane
+$\tepsilon_0$, as well as its characteristic scale-height
+$\widetilde{H}$, are both constant.
+
+% We take the mid-plane dust-to-gas ratio
+%to be a power-law in radius,  
+%\begin{align}
+%  \tepsilon_0(r) = \tepsilon_{00}\left(\frac{r}{r_0}\right)^{-d},  
+%\end{align}
+%where $\tepsilon_{00}$ is the dust-to-gas ratio at the fiducial radius
+%$r_0$.  
+
+Inserting Eq. \ref{dust_gauss} into vertical hydrostatic equilibrium,
+Eq. \ref{steady_momz} and integrating with the approximate
+gravitational potential (Eq. \ref{thin_disk_potential}) we obtain the
+gas density as
+\begin{align}
+  \rhog(r,z) = \rho_\mathrm{g0}(r)\exp{\left\{ - \frac{z^2}{2\Hgas^2}
+    -\tepsilon_0\frac{\Htilde^2}{\Hgas^2}\left[1 -
+      \exp{\left(-\frac{z^2}{2\Htilde^2}\right)}\right] \right\}}, 
+\end{align}
+where
+\begin{align}
+  \Hgas = \frac{c_s}{\OmK}, \quad \OmK \equiv \sqrt{\frac{GM_*}{r^3}},   
+\end{align}
+is the gas scale-height in the dust-free limit and $\OmK$ is the
+Keplerian frequency, respectively. 
+
+In practice, we consider $\tepsilon_0 \ll 1$ and settled dust such that
+$\Htilde<\Hgas$. Then $\rhog(r,z)$ is effectively Gaussian, as in the
+dust-free case. The dust density is approximately 
+\begin{align}
+  \rhod \simeq \tepsilon_0\rho_\mathrm{g0}(r) \exp
+        {\left(-\frac{z}{2H_\mathrm{d}^2}\right)}, 
+\end{align}
+with 
+\begin{align}
+  \frac{1}{H_\mathrm{d}^2} = \frac{1}{\Htilde^2} + \frac{1}{\Hgas^2}, 
+\end{align}
+and $H_\mathrm{d}$ is the dust-scale height. In numerical
+calculations, we  we specify $H_\mathrm{d}< \Hgas$ to obtain 
+$\Htilde$ for input. 
+
+\subsection{Orbital frequency} 
+In the thin-disk approximation, the disk orbital frequency is 
+\begin{align}
+  \Omega(r,z) = \OmK(r)\left[1 - \frac{3}{2}\frac{z^2}{r^2} +
+    \frac{h_\mathrm{g}^2}{\left(1+\tepsilon\right)}\frac{\p}{\p\ln{r}}\ln{\left(c_s^2\rhog\right)}
+    \right]^{1/2}, 
+\end{align}
+where 
+\begin{align}
+  h_\mathrm{g} \equiv \frac{\Hgas}{r}
+\end{align}
+is the characteristic disk aspect-ratio. 
+
 \subsection{Vertical shear}
 The mixture possess vertical shear. To see this, we eliminate $\Phi$
 between Eq. \ref{steady_momr}---\ref{steady_momz} to 
 obtain 
 \begin{align}\label{vshear}
-  r\frac{\p \Omega^2}{\p z} &= \frac{\p\ln{\rho}}{\p r}\frac{\p}{\p
-    z}\left[c_s^2(1-\epsilon)\right] - \frac{\p\ln{\rho}}{\p z}
-  \frac{\p}{\p r} \left[c_s^2(1-\epsilon)\right]\\  
-  & = \frac{1}{\rho}\left(\frac{\p P}{\p r}\frac{\p s}{\p z} -\frac{\p
-    P}{\p z}\frac{\p s}{\p r} \right),\notag
+  r\frac{\p \Omega^2}{\p z} 
+%&= \frac{\p\ln{\rho}}{\p r}\frac{\p}{\p
+%    z}\left[c_s^2(1-\epsilon)\right] - \frac{\p\ln{\rho}}{\p z}
+%  \frac{\p}{\p r} \left[c_s^2(1-\epsilon)\right]\\  
+   = \frac{1}{\rho}\left(\frac{\p P}{\p r}\frac{\p s}{\p z} -\frac{\p
+    P}{\p z}\frac{\p s}{\p r} \right),
 \end{align}
 where
 \begin{align}
-   s \equiv \ln \frac{P}{\rho}
+   s \equiv \ln \frac{P}{\rho} = \ln{\left[c_s^2(1-\epsilon)\right]} 
 \end{align}
 is a pseudo-entropy for the mixture. 
 
@@ -137,11 +203,11 @@ criteria to assess axisymmtric \emph{stability}:
 with $s = \ln{P/\rho^\gamma}$ and 
 $\kappa^2 \equiv r^{-3}\p_r\left(r^4\Omega^2\right)$ is the
 square of the epicylic frequency. We assume $\kappa^2>0$. 
-These criteria are applicable to any adiabatic fluid when $s$
-is the usual definition of entropy. For the dusty problem, we may take 
-$s=\ln{(1-\epsilon)}+\mathrm{const.}$ from the definition of $s$ and  
-the equation of state (Eq. \ref{eos}) with uniform sound-speed. 
-
+These criteria are applicable to any adiabatic fluid. For 
+isothermal gas perfectly coupled to dust, we may take 
+$s=\ln{(1-\epsilon)}$. 
+%from the definition of $s$ and  
+%the equation of state (Eq. \ref{eos}) with uniform sound-speed. 
 %\begin{align}
 %  s \equiv \ln \frac{P}{\rho} = \ln{(1-\epsilon)} 
 %\end{align}
@@ -149,102 +215,36 @@ the equation of state (Eq. \ref{eos}) with uniform sound-speed.
 %similar to the usual defintion for gas entropy (with unit adiabatic
 %index). The second follows from the imposed equation of state,
 %Eq. \ref{eos}, with a constant sound-speed. 
-
 The stability conditions are thus
-\begin{align}\label{dusty_solberg}
-  \kappa^2 + c_s^2 \nabla\ln{\rhog}\cdot\nabla\epsilon &> 0,  \\
+\begin{align}
+  \kappa^2 + c_s^2 \nabla\ln{\rhog}\cdot\nabla\epsilon &> 0,\label{dusty_solberg1}  \\
   -c_s^2\frac{\p\ln{\rhog}}{\p z}\left(-\kappa^2\frac{\p\epsilon}{\p
-    z} + r\frac{\p\Omega^2}{\p z}\frac{\p \epsilon}{\p r} \right) & > 0. 
+    z} + r\frac{\p\Omega^2}{\p z}\frac{\p \epsilon}{\p r} \right) & > 0. \label{dusty_solberg2}
 \end{align}
 
-In accretion disks, $\rhog$, $\rhod$ and $\epsilon$ are expected to
-decrease away from the mid-plane
-\begin{align*}  
-  \frac{\p\rhog}{\p |z|} < 0,
+%In accretion disks, $\rhog$, $\rhod$ and $\epsilon$ are expected to
+%decrease away from the mid-plane
+%\begin{align*}  
+%  \frac{\p\rhog}{\p |z|} < 0,
 %, \quad \frac{\p \rhog}{\p r} < 0,   
-\end{align*}
-and similarly for $\rhod$, $\epsilon$, and the dust-to-gas ratio $\tepsilon$. 
-We may thus evaluate the stability criteria at $z>0$ without loss of
-generality. We insert the vertical shear profile,
-Eq. \ref{vshear}, into Eq. \ref{dusty_solberg} and write the result 
-in terms of $\tepsilon$, to find 
+%\end{align*}
+%and similarly for $\rhod$, $\epsilon$, and the dust-to-gas ratio $\tepsilon$. 
+%We may thus evaluate the stability criteria at $z>0$ without loss of
+%generality. 
 
-\begin{align} 
-  &1 + \frac{\tepsilon h_\mathrm{g}^2}{\left(1+
-    \tepsilon\right)^2}\frac{\Omega^2}{\kappa^2}\left(\frac{\p\ln{\rhog}}{\p\ln{r}}
-  \frac{\p\ln{\tepsilon}}{\p\ln{r}} + r^2\frac{\p\ln{\rhog}}{\p z}
-  \frac{\p\ln{\tepsilon}}{\p z} \right)>0,   \\
-&-\frac{\p\ln{\tepsilon}}{\p z} \notag\\
-  &- \frac{\tepsilon
-  h_\mathrm{g}^2}{\left(1+\tepsilon\right)^2}\frac{\Omega^2}{\kappa^2}
-\frac{\p\ln{\tepsilon}}{\p\ln{r}}\left( \frac{\p\ln{\rhog}}{\p\ln{r}}\frac{\p\ln{\tepsilon}}{\p
-    z} -\frac{\p\ln{\rhog}}{\p z}\frac{\p\ln{\tepsilon}}{\p\ln{
-    r}}\right) > 0,
-%  \kappa^2\left|\frac{\p\epsilon}{\p z}\right| + c_s^2\left|\frac{\p
-%    \epsilon}{\p r}\frac{\p\epsilon}{\p z}\frac{\p\ln{\rho}}{\p
-%    r}\right| - c_s^2 \left(\frac{\p\epsilon}{\p
-%    r}\right)^2\left|\frac{\p\ln{\rho}}{\p z}\right| > 0.  \label{criterion2}
-\end{align}
-as the stability criteria, where 
-\begin{align}
-  h_\mathrm{g}\equiv c_s/\left(r\Omega\right)
-\end{align}
-is the characteristic aspect-ratio of the gas component. 
+%We insert the vertical shear profile,
+%Eq. \ref{vshear}, into Eq. \ref{dusty_solberg} and write the result 
+%in terms of $\tepsilon$, to find 
 
-
-%This equation shows that the vertical gradient in dust-fraction (and
-%thus the dust-to-gas ratio $\rhod/\rhog$) has a stabilizing effect for
-%axisymmetric perturbations. Instead, the only way to destabilize the
-%system is a sufficiently large radial gradient in the dust-fraction
-%and/or vertical (total) density gradient (the last term).  
-
-%Note that Eq. \ref{criterion2} is only applicable for the assume disk
-%structure described above: decreasing dust and gas densities, as well
-%as the dust-fraction, away from the star and away from the
-%midplane. For less typical disk structures, one must evalulate above the
-%critera seperately. 
-
-
-
-\subsubsection{Order-of-magnitude estimates}
-We evaluate the above stability criteria by assuming the gas and dust
-distributions have a Gaussian 
-distribution vertically, 
-\begin{align}
-  \rho_\mathrm{g,d}(r,z) = \rho_\mathrm{g0,d0}(r) \exp
-      {\left[-\frac{z^2}{2H^2_\mathrm{g,d}(r)}\right]}.
-\end{align}
-We note that $H_\mathrm{g}=h_gr$ by definition. The dust-to-gas ratio
-is  
-\begin{align}
-  \tepsilon = \tepsilon_0(r)
-  \exp{\left[-\frac{z^2}{2\widetilde{H}^2(r)}\right]}, 
-\end{align}
-with $\tepsilon_0= \rho_\mathrm{d,0}/\rho_{g_0}$, and  
-\begin{align}
-  \frac{1}{\widetilde{H}^2} \equiv \frac{1}{H_\mathrm{d}^2} -
-  \frac{1}{H_\mathrm{g}^2}. 
-\end{align}
-We further assume the disk is approximately Keplerian so that
-\begin{align}
-  \kappa \simeq \Omega. 
-\end{align}
-%Inserting the above approximations into Eq. \ref{criterion2} and writing the result in terms of the
-%dust-to-gas ratio $\tepsilon$,           
-%we find 
-%\begin{align}\label{ineq_est}
-%  1 + \frac{\tepsilon h_\mathrm{g}^2}{\left(1 + \tepsilon\right)^2}
-%  \left|\frac{\p\ln{\tepsilon}}{\p\ln{r}}\right| 
-%  \left[
-%    \left|\frac{\p\ln{\rhog}}{\p\ln{r}}\right| - \frac{\widetilde{H}^2}{H^2_\mathrm{g}}\left|\frac{\p\ln{\tepsilon}}{\p\ln{r}}\right|  
-%    \right]>0
-%\end{align}
-%is required \emph{for stability.} 
-%This inequality is easily satisifed in typical disk models where 
-%the dust layer is much thinner than the gas scale-height, so
-%that $\widetilde{H}\sim H_\mathrm{d}\ll H_\mathrm{g}$, and where the radial profiles smoothly vary on a scale of $r$.
-%Then the magnitude the only destabilizing term (the third term) is negligible. According to Eq. \ref{ineq_est}, instability is on%ly possible if there is a rapid variation the radial profile of the dust-to-gas ratio.   
-Then the above criteria becomes
+\subsubsection{Order-of-magnitude estimates} 
+We evaluate the above stability criteria for the vertically-Gaussian
+distributions for the gas density and the dust-to-gas ratio as 
+described in \S\ref{eqm}. However, here we permit 
+$\tepsilon_0=\tepsilon_0(r)$ and $\Htilde=\Htilde(r)$ to vary with
+radius. We assume the disk is approximately Keplerian so that
+$\kappa\simeq\OmK$. In terms of the dust-to-gas
+ratio $\tepsilon$, Eq. \ref{dusty_solberg1}---\ref{dusty_solberg2}
+become   
 \begin{align}
   &1 + \frac{\tepsilon}{\left(1+
     \tepsilon\right)^2}\left(h_\mathrm{g}^2\frac{\p\ln{\rhog}}{\p\ln{r}}
@@ -258,11 +258,15 @@ Then the above criteria becomes
 \emph{for stability}. 
 
 Eq. \ref{stability_est1}---\ref{stability_est2} are easily satisfied
-in typical accretion disk models where radial gradients are $O(1/r)$ and
+in thin accretion disks where radial gradients are $O(1/r)$ and
 $h_\mathrm{g},\tepsilon, \widetilde{H}/H_\mathrm{g}\ll 1$, since then the
 magnitude of the second term on the left-hand-side  of either
-inequality is much less than unity. Such disks are stable against
-axisymmetric perturbations.  
+inequality is much less than unity. Thus radially smooth, strictly
+isothermal disks perfectly coupled with dust are stable against
+axisymmetric perturbations. 
+
+%Such disks are stable against
+%axisymmetric perturbations.  
 
 \subsubsection{Possible instability at dust edges}
 Notice the left-hand-side of Eq. \ref{stability_est2} is a quadratic in
@@ -284,19 +288,13 @@ S_\pm = \frac{1}{2}\frac{H_\mathrm{g}^2}{\widetilde{H}^2}
   \frac{\left(1+\tepsilon\right)^2}{\tepsilon h_\mathrm{g}^2}
   }
   \,\right]. 
-\end{align}
+\end{align} 
+In typical accretion disks where $\p_r\rhog<0$, it is easier to
+achieve instability at a given radius for increasing dust-to-gas
+ratios in outwards ($\p_r\tepsilon > 0$), and vice versa.  
 
-Now, if $\p_r\rhog<0$, as typical in
-accretion models, then it is easier to achieve instability at a given
-radius for rapidly increasing dust-to-gas ratios ($\p_r\tepsilon >
-0$), and vice versa. 
-%This might occur, for example, when dust is
-%inserted in a finite radial range within a wider gaseous disk. 
-%Physically, one might expect
-%$\p_r\rhog\p_r\tepsilon > 0$ because 
-
-\emph{If} the $\p_r\rhog$ can be neglected in Eq. \ref{spm},
-then instability requires
+If the $\p_r\rhog$ can be neglected in Eq. \ref{spm}, then instability
+requires 
 \begin{align}
   \left|\frac{\p\ln{\tepsilon}}{\p r}\right| \gtrsim
   \frac{1}{\widetilde{H}}\frac{\left(1+\tepsilon\right)}{\sqrt{\tepsilon}}. 
@@ -324,17 +322,17 @@ the form:
   \left(\nabla\cdot\dd\bm{v}^*\right)\left(\dd\bm{v}\cdot\nabla\ln{c_s^2}\right)dV.
 \end{align}
 The real coefficients $A,B,C,D$ can be read off
-Eq. \ref{integral_ex}. Note that $B=C$ from the assume equilibrium
-structure (Eq. \ref{vshear}).  
+Eq. \ref{integral_ex}. Note that $B=C$ from dynamical equilibrium
+(Eq. \ref{vshear}).   
 
 If $c_s$ is constant, then $\sigma^2$ is real, and 
-the first integral leads to the usual Solberg-Hoiland criteria for
-axisymmetric stability. However, when $c_s$ is non-uniform, $\sigma^2$
-is generally complex, implying instability. This is responsible for
+the first integral leads to the previous Solberg-Hoiland criteria for 
+axisymmetric stability. However, when $c_s$ is non-uniform, $\sigma^2$ 
+is generally complex, implying instability. This is responsible for 
 the usual vertical shear instability in locally isothermal disks. 
 
 \subsection{Strictly isothermal gas well-coupled to dust} 
-Now consider $c_s^2=\mathrm{const.}$ but $\tstop\neq0$. In this case
+Now consider $c_s^2=\mathrm{const.}$ but $\tstop\neq0$. In this case 
 the effective energy equation is 
 \begin{align}\label{dusty_cooling}
   \frac{DP}{Dt} &= - P \nabla \cdot \bm{v} + \mathcal{C}
