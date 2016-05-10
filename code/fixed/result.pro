@@ -109,7 +109,7 @@ pro result, xrange=xrange, yrange=yrange, mode=mode
   device, filename='eigenvalues.ps' $
           ,bits_per_pixel=8,xsize=8, ysize=4.5,xoffset=0,yoffset=0,/inches
   plot,  freq, growth,xmargin=[8.5,1.5],ymargin=[3.5,0.5], ystyle=2  $
-        ,charsize=2, thick=4, psym=2, symsize=2, xrange=xrange, yrange=yrange $
+        ,charsize=2, thick=4, psym=2, symsize=1.5, xrange=xrange, yrange=yrange $
         , xtitle=xtitle, ytitle=ytitle $
         ,ytickinterval=ytickinterval  $
         ,xtickinterval=xtickinterval, xstyle=2
@@ -179,8 +179,8 @@ pro result, xrange=xrange, yrange=yrange, mode=mode
   set_plot, 'ps'
   device, filename='eigenvec_eps.ps' $
           ,bits_per_pixel=8,xsize=8, ysize=4.5,xoffset=0,yoffset=0,/inches
-  plot, zaxis, real_part(dfrac),xmargin=[8.5,1.5],ymargin=[3.5,0.5], ystyle=0  $
-        ,charsize=2, thick=4, xrange=xrange, yrange=[-1,1] $
+  plot, zaxis, real_part(dfrac),xmargin=[8.5,1.5],ymargin=[3.5,0.5], ystyle=1  $
+        ,charsize=2, thick=4, xrange=xrange $;, yrange=[-1,1] $
         , xtitle=xtitle, ytitle=ytitle $
         ,ytickinterval=ytickinterval  $
         ,xtickinterval=xtickinterval, xstyle=1

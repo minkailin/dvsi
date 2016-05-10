@@ -109,84 +109,111 @@ pro result, xrange=xrange, yrange=yrange, mode=mode
   device, filename='eigenvalues.ps' $
           ,bits_per_pixel=8,xsize=8, ysize=4.5,xoffset=0,yoffset=0,/inches
   plot,  freq, growth,xmargin=[8.5,1.5],ymargin=[3.5,0.5], ystyle=2  $
-        ,charsize=2, thick=4, psym=2, symsize=2, xrange=xrange, yrange=yrange $
+        ,charsize=2, thick=4, psym=2, symsize=1.5, xrange=xrange, yrange=yrange $
         , xtitle=xtitle, ytitle=ytitle $
         ,ytickinterval=ytickinterval  $
         ,xtickinterval=xtickinterval, xstyle=2
   device,/close
 
- ;;  nlines = nmodes*nz + 0L  
-;;   eigenvectors  = dblarr(10,nlines)
-;;   openr,1,'eigenvectors.dat'
-;;   readf,1,eigenvectors 
-;;   close,1
+  nlines = nmodes*nz + 0L  
+  eigenvectors  = dblarr(10,nlines)
+  openr,1,'eigenvectors.dat'
+  readf,1,eigenvectors 
+  close,1
 
-;;   if not keyword_set(mode) then begin
-;;   temp = max(growth, ngrid) 
-;; ;  temp = min(abs(freq),ngrid)
-;;   mode = ngrid + 1 
-;;   endif else begin
-;;   if(n_elements(mode eq 1))then begin
-;;   ngrid = mode - 1 
-;;   endif else begin
-;;   rate_target = mode[0]
-;;   freq_target = mode[1]
-;;   eigen_target = dcomplex(rate_target, freq_target)
-;;   temp = min( abs(dcomplex(growth,freq)-eigen_target), ngrid )
-;;   mode = ngrid + 1 
-;;   endelse
-;;   endelse 
+  if not keyword_set(mode) then begin
+  temp = max(growth, ngrid) 
+;  temp = min(abs(freq),ngrid)
+  mode = ngrid + 1 
+  endif else begin
+  if(n_elements(mode eq 1))then begin
+  ngrid = mode - 1 
+  endif else begin
+  rate_target = mode[0]
+  freq_target = mode[1]
+  eigen_target = dcomplex(rate_target, freq_target)
+  temp = min( abs(dcomplex(growth,freq)-eigen_target), ngrid )
+  mode = ngrid + 1 
+  endelse
+  endelse 
   
 
-;;   print, 'mode no., growth, freq', mode, growth(ngrid), freq(ngrid)
+  print, 'mode no., growth, freq', mode, growth(ngrid), freq(ngrid)
 
-;;   nbeg = ngrid*nz 
-;;   nend = nbeg + nz - 1 
+  nbeg = ngrid*nz 
+  nend = nbeg + nz - 1 
 
-;;   bigW = dcomplex(eigenvectors(0, nbeg:nend), eigenvectors(1, nbeg:nend))
-;;   dfrac= dcomplex(eigenvectors(2, nbeg:nend), eigenvectors(3, nbeg:nend))
-;;   vx   = dcomplex(eigenvectors(4, nbeg:nend), eigenvectors(5, nbeg:nend))
-;;   vy   = dcomplex(eigenvectors(6, nbeg:nend), eigenvectors(7, nbeg:nend))
-;;   vz   = dcomplex(eigenvectors(8, nbeg:nend), eigenvectors(9, nbeg:nend))
+  bigW = dcomplex(eigenvectors(0, nbeg:nend), eigenvectors(1, nbeg:nend))
+  dfrac= dcomplex(eigenvectors(2, nbeg:nend), eigenvectors(3, nbeg:nend))
+  vx   = dcomplex(eigenvectors(4, nbeg:nend), eigenvectors(5, nbeg:nend))
+  vy   = dcomplex(eigenvectors(6, nbeg:nend), eigenvectors(7, nbeg:nend))
+  vz   = dcomplex(eigenvectors(8, nbeg:nend), eigenvectors(9, nbeg:nend))
 
-;;   bigW  *= conj(bigW(nz-1))
-;;   dfrac *= conj(dfrac(nz-1))
-;;   vx    *= conj(vx(nz-1)) 
-;;   vy    *= conj(vy(nz-1))
-;;   vz    *= conj(vz(nz-1))
-
-;;  bigW   /= max(abs(bigW))
-;;  dfrac  /= max(abs(dfrac))
-;;  vx     /= max(abs(vx))
-;;  vy     /= max(abs(vy))
-;;  vz     /= max(abs(vz))
+  vmag = sqrt(abs(vx)^2.+abs(vy)^2.+abs(vz)^2.)
+  vh   = sqrt(abs(vx)^2.+abs(vy)^2.) 
 
 
-;;   xtitle  = tex2idl('$z/H_g$') + '!X'
-;;   ytitle  = tex2idl('$\delta$'+'!X'+'v'+'$_z$') + '!X'
-;;   set_plot, 'ps'
-;;   device, filename='eigenvec_vz.ps' $
-;;           ,bits_per_pixel=8,xsize=8, ysize=4.5,xoffset=0,yoffset=0,/inches
-;;   plot, zaxis, real_part(vz),xmargin=[8.5,1.5],ymargin=[3.5,0.5], ystyle=0  $
-;;         ,charsize=2, thick=4, xrange=xrange, yrange=[-1,1] $
-;;         , xtitle=xtitle, ytitle=ytitle $
-;;         ,ytickinterval=ytickinterval  $
-;;         ,xtickinterval=xtickinterval, xstyle=1
-;;   oplot, zaxis, imaginary(vz), thick=4, linestyle=1 
-;;   device,/close
+  bigW  *= conj(bigW(nz-1))
+  dfrac *= conj(dfrac(nz-1))
+  vx    *= conj(vx(nz-1)) 
+  vy    *= conj(vy(nz-1))
+  vz    *= conj(vz(nz-1))
 
-;;   ytitle  = tex2idl('$\delta\epsilon$') + '!X'
-;;   set_plot, 'ps'
-;;   device, filename='eigenvec_eps.ps' $
-;;           ,bits_per_pixel=8,xsize=8, ysize=4.5,xoffset=0,yoffset=0,/inches
-;;   plot, zaxis, real_part(dfrac),xmargin=[8.5,1.5],ymargin=[3.5,0.5], ystyle=0  $
-;;         ,charsize=2, thick=4, xrange=xrange, yrange=[-1,1] $
-;;         , xtitle=xtitle, ytitle=ytitle $
-;;         ,ytickinterval=ytickinterval  $
-;;         ,xtickinterval=xtickinterval, xstyle=1
-;;   oplot, zaxis, imaginary(dfrac), thick=4, linestyle=1
-;;   device,/close
+ bigW   /= max(abs(bigW))
+ dfrac  /= max(abs(dfrac))
+ vx     /= max(abs(vx))
+ vy     /= max(abs(vy))
+ vz     /= max(abs(vz))
 
+
+  xtitle  = tex2idl('$z/H_g$') + '!X'
+  ytitle  = tex2idl('$\delta$'+'!X'+'v'+'$_z$') + '!X'
+  set_plot, 'ps'
+  device, filename='eigenvec_vz.ps' $
+          ,bits_per_pixel=8,xsize=8, ysize=4.5,xoffset=0,yoffset=0,/inches
+  plot, zaxis, real_part(vz),xmargin=[8.5,1.5],ymargin=[3.5,0.5], ystyle=0  $
+        ,charsize=2, thick=4, xrange=xrange, yrange=[-1,1] $
+        , xtitle=xtitle, ytitle=ytitle $
+        ,ytickinterval=ytickinterval  $
+        ,xtickinterval=xtickinterval, xstyle=1
+  oplot, zaxis, imaginary(vz), thick=4, linestyle=1 
+  device,/close
+
+  ytitle  = tex2idl('$\delta\epsilon$') + '!X'
+  set_plot, 'ps'
+  device, filename='eigenvec_eps.ps' $
+          ,bits_per_pixel=8,xsize=8, ysize=4.5,xoffset=0,yoffset=0,/inches
+  plot, zaxis, real_part(dfrac),xmargin=[8.5,1.5],ymargin=[3.5,0.5], ystyle=1  $
+        ,charsize=2, thick=4, xrange=xrange , yrange=[-1,1] $
+        , xtitle=xtitle, ytitle=ytitle $
+        ,ytickinterval=ytickinterval  $
+        ,xtickinterval=xtickinterval, xstyle=1
+  oplot, zaxis, imaginary(dfrac), thick=4, linestyle=1
+  device,/close
+
+ ytitle  = tex2idl('$\delta\rho$'+'!X'+'/'+'$\rho$') + '!X'
+  set_plot, 'ps'
+  device, filename='eigenvec_w.ps' $
+          ,bits_per_pixel=8,xsize=8, ysize=4.5,xoffset=0,yoffset=0,/inches
+  plot, zaxis, real_part(bigW),xmargin=[8.5,1.5],ymargin=[3.5,0.5], ystyle=1  $
+        ,charsize=2, thick=4, xrange=xrange, yrange=[-1,1] $
+        , xtitle=xtitle, ytitle=ytitle $
+        ,ytickinterval=ytickinterval  $
+        ,xtickinterval=xtickinterval, xstyle=1
+  oplot, zaxis, imaginary(bigW), thick=4, linestyle=1
+  device,/close
+
+  
+  ytitle  = tex2idl('(|'+'$\delta$'+'!X'+'v'+'$_x$'+'!X'+'|'+'$^2$'+'+|'+'$\delta$'+'!X'+'v'+'$_y$'+'!X'+'|'+'$^2$'+')'+'$^{1/2}$'+'!X/|'+'$\delta$'+'!Xv'+'!X|') + '!X'
+  set_plot, 'ps'
+  device, filename='eigenvec_vh.ps' $
+          ,bits_per_pixel=8,xsize=8, ysize=4.5,xoffset=0,yoffset=0,/inches
+  plot, zaxis,  vh/vmag,xmargin=[8.5,1.5],ymargin=[3.5,0.5], ystyle=1  $
+        ,charsize=2, thick=4, xrange=xrange $
+        , xtitle=xtitle, ytitle=ytitle $
+        ,ytickinterval=ytickinterval  $
+        ,xtickinterval=xtickinterval, xstyle=1
+  device,/close
 
 end
 

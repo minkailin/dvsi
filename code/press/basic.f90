@@ -11,7 +11,8 @@ real*8 function dlnrhog_dr(zhat)
   implicit none 
   real*8, intent(in) :: zhat 
  
-  dlnrhog_dr = smallh_g*rhog0_power + dlnHg_dlnr*smallh_g*( zhat**2d0 + 2d0*dgratio*delta**2d0*( 1d0 - exp(-zhat**2d0/2d0/delta**2d0) ) )
+  dlnrhog_dr = smallh_g*rhog0_power + dlnHg_dlnr*smallh_g*( zhat**2d0 + 2d0*dgratio*delta**2d0*( 1d0 - exp(-zhat**2d0/2d0/delta**2d0) ) ) &
+              + smalld*dgratio*smallh_g*delta**2d0*(1d0 - exp(-zhat**2d0/2d0/delta**2d0) )
 end function dlnrhog_dr
 
 real*8 function d2lnrhog_dr2(zhat)
@@ -20,7 +21,9 @@ real*8 function d2lnrhog_dr2(zhat)
   implicit none 
   real*8, intent(in) :: zhat 
   
-  d2lnrhog_dr2 = -2d0*dlnHg_dlnr**2d0*smallh_g**2d0*( zhat**2d0 + 2d0*dgratio*delta**2d0*( 1d0 - exp(-zhat**2d0/2d0/delta**2d0) ) ) 
+  d2lnrhog_dr2 = -2d0*dlnHg_dlnr**2d0*smallh_g**2d0*( zhat**2d0 + 2d0*dgratio*delta**2d0*( 1d0 - exp(-zhat**2d0/2d0/delta**2d0) ) ) &
+                 -4d0*smalld*dgratio*smallh_g**2d0*delta**2d0*dlnHg_dlnr*( 1d0 - exp(-zhat**2d0/2d0/delta**2d0) ) &
+                 -(smalld*smallh_g*delta)**2d0*dgratio*( 1d0 - exp(-zhat**2d0/2d0/delta**2d0) )
 end function d2lnrhog_dr2
 
 real*8 function dlnrhog_dz(zhat)

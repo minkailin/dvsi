@@ -1,6 +1,6 @@
 module global
   implicit none 
-  integer, parameter :: nvar = 4 
+  integer, parameter :: nvar = 5 
   real*8, parameter :: pi = 2d0*acos(0d0)
   complex*16, parameter :: ii = (0d0, 1d0), zero = (0d0, 0d0)
 
@@ -9,13 +9,14 @@ module global
   real*8 :: zmax 
   real*8 :: dlnHg_dlnr
   real*8 :: krad, bc_tol 
+  real*8 :: max_rate 
 
   real*8, allocatable :: zaxis(:), lnrho_arr(:), eps_arr(:), dlnrhodr_arr(:), depsdr_arr(:),dlnrhodz_arr(:), depsdz_arr(:) 
-  real*8, allocatable :: del2lnrho_arr(:), del2eps_arr(:), dellnrho_dot_deleps_arr(:), tstop_arr(:)
+  real*8, allocatable :: del2lnrho_arr(:), del2eps_arr(:), dellnrho_dot_deleps_arr(:), tstop_arr(:), d2lnrhodz2_arr(:)
   real*8, allocatable :: Fr_arr(:), Fz_arr(:), F_dot_deleps_arr(:), divF_arr(:), F_dot_dellncs2_arr(:)
   real*8, allocatable :: omega_arr(:), kappa2_arr(:), vshear_arr(:) 
 
-  complex*16, allocatable     :: T(:,:), Tp(:,:), Tpp(:,:)
+  complex*16, allocatable     :: T(:,:), Tp(:,:), Tpp(:,:), T_odd(:,:), Tp_odd(:,:),  Tpp_odd(:,:)
 
   complex*16, allocatable :: L11(:,:), L12(:,:), L13(:,:), L14(:,:), L15(:,:)
   complex*16, allocatable :: L21(:,:), L22(:,:), L23(:,:), L24(:,:), L25(:,:)
@@ -38,12 +39,12 @@ end module global
 program dvsi
   use global
   implicit none 
-  integer :: i, j, k, lmax 
-  real*8 :: z, zbar, m, T_l, Tp_l, Tpp_l, dT_l, d2T_l
+  integer :: i, j, k, lmax, jmid
+  real*8 :: z, zbar, m, T_l, Tp_l, Tpp_l, dT_l, d2T_l, n 
   real*8, external  :: lnrho, eps, dlnrho_dr, deps_dr, dlnrho_dz, deps_dz
-  real*8, external  :: del2_lnrho, del2_eps, del_lnrho_dot_del_eps 
+  real*8, external  :: del2_lnrho, del2_eps, del_lnrho_dot_del_eps, d2lnrho_dz2 
   real*8, external  :: rotation, kappa_sq, vertical_shear
-  real*8, external  :: Fr, Fz, F_dot_deleps, div_F, F_dot_dellncs2
+  real*8, external  :: Fr, Fz, F_dot_deleps, div_F, F_dot_dellncs2, gr, gz
   real*8, external  :: stopping_time 
   namelist /params/ smallh_g, rhog0_power, smallq, Hd, dgratio, smalld, tstop 
   namelist /grid/ zmax, nz 
@@ -64,8 +65,6 @@ program dvsi
   if(mod(nz,2).eq.0) then
      print*, 'Nz needs to be odd but Nz=', nz
      stop
-  else
-     Nzmid = (Nz+1)/2
   endif
   
   !calculate secondary parameters 
@@ -80,6 +79,7 @@ program dvsi
   allocate(lnrho_arr(nz))
   allocate(dlnrhodr_arr(nz))
   allocate(dlnrhodz_arr(nz))
+  allocate(d2lnrhodz2_arr(nz))
   allocate(del2lnrho_arr(nz))
   allocate(eps_arr(nz))
   allocate(depsdr_arr(nz))
@@ -96,23 +96,21 @@ program dvsi
   allocate(divF_arr(nz))
   allocate(F_dot_dellncs2_arr(nz))
 
-  !setup physical grid 
-  
-  lmax = nz-1
-  zaxis(Nzmid) = 0d0
-  do j=Nzmid+1, nz
-     zaxis(j) = -zmax*cos(pi*(j-1d0)/lmax)
+  !setup physical grid   
+  lmax = 2*Nz - 1 !maximum chebyshev order (odd)
+  jmid = Nz + 1
+  do i = 1, nz
+     j = i + jmid - 1
+     zaxis(i) = -zmax*cos(pi*(j-1d0)/lmax)
   enddo
-  do j=1, Nzmid-1
-     zaxis(j) = -zaxis(Nz - j + 1)
-  enddo
-  
+
   do k=1, nz 
      z = zaxis(k)
      
      lnrho_arr(k)               = lnrho(z)
      dlnrhodr_arr(k)            = dlnrho_dr(z)
      dlnrhodz_arr(k)            = dlnrho_dz(z)
+     d2lnrhodz2_arr(k)          = d2lnrho_dz2(z)
      del2lnrho_arr(k)           = del2_lnrho(z)
      
      eps_arr(k)                 = eps(z)
@@ -138,15 +136,22 @@ program dvsi
   !output basic state 
   open(10,file='basic.dat')
   do k=1, nz
-     write(10,fmt='(7(e22.15,x))'), zaxis(k), lnrho_arr(k), dlnrhodr_arr(k), eps_arr(k), omega_arr(k)**2d0, kappa2_arr(k), vshear_arr(k) 
+     write(10,fmt='(7(e22.15,x))'), zaxis(k), lnrho_arr(k), eps_arr(k), tstop_arr(k), omega_arr(k)**2d0, kappa2_arr(k), vshear_arr(k) 
   enddo
   close(10)
-  
+ 
+  !set the maximum allowed growth rate 
+  max_rate = 1d0
+
+ 
   !allocate matrices for eigenvalue problem 
   
   allocate(T(nz,nz))
   allocate(Tp(nz,nz))
   allocate(Tpp(nz,nz))
+  allocate(T_odd(nz,nz))
+  allocate(Tp_odd(nz,nz))
+  allocate(Tpp_odd(nz,nz))
   allocate(bigmatrix_rhs(bignz, bignz))
   allocate(bigmatrix_lhs(bignz, bignz))
 
@@ -172,11 +177,21 @@ program dvsi
   do j=1, nz !jth physical grid
      zbar = zaxis(j)/zmax
      do k=1, nz !kth basis
-        m = dble(k-1d0)
-        call chebyshev_poly(m,     zbar, T_l, dT_l, d2T_l)
+        
+        !even basis 
+        n = 2d0*dble(k-1d0)
+        call chebyshev_poly(n,     zbar, T_l, dT_l, d2T_l)
         T(j,k)  =   T_l
         Tp(j,k) =  dT_l/zmax        !convert to deriv wrt physical grid
         Tpp(j,k)= d2T_l/zmax**2d0   !convert to deriv wrt physical grid
+        
+        !odd basis
+        m = n+1d0
+        call chebyshev_poly(m, zbar, T_l, dT_l, d2T_l)
+        T_odd(j,k)  =   T_l
+        Tp_odd(j,k) =  dT_l/zmax
+        Tpp_odd(j,k)= d2T_l/zmax**2d0
+
      enddo
   enddo
  
@@ -190,8 +205,9 @@ subroutine fill_bigmatrix(knum)
   implicit none
   integer :: i, ibeg, iend 
   real*8, intent(in) :: knum 
-  real*8 :: kx 
-   
+  real*8 :: kx, z, gr_at_z, gz_at_z
+  real*8, external :: gr, gz
+
   !convert k to code units (in Hgas, input is in H_dust) 
 
   kx = knum/Hd 
@@ -199,127 +215,209 @@ subroutine fill_bigmatrix(knum)
   !fill sub-matrices 
   do i=1, nz 
 
+     z = zaxis(i)
+     gr_at_z = gr(z)
+     gz_at_z = gz(z)
+
      !continuity equation 
-     L11(i,:) = (0d0, 0d0)
-     L13(i,:) = -( ii*kx + dlnrhodr_arr(i))*T(i,:)
-     L14(i,:) = (0d0, 0d0)
-     L15(i,:) =( -Tp(i,:) - dlnrhodz_arr(i)*T(i,:) )
+     L11(i,:) = (0d0, 0d0)                                      !density  (odd)
+     L12(i,:) = (0d0, 0d0)                                      !pressure (odd) 
+     L13(i,:) = -( ii*kx + dlnrhodr_arr(i))*T_odd(i,:)          !vx       (odd)
+     L14(i,:) = (0d0, 0d0)                                      !vy       (odd)
+     L15(i,:) =( -Tp(i,:) - dlnrhodz_arr(i)*T(i,:) )            !vz       (even)
      
-     R11(i,:) = T(i,:)
+     R11(i,:) = T_odd(i,:)
+     R12(i,:) = zero
      R13(i,:) = zero 
      R14(i,:) = zero
      R15(i,:) = zero
 
+     !dust continuity equation (equiv. energy equation) 
+     L21(i,:) = - tstop_arr(i)*( &
+          Fr_arr(i)*( &
+          -depsdr_arr(i) - (1d0-eps_arr(i))*dlnrhodr_arr(i) + ii*kx*(1d0-eps_arr(i)) &
+          )*T_odd(i,:) &
+          + Fz_arr(i)*(&
+          -depsdz_arr(i)*T_odd(i,:) + (1d0-eps_arr(i))*Tp_odd(i,:) &
+          ) &
+          + depsdr_arr(i)*gr_at_z*T_odd(i,:) &
+          + depsdz_arr(i)*gz_at_z*T_odd(i,:) &
+          + divF_arr(i)*(1d0 - eps_arr(i))*T_odd(i,:) &
+          + eps_arr(i)*(&
+          (ii*kx - dlnrhodr_arr(i))*gr_at_z*T_odd(i,:) + Tp_odd(i,:)*gz_at_z - T_odd(i,:)*divF_arr(i) &
+          ) &
+          -0.5d0*Fr_arr(i)*smallh_g*smallq*(1d0-eps_arr(i))*T_odd(i,:) &
+          -0.5d0*eps_arr(i)*smallh_g*smallq*gr_at_z*T_odd(i,:) &
+          )
+          
+     L22(i,:) = - tstop_arr(i)*( &
+          Fr_arr(i)*( &
+          -ii*kx + smallh_g*smallq + dlnrhodr_arr(i) &
+          )*T_odd(i,:) &
+          + Fz_arr(i)*(&
+          -Tp_odd(i,:) &
+          ) &
+          - depsdr_arr(i)*ii*kx*T_odd(i,:) &
+          - depsdz_arr(i)*( Tp_odd(i,:) + dlnrhodz_arr(i)*T_odd(i,:) ) &
+          - divF_arr(i)*T_odd(i,:) & 
+          + eps_arr(i)*(&
+          ii*kx*dlnrhodr_arr(i)*T_odd(i,:) + dlnrhodz_arr(i)*( Tp_odd(i,:) + dlnrhodz_arr(i)*T_odd(i,:) ) &
+          + kx*kx*T_odd(i,:) - ( Tpp_odd(i,:) + 2d0*Tp_odd(i,:)*dlnrhodz_arr(i) + T_odd(i,:)*(d2lnrhodz2_arr(i) + dlnrhodz_arr(i)**2d0) ) &
+          )&
+          +0.5d0*Fr_arr(i)*smallh_g*smallq*T_odd(i,:) &
+          +0.5d0*eps_arr(i)*smallh_g*smallq*ii*kx*T_odd(i,:) &
+          )
+
+     !VSI
+!!$     L21(i,:) =  T_odd(i,:)/tstop
+!!$     L22(i,:) = -T_odd(i,:)/tstop
+
+     
+     L23(i,:) =-gr_at_z*T_odd(i,:) - ii*kx*(1d0 - eps_arr(i))*T_odd(i,:) + (1d0 - eps_arr(i))*smallh_g*smallq*T_odd(i,:)
+     L24(i,:) = (0d0, 0d0)
+     L25(i,:) =-gz_at_z*T(i,:) -       (1d0 - eps_arr(i))*Tp(i,:)
+     
+     R21(i,:) = zero
+     R22(i,:) = T_odd(i,:)
+     R23(i,:) = zero 
+     R24(i,:) = zero
+     R25(i,:) = zero
+
      !vx mom eqn 
-     L31(i,:) = -(1d0 - eps_arr(i))*(ii*kx - dlnrhodr_arr(i) )*T(i,:)
+     L31(i,:) = gr_at_z*T_odd(i,:) !acting on drho/rho
+     L32(i,:) = -ii*kx*T_odd(i,:) !- dlnrhodr_arr(i)*T_odd(i,:)!acting on dP/rho 
      L33(i,:) = (0d0, 0d0)
-     L34(i,:) = 2d0*T(i,:)!omega_arr(i)
+     L34(i,:) = 2d0*omega_arr(i)*T_odd(i,:)
      L35(i,:) = (0d0, 0d0)
 
      R31(i,:) = zero
-     R33(i,:) = T(i,:)
+     R32(i,:) = zero
+     R33(i,:) = T_odd(i,:)
      R34(i,:) = zero
      R35(i,:) = zero
      
      !vy mom eqn 
      L41(i,:) = (0d0, 0d0)
-     L43(i,:) = -0.5d0*T(i,:) !kappa2_arr(i)*T(i,:)/(2d0*omega_arr(i))
+     L42(i,:) = (0d0, 0d0)
+     L43(i,:) = -kappa2_arr(i)*T_odd(i,:)/(2d0*omega_arr(i))
      L44(i,:) = 0d0 
-     L45(i,:) = -0.5d0*vshear_arr(i)*T(i,:)!/(2d0*omega_arr(i))
+     L45(i,:) = -vshear_arr(i)*T(i,:)/(2d0*omega_arr(i))
 
      R41(i,:) = zero
+     R42(i,:) = zero
      R43(i,:) = zero
-     R44(i,:) = T(i,:)
+     R44(i,:) = T_odd(i,:)
      R45(i,:) = zero
 
      !vz mom eqn 
-     L51(i,:) = -(1d0 - eps_arr(i))*Tp(i,:)
+     L51(i,:) = gz_at_z*T_odd(i,:)
+     L52(i,:) = -Tp_odd(i,:) - dlnrhodz_arr(i)*T_odd(i,:)
      L53(i,:) = (0d0, 0d0)
      L54(i,:) = (0d0, 0d0)
      L55(i,:) = (0d0, 0d0)
         
      R51(i,:) = zero
+     R52(i,:) = zero
      R53(i,:) = zero
      R54(i,:) = zero
      R55(i,:) = T(i,:)
 
   enddo 
 
-  !boundary conditions
-  !vz  = 0 
-  do i = 1, nz, nz-1 
-     L51(i,:) = zero 
-     L53(i,:) = zero 
-     L54(i,:) = zero 
-     L55(i,:) = T(i,:)
-     
-     R51(i,:) = zero 
-     R53(i,:) = zero 
-     R54(i,:) = zero
-     R55(i,:) = zero 
 
-!     L11(i,:) = (0d0, 0d0)
-!     L13(i,:) = -( ii*kx + dlnrhodr_arr(i))*T(i,:)
-!     L14(i,:) = (0d0, 0d0)
-!     L15(i,:) =  -Tp(i,:)
-     
-!     R11(i,:) = T(i,:)
-!     R13(i,:) = zero 
-!     R14(i,:) = zero
-!     R15(i,:) = zero
-
-  enddo
+  !vz  = 0 at top 
+  i= nz
+  L51(i,:) = zero
+  L52(i,:) = zero
+  L53(i,:) = zero
+  L54(i,:) = zero
+  L55(i,:) = T(i,:)
   
+  R51(i,:) = zero
+  R52(i,:) = zero
+  R53(i,:) = zero
+  R54(i,:) = zero
+  R55(i,:) = zero
+  
+
+
+
+
+
+
+
+
 
   !fill big matrices 
   ibeg = 1
   iend = nz
   bigmatrix_lhs(ibeg:iend, 1:nz)          = L11
-  bigmatrix_lhs(ibeg:iend, nz+1:2*nz)     = L13
-  bigmatrix_lhs(ibeg:iend, 2*nz+1:3*nz )  = L14
-  bigmatrix_lhs(ibeg:iend, 3*nz+1:4*nz )  = L15
-  
+  bigmatrix_lhs(ibeg:iend, nz+1:2*nz)     = L12
+  bigmatrix_lhs(ibeg:iend, 2*nz+1:3*nz )  = L13
+  bigmatrix_lhs(ibeg:iend, 3*nz+1:4*nz )  = L14
+  bigmatrix_lhs(ibeg:iend, 4*nz+1:bignz)  = L15
   
   bigmatrix_rhs(ibeg:iend, 1:nz)          = R11
-  bigmatrix_rhs(ibeg:iend, nz+1:2*nz)     = R13
-  bigmatrix_rhs(ibeg:iend, 2*nz+1:3*nz )  = R14
-  bigmatrix_rhs(ibeg:iend, 3*nz+1:4*nz )  = R15
-  
+  bigmatrix_rhs(ibeg:iend, nz+1:2*nz)     = R12
+  bigmatrix_rhs(ibeg:iend, 2*nz+1:3*nz )  = R13
+  bigmatrix_rhs(ibeg:iend, 3*nz+1:4*nz )  = R14
+  bigmatrix_rhs(ibeg:iend, 4*nz+1:bignz)  = R15
+
   ibeg = nz+1
   iend = 2*nz
-  bigmatrix_lhs(ibeg:iend, 1:nz)          = L31
-  bigmatrix_lhs(ibeg:iend, nz+1:2*nz)     = L33
-  bigmatrix_lhs(ibeg:iend, 2*nz+1:3*nz )  = L34
-  bigmatrix_lhs(ibeg:iend, 3*nz+1:4*nz )  = L35
+  bigmatrix_lhs(ibeg:iend, 1:nz)          = L21
+  bigmatrix_lhs(ibeg:iend, nz+1:2*nz)     = L22
+  bigmatrix_lhs(ibeg:iend, 2*nz+1:3*nz )  = L23
+  bigmatrix_lhs(ibeg:iend, 3*nz+1:4*nz )  = L24
+  bigmatrix_lhs(ibeg:iend, 4*nz+1:bignz)  = L25
   
-  bigmatrix_rhs(ibeg:iend, 1:nz)          = R31
-  bigmatrix_rhs(ibeg:iend, nz+1:2*nz)     = R33
-  bigmatrix_rhs(ibeg:iend, 2*nz+1:3*nz )  = R34
-  bigmatrix_rhs(ibeg:iend, 3*nz+1:4*nz )  = R35
+  bigmatrix_rhs(ibeg:iend, 1:nz)          = R21
+  bigmatrix_rhs(ibeg:iend, nz+1:2*nz)     = R22
+  bigmatrix_rhs(ibeg:iend, 2*nz+1:3*nz )  = R23
+  bigmatrix_rhs(ibeg:iend, 3*nz+1:4*nz )  = R24
+  bigmatrix_rhs(ibeg:iend, 4*nz+1:bignz)  = R25
 
   ibeg = 2*nz+1
   iend = 3*nz
-  bigmatrix_lhs(ibeg:iend, 1:nz)          = L41
-  bigmatrix_lhs(ibeg:iend, nz+1:2*nz)     = L43
-  bigmatrix_lhs(ibeg:iend, 2*nz+1:3*nz )  = L44
-  bigmatrix_lhs(ibeg:iend, 3*nz+1:4*nz )  = L45
+  bigmatrix_lhs(ibeg:iend, 1:nz)          = L31
+  bigmatrix_lhs(ibeg:iend, nz+1:2*nz)     = L32
+  bigmatrix_lhs(ibeg:iend, 2*nz+1:3*nz )  = L33
+  bigmatrix_lhs(ibeg:iend, 3*nz+1:4*nz )  = L34
+  bigmatrix_lhs(ibeg:iend, 4*nz+1:bignz)  = L35
   
-  bigmatrix_rhs(ibeg:iend, 1:nz)          = R41
-  bigmatrix_rhs(ibeg:iend, nz+1:2*nz)     = R43
-  bigmatrix_rhs(ibeg:iend, 2*nz+1:3*nz )  = R44
-  bigmatrix_rhs(ibeg:iend, 3*nz+1:4*nz )  = R45
+  bigmatrix_rhs(ibeg:iend, 1:nz)          = R31
+  bigmatrix_rhs(ibeg:iend, nz+1:2*nz)     = R32
+  bigmatrix_rhs(ibeg:iend, 2*nz+1:3*nz )  = R33
+  bigmatrix_rhs(ibeg:iend, 3*nz+1:4*nz )  = R34
+  bigmatrix_rhs(ibeg:iend, 4*nz+1:bignz)  = R35
 
   ibeg = 3*nz+1
+  iend = 4*nz
+  bigmatrix_lhs(ibeg:iend, 1:nz)          = L41
+  bigmatrix_lhs(ibeg:iend, nz+1:2*nz)     = L42
+  bigmatrix_lhs(ibeg:iend, 2*nz+1:3*nz )  = L43
+  bigmatrix_lhs(ibeg:iend, 3*nz+1:4*nz )  = L44
+  bigmatrix_lhs(ibeg:iend, 4*nz+1:bignz)  = L45
+  
+  bigmatrix_rhs(ibeg:iend, 1:nz)          = R41
+  bigmatrix_rhs(ibeg:iend, nz+1:2*nz)     = R42
+  bigmatrix_rhs(ibeg:iend, 2*nz+1:3*nz )  = R43
+  bigmatrix_rhs(ibeg:iend, 3*nz+1:4*nz )  = R44
+  bigmatrix_rhs(ibeg:iend, 4*nz+1:bignz)  = R45
+
+  ibeg = 4*nz+1
   iend = bignz
   bigmatrix_lhs(ibeg:iend, 1:nz)          = L51
-  bigmatrix_lhs(ibeg:iend, nz+1:2*nz)     = L53
-  bigmatrix_lhs(ibeg:iend, 2*nz+1:3*nz )  = L54
-  bigmatrix_lhs(ibeg:iend, 3*nz+1:4*nz )  = L55
+  bigmatrix_lhs(ibeg:iend, nz+1:2*nz)     = L52
+  bigmatrix_lhs(ibeg:iend, 2*nz+1:3*nz )  = L53
+  bigmatrix_lhs(ibeg:iend, 3*nz+1:4*nz )  = L54
+  bigmatrix_lhs(ibeg:iend, 4*nz+1:bignz)  = L55
   
   bigmatrix_rhs(ibeg:iend, 1:nz)          = R51
-  bigmatrix_rhs(ibeg:iend, nz+1:2*nz)     = R53
-  bigmatrix_rhs(ibeg:iend, 2*nz+1:3*nz )  = R54
-  bigmatrix_rhs(ibeg:iend, 3*nz+1:4*nz )  = R55
+  bigmatrix_rhs(ibeg:iend, nz+1:2*nz)     = R52
+  bigmatrix_rhs(ibeg:iend, 2*nz+1:3*nz )  = R53
+  bigmatrix_rhs(ibeg:iend, 3*nz+1:4*nz )  = R54
+  bigmatrix_rhs(ibeg:iend, 4*nz+1:bignz)  = R55
   
 end subroutine fill_bigmatrix
 
@@ -327,15 +425,15 @@ subroutine eigenvalue_problem
   use global
   implicit none
   character*1, parameter :: jobvl = 'N', jobvr='V'
-  integer :: i, j, info, loc(1)
-  integer :: lwork, ipiv(bignz)
+  integer :: i, j, info, loc(1), cnt 
+  integer :: lwork 
   complex*16, allocatable :: work(:)
-  complex*16 :: apha(bignz), bta(bignz), eigen(bignz)
+  complex*16 :: apha(bignz), bta(bignz), eigen(bignz), dP(nz), ddP(nz), dbigW(nz), ddfrac(nz) 
   complex*16 :: vl(bignz,bignz), vr(bignz,bignz)
-  real*8, parameter :: min_rate = 1d-6, max_rate = 1d0
+  real*8, parameter :: min_rate = 1d-6, max_eigen = 1d0 
   real*8 :: rwork(8*bignz), eigen_re, eigen_im, eigen_mag, vz_max, error_in, error_out 
   
-  lwork = 8*bignz
+  lwork = 4*bignz
   allocate(work(lwork))
 
   !eigenvalue problem 
@@ -343,22 +441,14 @@ subroutine eigenvalue_problem
        bignz, VR, bignz, WORK, LWORK, RWORK, INFO) 
   if(info .ne. 0 ) print*, 'eigen failed?', info
 
-
-  !invert rhs and get final matrix
-!  call zgetrf(bignz, bignz, bigmatrix_rhs, bignz, IPIV, INFO)
-!  print*, 'inversion success?', info
-!  call ZGETRI(bignz, bigmatrix_rhs, bignz, IPIV, WORK, LWORK, INFO )
-!  print*, 'inversion success?', info
-!  bigmatrix_lhs = matmul(bigmatrix_rhs,bigmatrix_lhs)
-  
-  !eigenvalue problem
-!  call zgeev (JOBVL, JOBVR, bignz, bigmatrix_lhs, bignz, eigen, vl, bignz, VR, bignz, WORK, LWORK, RWORK, INFO)
-!  print*, 'eigen success?',info
-
   !compute eigenvalues, output data 
+
+  bc_tol = 1d-4 
+
 
   open(20,file='eigenvalues.dat')
   open(30,file='eigenvectors.dat')
+  cnt = 0 
   do i=1, bignz
      eigen(i) = apha(i)/bta(i)
      eigen_re = dble(eigen(i))
@@ -366,29 +456,36 @@ subroutine eigenvalue_problem
      eigen_mag= sqrt(eigen_re**2d0 + eigen_im**2d0)     
 
      !filter out modes that grow too slow or too fast 
-     if((eigen_re.ge.min_rate).and.(eigen_mag.lt.max_rate)) then 
+     if((eigen_re.ge.min_rate).and.(eigen_re.lt.max_rate).and.(eigen_mag.lt.max_eigen)) then 
         
-!!$        bigW  = matmul(T,vr(1:nz,i))
-!!$        dfrac = matmul(T,vr(nz+1:2*nz,i))
-!!$        vx    = matmul(T,vr(2*nz+1:3*nz,i))
-!!$        vy    = matmul(T,vr(3*nz+1:4*nz,i))
-!!$        vz    = matmul(T,vr(4*nz+1:bignz,i))
+
+        bigW  = matmul(T_odd,vr(1:nz,i))
+        dP    = matmul(T_odd,vr(nz+1:2*nz,i)) !this is actually dP/rho 
+        vx    = matmul(T_odd,vr(2*nz+1:3*nz,i))
+        vy    = matmul(T_odd,vr(3*nz+1:4*nz,i))
+        vz    = matmul(T,vr(4*nz+1:bignz,i))
     
+        dfrac  = (1d0 - eps_arr)*bigW - dP
+     
 !!$        !test BC 
-!!$        vz_max = maxval(abs(vz))
-!!$        error_out  = abs(vz(nz))/vz_max 
-!!$        error_in   = abs(vz(1))/vz_max 
-!!$
-!!$        if((error_out.lt.bc_tol).and.(error_in.lt.bc_tol)) then 
-        write(20,fmt='(2(e22.15,x))'), eigen_re, eigen_im
-!!$        do j=1,nz
-!!$           write(30,fmt='(10(e22.15,x))') dble(bigW(j)), dimag(bigW(j)), dble(dfrac(j)), dimag(dfrac(j)), & 
-!!$                                          dble(vx(j)), dimag(vx(j)), dble(vy(j)), dimag(vy(j)), dble(vz(j)), dimag(vz(j))
-!!$     enddo
-!!$        endif 
+!        vz_max = maxval(abs(dfrac))
+!        error_out  = abs(dfrac(nz))/vz_max 
+!        error_in   = abs(dfrac(1))/vz_max 
+
+!        if((error_out.lt.bc_tol).and.(error_in.lt.bc_tol)) then 
+        cnt = cnt + 1
+        write(20,fmt='(2(e22.15,x))'), eigen_re, eigen_im   
+        do j=1,nz
+           write(30,fmt='(10(e22.15,x))') dble(bigW(j)), dimag(bigW(j)), dble(dfrac(j)), dimag(dfrac(j)), & 
+                                          dble(vx(j)), dimag(vx(j)), dble(vy(j)), dimag(vy(j)), dble(vz(j)), dimag(vz(j))
+        enddo
+!        endif 
 
      endif
   enddo
+
+  print*, 'found', cnt, 'modes' 
+
   close(20)
   close(30)
 end subroutine eigenvalue_problem

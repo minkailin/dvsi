@@ -11,7 +11,8 @@ real*8 function dlnrhog_dr(zhat)
   implicit none 
   real*8, intent(in) :: zhat 
  
-  dlnrhog_dr = smallh_g*rhog0_power + dlnHg_dlnr*smallh_g*( zhat**2d0 + 2d0*dgratio*delta**2d0*( 1d0 - exp(-zhat**2d0/2d0/delta**2d0) ) )
+  dlnrhog_dr = smallh_g*rhog0_power + dlnHg_dlnr*smallh_g*( zhat**2d0 + 2d0*dgratio*delta**2d0*( 1d0 - exp(-zhat**2d0/2d0/delta**2d0) ) ) &
+              + smalld*dgratio*smallh_g*delta**2d0*(1d0 - exp(-zhat**2d0/2d0/delta**2d0) )
 end function dlnrhog_dr
 
 real*8 function d2lnrhog_dr2(zhat)
@@ -20,7 +21,9 @@ real*8 function d2lnrhog_dr2(zhat)
   implicit none 
   real*8, intent(in) :: zhat 
   
-  d2lnrhog_dr2 = -2d0*dlnHg_dlnr**2d0*smallh_g**2d0*( zhat**2d0 + 2d0*dgratio*delta**2d0*( 1d0 - exp(-zhat**2d0/2d0/delta**2d0) ) ) 
+  d2lnrhog_dr2 = -2d0*dlnHg_dlnr**2d0*smallh_g**2d0*( zhat**2d0 + 2d0*dgratio*delta**2d0*( 1d0 - exp(-zhat**2d0/2d0/delta**2d0) ) ) &
+                 -4d0*smalld*dgratio*smallh_g**2d0*delta**2d0*dlnHg_dlnr*( 1d0 - exp(-zhat**2d0/2d0/delta**2d0) ) &
+                 -(smalld*smallh_g*delta)**2d0*dgratio*( 1d0 - exp(-zhat**2d0/2d0/delta**2d0) )
 end function d2lnrhog_dr2
 
 real*8 function dlnrhog_dz(zhat)
@@ -141,6 +144,16 @@ real*8 function dlnrho_dz(zhat)
   dlnrho_dz =dlnrhog_dz(zhat) + deps_tilde_dz(zhat)/(1d0 + eps_tilde(zhat))
 end function dlnrho_dz
 
+
+real*8 function d2lnrho_dz2(zhat)
+  use global
+  implicit none
+  real*8, intent(in) :: zhat 
+  real*8, external  :: eps_tilde, deps_tilde_dz, d2eps_tilde_dz2, d2lnrhog_dz2
+  
+  d2lnrho_dz2 = d2lnrhog_dz2(zhat) + d2eps_tilde_dz2(zhat)/(1d0+eps_tilde(zhat)) -deps_tilde_dz(zhat)**2d0/(1d0 + eps_tilde(zhat))**2d0
+end function d2lnrho_dz2
+
 real*8 function del2_lnrho(zhat)
   use global
   implicit none
@@ -248,6 +261,26 @@ real*8 function F_dot_dellncs2(zhat)
   
   F_dot_dellncs2 = Fr(zhat)*smallh_g*smallq 
 end function F_dot_dellncs2
+
+real*8 function gr(zhat)
+  !grad P/rho in r 
+  use global
+  implicit none
+  real*8, intent(in) :: zhat 
+  real*8, external  :: eps, dlnrhog_dr, Fr
+
+  gr = (1d0 - eps(zhat))*smallh_g*smallq + (1d0 - eps(zhat))*dlnrhog_dr(zhat)
+end function Gr
+
+real*8 function gz(zhat)
+  !grad P/rho in z 
+  use global
+  implicit none
+  real*8, intent(in) :: zhat 
+  real*8, external  :: eps, dlnrhog_dz, Fz
+  
+   gz = (1d0 - eps(zhat))*dlnrhog_dz(zhat)
+end function Gz
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 

@@ -202,7 +202,7 @@ subroutine fill_bigmatrix(knum)
      !continuity equation 
      L11(i,:) = (0d0, 0d0)
      L12(i,:) = (0d0, 0d0)
-     L13(i,:) = -( ii*kx + dlnrhodr_arr(i)*0d0)*T(i,:)
+     L13(i,:) = -( ii*kx + dlnrhodr_arr(i))*T(i,:)
      L14(i,:) = (0d0, 0d0)
      L15(i,:) =( -Tp(i,:) - dlnrhodz_arr(i)*T(i,:) )
      
@@ -213,48 +213,48 @@ subroutine fill_bigmatrix(knum)
      R15(i,:) = zero
 
      !dust continuity equation (equiv. energy equation) 
-!!$     L21(i,:) = -tstop_arr(i)*(eps_arr(i)*divF_arr(i) + F_dot_deleps_arr(i) - 0.5d0*eps_arr(i)*F_dot_dellncs2_arr(i) )*T(i,:) 
-!!$     L21(i,:) =  L21(i,:) &
-!!$          + tstop_arr(i)*eps_arr(i)*( &
-!!$          -smallh_g*smallq*(1d0 - eps_arr(i))*ii*kx*T(i,:) &
-!!$          + ii*kx*depsdr_arr(i)*T(i,:) &
-!!$          + depsdz_arr(i)*Tp(i,:) &
-!!$          - (1d0 - eps_arr(i))*( -kx*kx*T(i,:) + Tpp(i,:) ) &
-!!$          )
-!!$     L21(i,:) =  L21(i,:) &
-!!$          + tstop_arr(i)*( &
-!!$          -(1d0 - eps_arr(i))*(ii*kx*depsdr_arr(i)*T(i,:) + depsdz_arr(i)*Tp(i,:) ) &
-!!$          )
-!!$     L21(i,:) =  L21(i,:) &
-!!$          + tstop_arr(i)*( &
-!!$          0.5*eps_arr(i)*smallh_g*smallq*(1d0 - eps_arr(i))*ii*kx*T(i,:) &
-!!$          )
-!!$    
-!!$
-!!$     L22(i,:) =  tstop_arr(i)*divF_arr(i)*T(i,:)
-!!$     L22(i,:) =  L22(i,:) + tstop_arr(i)*( Fr_arr(i)*ii*kx*T(i,:) + Fz_arr(i)*Tp(i,:) )
-!!$     L22(i,:) =  L22(i,:) &
-!!$          + tstop_arr(i)*eps_arr(i)*( &
-!!$          2d0*smallh_g*smallq*ii*kx*T(i,:) + (smallh_g*smallq)**2d0*T(i,:) &
-!!$          -kx*kx*T(i,:) + Tpp(i,:) + ii*kx*dlnrhodr_arr(i)*T(i,:) &
-!!$          +dlnrhodz_arr(i)*Tp(i,:) + smallh_g*smallq*dlnrhodr_arr(i)*T(i,:) &
-!!$          +del2lnrho_arr(i)*T(i,:) &
-!!$          )
-!!$     L22(i,:) =  L22(i,:) &
-!!$          + tstop_arr(i)*( &
-!!$          smallh_g*smallq*depsdr_arr(i)*T(i,:) &
-!!$          + depsdr_arr(i)*ii*kx*T(i,:) + depsdz_arr(i)*Tp(i,:) &
-!!$          + dellnrho_dot_deleps_arr(i)*T(i,:) &
-!!$          )          
-!!$     L22(i,:) =  L22(i,:) &
-!!$          + tstop_arr(i)*( &
-!!$          -0.5d0*F_dot_dellncs2_arr(i)*T(i,:) &
-!!$          -0.5d0*eps_arr(i)*smallh_g*smallq*( ii*kx + dlnrhodr_arr(i) + smallh_g*smallq)*T(i,:) &  
-!!$          )
+     L21(i,:) = -tstop_arr(i)*(eps_arr(i)*divF_arr(i) + F_dot_deleps_arr(i) - 0.5d0*eps_arr(i)*F_dot_dellncs2_arr(i) )*T(i,:) 
+     L21(i,:) =  L21(i,:) &
+          + tstop_arr(i)*eps_arr(i)*( &
+          -smallh_g*smallq*(1d0 - eps_arr(i))*ii*kx*T(i,:) &
+          + ii*kx*depsdr_arr(i)*T(i,:) &
+          + depsdz_arr(i)*Tp(i,:) &
+          - (1d0 - eps_arr(i))*( -kx*kx*T(i,:) + Tpp(i,:) ) &
+          )
+     L21(i,:) =  L21(i,:) &
+          + tstop_arr(i)*( &
+          -(1d0 - eps_arr(i))*(ii*kx*depsdr_arr(i)*T(i,:) + depsdz_arr(i)*Tp(i,:) ) &
+          )
+     L21(i,:) =  L21(i,:) &
+          + tstop_arr(i)*( &
+          0.5*eps_arr(i)*smallh_g*smallq*(1d0 - eps_arr(i))*ii*kx*T(i,:) &
+          )
+    
+
+     L22(i,:) =  tstop_arr(i)*divF_arr(i)*T(i,:)
+     L22(i,:) =  L22(i,:) + tstop_arr(i)*( Fr_arr(i)*ii*kx*T(i,:) + Fz_arr(i)*Tp(i,:) )
+     L22(i,:) =  L22(i,:) &
+          + tstop_arr(i)*eps_arr(i)*( &
+          2d0*smallh_g*smallq*ii*kx*T(i,:) + (smallh_g*smallq)**2d0*T(i,:) &
+          -kx*kx*T(i,:) + Tpp(i,:) + ii*kx*dlnrhodr_arr(i)*T(i,:) &
+          +dlnrhodz_arr(i)*Tp(i,:) + smallh_g*smallq*dlnrhodr_arr(i)*T(i,:) &
+          +del2lnrho_arr(i)*T(i,:) &
+          )
+     L22(i,:) =  L22(i,:) &
+          + tstop_arr(i)*( &
+          smallh_g*smallq*depsdr_arr(i)*T(i,:) &
+          + depsdr_arr(i)*ii*kx*T(i,:) + depsdz_arr(i)*Tp(i,:) &
+          + dellnrho_dot_deleps_arr(i)*T(i,:) &
+          )          
+     L22(i,:) =  L22(i,:) &
+          + tstop_arr(i)*( &
+          -0.5d0*F_dot_dellncs2_arr(i)*T(i,:) &
+          -0.5d0*eps_arr(i)*smallh_g*smallq*( ii*kx + dlnrhodr_arr(i) + smallh_g*smallq)*T(i,:) &  
+          )
 
 !pure dust diffusion
-     L21(i,:) = zero  
-     L22(i,:) = zero  
+!!$     L21(i,:) = zero  
+!!$     L22(i,:) = zero  
 
 !!$     L21(i,:) = zero 
 !!$     L22(i,:) = tstop_arr(i)*eps_arr(i)*( -kx*kx*T(i,:) + Tpp(i,:))
@@ -271,7 +271,7 @@ subroutine fill_bigmatrix(knum)
      R25(i,:) = zero
 
      !vx mom eqn 
-     L31(i,:) = -(1d0 - eps_arr(i))*(ii*kx - dlnrhodr_arr(i)*0d0)*T(i,:)
+     L31(i,:) = -(1d0 - eps_arr(i))*(ii*kx - dlnrhodr_arr(i))*T(i,:)
      L32(i,:) = (smallh_g*smallq + ii*kx + dlnrhodr_arr(i))*T(i,:)
      L33(i,:) = (0d0, 0d0)
      L34(i,:) = 2d0*omega_arr(i)*T(i,:)
@@ -343,21 +343,21 @@ subroutine fill_bigmatrix(knum)
 !!$  enddo
 
   !delta eps = 0 , if stopping time is non zero
-  if(tstop.gt.0d0) then
-     do i = 1, nz, nz-1
-        L21(i,:) = zero 
-        L22(i,:) = T(i,:)
-        L23(i,:) = zero 
-        L24(i,:) = zero 
-        L25(i,:) = zero
-        
-        R21(i,:) = zero 
-        R22(i,:) = zero 
-        R23(i,:) = zero 
-        R24(i,:) = zero
-        R25(i,:) = zero 
-     enddo
-  endif
+!  if(tstop.gt.0d0) then
+!     do i = 1, nz, nz-1
+!        L21(i,:) = zero 
+!        L22(i,:) = Tp(i,:)
+!        L23(i,:) = zero 
+!        L24(i,:) = zero 
+!        L25(i,:) = zero
+!        
+!        R21(i,:) = zero 
+!        R22(i,:) = zero 
+!        R23(i,:) = zero 
+!        R24(i,:) = zero
+!        R25(i,:) = zero 
+!     enddo
+!  endif
 
   !fill big matrices 
   ibeg = 1
