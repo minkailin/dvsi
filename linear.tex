@@ -31,7 +31,9 @@ the dust-fraction (Eq. \ref{masseq}---\ref{momeq}, Eq. \ref{eff_energy}) are the
   -\ii\sigma\dd v_z &=  \delta\bm{F}\cdot\hat{\bm{z}},\label{lin_zmom}\\
   \ii\sigma Q &= \frac{P}{\rho}\left(\ii k \dd v_r + \dd
                v_z^\prime\right) + \frac{1}{\rho}\left(\dd v_r\p_rP + \dd v_z \p_zP\right)\notag\\
-                &\phantom{=}-\frac{P}{\rho} \dd v_r\p_r \ln{c_s^2} - \frac{\dd\mathcal{C}}{\rho},\label{lin_energy}
+                &\phantom{=}-\frac{P}{\rho}\left( \dd v_r\p_r
+               \ln{c_s^2} + \dd v_z \p_z\ln{c_s^2}\right)-
+               \frac{\dd\mathcal{C}}{\rho},\label{lin_energy} 
 \end{align}  
 where $^\prime \equiv \p_z$; $\dd\bm{F}$ is the linearized pressure force, given in Appendix
 \ref{lin_press}; and 
@@ -40,7 +42,7 @@ where $^\prime \equiv \p_z$; $\dd\bm{F}$ is the linearized pressure force, given
 %  \frac{1}{\rho}\nabla\dd P, 
 %\end{align}
 $\dd\mathcal{C}$ is the linearized dust-duffusion function, given in
-Appendix \ref{lin_dust}.  We consider stopping times appropriate for
+Appendix \ref{lin_dust}. We consider stopping times appropriate for
 small grains in the Epstein regime. Note that for the axisymmetric
 problem, $\dd\bm{F}$ is purely meridional. 
 
@@ -87,6 +89,7 @@ $\tstop\neq0$, we require three boundary conditions. {\bf WHAT?? Why odd
   number of BCs? Shouldn't we have even number of BCs? We have
 two boundaries? I've only seen problems like this involving even
 number of BCs.} In this case we impose $\dd v_z =0$ at $z=\pm
-z_\mathrm{max}$, and consider even modes about the midplane such that
-$\dd v_z^\prime(0) = 0$.    
+z_\mathrm{max}$, and classify modes according to their symmetry about
+the midplane: `even' modes with $\dd v_z^\prime(0) = 0$, and `odd' 
+modes with $\dd v_z(0)=0$.       
 
