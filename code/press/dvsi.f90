@@ -57,7 +57,7 @@ program dvsi
   close(7)
 
   open(10,file='params.dat') 
-  write(10,fmt='(2(e22.15,x))'), dble(nz), smallh_g 
+  write(10,fmt='(4(e22.15,x))'), dble(nz), smallh_g, krad, Hd
   close(10)
 
   !check we have odd grid points so one grid point coincides with midplane 
@@ -368,6 +368,7 @@ subroutine fill_bigmatrix(knum)
 !!$     R25(i,:) = zero 
 !!$  enddo
 
+!note: no lag pert in rhod give crazy results 
   
   !fill big matrices 
   ibeg = 1

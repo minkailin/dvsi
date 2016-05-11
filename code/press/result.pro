@@ -87,12 +87,15 @@ pro result, xrange=xrange, yrange=yrange, mode=mode
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-  params = dblarr(2,1)
+  params = dblarr(4,1)
   openr,1,'params.dat'
   readf,1,params
   close,1
   nz      = fix(params(0,0))
   smallhg = params(1,0)
+  kx      = params(2,0)
+  Hd      = params(3,0)
+
 
   nmodes       = file_lines('eigenvalues.dat')
   eigenvalues  = dblarr(2,nmodes)
@@ -155,11 +158,11 @@ pro result, xrange=xrange, yrange=yrange, mode=mode
   vh   = sqrt(abs(vx)^2.+abs(vy)^2.) 
   vmeri2 = abs(vz)^2. + abs(vx)^2.
 
-  bigW  *= conj(bigW(nz-1))
-  dfrac *= conj(dfrac(nz-1))
-  vx    *= conj(vx(nz-1)) 
-  vy    *= conj(vy(nz-1))
-  vz    *= conj(vz(nz-1))
+  ;; bigW  *= conj(bigW(nz-1))
+  ;; dfrac *= conj(dfrac(nz-1))
+  ;; vx    *= conj(vx(nz-1)) 
+  ;; vy    *= conj(vy(nz-1))
+  ;; vz    *= conj(vz(nz-1))
 
   bigW   /= max(abs(bigW))
   dfrac  /= max(abs(dfrac))

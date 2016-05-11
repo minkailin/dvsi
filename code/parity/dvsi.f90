@@ -58,7 +58,7 @@ program dvsi
   close(7)
 
   open(10,file='params.dat') 
-  write(10,fmt='(2(e22.15,x))'), dble(nz), smallh_g 
+  write(10,fmt='(4(e22.15,x))'), dble(nz), smallh_g, krad, Hd
   close(10)
 
   !check we have odd grid points so one grid point coincides with midplane 
@@ -342,12 +342,6 @@ subroutine fill_bigmatrix(knum)
 
 
 
-
-
-
-
-
-
   !fill big matrices 
   ibeg = 1
   iend = nz
@@ -428,11 +422,16 @@ subroutine eigenvalue_problem
   integer :: i, j, info, loc(1), cnt 
   integer :: lwork 
   complex*16, allocatable :: work(:)
-  complex*16 :: apha(bignz), bta(bignz), eigen(bignz), dP(nz), ddP(nz), dbigW(nz), ddfrac(nz) 
+  complex*16 :: apha(bignz), bta(bignz), eigen(bignz), bigQ(nz), dbigQ(nz), d2bigQ(nz), dbigW(nz), dvz(nz)
+  complex*16 :: err1(nz), err2(nz), err3(nz), err4(nz), err5(nz)
+  complex*16 :: dFx(nz), dFz(nz), ddivF(nz), ep(nz), depdx(nz), depdz(nz), dC(nz), divv(nz)
   complex*16 :: vl(bignz,bignz), vr(bignz,bignz)
-  real*8, parameter :: min_rate = 1d-6, max_eigen = 1d0 
+  real*8, parameter :: min_rate = 1d-6  
   real*8 :: rwork(8*bignz), eigen_re, eigen_im, eigen_mag, vz_max, error_in, error_out 
+  real*8 :: kx
   
+  kx = krad/Hd 
+
   lwork = 4*bignz
   allocate(work(lwork))
 
@@ -443,11 +442,11 @@ subroutine eigenvalue_problem
 
   !compute eigenvalues, output data 
 
-  bc_tol = 1d-4 
-
-
   open(20,file='eigenvalues.dat')
   open(30,file='eigenvectors.dat')
+  open(40,file='error.dat')
+  open(50,file='nonadia.dat')
+  
   cnt = 0 
   do i=1, bignz
      eigen(i) = apha(i)/bta(i)
@@ -456,31 +455,71 @@ subroutine eigenvalue_problem
      eigen_mag= sqrt(eigen_re**2d0 + eigen_im**2d0)     
 
      !filter out modes that grow too slow or too fast 
-     if((eigen_re.ge.min_rate).and.(eigen_re.lt.max_rate).and.(eigen_mag.lt.max_eigen)) then 
+     if((eigen_re.ge.min_rate).and.(eigen_mag.lt.max_rate)) then 
         
-
         bigW  = matmul(T_odd,vr(1:nz,i))
-        dP    = matmul(T_odd,vr(nz+1:2*nz,i)) !this is actually dP/rho 
+        dbigW = matmul(Tp_odd,vr(1:nz,i))
+        bigQ  = matmul(T_odd,vr(nz+1:2*nz,i)) !this is actually dP/rho 
+        dbigQ = matmul(Tp_odd,vr(nz+1:2*nz,i))
+        d2bigQ= matmul(Tpp_odd,vr(nz+1:2*nz,i))
         vx    = matmul(T_odd,vr(2*nz+1:3*nz,i))
         vy    = matmul(T_odd,vr(3*nz+1:4*nz,i))
         vz    = matmul(T,vr(4*nz+1:bignz,i))
+        dvz   = matmul(Tp,vr(4*nz+1:bignz,i))
     
-        dfrac  = (1d0 - eps_arr)*bigW - dP
-     
-!!$        !test BC 
-!        vz_max = maxval(abs(dfrac))
-!        error_out  = abs(dfrac(nz))/vz_max 
-!        error_in   = abs(dfrac(1))/vz_max 
-
-!        if((error_out.lt.bc_tol).and.(error_in.lt.bc_tol)) then 
+        dfrac  = (1d0 - eps_arr)*bigW - bigQ
+ 
         cnt = cnt + 1
         write(20,fmt='(2(e22.15,x))'), eigen_re, eigen_im   
         do j=1,nz
            write(30,fmt='(10(e22.15,x))') dble(bigW(j)), dimag(bigW(j)), dble(dfrac(j)), dimag(dfrac(j)), & 
                                           dble(vx(j)), dimag(vx(j)), dble(vy(j)), dimag(vy(j)), dble(vz(j)), dimag(vz(j))
         enddo
-!        endif 
+ 
 
+        !error tests 
+        !mass 
+        err1 = eigen(i)*bigW + (ii*kx + dlnrhodr_arr)*vx + dlnrhodz_arr*vz + dvz
+        err1 = err1/(eigen(i)*bigW(nz))
+        !vx 
+        dFx  = -bigW*Fr_arr - ii*kx*bigQ 
+        err2 = eigen(i)*vx - 2d0*omega_arr*vy - dFx
+        err2 = err2/(eigen(i)*vx(nz))
+        !vy 
+        err3 = eigen(i)*vy + (kappa2_arr*vx + vshear_arr*vz)/(2d0*omega_arr)
+        err3 = err3/(eigen(i)*vy(nz))
+        !vz
+        dFz  = -bigW*Fz_arr - (dbigQ + bigQ*dlnrhodz_arr)
+        err4 = eigen(i)*vz - dFz 
+        err4 = err4/(eigen(i)*vz(nzmid))
+        !energy
+        ep   = (1d0 - eps_arr)*bigW - bigQ
+        depdx= ((1d0-eps_arr)*(ii*kx-dlnrhodr_arr)-depsdr_arr)*bigW + (smallh_g*smallq + dlnrhodr_arr - ii*kx)*bigQ
+        depdz= (1d0 - eps_arr)*dbigW - depsdz_arr*bigW - dbigQ
+        ddivF= ((dlnrhodr_arr - ii*kx)*Fr_arr - divF_arr + 1d0)*bigW + (ii*kx*dlnrhodr_arr+kx*kx)*bigQ + eigen(i)*dvz
+
+!        ddivF = Fr_arr*(dlnrhodr_arr - ii*kx)*bigW - Fz_arr*dbigW - bigW*divF_arr + ii*kx*bigQ*dlnrhodr_arr &
+!             +dlnrhodz_arr*(dbigQ + bigQ*dlnrhodz_arr) + kx*kx*bigQ &
+!             -(d2bigQ + 2d0*dbigQ*dlnrhodz_arr + bigQ*(d2lnrhodz2_arr + dlnrhodz_arr**2d0))
+
+        dC   = Fr_arr*depdx + Fz_arr*depdz + dFx*depsdr_arr + dFz*depsdz_arr + ep*divF_arr + eps_arr*ddivF
+        dC   = dC - 0.5d0*smallh_g*smallq*(Fr_arr*ep + eps_arr*dFx)
+        dC   = -tstop_arr*dC 
+        
+        err5 = eigen(i)*bigQ + (1d0-eps_arr)*(ii*kx*vx + dvz) - vx*Fr_arr - vz*Fz_arr - (1d0-eps_arr)*vx*smallh_g*smallq
+        err5 = err5 - dC 
+        err5 = err5/(eigen(i)*bigQ(nz))
+
+        do j=1,nz
+           write(40,fmt='(5(e22.15,x))') abs(err1(j)),  abs(err2(j)),  abs(err3(j)),  abs(err4(j)), abs(err5(j))
+        enddo
+
+        !nonadiabatic term
+        divv = ii*kx*vx + dvz
+        do j=1,nz
+           write(50,fmt='(4(e22.15,x))') dble(divv(j)), dimag(divv(j)), dble(dC(j)), dimag(dC(j))
+        enddo
+        
      endif
   enddo
 
@@ -488,4 +527,7 @@ subroutine eigenvalue_problem
 
   close(20)
   close(30)
+  close(40)
+  close(50)
+
 end subroutine eigenvalue_problem
