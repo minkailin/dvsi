@@ -1,0 +1,15 @@
+&params smallh_g    = 0.05	! aspect-ratio of gas layer 
+        rhog0_power =-1.5  	! power law for mid-plane gas density
+	smallq      =-1.0      	! power law for imposed radial temperature profile 
+        vstruct     = 'mlin'    ! vertical structure type: tl02 = takeuchi \& lin 2002; 'mlin': my eqm
+	Hd          = 0.99   	! characteristic dust layer thickness, in Hg 
+	dgrmin      = 1d-3  	! min dust to gas ratio at z=0 
+        dgrmax      = 1d0       ! max dust to gas ratio at z=0
+        ndgr        = 100        ! samples in dust to gas ratio 
+	smalld      = 0d0 	! negative of the radial power law for imposed dust-to-gas ratio profile	
+        tstop       = 0.0/      ! stopping time at the midplane 
+&grid   zmax        = 5.0       ! vertical domain size in Hg
+	nz          = 129  /    ! grid numbers = chebyshev resolution   
+&mode   kmin        = 5.        ! min radial wavenumber normalized by Hg
+        kmax        = 70.       ! max radial wavenumber normalized by Hg
+        nk          = 100      /  ! sample in k space 

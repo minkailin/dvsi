@@ -6,8 +6,11 @@ pro result2d, mode=mode, $
   ii = dcomplex(0d0, 1d0)
 
   if not keyword_set(title) then begin
-     title = '$\rho^{!X1/2}$'+'!X'
-     title+= '(' + '$\delta$' + '!X' + 'v' + '$_x$'+'!X, ' + '$\delta$' +'!Xv'+'$_z$'+'!X), '+'$\delta\epsilon$' + '!X'
+;     title = '$\rho^{!X1/2}$'+'!X'
+;     title+= '(' + '$\delta$' + '!X' + 'v' + '$_x$'+'!X, ' + '$\delta$' +'!Xv'+'$_z$'+'!X), '+'$\delta\epsilon$' + '!X'
+
+     title = '$\rho^{!X1/2}_{tot}$'+'!X'
+     title+= '(' + '$\delta$' + '!X' + 'v' + '$_x$'+'!X, ' + '$\delta$' +'!Xv'+'$_z$'+'!X), '+'$\delta$!X($\rho_{!Xdust}$!X/$\rho_{!Xtot}$!X)' +'!X'
      title = tex2idl(title)
   endif
   if not keyword_set(nx) then nx = 24
@@ -139,8 +142,12 @@ pro result2d, mode=mode, $
   eps2d /= max(abs(eps2d))
   
 
-  xtitle = '!X'+ tex2idl('x/H'+'$_d$') + '!X'
-  ytitle = '!X'+ tex2idl('z/H'+'$_d$') + '!X'
+;  xtitle = '!X'+ tex2idl('x/H'+'$_d$') + '!X'
+;  ytitle = '!X'+ tex2idl('z/H'+'$_d$') + '!X'
+
+  
+  xtitle = '!X'+ tex2idl('x/H'+'$_{dust}$') + '!X'
+  ytitle = '!X'+ tex2idl('z/H'+'$_{dust}$') + '!X'
 
   loadct,3,/silent
   set_plot, 'ps'
@@ -148,7 +155,7 @@ pro result2d, mode=mode, $
           ,/color, bits_per_pixel=8,xsize=16, ysize=16
   
   levels = -1d0 + 2d0*dindgen(24)/23
-  contour, eps2d, xaxis_big, zaxis_big,/fill,levels=levels,title=tex2idl(title) $
+  contour, eps2d, xaxis_big, zaxis_big,/fill,levels=levels,title=textoidl(title) $
            ,ymargin=[4,2],xmargin=[6,8], charsize=2, xtickinterval=xtickinterval, ytickinterval=xtickinterval, $
            xrange=xrange, yrange=yrange, xstyle=1, ystyle=1, xtitle=xtitle, ytitle=ytitle
   colorbar, position=[0.8, 0.177, 0.85, 0.913],/vertical,/right,range=[-1,1],format='(f5.2)',CHARSIZE=2, text_color='k'

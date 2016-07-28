@@ -1,14 +1,16 @@
 module global
   implicit none 
+  character*4 :: vstruct 
   integer, parameter :: nvar = 5 
   real*8, parameter :: pi = 2d0*acos(0d0)
   complex*16, parameter :: ii = (0d0, 1d0), zero = (0d0, 0d0)
 
-  integer :: nz, bignz, Nzmid
-  real*8 :: smallh_g, rhog0_power, smallq, dgratio, delta, smalld, tstop, Hd
+  integer :: nz, bignz, Nzmid, nk, ndgr
+  real*8 :: smallh_g, rhog0_power, smallq, dgratio, delta, smalld, tstop, Hd, beta
   real*8 :: zmax 
-  real*8 :: dlnHg_dlnr
-  real*8 :: krad, bc_tol 
+  real*8 :: dlnHg_dlnr, dlogk, dlogdgr 
+  real*8 :: kmin, kmax, krad, dgrmin, dgrmax, bc_tol, growth, freq
+  real*8, allocatable :: kaxis(:), dgraxis(:), rates(:)
 
   real*8, allocatable :: zaxis(:), lnrho_arr(:), eps_arr(:), dlnrhodr_arr(:), depsdr_arr(:),dlnrhodz_arr(:), depsdz_arr(:) 
   real*8, allocatable :: del2lnrho_arr(:), del2eps_arr(:), dellnrho_dot_deleps_arr(:), tstop_arr(:), d2lnrhodz2_arr(:)
@@ -28,6 +30,8 @@ module global
   complex*16, allocatable :: R41(:,:), R42(:,:), R43(:,:), R44(:,:), R45(:,:) 
   complex*16, allocatable :: R51(:,:), R52(:,:), R53(:,:), R54(:,:), R55(:,:) 
   complex*16, allocatable :: bigW(:), dfrac(:), vx(:), vy(:), vz(:)
+  complex*16, allocatable :: err1(:), err2(:), err3(:), err4(:), err5(:)
+  complex*16, allocatable :: divv(:), dC(:)
 
   complex*16, allocatable :: bigmatrix_lhs(:,:)
   complex*16, allocatable :: bigmatrix_rhs(:,:)
@@ -38,16 +42,16 @@ end module global
 program dvsi
   use global
   implicit none 
-  integer :: i, j, k, lmax 
+  integer :: i, j, k, lmax, loc(1) 
   real*8 :: z, zbar, m, T_l, Tp_l, Tpp_l, dT_l, d2T_l
   real*8, external  :: lnrho, eps, dlnrho_dr, deps_dr, dlnrho_dz, deps_dz
   real*8, external  :: del2_lnrho, del2_eps, del_lnrho_dot_del_eps, d2lnrho_dz2 
   real*8, external  :: rotation, kappa_sq, vertical_shear
   real*8, external  :: Fr, Fz, F_dot_deleps, div_F, F_dot_dellncs2, gr, gz
   real*8, external  :: stopping_time 
-  namelist /params/ smallh_g, rhog0_power, smallq, Hd, dgratio, smalld, tstop 
+  namelist /params/ smallh_g, rhog0_power, smallq, vstruct, Hd, dgrmin, dgrmax, ndgr, smalld, tstop 
   namelist /grid/ zmax, nz 
-  namelist /mode/ krad
+  namelist /mode/ kmin, kmax, nk 
 
   !read input parameters.
   open(7, file="input")
@@ -57,7 +61,7 @@ program dvsi
   close(7)
 
   open(10,file='params.dat') 
-  write(10,fmt='(5(e22.15,x))'), dble(nz), smallh_g, krad, Hd, smallq 
+  write(10,fmt='(5(e22.15,x))'), dble(nz), smallh_g, kmin, Hd, smallq 
   close(10)
 
   !check we have odd grid points so one grid point coincides with midplane 
@@ -71,9 +75,7 @@ program dvsi
   !calculate secondary parameters 
   bignz      = nvar*nz 
   dlnHg_dlnr = (3d0 + smallq)/2d0 
-  delta      = sqrt( 1d0/( 1d0/Hd**2d0 - 1d0 ) )
   
-
   !allocate physical array
   
   allocate(zaxis(nz))
@@ -97,59 +99,12 @@ program dvsi
   allocate(divF_arr(nz))
   allocate(F_dot_dellncs2_arr(nz))
 
-  !setup physical grid 
-  
-  lmax = nz-1
-  zaxis(Nzmid) = 0d0
-  do j=Nzmid+1, nz
-     zaxis(j) = -zmax*cos(pi*(j-1d0)/lmax)
-  enddo
-  do j=1, Nzmid-1
-     zaxis(j) = -zaxis(Nz - j + 1)
-  enddo
-  
-  do k=1, nz 
-     z = zaxis(k)
-     
-     lnrho_arr(k)               = lnrho(z)
-     dlnrhodr_arr(k)            = dlnrho_dr(z)
-     dlnrhodz_arr(k)            = dlnrho_dz(z)
-     d2lnrhodz2_arr(k)          = d2lnrho_dz2(z)
-     del2lnrho_arr(k)           = del2_lnrho(z)
-     
-     eps_arr(k)                 = eps(z)
-     depsdr_arr(k)              = deps_dr(z)
-     depsdz_arr(k)              = deps_dz(z)
-     del2eps_arr(k)             = del2_eps(z)
-
-     dellnrho_dot_deleps_arr(k) = del_lnrho_dot_del_eps(z)
-
-     tstop_arr(k)  = stopping_time(z)
-
-     omega_arr(k)  = rotation(z)  
-     kappa2_arr(k) = kappa_sq(z)
-     vshear_arr(k) = vertical_shear(z)
-
-     Fr_arr(k)              = Fr(z)
-     Fz_arr(k)              = Fz(z)
-     F_dot_deleps_arr(k)    = F_dot_deleps(z)
-     divF_arr(k)            = div_F(z)
-     F_dot_dellncs2_arr(k)  = F_dot_dellncs2(z) 
-  end do
-  
-  !output basic state 
-  open(10,file='basic.dat')
-  do k=1, nz
-     write(10,fmt='(7(e22.15,x))'), zaxis(k), lnrho_arr(k), eps_arr(k), &
-               tstop_arr(k), omega_arr(k)**2d0, kappa2_arr(k), vshear_arr(k) 
-  enddo
-  close(10)
-  
   !allocate matrices for eigenvalue problem 
   
   allocate(T(nz,nz))
   allocate(Tp(nz,nz))
   allocate(Tpp(nz,nz))
+  allocate(eigenvals(bignz))
   allocate(bigmatrix_rhs(bignz, bignz))
   allocate(bigmatrix_lhs(bignz, bignz))
 
@@ -171,6 +126,25 @@ program dvsi
   allocate(vy(nz))
   allocate(vz(nz))
 
+  allocate(err1(nz))
+  allocate(err2(nz))
+  allocate(err3(nz))
+  allocate(err4(nz))
+  allocate(err5(nz))
+
+  allocate(divv(nz))
+  allocate(dC(nz))
+
+  !setup physical grid   
+  lmax = nz-1
+  zaxis(Nzmid) = 0d0
+  do j=Nzmid+1, nz
+     zaxis(j) = -zmax*cos(pi*(j-1d0)/lmax)
+  enddo
+  do j=1, Nzmid-1
+     zaxis(j) = -zaxis(Nz - j + 1)
+  enddo
+  
   !chebyshev polynomials 
   do j=1, nz !jth physical grid
      zbar = zaxis(j)/zmax
@@ -182,11 +156,272 @@ program dvsi
         Tpp(j,k)= d2T_l/zmax**2d0   !convert to deriv wrt physical grid
      enddo
   enddo
- 
-  call fill_bigmatrix(krad)
-  call eigenvalue_problem
+
+  !set up k-axis (to max over)
+  allocate(kaxis(nk))
+  allocate(rates(nk))
+  dlogk = 0d0 
+  if(nk .gt. 1) dlogk = log10(kmax/kmin)/(nk - 1d0)!(kmax-kmin)/(nk-1d0)
+  do j=1, nk 
+     kaxis(j) = 10d0**(log10(kmin) + dlogk*(j-1d0))!kmin + dlogk*(j-1d0) 
+  enddo
+
+  !set up dgratio axis (output every result for every value)
+  allocate(dgraxis(ndgr))
+  dlogdgr = 0d0 
+  if(ndgr .gt. 1) dlogdgr = log10(dgrmax/dgrmin)/(ndgr - 1d0)
+  do j=1, ndgr 
+     dgraxis(j) = 10d0**(log10(dgrmin) + dlogdgr*(j-1d0))
+  enddo
+  
+  !eigenvalue problem for each dgratio 
+  open(10,file='basic.dat')
+  open(15,file='dgratio.dat')
+
+  open(20,file='eigenvalues.dat')
+  open(30,file='eigenvectors.dat')
+  open(40,file='error.dat')
+  open(50,file='nonadia.dat')
+
+  do j=1, ndgr  
+     
+     !calculate basic state 
+     
+     dgratio    = dgraxis(j) 
+
+     if (vstruct.eq.'mlin') then
+     if (Hd.ge.1d0) then
+     print*, 'Hd should be < 1'
+     stop
+     endif
+  delta = sqrt( 1d0/( 1d0/Hd**2d0 - 1d0 ) )
+  endif
+
+  if (vstruct.eq.'tl02') then 
+     if (Hd.ge.sqrt(2d0)) then
+     print*, 'Hd should be < sqrt(2)'
+     stop
+     endif
+  beta       = 1d0 - 0.5*Hd**2d0
+  beta       = beta/( exp(0.5*Hd**2d0) - 1d0)
+  beta       = sqrt(beta)
+  endif
+
+
+
+
+
+
+     do k=1, nz 
+        z = zaxis(k)
+        
+        lnrho_arr(k)               = lnrho(z)
+        dlnrhodr_arr(k)            = dlnrho_dr(z)
+        dlnrhodz_arr(k)            = dlnrho_dz(z)
+        d2lnrhodz2_arr(k)          = d2lnrho_dz2(z)
+        del2lnrho_arr(k)           = del2_lnrho(z)
+        
+        eps_arr(k)                 = eps(z)
+        depsdr_arr(k)              = deps_dr(z)
+        depsdz_arr(k)              = deps_dz(z)
+        del2eps_arr(k)             = del2_eps(z)
+        
+        dellnrho_dot_deleps_arr(k) = del_lnrho_dot_del_eps(z)
+        
+        tstop_arr(k)  = stopping_time(z)
+        
+        omega_arr(k)  = rotation(z)  
+        kappa2_arr(k) = kappa_sq(z)
+        vshear_arr(k) = vertical_shear(z)
+        
+        Fr_arr(k)              = Fr(z)
+        Fz_arr(k)              = Fz(z)
+        F_dot_deleps_arr(k)    = F_dot_deleps(z)
+        divF_arr(k)            = div_F(z)
+        F_dot_dellncs2_arr(k)  = F_dot_dellncs2(z) 
+
+        write(10,fmt='(7(e22.15,x))'), zaxis(k), lnrho_arr(k), eps_arr(k), tstop_arr(k), omega_arr(k)**2d0, kappa2_arr(k), vshear_arr(k)
+     end do
+    
+     !loop over k-space 
+     
+     do k=1, nk 
+        krad = kaxis(k)
+        
+        !find max rate for this k 
+        call fill_bigmatrix(krad)
+        call eigenvalue_problem
+        
+        rates(k) = growth
+     enddo
+
+     !max rate over k 
+     loc  = maxloc(rates)
+     krad = kaxis(loc(1))
+     
+     !eigenvalue problem again, but now for optimal k 
+     call fill_bigmatrix(krad)
+     call eigenvalue_problem
+      
+     write(15,fmt='(2(e22.15,x))'), dgratio, krad
+     write(20,fmt='(2(e22.15,x))'), growth, freq 
+     
+     do k=1,nz
+        write(30,fmt='(10(e22.15,x))') dble(bigW(k)), dimag(bigW(k)), dble(dfrac(k)), dimag(dfrac(k)), &
+             dble(vx(k)), dimag(vx(k)), dble(vy(k)), dimag(vy(k)), dble(vz(k)), dimag(vz(k))
+        
+        write(40,fmt='(5(e22.15,x))') abs(err1(k)),  abs(err2(k)), abs(err3(k)),  abs(err4(k)), abs(err5(k))
+        
+        write(50,fmt='(4(e22.15,x))') dble(divv(k)), dimag(divv(k)), dble(dC(k)), dimag(dC(k))
+     enddo
+
+     !print to screen
+
+     write(6 ,fmt='(4(e9.2,x))'), dgratio, krad, growth, freq 
+
+  enddo
+  
+  close(10)
+  close(15)
+  close(20)
+  close(30)
+  close(40)
+  close(50)
 
 end program dvsi
+
+
+subroutine eigenvalue_problem
+  use global
+  implicit none
+  character*1, parameter :: jobvl = 'N', jobvr='V'
+  integer :: i, j, info, loc(1), cnt 
+  integer :: lwork 
+  complex*16, allocatable :: work(:)
+  complex*16 :: apha(bignz), bta(bignz), eigen(bignz)
+  complex*16 :: vl(bignz,bignz), vr(bignz,bignz)
+  real*8, parameter :: min_rate = 1d-6, max_rate = 1d0, eigen_tol = 1d-2
+  real*8 :: rwork(8*bignz), eigen_re, eigen_im, eigen_mag, error 
+
+
+  lwork = 4*bignz
+  allocate(work(lwork))
+
+  !eigenvalue problem 
+  call zggev (jobvl, jobvr, bignz, bigmatrix_lhs, bignz, bigmatrix_rhs, bignz, apha, bta, VL, & 
+       bignz, VR, bignz, WORK, LWORK, RWORK, INFO) 
+  if(info .ne. 0 ) print*, 'eigen failed?', info
+
+  !compute and filter eigenvalues
+  
+  eigenvals(:) = (0d0, 0d0) 
+  
+  do i=1, bignz
+     eigen(i) = apha(i)/bta(i)
+     eigen_re = dble(eigen(i))
+     eigen_im = dimag(eigen(i))
+     eigen_mag= sqrt(eigen_re**2d0 + eigen_im**2d0)     
+
+     !filter out modes that grow too slow or too fast or too low frequency 
+     
+     if((eigen_re.ge.min_rate).and.(eigen_mag.lt.max_rate).and.(abs(eigen_im).gt.smallh_g)) then
+        
+        !compute eigenfunc in real space for error tests 
+        call get_eigenvec_real(i, eigen, vr, error)
+        
+        if(error.le.eigen_tol) then
+           eigenvals(i) = dcmplx(eigen_re, eigen_im)
+        endif
+        
+     endif
+  enddo
+  
+  !max over all modes, write out optimal eigenvec 
+  loc    = maxloc(dble(eigenvals))
+  i      = loc(1) 
+
+  growth = dble(eigenvals(i))
+  freq   = dimag(eigenvals(i)) 
+  call get_eigenvec_real(i, eigen, vr, error)
+  
+end subroutine eigenvalue_problem
+
+
+subroutine get_eigenvec_real(i, eigen, vright, error)
+  use global
+  implicit none
+  integer, intent(in) :: i
+  complex*16, intent(in) :: vright(bignz, bignz), eigen(bignz)
+  real*8, intent(out) :: error
+  complex*16 :: bigQ(nz), dbigQ(nz), d2bigQ(nz), dbigW(nz), dvz(nz)
+  complex*16 :: dFx(nz), dFz(nz), ddivF(nz), ep(nz), depdx(nz), depdz(nz) 
+  real*8 :: vhsq(nz), diffusion(nz), tgrad(nz)
+  real*8 :: lhs_int, rhs_int1, rhs_int2, sreal, eigen_re, eigen_im
+  real*8 :: kx
+  
+  kx = krad
+
+  eigen_re = dble(eigen(i))
+  eigen_im = dimag(eigen(i))
+
+  bigW  = matmul(T,vright(1:nz,i))
+  dbigW = matmul(Tp,vright(1:nz,i))
+  bigQ  = matmul(T,vright(nz+1:2*nz,i)) !this is actually dP/rho 
+  dbigQ = matmul(Tp,vright(nz+1:2*nz,i))
+  d2bigQ= matmul(Tpp,vright(nz+1:2*nz,i))
+  vx    = matmul(T,vright(2*nz+1:3*nz,i))
+  vy    = matmul(T,vright(3*nz+1:4*nz,i))
+  vz    = matmul(T,vright(4*nz+1:bignz,i))
+  dvz   = matmul(Tp,vright(4*nz+1:bignz,i))
+  
+  dfrac  = (1d0 - eps_arr)*bigW - bigQ
+  
+  !error tests 
+  !mass 
+  err1 = eigen(i)*bigW + (ii*kx + dlnrhodr_arr)*vx + dlnrhodz_arr*vz + dvz
+  err1 = err1/(eigen(i)*bigW(nz))
+  !vx 
+  dFx  = -bigW*Fr_arr - ii*kx*bigQ 
+  err2 = eigen(i)*vx - 2d0*omega_arr*vy - dFx
+  err2 = err2/(eigen(i)*vx(nz))
+  !vy 
+  err3 = eigen(i)*vy + (kappa2_arr*vx + vshear_arr*vz)/(2d0*omega_arr)
+  err3 = err3/(eigen(i)*vy(nz))
+  !vz
+  dFz  = -bigW*Fz_arr - (dbigQ + bigQ*dlnrhodz_arr)
+  err4 = eigen(i)*vz - dFz 
+  err4 = err4/(eigen(i)*vz(nzmid))
+  !energy
+  ep   = (1d0 - eps_arr)*bigW - bigQ
+  depdx= ((1d0-eps_arr)*(ii*kx-dlnrhodr_arr)-depsdr_arr)*bigW + (smallh_g*smallq + dlnrhodr_arr - ii*kx)*bigQ
+  depdz= (1d0 - eps_arr)*dbigW - depsdz_arr*bigW - dbigQ
+  ddivF= ((dlnrhodr_arr - ii*kx)*Fr_arr - divF_arr + 1d0)*bigW + (ii*kx*dlnrhodr_arr+kx*kx)*bigQ + eigen(i)*dvz
+  
+  dC   = Fr_arr*depdx + Fz_arr*depdz + dFx*depsdr_arr + dFz*depsdz_arr + ep*divF_arr + eps_arr*ddivF
+  dC   = dC - 0.5d0*smallh_g*smallq*(Fr_arr*ep + eps_arr*dFx)
+  dC   = -tstop_arr*dC 
+  
+  err5 = eigen(i)*bigQ + (1d0-eps_arr)*(ii*kx*vx + dvz) - vx*Fr_arr - vz*Fz_arr - (1d0-eps_arr)*vx*smallh_g*smallq
+  err5 = err5 - dC 
+  err5 = err5/(eigen(i)*bigQ(nz))
+  
+  !nonadiabatic term
+  divv = ii*kx*vx + dvz
+  
+  vhsq = exp(lnrho_arr)*(abs(vx)**2d0+abs(vz)**2d0)
+  call cubint (nz, zaxis, vhsq, 1, nz, lhs_int, error)
+  
+  diffusion = dimag( conjg(divv)*dC )*exp(lnrho_arr)
+  call cubint (nz, zaxis, diffusion, 1, nz, rhs_int2, error)
+  
+  tgrad     = dimag( (1d0-eps_arr)*conjg(divv)*vx*smallh_g*smallq)*exp(lnrho_arr)
+  call cubint (nz, zaxis, tgrad, 1, nz, rhs_int1, error)
+  
+  sreal = (rhs_int1 + rhs_int2)/(2d0*eigen_im*lhs_int)
+  
+  error = abs((sreal - eigen_re)/eigen_re)
+  
+end subroutine get_eigenvec_real
 
 subroutine fill_bigmatrix(knum)
   use global
@@ -198,7 +433,7 @@ subroutine fill_bigmatrix(knum)
 
   !convert k to code units (in Hgas, input is in H_dust) 
 
-  kx = knum/Hd 
+  kx = knum 
 
   !fill sub-matrices 
   do i=1, nz 
@@ -247,7 +482,7 @@ subroutine fill_bigmatrix(knum)
           ) &
           - depsdr_arr(i)*ii*kx*T(i,:) &
           - depsdz_arr(i)*( Tp(i,:) + dlnrhodz_arr(i)*T(i,:) ) &
-          - divF_arr(i)*T(i,:) & 
+         - divF_arr(i)*T(i,:) & 
           + eps_arr(i)*(&
           ii*kx*dlnrhodr_arr(i)*T(i,:) + dlnrhodz_arr(i)*( Tp(i,:) + dlnrhodz_arr(i)*T(i,:) ) &
           + kx*kx*T(i,:) &
@@ -324,52 +559,6 @@ subroutine fill_bigmatrix(knum)
      R55(i,:) = zero 
   enddo
 
-!!$  !deps = 0 
-!!$  do i = 1, nz, nz-1 
-!!$     L21(i,:) = (1d0 - eps_arr(i))*T(i,:)
-!!$     L22(i,:) =-T(i,:)
-!!$     L23(i,:) = zero 
-!!$     L24(i,:) = zero 
-!!$     L25(i,:) = zero
-!!$     
-!!$     R21(i,:) = zero 
-!!$     R22(i,:) = zero 
-!!$     R23(i,:) = zero 
-!!$     R24(i,:) = zero
-!!$     R25(i,:) = zero 
-!!$  enddo
-
-  !DeltaP = 0 
-!!$  do i = 1, nz, nz-1 
-!!$     L21(i,:) = zero 
-!!$     L22(i,:) = zero 
-!!$     L23(i,:) = T(i,:)*Fr_arr(i)
-!!$     L24(i,:) = zero 
-!!$     L25(i,:) = T(i,:)*Fz_arr(i)
-!!$     
-!!$     R21(i,:) = zero 
-!!$     R22(i,:) = T(i,:)
-!!$     R23(i,:) = zero 
-!!$     R24(i,:) = zero
-!!$     R25(i,:) = zero 
-!!$  enddo
-
-  !no vertical flux in energy eq
-!!$    do i = 1, nz, nz-1 
-!!$     L21(i,:) = (1d0 - 2d0*eps_arr(i))*Fz_arr(i)*T(i,:)
-!!$     L22(i,:) = -eps_arr(i)*Tp(i,:) - (Fz_arr(i)+eps_arr(i)*dlnrhodz_arr(i))*T(i,:)
-!!$     L23(i,:) = zero
-!!$     L24(i,:) = zero 
-!!$     L25(i,:) = zero
-!!$     
-!!$     R21(i,:) = zero 
-!!$     R22(i,:) = zero
-!!$     R23(i,:) = zero 
-!!$     R24(i,:) = zero
-!!$     R25(i,:) = zero 
-!!$  enddo
-
-!note: no lag pert in rhod give crazy results 
   
   !fill big matrices 
   ibeg = 1
@@ -444,119 +633,4 @@ subroutine fill_bigmatrix(knum)
   
 end subroutine fill_bigmatrix
 
-subroutine eigenvalue_problem
-  use global
-  implicit none
-  character*1, parameter :: jobvl = 'N', jobvr='V'
-  integer :: i, j, info, loc(1), cnt 
-  integer :: lwork 
-  complex*16, allocatable :: work(:)
-  complex*16 :: apha(bignz), bta(bignz), eigen(bignz), bigQ(nz), dbigQ(nz), d2bigQ(nz), dbigW(nz), dvz(nz)
-  complex*16 :: err1(nz), err2(nz), err3(nz), err4(nz), err5(nz)
-  complex*16 :: dFx(nz), dFz(nz), ddivF(nz), ep(nz), depdx(nz), depdz(nz), dC(nz), divv(nz)
-  complex*16 :: vl(bignz,bignz), vr(bignz,bignz)
-  real*8, parameter :: min_rate = 1d-6, max_rate = 1d0 
-  real*8 :: rwork(8*bignz), eigen_re, eigen_im, eigen_mag, vz_max, error_in, error_out 
-  real*8 :: kx
-  
-  kx = krad/Hd 
 
-  lwork = 4*bignz
-  allocate(work(lwork))
-
-  !eigenvalue problem 
-  call zggev (jobvl, jobvr, bignz, bigmatrix_lhs, bignz, bigmatrix_rhs, bignz, apha, bta, VL, & 
-       bignz, VR, bignz, WORK, LWORK, RWORK, INFO) 
-  if(info .ne. 0 ) print*, 'eigen failed?', info
-
-  !compute eigenvalues, output data 
-
-  open(20,file='eigenvalues.dat')
-  open(30,file='eigenvectors.dat')
-  open(40,file='error.dat')
-  open(50,file='nonadia.dat')
-  
-  cnt = 0 
-  do i=1, bignz
-     eigen(i) = apha(i)/bta(i)
-     eigen_re = dble(eigen(i))
-     eigen_im = dimag(eigen(i))
-     eigen_mag= sqrt(eigen_re**2d0 + eigen_im**2d0)     
-
-     !filter out modes that grow too slow or too fast 
-     if((eigen_re.ge.min_rate).and.(eigen_mag.lt.max_rate)) then 
-        
-        bigW  = matmul(T,vr(1:nz,i))
-        dbigW = matmul(Tp,vr(1:nz,i))
-        bigQ  = matmul(T,vr(nz+1:2*nz,i)) !this is actually dP/rho 
-        dbigQ = matmul(Tp,vr(nz+1:2*nz,i))
-        d2bigQ= matmul(Tpp,vr(nz+1:2*nz,i))
-        vx    = matmul(T,vr(2*nz+1:3*nz,i))
-        vy    = matmul(T,vr(3*nz+1:4*nz,i))
-        vz    = matmul(T,vr(4*nz+1:bignz,i))
-        dvz   = matmul(Tp,vr(4*nz+1:bignz,i))
-    
-        dfrac  = (1d0 - eps_arr)*bigW - bigQ
- 
-        cnt = cnt + 1
-        write(20,fmt='(2(e22.15,x))'), eigen_re, eigen_im   
-        do j=1,nz
-           write(30,fmt='(10(e22.15,x))') dble(bigW(j)), dimag(bigW(j)), dble(dfrac(j)), dimag(dfrac(j)), & 
-                                          dble(vx(j)), dimag(vx(j)), dble(vy(j)), dimag(vy(j)), dble(vz(j)), dimag(vz(j))
-        enddo
- 
-
-        !error tests 
-        !mass 
-        err1 = eigen(i)*bigW + (ii*kx + dlnrhodr_arr)*vx + dlnrhodz_arr*vz + dvz
-        err1 = err1/(eigen(i)*bigW(nz))
-        !vx 
-        dFx  = -bigW*Fr_arr - ii*kx*bigQ 
-        err2 = eigen(i)*vx - 2d0*omega_arr*vy - dFx
-        err2 = err2/(eigen(i)*vx(nz))
-        !vy 
-        err3 = eigen(i)*vy + (kappa2_arr*vx + vshear_arr*vz)/(2d0*omega_arr)
-        err3 = err3/(eigen(i)*vy(nz))
-        !vz
-        dFz  = -bigW*Fz_arr - (dbigQ + bigQ*dlnrhodz_arr)
-        err4 = eigen(i)*vz - dFz 
-        err4 = err4/(eigen(i)*vz(nzmid))
-        !energy
-        ep   = (1d0 - eps_arr)*bigW - bigQ
-        depdx= ((1d0-eps_arr)*(ii*kx-dlnrhodr_arr)-depsdr_arr)*bigW + (smallh_g*smallq + dlnrhodr_arr - ii*kx)*bigQ
-        depdz= (1d0 - eps_arr)*dbigW - depsdz_arr*bigW - dbigQ
-        ddivF= ((dlnrhodr_arr - ii*kx)*Fr_arr - divF_arr + 1d0)*bigW + (ii*kx*dlnrhodr_arr+kx*kx)*bigQ + eigen(i)*dvz
-
-!        ddivF = Fr_arr*(dlnrhodr_arr - ii*kx)*bigW - Fz_arr*dbigW - bigW*divF_arr + ii*kx*bigQ*dlnrhodr_arr &
-!             +dlnrhodz_arr*(dbigQ + bigQ*dlnrhodz_arr) + kx*kx*bigQ &
-!             -(d2bigQ + 2d0*dbigQ*dlnrhodz_arr + bigQ*(d2lnrhodz2_arr + dlnrhodz_arr**2d0))
-
-        dC   = Fr_arr*depdx + Fz_arr*depdz + dFx*depsdr_arr + dFz*depsdz_arr + ep*divF_arr + eps_arr*ddivF
-        dC   = dC - 0.5d0*smallh_g*smallq*(Fr_arr*ep + eps_arr*dFx)
-        dC   = -tstop_arr*dC 
-        
-        err5 = eigen(i)*bigQ + (1d0-eps_arr)*(ii*kx*vx + dvz) - vx*Fr_arr - vz*Fz_arr - (1d0-eps_arr)*vx*smallh_g*smallq
-        err5 = err5 - dC 
-        err5 = err5/(eigen(i)*bigQ(nz))
-
-        do j=1,nz
-           write(40,fmt='(5(e22.15,x))') abs(err1(j)),  abs(err2(j)),  abs(err3(j)),  abs(err4(j)), abs(err5(j))
-        enddo
-
-        !nonadiabatic term
-        divv = ii*kx*vx + dvz
-        do j=1,nz
-           write(50,fmt='(4(e22.15,x))') dble(divv(j)), dimag(divv(j)), dble(dC(j)), dimag(dC(j))
-        enddo
-        
-     endif
-  enddo
-
-  print*, 'found', cnt, 'modes' 
-
-  close(20)
-  close(30)
-  close(40)
-  close(50)
-
-end subroutine eigenvalue_problem

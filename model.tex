@@ -51,7 +51,7 @@ where $c_s$ is a prescribed sound-speed profile fixed in time.
 %$c_s(r,z)$. 
 In numerical calculations we will consider vertically  
 isothermal disks with 
-\begin{align}
+\begin{align}\label{power_temp}
   c_s^2(r) \propto r^{q},
 \end{align}
 where $q$ is the power-law index for the disk temperature. 
@@ -108,16 +108,15 @@ can be neglected, then one may just solve
 Eq. \ref{steady_momr}---\ref{steady_momz} with a prescribed (initial)
 distribution of the dust fraction $\epsilon(r,z)$. 
 
-\subsection{Disk structure with a prescribed dust distribution} 
+\subsection{Disk structure with a prescribed dust distribution}\label{steady_state}  
 We assume a Gaussian profile in the dust-to-gas ratio, 
 \begin{align}\label{dust_gauss}
-  \tepsilon(r,z) = \tepsilon_0
-  \exp{\left(-\frac{z^2}{2\widetilde{H}^2}\right)}. 
+  \tepsilon(r,z) = \tepsilon_0(r)
+  \exp{\left[-\frac{z^2}{2\widetilde{H}^2(r)}\right]}. 
 \end{align}
-For simplicity we assume the dust-to-gas ratio at the mid-plane
-$\tepsilon_0$, as well as its characteristic scale-height
-$\widetilde{H}$, are both constant.
-
+%For simplicity we assume the dust-to-gas ratio at the mid-plane
+%$\tepsilon_0$, as well as its characteristic scale-height
+%$\widetilde{H}$, are both constant.
 % We take the mid-plane dust-to-gas ratio
 %to be a power-law in radius,  
 %\begin{align}
@@ -125,7 +124,6 @@ $\widetilde{H}$, are both constant.
 %\end{align}
 %where $\tepsilon_{00}$ is the dust-to-gas ratio at the fiducial radius
 %$r_0$.  
-
 Inserting Eq. \ref{dust_gauss} into vertical hydrostatic equilibrium,
 Eq. \ref{steady_momz} and integrating with the approximate
 gravitational potential (Eq. \ref{thin_disk_potential}) we obtain the
@@ -187,6 +185,45 @@ where
    s \equiv \ln \frac{P}{\rho} = \ln{\left[c_s^2(1-\epsilon)\right]} 
 \end{align}
 is a pseudo-entropy for the mixture. 
+
+Writing Eq. \ref{vshear} in terms of the gas density and dust-to-gas
+ratio with a power-law temperature profil (Eq. \ref{power_temp}) e gives 
+\begin{align*}
+  &r\frac{\p \Omega^2}{\p z}  =
+  \frac{c_s^2(r)}{\left(1+\tepsilon\right)^2}\left\{
+  \frac{\p\tepsilon}{\p r}\frac{\p\ln{\rhog}}{\p z}
+  -\frac{\p\tepsilon}{\p z}\frac{\p\ln{\rhog}}{\p r}\right.\notag\\
+  &\phantom{ r\frac{\p \Omega^2}{\p z}  =
+    \frac{c_s^2(r)}{\left(1+\tepsilon\right)^2}\left\{\right\} }
+  \left. +\frac{q}{r}\left[\frac{\p\tepsilon}{\p z} + \left(1+\tepsilon\right)\frac{\p\ln{\rhog}}{\p z}\right]
+  \right\} 
+\end{align*}
+The first two terms correspond to vertical shear caused by spatial
+variations in the dust-to-gas ratio; while the second term
+proportional to $q$ corresponds to vertical shear due to the 
+radial temperature gradient.
+
+We can compare these sources by
+evaluating them, to order-of-magnitude, using the equilibrium
+solutions in \S\ref{steady_state}. We assume the disk is radially
+smooth so that $\p_r\sim 1/r$, and the dust-to-gas ratio
+$\tepsilon\ll1$. This gives 
+
+\begin{align}\label{vshear_split}
+  \mathcal{V} =  \frac{\left|r\p_z\Omega\right|_{\text{
+        dust/gas gradient}}}{\left|r\p_z\Omega\right|_{\text{
+        temp. gradient}}} \sim
+  \tepsilon \frac{\mathrm{max}\left(\delta^2,
+    1\right)}{\left|q\right|\left(\tepsilon + \delta^2\right)},
+\end{align}
+where $\delta\equiv \Htilde/\Hgas$. 
+Since $|q|=O(1)$ in PPDs, Eq. \ref{vshear_split} indicates that
+vertical shear due to variations in the dust-to-gas ratio can be at
+most comparable to that due to the radial temperature gradient; and
+this only occurs for thin dust layers with $\delta^2\ll \tepsilon$ (so
+that $\mathcal{V}\sim 1/|q|$). Otherwise, vertical shear is
+predominantly due to $\p_rc_s^2$. 
+
 
 \section{Limiting behaviours}
 

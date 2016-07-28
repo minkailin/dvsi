@@ -3,29 +3,92 @@ FUNCTION logticks_exp, axis, index, value
    exponent   = LONG( ALOG10( value ) )
    ; Construct the tickmark string based on the exponent
 ;   tickmark = '10!E' + STRTRIM( STRING( exponent ), 2 ) + '!N'
-   exponent = STRTRIM( STRING( exponent ), 2 )
-   tickmark = tex2idl('10$^!X' +exponent+'}$') + '!X'
+    tickmark = textoidl('10^{' + STRTRIM( STRING( exponent ), 2 )+'}')
    ; Return the formatted tickmark string
    RETURN, tickmark
 END
 
-pro result, xrange=xrange, yrange=yrange, mode=mode 
+pro result, xrange=xrange, yrange=yrange, mode = mode 
 
   !p.font = 0 
+  
+  params = dblarr(5,1)
+  openr,1,'params.dat'
+  readf,1,params
+  close,1
 
-  nz    = file_lines('basic.dat')
-  basic = dblarr(7,nz)
+  nz       = fix(params(0,0))
+  smallhg  = params(1,0)
+  kmin     = params(2,0)
+  Hd       = params(3,0)
+  smallq   = params(4,0) 
+  
+  nmodes       = file_lines('eigenvalues.dat')
+  eigenvalues  = dblarr(2,nmodes)
+  openr,1,'eigenvalues.dat'
+  readf,1,eigenvalues
+  close,1
+  
+  growth = eigenvalues(0,*)/smallhg
+  freq   = eigenvalues(1,*)/smallhg
+
+  array = dblarr(2, nmodes)
+  openr,1,'dgratio.dat'
+  readf,1, array
+  close,1
+  dgratio_mid = array(0,*)
+
+  kaxis       = array(1,*)
+
+  ytitle  = tex2idl('$s_{max}/(h$'+'!X'+'$_g$'+'!X'+'$\Omega$'+'$_K)$') + '!X'
+  xtitle  = tex2idl('$\rho$!X$_d$!X$/\rho$!X$_g$')+'!X'+' at z=0'
+
+  loadct,5,/silent
+
+  set_plot, 'ps'
+  device, filename='eigenvalues.ps' $
+         ,bits_per_pixel=8,xsize=8, ysize=4.5,xoffset=0,yoffset=0,/inches
+;          ,/color, bits_per_pixel=8,xsize=28.44444, ysize=16
+  plot,  dgratio_mid, growth, xmargin=[8,2],ymargin=[3.5,0.5], ystyle=1  $
+        ,charsize=2, thick=4, psym=2, symsize=2, xrange=xrange, yrange=yrange $
+        , xtitle=xtitle, ytitle=ytitle $
+        ,ytickinterval=ytickinterval  $
+        ,xtickinterval=xtickinterval, xstyle=1, /xlog, xtickformat='logticks_exp'
+
+  device,/close
+
+  ytitle  = tex2idl('$k$!X$_{opt}$!XH$_g$') + '!X'
+  set_plot, 'ps'
+  device, filename='eigenvalues_kopt.ps' $
+         ,bits_per_pixel=8,xsize=8, ysize=4.5,xoffset=0,yoffset=0,/inches
+;          ,/color, bits_per_pixel=8,xsize=28.44444, ysize=16
+  plot,  dgratio_mid, kaxis, xmargin=[8,2],ymargin=[3.5,0.5], ystyle=1  $
+        ,charsize=2, thick=4, psym=2, symsize=2, xrange=xrange, yrange=yrange $
+        , xtitle=xtitle, ytitle=ytitle $
+        ,ytickinterval=ytickinterval  $
+        ,xtickinterval=xtickinterval, xstyle=1, /xlog, xtickformat='logticks_exp'
+
+  device,/close
+
+  basic = dblarr(7,nz*nmodes)
   openr,1,'basic.dat'
   readf,1,basic
   close,1
 
-  zaxis  = basic(0,*) 
-  lnrho = basic(1,*)
-  eps    = basic(2,*)
-  tstop  = basic(3,*)	
-  omega2 = basic(4,*)
-  kappa2 = basic(5,*)
-  vshear = basic(6,*)
+ ;pick a mode to plot 
+  
+  if not keyword_set(mode) then mode = 1
+
+  ibeg = nz*(mode-1)
+  iend = ibeg + nz - 1 
+
+  zaxis  = basic(0,ibeg:iend) 
+  lnrho  = basic(1,ibeg:iend)
+  eps    = basic(2,ibeg:iend)
+  tstop  = basic(3,ibeg:iend)	
+  omega2 = basic(4,ibeg:iend)
+  kappa2 = basic(5,ibeg:iend)
+  vshear = basic(6,ibeg:iend)
 
   lnrhog  = lnrho + alog(1d0 - eps) 
   dgratio = eps/(1d0 - eps) 
@@ -42,7 +105,7 @@ pro result, xrange=xrange, yrange=yrange, mode=mode
         ,xtickinterval=xtickinterval, xstyle=1
   device,/close	
 
-   ytitle  = tex2idl('$10^3(\kappa^2/\Omega^2 - 1)$') + '!X'
+  ytitle  = tex2idl('$10^3(\kappa^2/\Omega^2 - 1)$') + '!X'
   set_plot, 'ps'
   device, filename='kappa2.ps' $
           ,bits_per_pixel=8,xsize=8, ysize=4.5,xoffset=0,yoffset=0,/inches
@@ -86,69 +149,19 @@ pro result, xrange=xrange, yrange=yrange, mode=mode
         ,xtickinterval=xtickinterval, xstyle=1
   device,/close
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-  params = dblarr(5,1)
-  openr,1,'params.dat'
-  readf,1,params
-  close,1
-  nz      = fix(params(0,0))
-  smallhg = params(1,0)
-  kx      = params(2,0)
-  Hd      = params(3,0)
-  smallq  = params(4,0) 
-
-
-  nmodes       = file_lines('eigenvalues.dat')
-  eigenvalues  = dblarr(2,nmodes)
-  openr,1,'eigenvalues.dat'
-  readf,1,eigenvalues
-  close,1
   
-  growth = eigenvalues(0,*)/smallhg
-  freq   = eigenvalues(1,*)/smallhg
-
-  ytitle  = tex2idl('$s/(h$'+'!X'+'$_g$'+'!X'+'$\Omega$'+'$_K)$') + '!X'
-  xtitle  = tex2idl('$\omega$'+'!X'+'$/(h$'+'!X'+'$_g$'+'!X'+'$\Omega$'+'$_K)$') + '!X'
-  set_plot, 'ps'
-  device, filename='eigenvalues.ps' $
-          ,bits_per_pixel=8,xsize=8, ysize=4.5,xoffset=0,yoffset=0,/inches
-  plot,  freq, growth,xmargin=[8.5,1.5],ymargin=[3.5,0.5], ystyle=2  $
-        ,charsize=2, thick=4, psym=2, symsize=1.5, xrange=xrange, yrange=yrange $
-        , xtitle=xtitle, ytitle=ytitle $
-        ,ytickinterval=ytickinterval  $
-        ,xtickinterval=xtickinterval, xstyle=2
-  device,/close
-
   nlines = nmodes*nz + 0L  
   eigenvectors  = dblarr(10,nlines)
   openr,1,'eigenvectors.dat'
   readf,1,eigenvectors 
   close,1
 
- 
+  nbeg = ibeg
+  nend = iend
 
-  if not keyword_set(mode) then begin
-  temp = max(growth, ngrid) 
-;  temp = min(abs(freq),ngrid)
-  mode = ngrid + 1 
-  endif else begin
-  if(n_elements(mode eq 1))then begin
-  ngrid = mode - 1 
-  endif else begin
-  rate_target = mode[0]
-  freq_target = mode[1]
-  eigen_target = dcomplex(rate_target, freq_target)
-  temp = min( abs(dcomplex(growth,freq)-eigen_target), ngrid )
-  mode = ngrid + 1 
-  endelse
-  endelse 
-  
+  print, 'mode no., growth, freq', mode, growth(mode-1), freq(mode-1)
 
-  print, 'mode no., growth, freq', mode, growth(ngrid), freq(ngrid)
-
-  nbeg = ngrid*nz 
-  nend = nbeg + nz - 1 
 
   bigW = dcomplex(eigenvectors(0, nbeg:nend), eigenvectors(1, nbeg:nend))
   dfrac= dcomplex(eigenvectors(2, nbeg:nend), eigenvectors(3, nbeg:nend))
@@ -202,19 +215,7 @@ pro result, xrange=xrange, yrange=yrange, mode=mode
   multiplot,/reset
   device,/close
   
-  
-
-
-
-
-  
-
-
-
-
-
-
-
+ 
   ytitle  = tex2idl('(|'+'$\delta$'+'!X'+'v'+'$_x$'+'!X'+'|'+'$^2$'+'+|'+'$\delta$'+'!X'+'v'+'$_y$'+'!X'+'|'+'$^2$'+')'+'$^{1/2}$'+'!X/|'+'$\delta$'+'!Xv'+'!X|') + '!X'
   set_plot, 'ps'
   device, filename='eigenvec_vh.ps' $
@@ -225,37 +226,6 @@ pro result, xrange=xrange, yrange=yrange, mode=mode
         ,ytickinterval=ytickinterval  $
         ,xtickinterval=xtickinterval, xstyle=1
   device,/close
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   err = dblarr(5, nlines)
   openr,1,'error.dat'
@@ -298,7 +268,7 @@ pro result, xrange=xrange, yrange=yrange, mode=mode
 
   result = int_tabulated(zaxis, integrand1 + integrand2)
 
-  result/=-2d0*eigenvalues(1,ngrid)*denom
+  result/=-2d0*eigenvalues(1,mode-1)*denom
 
   print, 'growth from int relation', result/smallhg
 
