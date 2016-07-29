@@ -72,9 +72,11 @@ then Eq. \ref{dusteq} becomes
   P\right].
 \end{align}
 Eq. \ref{eff_energy} is the energy equation for an ideal gas of adiabatic index
-$\gamma=1$, i.e. isothermal evolution, but now with additional source 
-terms due to the imposed temperature profile, as well as dust-gas
-friction.   
+$\gamma=1$, i.e. isothermal evolution, but now with additional energy source 
+terms due to the imposed temperature profile via $\nabla c_s^2$, as
+well as dust-gas drag via $\mathcal{C}$. 
+%In this form, the function $\mathcal{C}$ can be interpreted
+%as a cooling term.    
 
 Eq. \ref{eff_energy} can be written in conservative form,
 \begin{align*}
@@ -86,30 +88,47 @@ Eq. \ref{eff_energy} can be written in conservative form,
 \end{align*}
 We may thus re-interpret $P$ as the mixture's energy density, but the
 energy flux has an additional contribution from the pressure
-gradient. The term on the right-hand-side, owing to the imposed
+gradient and dust-gas friction. 
+The term on the right-hand-side, owing to the imposed
 temperature profile, can be interpreted as an external heat source. 
 
-\section{Equilibrium}\label{eqm}
-To obtain an axisymmetric steady state with $\rho(r,z)$ and 
-$\bm{v}=r\Omega(r,z)\hat{\bm{\phi}}$ where $\Omega = v_\phi/r$, 
-we need to solve 
+\section{Dynamical equilibria}\label{eqm}
+ 
+For a given distribution of the dust-fraction $\epsilon$ (or
+dust-to-gas ratio $\tepsilon$), the 
+mass and momentum Eqs. \ref{masseq}---\ref{momeq} admit     
+axisymmetric steady states with $\rho(r,z)$ and 
+$\bm{v}=r\Omega(r,z)\hat{\bm{\phi}}$ where $\Omega = v_\phi/r$, which satisfy 
 \begin{align}
   r\Omega^2 &= \frac{\p \Phi}{\p r} + \frac{1}{\rho}\frac{\p P}{\p
     r},\label{steady_momr}\\
-  0 & = \frac{\p\Phi}{\p z} + \frac{1}{\rho}\frac{\p P}{\p z},\label{steady_momz}\\
-  0 & = \nabla\cdot\left(\epsilon\tstop\nabla P\right) \label{steady_dust}
+  0 & = \frac{\p\Phi}{\p z} + \frac{1}{\rho}\frac{\p P}{\p z},\label{steady_momz}
+%  0 & = \nabla\cdot\left(\epsilon\tstop\nabla P\right) \label{steady_dust}
 \end{align}
-for $\rho$, $\Omega$ and $\epsilon$ with $P=P(\epsilon,\rho)$ given by
-the equation of state (Eq. \ref{eos}). 
+with $P=P(\epsilon,\rho)$ given by the equation of state
+(Eq. \ref{eos}). An explicit solution is presented in
+\S\ref{steady_state}.  
+However, disk structures obtained this way generally do not satisfy 
+the steady state effective energy Eq. \ref{eff_energy} 
+except in the limit of perfectly coupled dust ($\tstop\to0$).  
 
-Eq. \ref{steady_dust} makes it difficult to obtain equilibrium
-solutions explicitly. However, if the diffusive process is slow and
-can be neglected, then one may just solve
-Eq. \ref{steady_momr}---\ref{steady_momz} with a prescribed (initial)
-distribution of the dust fraction $\epsilon(r,z)$. 
+True steady states may be calculated by invoking an underlying gas
+turbulence, which leads to dust diffusion \citep{takeuchi02, youdin07, 
+  lyra13}. This complication is beyond the scope of this paper and we 
+defer it to a future work. Here, we will either consider $\tstop = 0$,
+or assume that $\tstop$ is sufficiently small such that the background
+disk (as obtained from Eq. \ref{steady_momr}---\ref{steady_momz}) does 
+not evolve significantly.  %relative to perturbations 
+
+%Eq. \ref{steady_dust} makes it difficult to obtain equilibrium
+%solutions explicitly. However, if the diffusive process is slow and
+%can be neglected, then one may just solve
+%Eq. \ref{steady_momr}---\ref{steady_momz} with a prescribed (initial)
+%distribution of the dust fraction $\epsilon(r,z)$. 
 
 \subsection{Disk structure with a prescribed dust distribution}\label{steady_state}  
-We assume a Gaussian profile in the dust-to-gas ratio, 
+To obtain an actual disk structure for numerical computations, we
+assume a Gaussian profile in the dust-to-gas ratio,   
 \begin{align}\label{dust_gauss}
   \tepsilon(r,z) = \tepsilon_0(r)
   \exp{\left[-\frac{z^2}{2\widetilde{H}^2(r)}\right]}. 
@@ -129,7 +148,8 @@ Eq. \ref{steady_momz} and integrating with the approximate
 gravitational potential (Eq. \ref{thin_disk_potential}) we obtain the
 gas density as
 \begin{align}
-  \rhog(r,z) = \rho_\mathrm{g0}(r)\exp{\left\{ - \frac{z^2}{2\Hgas^2}
+  &\rhog(r,z)= \notag\\
+&\rho_\mathrm{g0}(r)\exp{\left\{ - \frac{z^2}{2\Hgas^2}
     -\tepsilon_0\frac{\Htilde^2}{\Hgas^2}\left[1 -
       \exp{\left(-\frac{z^2}{2\Htilde^2}\right)}\right] \right\}}, 
 \end{align}
@@ -187,7 +207,7 @@ where
 is a pseudo-entropy for the mixture. 
 
 Writing Eq. \ref{vshear} in terms of the gas density and dust-to-gas
-ratio with a power-law temperature profil (Eq. \ref{power_temp}) e gives 
+ratio with a power-law temperature profile (Eq. \ref{power_temp}) gives 
 \begin{align*}
   &r\frac{\p \Omega^2}{\p z}  =
   \frac{c_s^2(r)}{\left(1+\tepsilon\right)^2}\left\{
@@ -225,30 +245,65 @@ that $\mathcal{V}\sim 1/|q|$). Otherwise, vertical shear is
 predominantly due to $\p_rc_s^2$. 
 
 
+
+
 \section{Limiting behaviours}
 
-\subsection{Strictly isothermal gas perfectly coupled to dust}  
-When $c_s^2$ is a constant and $\tstop=0$, the dusty gas equations are
-exactly equivalent to that for adiabatic hydrodyamics with unit adiabatic
-index. Although the gas is strictly isothermal, the mixture behaves 
-adiabatically because the dust fraction $\epsilon$ is advected with
-the gas (i.e. evolves like an entropy when there is no heating or
-cooling). 
-
-In this case one may immediately apply the Solberg-Hoiland
-criteria to assess axisymmtric \emph{stability}:  
+In this section we review the basic properties of the 
+single-fluid mixture using Eqs.\ref{masseq}--\ref{momeq} with
+Eq. \ref{eff_energy} in place of the dust continuity equation. Our
+discussion is based on the corresponding linearized equations about an
+axisymmetric steady state. These lead to the integral relation,  
 
 \begin{align}
-  \kappa^2 - \frac{1}{\rho}\nabla P \cdot \nabla s &> 0,\\
-  -\frac{1}{\rho}\frac{\p P}{\p z} \left(\kappa^2 \frac{\p s}{\p z} -
-  r\frac{\p\Omega^2}{\p z}\frac{\p s}{\p r}\right) &>0, 
+&  \sigma^2\int\rho\left(|\dd v_r|^2 + |\dd v_z|^2\right)dV \notag\\
+&= \int\left[ \rho
+  |\dd v_r|^2A + \rho  \dd v_z \dd v_r^* B + \rho \dd v_z^*\dd v_r C +
+  \rho |\dd v_z|^2 D\phantom{\frac{1}{1}}\right. \notag\\
+&\phantom{===}  \left. + \frac{1}{P}\left|\nabla\cdot\left(P\dd
+  \bm{v}\right)\right|^2\right]dV  -\int \left(\nabla\cdot\dd\bm{v}^*\right)\dd\mathcal{C}dV \notag\\
+&\phantom{===}
+- \int P
+  \left(\nabla\cdot\dd\bm{v}^*\right)\left(\dd\bm{v}\cdot\nabla\ln{c_s^2}\right)dV,\label{int_rel}
 \end{align}
-with $s = \ln{P/\rho^\gamma}$ and 
+between the (complex) mode frequency $\sigma$ and the spatial
+structure of the disturbances which are prefixed by deltas. 
+The real coefficients $A,B,C,D$ can be read off
+Eq. \ref{integral_ex}. Note that $B=C$ from dynamical equilibrium
+(Eq. \ref{vshear}).    
+
+
+\subsection{Strictly isothermal gas perfectly coupled to dust}   
+When $c_s^2$ is a constant and $\tstop=0$, the dusty-gas equations are
+exactly equivalent to that for adiabatic hydrodyamics with unit adiabatic
+index. Although the gas is strictly isothermal, the mixture behaves 
+adiabatically because the dust fraction $\epsilon$ is advected with 
+the gas. This is similar to entropy being conserved following an
+adiabatic gas when there is no heating or cooling.  
+
+In this case, the last two integrals in Eq. \ref{int_rel} vanish. Then 
+requiring $\sigma^2>0$  gives the Solberg-Hoiland criteria 
+for the axisymmtric \emph{stability} of an isothermal gas perfectly 
+coupled to dust,  
+\begin{align}
+  \kappa^2 + c_s^2 \nabla\ln{\rhog}\cdot\nabla\epsilon &> 0,\label{dusty_solberg1}  \\
+  -c_s^2\frac{\p\ln{\rhog}}{\p z}\left(-\kappa^2\frac{\p\epsilon}{\p
+    z} + r\frac{\p\Omega^2}{\p z}\frac{\p \epsilon}{\p r} \right) & > 0, \label{dusty_solberg2}
+\end{align}
+%\begin{align}
+%  \kappa^2 - \frac{1}{\rho}\nabla P \cdot \nabla s &> 0,\\
+%  -\frac{1}{\rho}\frac{\p P}{\p z} \left(\kappa^2 \frac{\p s}{\p z} -
+%  r\frac{\p\Omega^2}{\p z}\frac{\p s}{\p r}\right) &>0, 
+%\end{align} 
+where %$s = \ln{P/\rho}$, 
 $\kappa^2 \equiv r^{-3}\p_r\left(r^4\Omega^2\right)$ is the
-square of the epicylic frequency. We assume $\kappa^2>0$. 
-These criteria are applicable to any adiabatic fluid. For 
-isothermal gas perfectly coupled to dust, we may take 
-$s=\ln{(1-\epsilon)}$. 
+square of the epicylic frequency, and we assume $\kappa^2>0$. 
+Eq. \ref{dusty_solberg1}---\ref{dusty_solberg2} are equivalent to the
+Solberg-Hoiland criteria for adiabatic gas if one writes the 
+entropy $s=\ln{\left[c_s^2\left(1 - \epsilon\right)\right]}$. 
+
+%These criteria are applicable to any adiabatic fluid. 
+%For an isothermal mixture, we may take $s=\ln{(1-\epsilon)}$.   
 %from the definition of $s$ and  
 %the equation of state (Eq. \ref{eos}) with uniform sound-speed. 
 %\begin{align}
@@ -258,13 +313,7 @@ $s=\ln{(1-\epsilon)}$.
 %similar to the usual defintion for gas entropy (with unit adiabatic
 %index). The second follows from the imposed equation of state,
 %Eq. \ref{eos}, with a constant sound-speed. 
-The stability conditions are thus
-\begin{align}
-  \kappa^2 + c_s^2 \nabla\ln{\rhog}\cdot\nabla\epsilon &> 0,\label{dusty_solberg1}  \\
-  -c_s^2\frac{\p\ln{\rhog}}{\p z}\left(-\kappa^2\frac{\p\epsilon}{\p
-    z} + r\frac{\p\Omega^2}{\p z}\frac{\p \epsilon}{\p r} \right) & > 0. \label{dusty_solberg2}
-\end{align}
-
+%The stability conditions are thus
 %In accretion disks, $\rhog$, $\rhod$ and $\epsilon$ are expected to
 %decrease away from the mid-plane
 %\begin{align*}  
@@ -282,9 +331,11 @@ The stability conditions are thus
 \subsubsection{Order-of-magnitude estimates} 
 We evaluate the above stability criteria for the vertically-Gaussian
 distributions for the gas density and the dust-to-gas ratio as 
-described in \S\ref{eqm}. However, here we permit 
-$\tepsilon_0=\tepsilon_0(r)$ and $\Htilde=\Htilde(r)$ to vary with
-radius. We assume the disk is approximately Keplerian so that
+described in \S\ref{eqm}. 
+%However, here we permit 
+%$\tepsilon_0=\tepsilon_0(r)$ and $\Htilde=\Htilde(r)$ to vary with
+%radius. 
+We assume the disk is approximately Keplerian so that
 $\kappa\simeq\OmK$. In terms of the dust-to-gas
 ratio $\tepsilon$, Eq. \ref{dusty_solberg1}---\ref{dusty_solberg2}
 become   
@@ -301,12 +352,13 @@ become
 \emph{for stability}. 
 
 Eq. \ref{stability_est1}---\ref{stability_est2} are easily satisfied
-in thin accretion disks where radial gradients are $O(1/r)$ and
-$h_\mathrm{g},\tepsilon, \widetilde{H}/H_\mathrm{g}\ll 1$, since then the
+in thin accretion disks where radial gradients are $O(1/r)$, 
+$h_\mathrm{g},\tepsilon,\ll 1$ and $
+\widetilde{H}/H_\mathrm{g}\lesssim 1$. Then the
 magnitude of the second term on the left-hand-side  of either
 inequality is much less than unity. Thus radially smooth, strictly
 isothermal disks perfectly coupled with dust are stable against
-axisymmetric perturbations. 
+axisymmetric perturbations.  
 
 %Such disks are stable against
 %axisymmetric perturbations.  
@@ -350,45 +402,56 @@ potentially unstable.
 
 
 \subsection{Locally isothermal gas perfectly coupled to dust} 
-When $c_s(r,z)$ is non-uniform but $\tstop=0$, simple stability
-criteria are not available. However, we may obtain an integral
-relation for linear, axisymmetric waves with frequency $\sigma$ (see
-Appendix \ref{var_prin}, where we also account for finite $\tstop$) in
-the form:   
+When $c_s(r,z)$ is non-uniform but $\tstop=0$, Eq. \ref{int_rel}
+indicates that $\sigma^2$ is generally complex, implying instability.  
+Writing $\sigma = 
+\omega + \ii s$ where $\omega$ and $s$ are the real frequency and
+growth rates, respectively, we have 
 \begin{align}
-&  \sigma^2\int\rho\left(|\dd v_r|^2 + |\dd v_z|^2\right)dV \notag\\
-&= \int\left[ \rho
-  |\dd v_r|^2A + \rho  \dd v_z \dd v_r^* B + \rho \dd v_z^*\dd v_r C +
-  \rho |\dd v_z|^2 D\phantom{\frac{1}{1}}\right. \notag\\
-&\phantom{===}  \left. + \frac{1}{P}\left|\nabla\cdot\left(P\dd
-  \bm{v}\right)\right|^2\right]dV - \int P
-  \left(\nabla\cdot\dd\bm{v}^*\right)\left(\dd\bm{v}\cdot\nabla\ln{c_s^2}\right)dV.
-\end{align}
-The real coefficients $A,B,C,D$ can be read off
-Eq. \ref{integral_ex}. Note that $B=C$ from dynamical equilibrium
-(Eq. \ref{vshear}).   
+  s = -\frac{\imag\int P
+  \left(\nabla\cdot\dd\bm{v}^*\right)\left(\dd\bm{v}\cdot\nabla\ln{c_s^2}\right)dV}{2\omega\int\rho\left(|\dd
+    v_r|^2 + |\dd v_z|^2\right)dV}. 
+\end{align} 
+This is classic VSI caused by vertical shear arising from a radial
+temperature gradient \citep{nelson13,barker15,lin15}. 
 
-If $c_s$ is constant, then $\sigma^2$ is real, and 
-the first integral leads to the previous Solberg-Hoiland criteria for 
-axisymmetric stability. However, when $c_s$ is non-uniform, $\sigma^2$ 
-is generally complex, implying instability. This is responsible for 
-the usual vertical shear instability in locally isothermal disks. 
+%This is responsible for 
+%the usual vertical shear instability in locally isothermal disks.
+%However, we may obtain an integral
+%relation for linear, axisymmetric waves with frequency $\sigma$ (see
+%Appendix \ref{var_prin}, where we also account for finite $\tstop$) in
+%the form:   
+%If $c_s$ is constant, then $\sigma^2$ is real, and 
+%the first integral leads to the previous Solberg-Hoiland criteria for 
+%axisymmetric stability. However, when $c_s$ is non-uniform, 
 
 \subsection{Strictly isothermal gas well-coupled to dust} 
-Now consider $c_s^2=\mathrm{const.}$ but $\tstop\neq0$. In this case 
-the effective energy equation is 
-\begin{align}\label{dusty_cooling}
-  \frac{DP}{Dt} &= - P \nabla \cdot \bm{v} + \mathcal{C}
-\end{align} 
-The function $\mathcal{C}$ can be considered as a cooling term. By
-analogy with enabling VSI in an adiabatic gas through cooling
-\citep{nelson13,lin15}, we may expect a `dusty VSI' to develop 
-if this term is large enough (physically meaning diffusion of the
-dust-fraction is strong). 
-
-Note that $\mathcal{C}$ is also responsible for the streaming
-instability  in the strong-drag limit \citep{laibe14}, though this
-does not require vertical stratification. In the form of
-Eq. \ref{dusty_cooling}, however, the streaming instability has a
-thermodynamical interpretation, similar to thermal instabilities in
-stars \citep{latter06}.  
+Now consider constant $c_s$ but $\tstop\neq0$. Then Eq. \ref{int_rel}
+gives 
+\begin{align}
+  s = -\frac{\imag\int \left(\nabla\cdot\dd\bm{v}^*\right)\dd\mathcal{C}dV}{2\omega\int\rho\left(|\dd
+    v_r|^2 + |\dd v_z|^2\right)dV}, 
+\end{align}
+%In this case 
+%the effective energy equation is 
+%\begin{align}\label{dusty_cooling}
+%  \frac{DP}{Dt} &= - P \nabla \cdot \bm{v} + \mathcal{C}
+%\end{align} 
+%The function $\mathcal{C}$ can be considered as a cooling term. 
+%By
+%analogy with enabling VSI in an adiabatic gas through cooling
+%\citep{nelson13,lin15}, we may expect a `dusty VSI' to develop 
+%if this term is large enough (physically meaning diffusion of the
+%dust-fraction is strong). 
+%Note that $\mathcal{C}$ is also responsible for the streaming
+%instability  in the strong-drag limit \citep{laibe14}, though this
+%does not require vertical stratification. In the form of
+%Eq. \ref{dusty_cooling}, however, the streaming instability has a
+%thermodynamical interpretation, similar to thermal instabilities in
+%stars \citep{latter06}.  
+which represent all instabilities due to large-but-finite dust-gas
+friction. The formalism we have adopted give these instabilities a 
+thermodynamical interpretation \citep[thermal instabilities in
+  stars][]{latter06} because the dust-gas friction enters the problem
+as an energy source term. This includes the streaming instability in
+the strong-drag limit \citep{youdin05a, jacquet11, laibe14}. 
