@@ -250,11 +250,16 @@ predominantly due to $\p_rc_s^2$.
 \section{Limiting behaviours}
 
 In this section we review the basic properties of the 
-single-fluid mixture using Eqs.\ref{masseq}--\ref{momeq} with
+single-fluid mixture using Eqs.\ref{masseq}--\ref{momeq} with 
 Eq. \ref{eff_energy} in place of the dust continuity equation. Our
-discussion is based on the corresponding linearized equations about an
-axisymmetric steady state. These lead to the integral relation,  
-
+discussion is based on the corresponding axisymmetric linearized
+equations about an axisymmetric steady state. A variable $f$ is
+subject to perturbations of the form 
+\begin{align}
+  \delta f(r,z)\exp{\left(-\ii\sigma t\right)},
+\end{align}
+where $\sigma$ is the complex mode frequency. In Appendix
+\ref{var_prin} we derive the integral relation,  
 \begin{align}
 &  \sigma^2\int\rho\left(|\dd v_r|^2 + |\dd v_z|^2\right)dV \notag\\
 &= \int\left[ \rho
@@ -264,13 +269,12 @@ axisymmetric steady state. These lead to the integral relation,
   \bm{v}\right)\right|^2\right]dV  -\int \left(\nabla\cdot\dd\bm{v}^*\right)\dd\mathcal{C}dV \notag\\
 &\phantom{===}
 - \int P
-  \left(\nabla\cdot\dd\bm{v}^*\right)\left(\dd\bm{v}\cdot\nabla\ln{c_s^2}\right)dV,\label{int_rel}
-\end{align}
-between the (complex) mode frequency $\sigma$ and the spatial
-structure of the disturbances which are prefixed by deltas. 
-The real coefficients $A,B,C,D$ can be read off
+  \left(\nabla\cdot\dd\bm{v}^*\right)\left(\dd\bm{v}\cdot\nabla\ln{c_s^2}\right)dV.\label{int_rel}
+\end{align} 
+The real coefficients $A,B,C,D$ can be read off 
 Eq. \ref{integral_ex}. Note that $B=C$ from dynamical equilibrium
-(Eq. \ref{vshear}).    
+(Eq. \ref{vshear}). We now consider various limits of
+Eq. \ref{int_rel}.    
 
 
 \subsection{Strictly isothermal gas perfectly coupled to dust}   
@@ -401,19 +405,21 @@ potentially unstable.
 
 
 
-\subsection{Locally isothermal gas perfectly coupled to dust} 
+\subsection{Locally isothermal gas perfectly coupled to dust}\label{dusty_vsi_int}
 When $c_s(r,z)$ is non-uniform but $\tstop=0$, Eq. \ref{int_rel}
 indicates that $\sigma^2$ is generally complex, implying instability.  
 Writing $\sigma = 
-\omega + \ii s$ where $\omega$ and $s$ are the real frequency and
+-\omega + \ii s$ where $\omega$ and $s$ are the real frequency and
 growth rates, respectively, we have 
 \begin{align}
-  s = -\frac{\imag\int P
+  s = \frac{\imag\int P
   \left(\nabla\cdot\dd\bm{v}^*\right)\left(\dd\bm{v}\cdot\nabla\ln{c_s^2}\right)dV}{2\omega\int\rho\left(|\dd
-    v_r|^2 + |\dd v_z|^2\right)dV}. 
+    v_r|^2 + |\dd v_z|^2\right)dV}. \label{vsi_check}
 \end{align} 
 This is classic VSI caused by vertical shear arising from a radial
-temperature gradient \citep{nelson13,barker15,lin15}. 
+temperature gradient \citep{nelson13,barker15,lin15}. We compute
+explicit solutions in this limit in
+\S\ref{linear_problem}---\ref{results}. 
 
 %This is responsible for 
 %the usual vertical shear instability in locally isothermal disks.
@@ -429,7 +435,7 @@ temperature gradient \citep{nelson13,barker15,lin15}.
 Now consider constant $c_s$ but $\tstop\neq0$. Then Eq. \ref{int_rel}
 gives 
 \begin{align}
-  s = -\frac{\imag\int \left(\nabla\cdot\dd\bm{v}^*\right)\dd\mathcal{C}dV}{2\omega\int\rho\left(|\dd
+  s = \frac{\imag\int \left(\nabla\cdot\dd\bm{v}^*\right)\dd\mathcal{C}dV}{2\omega\int\rho\left(|\dd
     v_r|^2 + |\dd v_z|^2\right)dV}, 
 \end{align}
 %In this case 

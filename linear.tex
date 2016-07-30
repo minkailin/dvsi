@@ -1,25 +1,31 @@
-\section{Linear problem} 
-We consider radially-localized axisymmetric disturbances of the form 
+\section{Linear problem for perfectly coupled dust}\label{linear_problem}
+In this paper we calculate explicit solutions to the linearized
+equations in the limit of perfectly coupled dust ($\tstop=0$), so that
+the equilibria defined in \S\ref{eqm} are exact steady states; and we
+consider radially-localized axisymmetric disturbances of the form  
 \begin{align}
-  \delta\rho(r, z)\exp{\left(\ii k r-\ii\sigma t\right)},
+  \delta f (r, z) = \delta f_1(r,z)\exp{(\ii k r)},
 \end{align} 
-and similarly for $\dd P$ and $\dd\bm{v}$. Here, $k$ is a real
-wavenumber such that $|kr|\gg 1$, and the amplitude $\dd\rho(r,z)$ is
+%and similarly for $\dd P$ and $\dd\bm{v}$. 
+where $k$ is a real wavenumber such that $|kr|\gg 1$, and the
+amplitude $\dd f_1(r,z)$ is 
 a slowly-varying function of $r$. Then 
 $\p_r\to i k$ when acting on the above primitive perturbations, and we may
-neglect curvature terms. 
-We take  
-$k>0$ without loss of  generality. The frequency $\sigma = \omega +
-\ii s$ is generally complex, with $\omega$ being the real frequency
-and $s$ is the real growth rate. 
+neglect curvature terms. We take  
+$k>0$ without loss of generality. Hereafter, we drop the subscript 1
+on the amplitudes. 
+%The frequency $\sigma = \omega +
+%\ii s$ is generally complex, with $\omega$ being the real frequency
+%and $s$ is the real growth rate. 
 
 Introducing 
 \begin{align}
   W \equiv \frac{\dd\rho}{\rho}, \quad Q \equiv \frac{\dd P}{\rho},
 \end{align}
-the linearized equations for
-locally isothermal dusty gas with the pressure equation in place of
-the dust-fraction (Eq. \ref{masseq}---\ref{momeq}, Eq. \ref{eff_energy}) are then:   
+the linearized equations for 
+locally isothermal, perfectly-coupled dusty gas with the pressure
+equation in place of the dust-fraction
+(Eq. \ref{masseq}---\ref{momeq}, Eq. \ref{eff_energy}) are then:    
 
 \begin{align}
   \ii\sigma W &= \ii k \dd v_r + \dd v_z^\prime +
@@ -31,65 +37,107 @@ the dust-fraction (Eq. \ref{masseq}---\ref{momeq}, Eq. \ref{eff_energy}) are the
   -\ii\sigma\dd v_z &=  \delta\bm{F}\cdot\hat{\bm{z}},\label{lin_zmom}\\
   \ii\sigma Q &= \frac{P}{\rho}\left(\ii k \dd v_r + \dd
                v_z^\prime\right) + \frac{1}{\rho}\left(\dd v_r\p_rP + \dd v_z \p_zP\right)\notag\\
-                &\phantom{=}-\frac{P}{\rho}\left( \dd v_r\p_r
-               \ln{c_s^2} + \dd v_z \p_z\ln{c_s^2}\right)-
-               \frac{\dd\mathcal{C}}{\rho},\label{lin_energy} 
+                &\phantom{=}-\frac{P}{\rho} \dd v_r\p_r
+               \ln{c_s^2}, \label{lin_energy} 
+%+ \dd v_z \p_z\ln{c_s^2}\right),\label{lin_energy} 
+%               - \frac{\dd\mathcal{C}}{\rho},\label{lin_energy} 
 \end{align}  
-where $^\prime \equiv \p_z$; $\dd\bm{F}$ is the linearized pressure force, given in Appendix
-\ref{lin_press}; and 
+where $^\prime \equiv \p_z$ and $\dd\bm{F}$ is the linearized pressure
+force, given in Appendix \ref{lin_press}. Note that we have assumed a
+temperature profile that only depends on $r$.  
+
+%; and 
 %\begin{align}
 %  \delta \bm{F} \equiv \frac{\dd\rho}{\rho^2}\nabla P -
 %  \frac{1}{\rho}\nabla\dd P, 
 %\end{align}
-$\dd\mathcal{C}$ is the linearized dust-duffusion function, given in
-Appendix \ref{lin_dust}. We consider stopping times appropriate for
-small grains in the Epstein regime. Note that for the axisymmetric
-problem, $\dd\bm{F}$ is purely meridional. 
+%$\dd\mathcal{C}$ is the linearized dust-duffusion function, given in
+%Appendix \ref{lin_dust}. We consider stopping times appropriate for
+%small grains in the Epstein regime. Note that for the axisymmetric
+%problem, $\dd\bm{F}$ is purely meridional. 
 
 Eq. \ref{lin_mass}---\ref{lin_energy} is a set of ordinary
-differntial equations in $z$. All the coefficients are evaluated at a
-fiducial radius $r=r_0$, but their full $z$-dependence is retained.  
-\subsection{Boundary conditions}
-Eq. \ref{lin_mass}---\ref{lin_energy} can be reduced to a set of
-first-order differential equations for $W, Q$ and $\dd v_z$. We can
-see this schematically as follows. Eq. \ref{lin_xmom} and
-\ref{lin_ymom} may be combined to yield 
-\begin{align*}
-  \dd v_r = \dd v_r (W, Q, \dd v_z). 
-\end{align*} 
-We can then take the continuity equation as an equation for $\dd v_z$, 
-\begin{align*}
-\text{Eq. \ref{lin_mass}} \Rightarrow \dd v_z^\prime(z) = \dd
-  v_z^\prime(W,Q,\dd v_z),
-\end{align*}
-and the vertical momentum equation as an equation for $Q$, 
-\begin{align*}
-\text{Eq. \ref{lin_zmom}} \Rightarrow Q^\prime(z) = 
- Q^\prime(W,Q,\dd v_z). 
-\end{align*}
+differntial equations in $z$. All coefficients and amplitudes are
+evaluated at a fiducial radius $r=r_0$, but their full $z$-dependence
+is retained.  Two boundary conditions are needed for the $\tstop=0$
+problem. This is expected since this problem is exactly equivalent to
+that in adiabatic hydrodynamics \citep[e.g.][]{lubow93}. For simplicity
+we impose solid boundaries so that $\delta v_z(\pm\zmax)=0$ and
+$\zmax=5\Hgas$. 
 
-Now, for finite dust-gas coupling, $\tstop\neq0$, inspection of $\dd C$
-(Appendix \ref{lin_dust}) shows that it involves $W^\prime$ (assuming
-$\epsilon < 1$). Then Eq. \ref{lin_energy} may be taken as a
-differential equation for $W$. However, for perfectly coupled dust,
-$\tstop =\dd\mathcal{C}= 0$. In that case Eq. \ref{lin_energy} gives an algebraic
-relation between $W$, $Q$ and $\dd v_z$. That is,
-\begin{align*}
-\text{Eq. \ref{lin_energy}}\Rightarrow \begin{cases}
-  W^\prime(z) = W^\prime(W, Q, \dd v_z) & \text{if } \tstop \neq 0, \\
-  W           (z) = W(Q, \dd v_z) & \text{if }\tstop = 0.
-\end{cases}
-\end{align*} 
+We solve the linearized equations as a generalized eigenvalue problem 
+using a pseudo-spectral code adapted from \cite{lin15}. Amplitudes 
+are expanded in Chebyshev polynomials up to order $N_z-1$. Our 
+standard resolution is $N_z=513$. We check results using
+Eq. \ref{vsi_check}.    
 
-This means that for the perfectly coupled problem, we have a pair of
-ODEs for $Q$ and $\dd v_z$, and two boundary conditions are needed. 
-This is expected since this problem is exactly 
-equivalent to that in adiabatic hydrodynamics \citep[e.g.]{lubow93}. When
-$\tstop\neq0$, we require three boundary conditions. {\bf WHAT?? Why odd
-  number of BCs? Shouldn't we have even number of BCs? We have
-two boundaries? I've only seen problems like this involving even
-number of BCs.} In this case we impose $\dd v_z =0$ at $z=\pm
-z_\mathrm{max}$, and classify modes according to their symmetry about
-the midplane: `even' modes with $\dd v_z^\prime(0) = 0$, and `odd' 
-modes with $\dd v_z(0)=0$.       
+%\subsection{Boundary conditions}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%Eq. \ref{lin_mass}---\ref{lin_energy} can be reduced to a set of
+%first-order differential equations for $W, Q$ and $\dd v_z$. We can
+%see this schematically as follows. Eq. \ref{lin_xmom} and
+%\ref{lin_ymom} may be combined to yield 
+%\begin{align*}
+%  \dd v_r = \dd v_r (W, Q, \dd v_z). 
+%\end{align*} 
+%We can then take the continuity equation as an equation for $\dd v_z$, 
+%\begin{align*}
+%\text{Eq. \ref{lin_mass}} \Rightarrow \dd v_z^\prime(z) = \dd
+%  v_z^\prime(W,Q,\dd v_z),
+%\end{align*}
+%and the vertical momentum equation as an equation for $Q$, 
+%\begin{align*}
+%\text{Eq. \ref{lin_zmom}} \Rightarrow Q^\prime(z) = 
+% Q^\prime(W,Q,\dd v_z). 
+%\end{align*}
+
+%Now, for finite dust-gas coupling, $\tstop\neq0$, inspection of $\dd C$
+%(Appendix \ref{lin_dust}) shows that it involves $W^\prime$ (assuming
+%$\epsilon < 1$). Then Eq. \ref{lin_energy} may be taken as a
+%differential equation for $W$. However, for perfectly coupled dust,
+%$\tstop =\dd\mathcal{C}= 0$. In that case Eq. \ref{lin_energy} gives an algebraic
+%relation between $W$, $Q$ and $\dd v_z$. That is,
+%\begin{align*}
+%\text{Eq. \ref{lin_energy}}\Rightarrow \begin{cases}
+%  W^\prime(z) = W^\prime(W, Q, \dd v_z) & \text{if } \tstop \neq 0, \\
+%  W           (z) = W(Q, \dd v_z) & \text{if }\tstop = 0.
+%\end{cases}
+%\end{align*} 
+
+%This means that for the perfectly coupled problem, we have a pair of
+%ODEs for $Q$ and $\dd v_z$, and 
+%When
+%$\tstop\neq0$, we require three boundary conditions. {\bf WHAT?? Why odd
+%  number of BCs? Shouldn't we have even number of BCs? We have
+%two boundaries? I've only seen problems like this involving even
+%number of BCs.} In this case we impose $\dd v_z =0$ at $z=\pm
+%z_\mathrm{max}$, and classify modes according to their symmetry about
+%the midplane: `even' modes with $\dd v_z^\prime(0) = 0$, and `odd' 
+%modes with $\dd v_z(0)=0$.       
 

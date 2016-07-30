@@ -1,65 +1,65 @@
-\section{Results}
+\section{Perfectly coupled
+  dusty vertical shear instability}\label{results} 
 
-We consider a globally isothermal disk, $c_s=\mathrm{const.}$, by
-setting $q=0$ in the equation of state (Eq. \ref{eos}), and a flat
-mid-plane gas density, $\rhog(0) = \mathrm{const.}$, so there is no
-global radial pressure gradient at the disk midplane. This setup
-eliminates classic vertical shear instability and streaming
-instabilities. The stopping time is
-prescribed as 
-\begin{align}
-  \tstop = t_\mathrm{s0}\frac{\rho(z=0)}{\rho(z)}. 
-\end{align}
+When $\tstop=0$ we may construct exact dusty equilibra by specifying
+the dust-to-gas ratio, as described in \S\ref{eqm}. We use this to
+examine the effect of dust on classic VSI, defined to be driven by the
+temperature gradient (\S\ref{dusty_vsi_int}). For simplicity we
+consider constant input values of the midplane dust-to-gas ratio
+$\tepsilon_0$ and the characteristic dust thickness $\Hd$. These,
+together with the perturbation wavenumber $k$, comprises main the
+parameters of the linear problem. We fix the radial power-law index
+for the midplane gas density to $p = -1.5$, that for the
+temperature profile to $q=-1$; and set the gas disk aspect-ratio
+$h_\mathrm{g}=0.05$. These are fiducial values used in \citetalias{lin15}. 
 
-As an example, we set the midplane dust-to-gas ratio 
-$\tepsilon_0=0.02$, dust scale-height $H_\mathrm{d}=0.6\Hgas$, and
-stopping time $t_\mathrm{s0}\OmK=0.02$. We consider modes with radial
-wavenumber $k_x\Hdust=2\pi$. The vertical domain size is set to  
-$\zmax=2\Hgas$. The aspect-ratio of the gas layer is
-$h_\mathrm{g}=0.05$. 
+\subsection{Effect of dust-loading}
+We first vary the dust-to-gas ratio $\tepsilon_0\in[10^{-3},1]$,
+fixing the dust thickness to $\Hd=0.99\Hg$ (so that $\tepsilon$ is
+roughly constant with height) and perturbation
+wavenumber to $k\Hg = 30$. 
 
-We use a pseudo-spectral method to solve  
-Eq. \ref{lin_mass}---\ref{lin_energy} as a generalized eigenvalue
-problem with $N=513$ grid points. Fig. \ref{eigen_map}   
-shows a map of the eigenvalues in the $(\omega, s)$ plane. Note that
-we restrict attention to modes with $|\sigma|\leq \OmK$. 
-Eigenvalues on the `Y' branch should not be trusted. The 
-high growth-rate modes are associated with disturbances concentrated
-at the domain boundaries. Modes with $\omega\simeq 0$, i.e. purely
-growing modes, are likely spurious because we generally expect
-eigenvalues to be complex (see the integral relation in Appendix
-\ref{var_prin}).  
+Fig. \ref{vsi_dust_loading} show unstable
+modes found for different values of $\tepsilon_0$. The eigenvalue
+distributions for $\tepsilon_0 \leq 10^{-2}$ are similar to the
+dust-free fiducial case considered by \citetalias{lin15}, consisting
+of the roughly horizontal `body modes' and the nearly-vertical
+`surface modes'. The latter is due to the imposed vertical boundaries
+\citep{barker15}.  
+
+We find that increasing the dust-to-gas ratio reduce VSI growth
+rates. Notably `surface modes', which are typically fastest growing in
+the dust-free case, are surpressed in dusty disks for $\tepsilon_0\geq
+0.1$. The body modes' growth rates remain $\sim O(h\OmK)$ but their
+oscillation frequency increases with $\tepsilon_0$. 
+
+In Fig. \ref{vsi_dust_loading2d} we compare the 
+
 
 \begin{figure}
-  \includegraphics[width=\linewidth]{figures/eigenvalues}
-  \caption{Eigenvalues found for the fiducial isothermal dusty
-    problem. 
-  \label{eigen_map}} 
+  \includegraphics[width=\linewidth]{figures/compare_eigenvals_kx30Hd1} 
+  \caption{Unstable modes in a locally isothermal, perfectly coupled
+    dusty disk with fiducial parameters
+    $(p,q,h_\mathrm{g}, \Hd/\Hg )=(-1.5,-1,0.05, 0.99)$. The real
+    frequency $\omega$ and growth rates $s$ are shown for a range of
+    midplane dust-to-gas ratios $\tepsilon_0=\rhod/\rhog$. 
+    \label{vsi_dust_loading}
+    }
 \end{figure}
 
-We thus consider the slower-growing modes near the horizontal
-axis. Fig. \ref{eigen_vec} show example eigenfunctions for a case with
-frequency $(\omega,s)=(-2.79,0.20)\hgas\OmK$. 
-
-
-In Fig. \ref{eigen_2d}
-we visualize this mode in the $(x,z)$ plane: colors show the
-perturbation to the dust-fraction ($\dd\epsilon$), while vectors show
-the perturbed meridional momenta. This mode has a growth
-timescale of $\simeq 16$ orbits. This mode is unlikely driven by
-vertical shear: the maximum vertical 
-shear rate, $\mathrm{max}\left|r\p_z\Omega\right|\simeq10^{-2}\hgas\OmK$,
-is much smaller than the mode growth rate $s\simeq 0.2\hgas\OmK$. 
 
 \begin{figure}
-  \includegraphics[width=\linewidth]{figures/eigenvec}
-  \caption{Example eigenfunctions from the fiducial case. 
-    \label{eigen_vec}} 
+  \includegraphics[scale=0.54, clip=true, trim=0cm 2.5cm 0cm 0cm]{figures/result2d_dg1d-3.ps}\\
+  \includegraphics[scale=0.54]{figures/result2d_dg1.ps} 
+  \caption{Fundamental dusty VSI mode in real space for midplane dust-to-gas
+    ratio $\tepsilon_0=10^{-3}$ (top) and $\tepsilon_0=1$
+    (bottom). The color scale shows the perturbation to the
+    dust-to-gas ratio, $\delta\tepsilon$; and the arrows show
+    $\sqrt{\rho}\left(\dd v_x, \dd v_z\right)$. 
+    \label{vsi_dust_loading2d}
+    }
 \end{figure}
 
-\begin{figure}
-  \includegraphics[width=\linewidth]{figures/result2d}
-  \caption{Example eigenvectors from the fiducial case. The eigenvalue
-    is $(\omega,s)=(-2.79,0.20)\hgas\OmK$.  
-    \label{eigen_2d}} 
-\end{figure}
+
+
+\subsection{Effect of dust thickness}
