@@ -7,6 +7,7 @@
 \shortauthors{M-K.\ Lin}
 
 \usepackage{amsmath}
+\usepackage{paralist}
 %\usepackage{url}
 \usepackage{bm}
 %\usepackage[font=small,format=plain,labelfont=bf,up,textfont=it,up]{caption}
@@ -54,7 +55,7 @@
 \newcommand{\dbx}{\dd B_x}
 \newcommand{\dby}{\dd B_y}
 \newcommand{\dbz}{\dd B_z}
-\newcommand{\Htilde}{\widetilde{H}}
+\newcommand{\Htilde}{H_\epsilon}
 \newcommand{\Hdust}{H_\mathrm{d}}
 \newcommand{\Hgas}{H_\mathrm{g}}
 \newcommand{\hgas}{h_\mathrm{g}}
@@ -78,8 +79,8 @@
 
 \begin{document}
 
-\title{Interpreting the gas-fraction as the entropy of an
-  isothermal dusty gas}  
+\title{On the entropy of 
+  isothermal dusty gas: application to protoplanetary disks}  
 \author{Min-Kai Lin\altaffilmark{1}}
 \affil{Department of Astronomy and Steward Observatory, \\
 University of
@@ -88,8 +89,39 @@ University of
 \email{minkailin@email.arizona.edu}
 
 \begin{abstract}
-dusty vsi, or the lack thereof
+  Small dust particles embedded in gaseous protoplanetary disks are subject
+  to strong dust-gas friction, causing them to almost follow the gas
+  flow. This is similar to the conservation of entropy following an
+  adiabatic fluid.  We show that in the strong drag
+  limit that an isothermal dusty-gas indeed behaves like an  
+  adiabatic pure gas, while finite dust-gas coupling may be
+  interpreted as an effective 
+  heating/cooling. We exploit this equivalence 
+  to 
+\begin{inparaenum}[1)]
+\item
+  define the entropy of isothermal dusty gas; and 
+\item 
+  generalize previous, well-known gaseous instabilities in
+  protoplanetary disks to include dust dynamics. 
+\end{inparaenum}
+This includes the axisymmetric stability of strictly isothermal dusty
+gas, from which we place quantitative constraints on the sharpness of 
+dust edges that can persist in protoplanetary disks. We also extend
+the vertical shear instability (VSI) in locally isothermal disks to include
+dust. We find that  dust-loading reduces VSI growth rates. The presence of
+strongly-coupled dust particles preferentially stabilize VSI modes with small radial
+wavelengths, as well as `surface modes' concentrated near the
+disk boundaries. We briefly discuss other applications of the 
+equivalence between isothermal dusty gas and adiabatic hydrodynamics
+to understand other dusty instabilities in protoplanetary disks. 
 \end{abstract}
+
+
+
+
+
+\section{Introduction}
 
 \input{model}
 \input{linear}

@@ -141,28 +141,28 @@ density and size, so that
 \citep{price15}, where $K$ is a constant. Then the dust diffusion
 function becomes
 \begin{align}
-  \mathcal{C} \equiv c_s^2\nabla\cdot\left(\epsilon\tstop\nabla
+  \mathcal{C} \equiv c_s^2\nabla\cdot\left(\tepsilon\tstop\nabla
   P\right) = - K c_s^2 \nabla\cdot
-  \left(\frac{\epsilon}{c_s}\bm{F}\right) =
-  -Kc_s \left(\bm{F}\cdot\nabla\epsilon + \epsilon \nabla\cdot\bm{F}
-  - \frac{1}{2}\epsilon\bm{F}\cdot\nabla\ln{c_s^2}\right).  
+  \left(\frac{\tepsilon}{c_s}\bm{F}\right) =
+  -Kc_s \left(\bm{F}\cdot\nabla\tepsilon + \tepsilon \nabla\cdot\bm{F}
+  - \frac{1}{2}\tepsilon\bm{F}\cdot\nabla\ln{c_s^2}\right).  
 \end{align}
 Linearizing,
 \begin{align}
-  - \frac{\dd\mathcal{C}}{Kc_s} = \bm{F}\cdot\nabla\dd\epsilon +
-  \dd\bm{F}\cdot\nabla\epsilon + \dd\epsilon\nabla\cdot\bm{F} +
-  \epsilon\nabla\cdot\dd\bm{F} -
-  \frac{1}{2}\nabla\ln{c_s^2}\cdot\left(\bm{F}\dd\epsilon + \epsilon
+  - \frac{\dd\mathcal{C}}{Kc_s} = \bm{F}\cdot\nabla\dd\tepsilon +
+  \dd\bm{F}\cdot\nabla\tepsilon + \dd\tepsilon\nabla\cdot\bm{F} +
+  \tepsilon\nabla\cdot\dd\bm{F} -
+  \frac{1}{2}\nabla\ln{c_s^2}\cdot\left(\bm{F}\dd\tepsilon + \tepsilon
   \dd\bm{F}\right). 
 \end{align}
-The linearized dust-fraction $\dd\epsilon$ and its derivatives in the
+The linearized dust-fraction $\dd\tepsilon$ and its derivatives in the
 radially-local approximation are given by
 \begin{align}
-  \dd\epsilon      &= (1-\epsilon)W - \frac{Q}{c_s^2}, \\
-  \p_r\dd\epsilon &= \left[(1-\epsilon)\left(\ii k -
-    \p_r\ln{\rho}\right) - \p_r\epsilon\right]W + \left(\p_r\ln{c_s^2}
+  \dd\tepsilon      &= (1-\tepsilon)W - \frac{Q}{c_s^2}, \\
+  \p_r\dd\tepsilon &= \left[(1-\tepsilon)\left(\ii k -
+    \p_r\ln{\rho}\right) - \p_r\tepsilon\right]W + \left(\p_r\ln{c_s^2}
   + \p_r\ln{\rho} - \ii k \right)\frac{Q}{c_s^2},\\
-  \dd\epsilon^\prime &= (1-\epsilon)W^\prime - \epsilon^\prime W -
+  \dd\tepsilon^\prime &= (1-\tepsilon)W^\prime - \tepsilon^\prime W -
   \left(\frac{Q}{c_s^2}\right)^\prime. 
 \end{align}
 
@@ -170,22 +170,22 @@ radially-local approximation are given by
 
 
 \section{Conversion formulae}
-The gas density $\rhog$ and dust-to-gas ratio $\tepsilon$ is related
-to the total density $\rho$ and dust-fraction $\epsilon$ by
+The gas density $\rhog$ and dust-to-gas ratio $\epsilon$ is related
+to the total density $\rho$ and dust-fraction $\tepsilon$ by
 \begin{align}
-  \ln{\rho} &= \ln{\rhog} + \ln{\left(1 + \tepsilon\right)},\\
-  \nabla\ln{\rho} &= \nabla\ln{\rhog} + \frac{\nabla\tepsilon}{1+
-    \tepsilon},\\
+  \ln{\rho} &= \ln{\rhog} + \ln{\left(1 + \epsilon\right)},\\
+  \nabla\ln{\rho} &= \nabla\ln{\rhog} + \frac{\nabla\epsilon}{1+
+    \epsilon},\\
   \nabla^2\ln{\rho} &= \nabla^2\ln{\rhog} +
-  \frac{\nabla^2\tepsilon}{1+\tepsilon} -
-  \frac{\left|\nabla\tepsilon\right|^2}{\left(1+\tepsilon\right)^2}, 
+  \frac{\nabla^2\epsilon}{1+\epsilon} -
+  \frac{\left|\nabla\epsilon\right|^2}{\left(1+\epsilon\right)^2}, 
 \end{align}
 and
 \begin{align}
-  \epsilon &= \frac{\tepsilon}{1+ \tepsilon},\\
- \nabla\epsilon & =
- \frac{\nabla\tepsilon}{\left(1+\tepsilon\right)^2},\\
- \nabla^2\epsilon &=
- \frac{\nabla^2\tepsilon}{\left(1+\tepsilon\right)^2} -
- \frac{2\left|\nabla\tepsilon\right|^2}{\left(1+\tepsilon\right)^3}. 
+  \tepsilon &= \frac{\epsilon}{1+ \epsilon},\\
+ \nabla\tepsilon & =
+ \frac{\nabla\epsilon}{\left(1+\epsilon\right)^2},\\
+ \nabla^2\tepsilon &=
+ \frac{\nabla^2\epsilon}{\left(1+\epsilon\right)^2} -
+ \frac{2\left|\nabla\epsilon\right|^2}{\left(1+\epsilon\right)^3}. 
 \end{align}
