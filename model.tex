@@ -164,7 +164,7 @@ where
 is the gas scale-height in the dust-free limit and $\OmK$ is the
 Keplerian frequency, respectively. 
 
-In practice, we consider $\epsilon_0 \ll 1$ and settled dust such that
+We usually consider $\epsilon_0 \ll 1$ and settled dust such that
 $\Htilde<\Hgas$. Then $\rhog(r,z)$ is effectively Gaussian, as in the
 dust-free case. The dust density is approximately 
 \begin{align}
@@ -178,6 +178,14 @@ with
 and $H_\mathrm{d}$ is the dust-scale height. In numerical
 calculations, we  we specify $H_\mathrm{d}< \Hgas$ to obtain 
 $\Htilde$ for input. 
+
+Finally, we define 
+\begin{align}
+  Z \equiv \epsilon_0\frac{\Hd}{\Hg} \simeq
+  \frac{\Sigma_\mathrm{d}}{\Sigma_\mathrm{g}} 
+\end{align}
+as a proxy of the ratio between the dust surface density
+$\Sigma_\mathrm{d}$ and the gas surface density $\Sigma_\mathrm{g}$. 
 
 \subsection{Orbital frequency} 
 In the thin-disk approximation, the disk orbital frequency is 
