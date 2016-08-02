@@ -30,12 +30,12 @@ of the roughly horizontal `body modes' and the nearly-vertical
 We find that increasing the dust-to-gas ratio reduce VSI growth
 rates. Notably `surface modes', which are typically fastest growing in
 the dust-free case, are surpressed in dusty disks for $\epsilon_0\geq
-0.1$. The body modes' growth rates remain $\sim O(h_\mathrm{g}\OmK)$ but their
-oscillation frequency increases with $\epsilon_0$. The lowest
-frequency `fundamental' body mode is not the fastest growing, but they
-are energetically dominant because the entire disk column is perturbed
-\citep[cf. surface modes which only disturb the disk boundaries,][]{umurhan16c}. 
-
+0.1$. The body modes' growth rates remain $\sim O(h_\mathrm{g}\OmK)$
+but their oscillation frequency increases with
+$\epsilon_0$. The total number of modes do not change
+significantly. This is in contrast with the effect of increasing
+cooling times, where \citetalias{lin15} find fewer unstable modes.
+%until the system is eventually completely stable. 
 
 \begin{figure}
   \includegraphics[width=\linewidth]{figures/compare_eigenvals_kx30Hd1} 
@@ -43,12 +43,15 @@ are energetically dominant because the entire disk column is perturbed
     dusty disk with fiducial parameters
     $(p,q,h_\mathrm{g}, \Hd/\Hg )=(-1.5,-1,0.05, 0.99)$. The real
     frequency $\omega$ and growth rates $s$ are shown for a range of
-    midplane dust-to-gas ratios $\epsilon_0=\rhod/\rhog$. 
+    midplane dust-to-gas ratios $\epsilon_0=\rho_\mathrm{g0}/\rho_\mathrm{d0}$. 
     \label{vsi_dust_loading}
     }
 \end{figure}
 
-In Fig. \ref{vsi_dust_loading2d}
+The lowest frequency `fundamental' body mode is not the fastest
+growing, but they are energetically dominant because the entire disk
+column is perturbed \citep[cf. surface modes which only disturb the
+  disk boundaries,][]{umurhan16c}. In Fig. \ref{vsi_dust_loading2d}
 we compare the fundamental mode between the nearly 
 dust-free case $\epsilon_0=10^{-3}$ an a dusty disk with
 $\epsilon_0=1$. Dust-loading preferentially
@@ -69,6 +72,11 @@ to the midplane.
     \label{vsi_dust_loading2d}
     }
 \end{figure}
+
+
+
+
+
 
 In Fig. \ref{vsi_dust_loading_vareps} we plot the growth rates as a
 function of $\epsilon_0$ for different perturbation wavenumbers $k$. We
@@ -93,3 +101,39 @@ for $\epsilon_0\gtrsim 0.1$ and $k\Hg\gtrsim 50$.
 
 
 \subsection{Fixed metalicity} 
+Here we vary the dust layer thickness $\Hd$ but hold 
+\begin{align}\label{metalicity_def}
+Z \equiv \epsilon_0 \Htilde = \text{constant,}
+\end{align}
+so that $\Sigma_\mathrm{d}/\Sigma_\mathrm{g}$ is
+fixed. Eq. \ref{metalicity_def} then gives the required midplane
+dust-to-gas ratio. 
+
+%zmax = 2 because we have very thin dust layer
+
+We set $Z=0.03$ and consider two disks with $\Hd=0.1\Hg$ and
+$\Hd=0.99\Hg$. Fig. \ref{compare_vshear_fixZ} compares the 
+
+\begin{figure}
+  \includegraphics[width=\linewidth]{figures/compare_vshear_fixZ} 
+  \caption{Vertical shear rate in a locally isothermal, dusty disk
+    with fixed dust-to-gas mass and dust thickness $\Hd=0.1\Hg$
+    (black) and $\Hd=0.99\Hg$ (blue). 
+    \label{compare_vshear_fixZ}
+    }
+\end{figure}
+
+
+
+\begin{figure}
+  \includegraphics[scale=0.33, clip=true, trim=0.5cm 0cm 3cm 0cm]{figures/result2d_Hd1.ps}\includegraphics[scale=0.33, clip=true, trim=2cm 0cm 0cm 0cm]{figures/result2d_Hd0d1.ps} 
+  \caption{
+%dusty VSI mode in real space for midplane dust-to-gas
+%    ratio $\epsilon_0=10^{-3}$ (top) and $\epsilon_0=1$
+%    (bottom). The color scale shows the perturbation to the
+%    dust-to-gas ratio, $\delta\epsilon$; and the arrows show
+%    $\sqrt{\rho}\left(\dd v_x, \dd v_z\right)$. 
+    stuff
+    \label{result2d_fixZ}
+    }
+\end{figure}
