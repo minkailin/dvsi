@@ -92,9 +92,12 @@ Eq. \ref{eff_energy} can be written in conservative form,
 \end{align*}
 We may thus re-interpret $P$ as the mixture's energy density, but the
 energy flux has an additional contribution from the pressure
-gradient and dust-gas friction. 
-The term on the right-hand-side, owing to the imposed
-temperature profile, can be interpreted as an external heat source. 
+gradient and dust-gas friction. The term on the right-hand-side, owing
+to the imposed temperature profile, can be interpreted as an external
+heat source.  
+
+%We comment that 
+
 
 \section{Dynamical equilibria}\label{eqm}
  
@@ -184,8 +187,10 @@ Finally, we define
   Z \equiv \epsilon_0\frac{\Hd}{\Hg} \simeq
   \frac{\Sigma_\mathrm{d}}{\Sigma_\mathrm{g}} 
 \end{align}
-as a proxy of the ratio between the dust surface density
-$\Sigma_\mathrm{d}$ and the gas surface density $\Sigma_\mathrm{g}$. 
+as a measure of the local metalicity. The second approximation holds
+for $\epsilon_0\ll1$. 
+%\Sigma_\mathrm{d}$ and the gas
+%surface density $\Sigma_\mathrm{g}$.  
 
 \subsection{Orbital frequency} 
 In the thin-disk approximation, the disk orbital frequency is 
@@ -227,7 +232,7 @@ ratio with a power-law temperature profile (Eq. \ref{power_temp}) gives
   -\frac{\p\epsilon}{\p z}\frac{\p\ln{\rhog}}{\p r}\right.\notag\\
   &\phantom{ r\frac{\p \Omega^2}{\p z}  =
     \frac{c_s^2(r)}{\left(1+\epsilon\right)^2}\left\{\right\} }
-  \left. +\frac{q}{r}\left[\frac{\p\epsilon}{\p z} + \left(1+\epsilon\right)\frac{\p\ln{\rhog}}{\p z}\right]
+  \left. -\frac{q}{r}\left[\frac{\p\epsilon}{\p z} + \left(1+\epsilon\right)\frac{\p\ln{\rhog}}{\p z}\right]
   \right\} 
 \end{align*}
 The first two terms correspond to vertical shear caused by spatial
@@ -321,25 +326,27 @@ the gas. This is similar to entropy being conserved following an
 adiabatic gas when there is no heating or cooling.  
 
 In this case, the last two integrals in Eq. \ref{int_rel} vanish. Then 
-requiring $\sigma^2>0$  gives the Solberg-Hoiland criteria 
+requiring $\sigma^2>0$  gives the criteria 
 for the axisymmtric \emph{stability} of an isothermal gas perfectly 
 coupled to dust,  
-\begin{align}
-  \kappa^2 + c_s^2 \nabla\ln{\rhog}\cdot\nabla\tepsilon &> 0,\label{dusty_solberg1}  \\
-  -c_s^2\frac{\p\ln{\rhog}}{\p z}\left(-\kappa^2\frac{\p\tepsilon}{\p
-    z} + r\frac{\p\Omega^2}{\p z}\frac{\p \tepsilon}{\p r} \right) & > 0, \label{dusty_solberg2}
-\end{align}
 %\begin{align}
-%  \kappa^2 - \frac{1}{\rho}\nabla P \cdot \nabla s &> 0,\\
-%  -\frac{1}{\rho}\frac{\p P}{\p z} \left(\kappa^2 \frac{\p s}{\p z} -
-%  r\frac{\p\Omega^2}{\p z}\frac{\p s}{\p r}\right) &>0, 
+%  \kappa^2 + c_s^2 \nabla\ln{\rhog}\cdot\nabla\tepsilon &> 0,\label{dusty_solberg1}  \\
+%  -c_s^2\frac{\p\ln{\rhog}}{\p z}\left(-\kappa^2\frac{\p\tepsilon}{\p
+%    z} + r\frac{\p\Omega^2}{\p z}\frac{\p \tepsilon}{\p r} \right) & > 0, \label{dusty_solberg2}
 %\end{align} 
+\begin{align}
+  \kappa^2 - \frac{1}{\rho}\nabla P \cdot \nabla s &> 0, \label{dusty_solberg1}    \\
+  -\frac{1}{\rho}\frac{\p P}{\p z} \left(\kappa^2 \frac{\p s}{\p z} -
+  r\frac{\p\Omega^2}{\p z}\frac{\p s}{\p r}\right) &>0, \label{dusty_solberg2}
+\end{align} 
 where %$s = \ln{P/\rho}$, 
-$\kappa^2 \equiv r^{-3}\p_r\left(r^4\Omega^2\right)$ is the
-square of the epicylic frequency, and we assume $\kappa^2>0$. 
-Eq. \ref{dusty_solberg1}---\ref{dusty_solberg2} are equivalent to the
-Solberg-Hoiland criteria for adiabatic gas if one writes the 
-entropy $s=\ln{\left[c_s^2\left(1 - \tepsilon\right)\right]}$. 
+$\kappa^2 \equiv r^{-3}\p_r\left(r^4\Omega^2\right)$ is the 
+square of the epicylic frequency, and we assume $\kappa^2>0$.  
+Eq. \ref{dusty_solberg1}---\ref{dusty_solberg2} has the identical form
+to the Solberg-Hoiland criteria for adiabatic gas dynamics 
+\citep[e.g.][]{tassoul78}, except here the entropy $s$ is really a
+representation of the dust distribution via $s=\ln{\left[c_s^2\left(1
+    - \tepsilon\right)\right]}$.  
 
 %These criteria are applicable to any adiabatic fluid. 
 %For an isothermal mixture, we may take $s=\ln{(1-\tepsilon)}$.   

@@ -110,7 +110,7 @@ dust-loading. The figure suggest that VSI becomes much less efficient
 for $\epsilon_0\gtrsim 0.1$ and $k\Hg\gtrsim 50$. 
 
 \begin{figure}
-  \includegraphics[width=\linewidth]{figures/compare_eigenvals_vareps} 
+  \includegraphics[width=\linewidth]{figures/compare_eigenvals_vareps2} 
   \caption{Maximum growth rate of the dusty VSI as a function of the
     midplane dust-to-gas ratio $\epsilon_0$ for perturbations with
     different radial wavenumbers $k$. The dust layer thickness is
@@ -120,11 +120,10 @@ for $\epsilon_0\gtrsim 0.1$ and $k\Hg\gtrsim 50$.
 \end{figure}
 
 \subsection{Effect of dust thickness} 
-We now vary the dust layer thickness $\Hd$ but hold 
-$Z \equiv \epsilon_0 \Hd/\Hg = \text{constant,}$ 
-so that $\Sigma_\mathrm{d}/\Sigma_\mathrm{g}$ is
-fixed. This then gives the required midplane dust-to-gas ratio.    
-Since we will consider thin dust layers, here we use a smaller
+We now vary the dust layer thickness $\Hd$ but fix the metalicity 
+$Z \equiv \epsilon_0 \Hd/\Hg = \text{constant}$. This then gives the
+required midplane dust-to-gas ratio. Since we will consider thin dust
+layers, here we use a smaller 
 domain with $\zmax=2\Hg$ so that $\epsilon$ does not become
 too small. 
 
@@ -142,7 +141,7 @@ the disk with $\Hd=0.1\Hg$ to be stable.
   \includegraphics[width=\linewidth]{figures/compare_vshear_Nz2_fixZ} 
   \caption{Vertical shear rate (solid) compared to vertical buoyancy
     (dotted) in a locally isothermal, dusty disk 
-    with dust-to-gas mass ratio $Z=0.03$ and dust thickness $\Hd=0.1\Hg$
+    with metalicity $Z=0.03$ and dust thickness $\Hd=0.1\Hg$
     (black) and $\Hd=0.99\Hg$ (blue). 
     \label{compare_vshear_fixZ}
     }
@@ -177,5 +176,34 @@ surface layers \citep{gammie96}.
     dust-to-gas ratio, $\delta\epsilon$; and the arrows show
     $\sqrt{\rho}\left(\dd v_x, \dd v_z\right)$.
     \label{result2d_fixZ}
+    }
+\end{figure}
+
+Fig. \ref{compare_eigenvals_fixZ} shows the maximum VSI growth rates
+as a function of the dust layer thickness. As before, we find growth
+rates are most affected by the vertical structure of the dust layer
+when the perturbation wavenumer is large. VSI growth rates converge as
+$\Hd\to 0$. %to dust free values?    
+Thus a thin dust layer, however large its associated vertical shear,
+does not affect the VSI. The non-monotonic behavior for $\Hd\gtrsim
+0.5\Hg$ arises because the vertical buoyancy frequency 
+\begin{align*}
+N_z^2(H_d;z,Z) \simeq &Z\Hg z^2
+\exp{\left(-\frac{z^2}{2\Hg^2}\right)}\OmK^2\notag\\
+&\times 
+\frac{1}{\Hd}\left(\frac{1}{\Hd^2} -
+\frac{1}{\Hg^2}\right)\exp{\left(-\frac{z^2}{2\Hd^2}\right)}  
+\end{align*}
+is a non-monotonic function of $\Hd$ at fixed $z$. At $z=\Hg$ and $z=2\Hg$
+the buoyancy frequency is maximized for $\Hd\simeq0.5\Hg$ and
+$\Hd\simeq 0.8\Hg$, respectively. This is consistent with the abscissa
+of minima in growth rates in Fig. \ref{compare_eigenvals_fixZ}. 
+
+\begin{figure}
+  \includegraphics[width=\linewidth]{figures/compare_eigenvals_fixZ} 
+  \caption{Maximum VSI growth rate for different perturbation
+    wavenumbers $k$ as a function of the dust layer
+    thickness $\Hd$ at fixed metalicity $Z=0.03$. 
+    \label{compare_eigenvals_fixZ}
     }
 \end{figure}

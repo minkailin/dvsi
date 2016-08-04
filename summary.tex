@@ -62,14 +62,41 @@ gas.
 %growth rates not sig changed 
 %v shear from thin dust layers are overwhelmed by 
 
+\subsection{Generalization to locally polytropic disks}
+We can extend the dusty/adiabatic gas correspondence to 
+other fixed equations of state. As an example, consider the locally
+polytropic disk 
+\begin{align}
+  P = K(r,z)\rhog^{\Gamma}, 
+\end{align}
+where $K$ is a prescribed function and $\Gamma$ is the constant
+adiabatic index. Then eliminating $\tepsilon$ from the dust equation
+\ref{dusteq} gives 
+\begin{align}
+  \frac{D P}{D t} = - \Gamma P\nabla\cdot\bm{v}  + P \bm{v}\cdot\nabla \ln{K}
+  + \frac{\Gamma P}{\rhog}\nabla\cdot\left(\tepsilon\tstop\nabla
+  P\right).
+\end{align}
+Thus the dusty gas behaves like a pure gas with adiabatic index
+$\Gamma$. The entropy is given by 
+\begin{align}
+  s = \ln{\left[K(r,z)\left(1 - \tepsilon\right)^\Gamma\right]}.  
+\end{align}
+When $K$ is constant, the corresponding Solberg-Hoiland criteria for
+axisymmetric stability may be obtained from that in standard adiabatic 
+hydrodynamics \citep[e.g.][]{tassoul78} by
+using this definition of entropy in
+Eqs. \ref{dusty_solberg1}---\ref{dusty_solberg2}. 
+
 \subsection{Dusty analogs of other gaseous instabilities} 
+ 
 %gi
 %rwi 
 
 %\subsection{Implication for numerical simulations}
 
 
-\subsection{Thermodynamic interpretation of other dusty instabilities}
+\subsection{Thermodynamic interpretation of dusty instabilities}
 
 
 %\subsection{Caveats and future directions}
