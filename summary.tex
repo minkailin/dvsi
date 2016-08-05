@@ -88,6 +88,20 @@ hydrodynamics \citep[e.g.][]{tassoul78} by
 using this definition of entropy in
 Eqs. \ref{dusty_solberg1}---\ref{dusty_solberg2}. 
 
+\subsection{Implications for numerical simulations}
+The dusty/adiabatic gas equivalence means that pure
+gas dynamics codes can be applied to simulate locally
+isothermal/polytropic dusty gas with minimal modification. In fact, no
+modification is needed  
+for strictly isothermal or polytropic gas ($c_s$ or $K$ being
+constant, respectively) perfectly-coupled to dust. The usual 
+adiabatic energy equation is effectively a dust continuity
+equation. When $c_s$ or $K$ is not constant and/or $\tstop\neq0$ one
+can simply add corresponding source terms in energy equation. In the
+large but finite coupling case, this source term is analogous to
+radiative diffusion \citep{price15}, which is also standard in many
+hydrodynamics codes.      
+
 \subsection{Dusty analogs of other gaseous instabilities}  
 
 %gi
@@ -97,7 +111,7 @@ Eqs. \ref{dusty_solberg1}---\ref{dusty_solberg2}.
 The addition of dust enhances gravitational
 instability (GI). This is because dust particles contribute to the
 total disk mass but not thermal pressure, which effectively lowers the
-disk temperature \citep[][]{thompson88}. For typical dust-loading
+disk temperature \citep[][]{thompson88,shi13}. For typical dust-loading 
 $\epsilon, Z\ll1$, this effect is unimportant. However, if $\epsilon$ is
 large (e.g. due to dust settling) then the effective temperature may 
 be lowered to enable instability. 
@@ -107,10 +121,10 @@ temperature to \emph{increase} away from the midplane. This contrasts
 to previous studies of GI in vertically stratified disks
 \citep[e.g.][]{mamat10, kim12,lin14c} where the temperature decreases
 from the midplane. While we expect only the total surface density and
-characteristic temperatures are relevant to stability 
+characteristic temperatures are relevant to stability  
 \citep{toomre64}, having a non-trivial vertical temperature
 structure, induced by dust, may modify the vertical structure of 3D
-waves and unstable modes. We will examine this problem in a following
+waves and unstable modes. We will examine this linear problem in a following 
 study.  
 
 
