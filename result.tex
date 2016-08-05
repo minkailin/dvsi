@@ -13,6 +13,18 @@ for the midplane gas density to $p = -1.5$, that for the
 temperature profile to $q=-1$; and set the gas disk aspect-ratio
 $h_\mathrm{g}=0.05$. These are fiducial values used in \citetalias{lin15}. 
 
+
+\subsection{Qualitative expectations}
+\citetalias{lin15} find the appropriate way to compare 
+destabilizing vertical shear to stabilizing vertical buoyancy is
+$r\p_z\Omega/\OmK$ against $N_z^2/\OmK^2$. We see from \S\ref{vertshear}
+and \S\ref{vbuoyancy} that $|r\p_z\Omega|\sim q h_\mathrm{g}\OmK$ for a
+thin, gas dominated disk; while $N_z^2\sim \epsilon\OmK^2$. Thus we
+expect dust-induced buoyancy forces to stabilize the disk against the
+VSI where $\epsilon \gtrsim h_\mathrm{g}$. 
+
+%\begin{align}
+
 \subsection{Effect of dust-loading}
 We first vary the midplane dust-to-gas ratio 
 $\epsilon_0\in[10^{-3},1]$, fixing the dust thickness to 
@@ -207,3 +219,20 @@ of minima in growth rates in Fig. \ref{compare_eigenvals_fixZ}.
     \label{compare_eigenvals_fixZ}
     }
 \end{figure}
+
+\subsection{Validity}
+We have considered $\tstop=0$ for simplicity. When $\tstop\neq0$, a 
+disk initialized as in \S\ref{eqm} will evolve 
+due to dust-gas relative drift. In particular, in the
+absence of turbulent/diffusive processes, dust particles settle to the
+midplane on a timescale $t_\mathrm{settle}\OmK \sim 1/\tstop\OmK$
+\citep{takeuchi02}. For the previous results to be valid (i.e. the
+basic state does not evolve significantly) we require VSI growth
+timescales $t_\mathrm{grow}\ll t_\mathrm{settle}$. Since the maximum
+VSI growth rate is $\sim h_\mathrm{g}\OmK$, we need stopping times
+such that 
+\begin{align}
+  \tstop\OmK \ll h_\mathrm{g}. 
+\end{align} 
+For thin PPD with $h_\mathrm{g}\sim 0.05$, our dusty VSI results are
+valid for $\tstop\OmK < O(10^{-2})$.  
