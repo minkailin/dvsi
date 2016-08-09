@@ -133,10 +133,13 @@ Protoplanetary disks are comprised of a mixture of gas and dust
 gas dynamics and vice versa. Dust-gas drag introduces a 
 wide range of new phenomena that are absent in pure gas
 disks. Important examples include the streaming instability
-\citep{youdin05a,youdin07b,johansen07} and secular gravitational
-instabilities \citep{ward00,youdin11,takahashi14} that lead to
-planetesimal formation. More recently, new dusty instabilities have
-also been uncovered \citep{loren15,loren16,lamb16}
+\citep{youdin05a,youdin07b,johansen07}, secular gravitational
+instabilities \citep{ward00,youdin11,michikoshi12,takahashi14} and
+Kelvin-Helmholtz instabilities
+\citep{chiang08,barranco09,lee10}. These lead to structure and
+planetesimal formation, as well as turbulence. More recently, new
+dusty instabilities have also been uncovered
+\citep{loren15,loren16,lamb16}  
 
 %Understanding dusty gas dynamics is
 %therefore essential to any planet formation theory. 
@@ -152,8 +155,8 @@ disks directly simulate gas dynamics with explicit
 Lagragian dust particles \citep{nelson10,bai10,johansen11,yang14,zhu14,gibbons15,simon16,baruteau16}. In this
 approach, the equations of motion for each particle is solved
 including dust-gas drag, the strength of which is measured 
-by a stopping time $\tstop$ --- the characteristic timescale for the
-relative velocity between gas and dust to decay. Thus small $\tstop$
+by a stopping time $\tstop$ --- the decay timescale for the 
+relative velocity between gas and dust. Thus small $\tstop$
 corresponds to tightly-coupled particles. 
 
 %refs 
@@ -180,9 +183,9 @@ difference $\Delta\bm{v}$. The latter also contributes to
 additional source terms in the momentum and energy equations.  
 The one-fluid approach is appropriate for 
 simulating gas tightly coupled to dust particles with small $\tstop$.  
-This can make the two-fluid or Lagragian particles approach
-numerically challanging; but is straight forward to model in the
-one-fluid framework \citep{price15}. 
+This can be numerically challenging for the two-fluid or Lagragian
+particles approach; but is straight forward to model in the
+one-fluid framework \citep{price15}.  
 
 The single fluid formalism also has the important advantage that it is
 amenable to standard analytical methods
@@ -199,7 +202,7 @@ We consider tightly coupled dust particles with $\tstop\Omega\ll
 P/\rhog$, where $P$ is the gas pressure \citep{youdin05a,
   jacquet11,laibe14}. We also consider irradiated protoplanetary disks 
 in which the temperature is set externally \citep{chiang97,stam08}. We
-can then adopt a locally isothermal equation of state $P = c_s^2\rhog$
+may then adopt a locally isothermal equation of state $P = c_s^2\rhog$
 where $c_s$ is a prescribed sound-speed profile.  This physically
 represents short cooling times \citep{lin15}. 
 
@@ -228,15 +231,15 @@ instability \citep[VSI,][]{nelson13,lin15,barker15}. We provide
 thermodynamical interpretations of our dusty stability calculations. 
 
 This paper is organized as follows. In \S\ref{setup} we list the
-equations describing tightly-coupled dusty gas. We show they are in
-fact the usual hydrodynamic equations, including a precise 
-definition of the entropy isothermal dusty gas. We describe approximate 
+equations describing tightly-coupled dusty gas. We show they are in 
+fact the usual hydrodynamic equations. This leads to a precise 
+definition of the entropy of an isothermal dusty gas. We describe approximate 
 equilibrium solutions in \S\ref{eqm}. In \S\ref{limits} we discuss
 general stability properties of the dusty problem in various
 limits. We use these results to constraint the sharpness of dust edges
 in isothermal disks. In \S\ref{linear_problem} we formulate an
 explicit stability calcultion to study the dusty VSI, for which we
-present numerical results \S\ref{results}. We summarize and discuss
+present numerical results in \S\ref{results}. We summarize and discuss
 future applications of the dusty/adiabatic gas equivalence in
 \S\ref{summary}. 
 
