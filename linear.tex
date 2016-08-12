@@ -30,21 +30,25 @@ equation in place of the dust-fraction
 \begin{align}
   \ii\sigma W &= \ii k \dd v_r + \dd v_z^\prime +
   \dd v_r \p_r\ln{\rho} + \dd v_z\p_z\ln{\rho},\label{lin_mass}\\
-  -\ii\sigma\dd v_r  &= 2\Omega\dd v_\phi + 
-  \delta\bm{F}\cdot\hat{\bm{r}},\label{lin_xmom}\\
+  -\ii\sigma\dd v_r  &= 2\Omega\dd v_\phi 
+% +  \delta\bm{F}\cdot\hat{\bm{r}}
+- W F_r - \ii k Q,\label{lin_xmom}\\
   \ii\sigma\dd v_\phi &= \frac{\kappa^2}{2\Omega}\dd v_r + \frac{\p
     v_\phi}{\p z}\dd v_z, \label{lin_ymom}\\
-  -\ii\sigma\dd v_z &=  \delta\bm{F}\cdot\hat{\bm{z}},\label{lin_zmom}\\
+  -\ii\sigma\dd v_z &= - W F_z - \left[Q^\prime + Q
+    \left(\ln{\rho}\right)^\prime\right]  %\delta\bm{F}\cdot\hat{\bm{z}} 
+,\label{lin_zmom}\\
   \ii\sigma Q &= \frac{P}{\rho}\left(\ii k \dd v_r + \dd
                v_z^\prime\right) + \frac{1}{\rho}\left(\dd v_r\p_rP + \dd v_z \p_zP\right)\notag\\
                 &\phantom{=}-\frac{P}{\rho} \dd v_r\p_r
-               \ln{c_s^2}, \label{lin_energy} 
+               \ln{c_s^2} %, \label{lin_energy} 
 %+ \dd v_z \p_z\ln{c_s^2}\right),\label{lin_energy} 
-%               - \frac{\dd\mathcal{C}}{\rho},\label{lin_energy} 
+               - \frac{\dd\mathcal{C}}{\rho},\label{lin_energy} 
 \end{align}  
-where $^\prime \equiv \p_z$ and $\dd\bm{F}$ is the linearized pressure
-force, given in Appendix \ref{lin_press}. Note that we have assumed a
-temperature profile that only depends on $r$.  
+where $^\prime \equiv \p_z$ and $\bm{F} \equiv -\nabla P/\rho$. 
+% and $\dd\bm{F}$ is the linearized pressure
+%force, given in Appendix \ref{lin_press}. 
+Note that we have assumed a temperature profile that only depends on $r$.   
 
 %; and 
 %\begin{align}

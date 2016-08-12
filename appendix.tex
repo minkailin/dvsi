@@ -166,9 +166,6 @@ radially-local approximation are given by
   \left(\frac{Q}{c_s^2}\right)^\prime. 
 \end{align}
 
-
-
-
 %\section{Conversion formulae}
 %The gas density $\rhog$ and dust-to-gas ratio $\epsilon$ is related
 %to the total density $\rho$ and dust-fraction $\tepsilon$ by
@@ -189,3 +186,67 @@ radially-local approximation are given by
 % \frac{\nabla^2\epsilon}{\left(1+\epsilon\right)^2} -
 % \frac{2\left|\nabla\epsilon\right|^2}{\left(1+\epsilon\right)^3}. 
 %\end{align}
+
+\section{Dispersion relation for unstratified disks}
+Unstratified disk with $\Phi = \Phi (r)$ so that $\p_zP = \p_z\rho =
+0$. The background $\p_rP/\rho$ and $\tepsilon$ are constant. 
+Fourier analyze in $r$ and $z$ so that $\p_z\to \ii k_z$ and
+$\p_r\to \ii k_x$ when acting on perturbations. Denote $|\bm{k}|^2
+\equiv k_x^2 + k_z^2$. Neglect variations in
+background when compared with that of perturbations. Linearized
+equations are, after eliminating the azimuthal velocity: 
+
+\begin{align}
+  \ii \sigma W &=\nabla\cdot \bm{\dd v} = \ii k_x \dd v_x + \ii k_z \dd v_z,\\
+    \sigma^2 \dd v_x &= \kappa^2 \dd v_x - \ii \sigma F_r W +
+    k_x\sigma Q,\\
+  -\ii\sigma\dd v_z &= -\ii k_zQ,\\
+\ii \zeta \sigma  Q & = \frac{P}{\rho} \nabla \cdot \bm{\dd v}   -
+  \frac{\dd \mathcal{C}}{\rho}. 
+\end{align}
+The artifical factor $\zeta = 1$  is inserted to keep track of the
+left-hand-side of the energy equation. The linearized dust diffusion
+function (Appendix \ref{lin_dust}), 
+under the above approximations, is 
+\begin{align}
+-\frac{\dd \mathcal{C}}{\rho}  = \tstop c_s^2 \left[\ii k_x F_r\left( 1-2\tepsilon\right)
+  W + \tepsilon |\bm{k}|^2 Q\right]. 
+\end{align}
+
+Eliminate the velocity perturbations to obtain
+\begin{align}
+  \left(\ii \zeta \sigma - \tstop c_s^2 \tepsilon |\bm{k}|^2\right)Q &=
+  \ii \left[
+  \frac{P}{\rho}\sigma + k_x\tstop c_s^2 F_r\left(1 -
+  2\tepsilon\right)\right]W. \\
+   \sigma^2 \left( \kappa^2 - \sigma^2 - \ii k_x F_r\right)W &=
+    \left(k_z^2\kappa^2 - \sigma^2|\bm{k}|^2\right)Q. 
+\end{align}
+Futher eliminate $Q$ and $W$ to obtain the dispersion relation
+\begin{align}
+  &\frac{\zeta}{c_s^2|\bm{k}|^2}\sigma^5 + \ii \tepsilon \tstop
+  \sigma^4 - \left[ \frac{\zeta}{c_s^2|\bm{k}|^2} \left(\kappa^2 - \ii
+  k_x F_r\right) + \left(1 - \tepsilon\right)\right]\sigma^3 - \ii
+  \tstop \left[\tepsilon \kappa^2 - \ii k_x F_r\left( 1 -
+  \tepsilon\right)\right]\sigma^2 \notag\\ 
+  &+ \left(1 -
+  \tepsilon\right)\left(\frac{k_z\kappa}{|\bm{k}|}\right)^2\sigma +
+  k_x \tstop F_r\left(1 - 2\tepsilon\right)
+  \left(\frac{k_z\kappa}{|\bm{k}|}\right)^2  = 0,
+\end{align}
+where the equation of state $P = c_s^2\left( 1 - \tepsilon\right)\rho$
+was used. 
+If we now set $\zeta = 0$ or consider $c_s^2\to \infty$ to obtain the
+incompressible limit, and define $\tau_\mathrm{s} \equiv
+\tstop/\left(1 - \tepsilon\right)$, we obtain: 
+\begin{align*}
+\ii \tepsilon \tstop
+  \sigma^4 - \sigma^3 - 
+  \tau_\mathrm{s} \left[ \ii \tepsilon \kappa^2 + k_x F_r\left( 1 -
+  \tepsilon\right)\right]\sigma^2 
+  + \left(\frac{k_z\kappa}{|\bm{k}|}\right)^2\sigma + 
+  k_x \tau_\mathrm{s} F_r\left(1 - 2\tepsilon\right)
+  \left(\frac{k_z\kappa}{|\bm{k}|}\right)^2  = 0,
+\end{align*}
+as derived by \cite{jacquet11} and \cite{laibe14} for the streaming
+instability. 
