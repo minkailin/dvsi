@@ -5,8 +5,7 @@ In the limit of strong dust-gas drag (stopping time $\tstop\to 0$)
 
 \begin{align}
   &\frac{D\rho}{Dt} = -\rho\nabla\cdot\bm{v}, \label{masseq}\\ 
-  &\frac{D\bm{v}}{Dt} = - \nabla\Phi - \frac{1}{\rho}\nabla
-  P, \label{momeq}\\ 
+  &\frac{D\bm{v}}{Dt} = - \nabla\Phi - \frac{1}{\rho}\nabla  P, \label{momeq}\\ 
   &\frac{D\tepsilon}{Dt} = -\frac{1}{\rho} \nabla \cdot \left(\tepsilon 
   \tstop \nabla P \right),\label{dusteq}  
 \end{align}
@@ -35,7 +34,9 @@ that for a star of mass $M_*$ at the origin
   \Phi(r,z) =-\frac{GM_*}{\sqrt{r^2 + z^2}}\simeq
   -\frac{GM_*}{r}\left(1 - \frac{z^2}{2r^2}\right), 
 \end{align}
-where $G$ is the gravitational constant. The second equality is the 
+where $G$ is the gravitational constant, and $(r,\phi, z)$ are
+cylindrical co-ordinates centered on the star. 
+The second equality is the 
 thin-disk approximation for the disk potential, appropriate for
 $|z|\ll r$. We shall adopt this approximate potential in order to
 obtain analytic expressions for the disk equilibria.  
@@ -46,7 +47,7 @@ We adopt
   P = c_s^2(r,z)\rhog = c_s^{2}(1 - \tepsilon)\rho,   
 \end{align}
 where $c_s$ is a prescribed sound-speed profile fixed in time. 
-In numerical calculations we will consider vertically 
+In practice we consider vertically 
 isothermal disks with \begin{align}\label{power_temp}
   c_s^2(r) \propto r^{q},
 \end{align}
@@ -81,6 +82,21 @@ terms due to the imposed temperature profile via $\nabla c_s^2$, as
 well as dust-gas drag via $\mathcal{C}$. 
 %In this form, the function $\mathcal{C}$ can be interpreted
 %as a cooling term.    
+If we denote 
+\begin{align}
+  \bm{F} \equiv  - \frac{\nabla P}{\rho}
+\end{align}
+for the pressure forces, then
+\begin{align*}
+  \mathcal{C} = - c_s^2\nabla \left( \tepsilon \tstop \rho \bm{F}
+  \right), 
+\end{align*}
+which is in the same form as radiative diffusion. In protoplanetary
+disks the heat flux, proportional to $\bm{F}$, is directly radially
+outwards and vertically upwards. This is simply a reflection of
+particle drift (inwards and downwards). Particle flux into a region contributes
+to `cooling' of that region because the effective temperature is
+lowered. 
 
 Eq. \ref{eff_energy} can be written in conservative form,
 \begin{align*}
@@ -343,8 +359,8 @@ coupled to dust,
 %  r\frac{\p\Omega^2}{\p z}\frac{\p s}{\p r}\right) &>0, \label{dusty_solberg2}
 %\end{align} 
 where %$s = \ln{P/\rho}$, 
-$\kappa^2 \equiv r^{-3}\p_r\left(r^4\Omega^2\right)$ is the 
-square of the epicylic frequency. We assume $\kappa^2>0$.  
+$\kappa^2 \equiv r^{-3}\p_r\left(r^4\Omega^2\right)>0$ is the 
+square of the epicylic frequency. %We assume $\kappa^2>0$.  
 Eq. \ref{dusty_solberg1}---\ref{dusty_solberg2} are in fact the 
 the Solberg-Hoiland criteria for axisymmetric stability of adiabatic
 gas if one inserts $C_p\ln{\left(1 -
@@ -510,20 +526,22 @@ may be thought of as a correlation between compression/expansion and
 heating/cooling. 
 
 It is well-known that such correlations can lead to pulsational
-instabilities in stars \citep{cox67}. We thus suggest an interpretation
-of dust-drag instabilities in disks in a similar way. We give a qualitative
+instabilities in stars \citep{cox67}. One may thus interpret 
+dust-drag instabilities in a similar way. We give a
+qualitative 
 description below, based on the more rigorous treatments of stellar 
-pulsational instabilities by 
+pulsations by 
 \cite{cox67} and lecture notes from \cite{samadi15} and
 J. Christensen-Dalsgaard\footnote{\url{http://astro.phys.au.dk/$\sim$jcd/oscilnotes/}}.      
 
 %and disks
 %\cite{kato78}. 
 
-Consider the Lagragian perturbation $\Delta$ of a variable $f$, 
-related to the Eulerian perturbation by $\Delta f = \delta f + 
-\bm{\xi}\cdot\nabla f$, where $\bm{\xi}$ is the Lagragian  
-displacement ($\dd v_{x,z} = -\ii\sigma\xi_{x,z}$). %Note that $\Delta
+The Lagragian perturbation $\Delta$ of a variable $f$ is 
+related to its Eulerian perturbation by $\Delta f = \delta f + 
+\bm{\xi}\cdot\nabla f$; where $\bm{\xi}$ is the Lagragian  
+displacement ($\dd v_{x,z} = -\ii\sigma\xi_{x,z}$). 
+%Note that $\Delta
 %\mathcal{C} = \delta \mathcal{C}$ for a uniform background $C$ as
 %required for equilibrium. 
 Then Eq. \ref{lin_mass_full}---\ref{lin_energy_full} imply  
@@ -544,27 +562,28 @@ The full energy equation is
   \frac{DP}{Dt} = \frac{P}{\rho}\frac{D\rho}{D t} + \mathcal{C}. 
 \end{align*}
 Dust-drag causes a phase difference between the 
-pressure and density evolution following a parcel. Now, consider a 
+pressure and density evolution of a fluid element. Now, consider a 
 fluid element at maximum density during an oscillation cycle, 
-so that $D\rho/ D t = 0$. If at this point dust-gas drag provides an
-effective heating ($\mathcal{C}>0$), then the fluid element is
-experiencing increasing pressure, $DP/D t>0$. It will attain
+so that $D\rho/ D t = 0$. If at this point dust-gas drag (or particle flux) provides an
+effective heating to the fluid element ($\mathcal{C}>0$), then it will 
+experience increasing pressure, $DP/D t>0$. It attains 
 pressure maximum \emph{after} reaching density maximum. This implies 
 pressure maximizes while the parcel is expanding: it will do 
-positive work (the enclosed area by its `$P$-$V$' curve  is 
-positive). This will increase the oscillation amplitude.   
+positive work  --- the area enclosed by its path in the `$P$-$V$' plane  is 
+positive. This will increase the oscillation amplitude.   
 
 Indeed, \cite{jacquet11} explains the essence of the streaming 
 instability in dusty protoplanetary disks as dust accumulation
-(and hence compression) at a pressure bump which back-reacts on the
-gas flow in such a way to strengthen the pressure bump. A phase
+(and hence compression) at a pressure bump, which then drags the 
+gas towards it (and hence heating) to strengthen the pressure bump. A phase
 difference was also noted in the numerical calculations of
-\cite[][although they consider the full two-fluid system]{youdin07b}.   
+\citet[][although they consider the full two-fluid system]{youdin07b}.   
 
-We suggest that a useful way to understand  
-dust-drag instabilities in protoplanetary disks may be to re-cast the  
-problem into that of thermodynamics, since such instabilities have 
-already been well-studied in the stellar context. 
+We suggest a useful way to understand dust-drag instabilities in
+protoplanetary disks is to re-cast the problem into that of
+thermodynamics. Then such instabilities appear in the equations in the
+same way as pulsational instabities in stars, which has already been
+well studied. 
 
 \subsection{Locally isothermal gas perfectly coupled to dust}\label{dusty_vsi_int}
 If $c_s(r,z)$ is non-uniform but $\tstop=0$, Eq. \ref{int_rel} 

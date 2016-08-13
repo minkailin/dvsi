@@ -20,8 +20,9 @@ disturbances are
 \end{align}  
 where the linearizd pressure force $\delta \bm{F}$ is given in
 Appendix \ref{lin_press}. These equations do not assume the
-radially-local approximation used in the main text. 
-From the linearized meridional momentum equations, we find 
+radially-local approximation used in the main text. From the
+linearized meridional momentum equations, we find  
+
 \begin{align}
   \sigma^2\int\rho\left(|\dd v_r|^2 + |\dd v_z|^2\right)dV = \int\left( \rho
   \kappa^2 |\dd v_r|^2 + \rho r\frac{\p \Omega^2}{\p z} \dd v_z \dd
@@ -112,12 +113,10 @@ where  $s\equiv\ln{(P^{1/\Gamma}/\rho)}$. Hence,
   -\int \left(\nabla\cdot\dd\bm{v}^*\right)\dd\mathcal{C}dV.  
 \end{align}
 Note that the coefficient of $\delta v_z\delta v_r^*$ and $\delta
-v_z^*\delta v_r$ are equal owing to the
-equilibrium state (Eq. \ref{vshear}). 
-The special case $\Gamma=1,\, K = c_s^2$ gives
-Eq. \ref{int_rel}. A radially-local, vertically-global, viscous version of
-Eq. \ref{integral_ex} is given by \cite{latter06}. See also
-\cite{kato78} . 
+v_z^*\delta v_r$ are equal owing to the equilibrium state
+(Eq. \ref{vshear}). The special case $\Gamma=1,\, K = c_s^2$ gives
+Eq. \ref{int_rel}. Similar integral relations are given by
+\cite{kato78, kley93,latter06}.  
 
 %If $c_s$ is constant then the second integral vanishes, $\sigma^2$
 %is real, and the first integral leads to the usual Solberg-Hoiland
@@ -125,11 +124,11 @@ Eq. \ref{integral_ex} is given by \cite{latter06}. See also
 %profile, the second  
 
 \section{Linearized pressure forces and its divergence}\label{lin_press}
-Define
-\begin{align}
-  \bm{F} \equiv - \frac{\nabla P}{\rho}. 
-\end{align}
-Then its linearized form is 
+%Define
+%\begin{align}
+ % \bm{F} \equiv - \frac{\nabla P}{\rho}. 
+%\end{align}
+The linearized form of the pressure force $\bm{F} = -\nabla P/\rho$ is  
 \begin{align}
   \delta \bm{F} = - \frac{\dd\rho}{\rho}\bm{F} -
   \frac{1}{\rho}\nabla\dd P,
@@ -150,7 +149,7 @@ radially-local approximation, are
 \begin{align}
   &\dd F_r = - W F_r - \ii k Q,\\
   &\dd F_z = - W F_z - \left[Q^\prime + Q
-    \left(\ln{\rho}\right)^\prime\right]  = s\dd v_z, 
+    \left(\ln{\rho}\right)^\prime\right]  = - \ii\sigma \dd v_z, 
 \end{align} 
 where the last equality is the linearized
 vertical momentum equation; and 
@@ -164,8 +163,8 @@ vertical momentum equation; and
     + Q\left[\left(\ln{\rho}\right)^{\prime\prime}+\left(\ln{\rho}\right)^{\prime
       2}\right]\right\}\notag\\
     &= \left[\left(\p_r\ln{\rho}-\ii k\right)F_r - \nabla\cdot\bm{F} +
-      F_z^\prime\right]W + \left(\ii k \p_r\ln{\rho} + k^2\right)Q +
-    s\dd v_z^\prime.
+      F_z^\prime\right]W + \left(\ii k \p_r\ln{\rho} + k^2\right)Q  -
+      \ii\sigma \dd v_z^\prime.
 \end{align}
 
 
@@ -226,13 +225,13 @@ radially-local approximation are given by
 % \frac{2\left|\nabla\epsilon\right|^2}{\left(1+\epsilon\right)^3}. 
 %\end{align}
 
-\section{Dispersion relation for unstratified disks}\label{compressible_streaming}
-Unstratified disk with $\Phi = \Phi (r)$ so that $\p_zP = \p_z\rho =
-0$. The background $\p_rP/\rho$ and $\tepsilon$ are constant. 
-Fourier analyze in $r$ and $z$ so that $\p_z\to \ii k_z$ and
-$\p_r\to \ii k_x$ when acting on perturbations. Denote $|\bm{k}|^2
-\equiv k_x^2 + k_z^2$. Neglect variations in
-background when compared with that of perturbations. Linearized
+\section{Compressible streaming instability}\label{compressible_streaming}
+We consider an unstratified disk with $\Phi = \Phi (r)$ so that $\p_zP = \p_z\rho =
+0$. The background $\p_rP/\rho$ and $\tepsilon$ are constants. 
+We Fourier analyze in $r$ and $z$ so that $\p_z\to \ii k_z$ and
+$\p_r\to \ii k_x$ when acting on perturbations, and denote $|\bm{k}|^2
+\equiv k_x^2 + k_z^2$. We neglect 
+background gradients when compared with that of perturbations. The linearized
 equations are, after eliminating the azimuthal velocity: 
 
 \begin{align}
@@ -244,26 +243,26 @@ equations are, after eliminating the azimuthal velocity:
   \frac{\dd \mathcal{C}}{\rho}. 
 \end{align}
 The artifical factor $\zeta = 1$  is inserted to keep track of the
-left-hand-side of the energy equation. The linearized dust diffusion
+left-hand-side of the energy equation. We note that the incompressible
+condition used by \cite{jacquet11} is obtained by setting $\zeta$ to zero. 
+The linearized dust diffusion
 function (Appendix \ref{lin_dust}), 
 under the above approximations, is 
 \begin{align}
 -\frac{\dd \mathcal{C}}{\rho}  = \tstop c_s^2 \left[\ii k_x F_r\left( 1-2\tepsilon\right)
   W + \tepsilon |\bm{k}|^2 Q\right]. 
 \end{align}
-We note that the incompressible condition used by \cite{jacquet11} is
-obtained by setting $\zeta$ to zero. 
 
-Eliminate the velocity perturbations to obtain
+We eliminate the velocity perturbations to obtain
 \begin{align}
   \left(\ii \zeta \sigma - \tstop c_s^2 \tepsilon |\bm{k}|^2\right)Q &=
   \ii \left[
   \frac{P}{\rho}\sigma + k_x\tstop c_s^2 F_r\left(1 -
-  2\tepsilon\right)\right]W. \\
+  2\tepsilon\right)\right]W, \\
    \sigma^2 \left( \kappa^2 - \sigma^2 - \ii k_x F_r\right)W &=
-    \left(k_z^2\kappa^2 - \sigma^2|\bm{k}|^2\right)Q. 
+    \left(k_z^2\kappa^2 - \sigma^2|\bm{k}|^2\right)Q, 
 \end{align}
-Futher eliminate $Q$ and $W$ to obtain the dispersion relation
+which yields the dispersion relation
 \begin{align}
   &\frac{\zeta}{c_s^2|\bm{k}|^2}\sigma^5 + \ii \tepsilon \tstop
   \sigma^4 - \left[ \frac{\zeta}{c_s^2|\bm{k}|^2} \left(\kappa^2 - \ii
@@ -273,11 +272,11 @@ Futher eliminate $Q$ and $W$ to obtain the dispersion relation
   &+ \left(1 -
   \tepsilon\right)\left(\frac{k_z\kappa}{|\bm{k}|}\right)^2\sigma +
   k_x \tstop F_r\left(1 - 2\tepsilon\right)
-  \left(\frac{k_z\kappa}{|\bm{k}|}\right)^2  = 0,
+  \left(\frac{k_z\kappa}{|\bm{k}|}\right)^2  = 0.
 \end{align}
-where the equation of state $P = c_s^2\left( 1 - \tepsilon\right)\rho$
-was used. 
-If we now set $\zeta = 0$ or consider $c_s^2\to \infty$ to obtain the
+The equation of state $P = c_s^2\left( 1 - \tepsilon\right)\rho$
+was used. If we now set $\zeta = 0$ or consider $c_s^2\to \infty$ to
+obtain the 
 incompressible limit, and define $\tau_\mathrm{s} \equiv
 \tstop/\left(1 - \tepsilon\right)$, we obtain: 
 \begin{align*}
@@ -292,4 +291,4 @@ incompressible limit, and define $\tau_\mathrm{s} \equiv
 as derived by \cite{jacquet11} and \cite{laibe14} for the streaming
 instability. If $|\sigma| = O(\tau_\mathrm{s})$ then the quartic term
 is small and may be neglected. In that case we obtain the cubic
-dispersion relation of \citet{youdin05a}.
+dispersion relation of \citet{youdin05a}. 
