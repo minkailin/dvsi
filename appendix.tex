@@ -1,22 +1,26 @@
-\section{Variational principle for locally isothermal gas
-  well-coupled to dust}\label{var_prin}
+\section{Variational principle}\label{var_prin}
 
-The linearized equations for axisymmetric disturbances are 
+Here we consider the more general equation of state for the gas with
+$P = K \rhog^{\Gamma}$ where $K$ is a prescribed function of position
+and $\Gamma$ is a constant. The effective energy equation is then
+Eq. \ref{poly_energy}. The linearized equations for axisymmetric
+disturbances are  
 
 \begin{align}
   \ii\sigma\frac{\delta\rho}{\rho} &= \nabla\cdot\dd\bm{v} +
   \dd\bm{v}\cdot\nabla\ln{\rho},\label{lin_mass_full}\\
- \ii\sigma\frac{\delta P}{P} &= \nabla\cdot\dd\bm{v} +
+%  \ii\sigma\frac{\delta P}{P} &= \nabla\cdot\dd\bm{v} +
+   \ii\sigma\frac{\delta P}{P} &= \Gamma \nabla\cdot\dd\bm{v} +
   \dd\bm{v}\cdot\nabla\ln{P} - \dd\bm{v}\cdot\nabla\ln{c_s^2} - \frac{\dd\mathcal{C}}{P}.\label{lin_energy_full}\\
   -\ii\sigma\dd v_r  &= 2\Omega\dd v_\phi + 
   \delta\bm{F}\cdot\hat{\bm{r}},\\
   \ii\sigma\dd v_\phi &= \frac{\kappa^2}{2\Omega}\dd v_r + \frac{\p
     v_\phi}{\p z}\dd v_z,\\
-  -\ii\sigma\dd v_z &=  \delta\bm{F}\cdot\hat{\bm{z}}.
+  -\ii\sigma\dd v_z &=  \delta\bm{F}\cdot\hat{\bm{z}}, 
 \end{align}  
-These equations do not assume the radially-local approximation used in
-the main text. 
-
+where the linearizd pressure force $\delta \bm{F}$ is given in
+Appendix \ref{lin_press}. These equations do not assume the
+radially-local approximation used in the main text. 
 From the linearized meridional momentum equations, we find 
 \begin{align}
   \sigma^2\int\rho\left(|\dd v_r|^2 + |\dd v_z|^2\right)dV = \int\left( \rho
@@ -34,31 +38,58 @@ by parts and ignoring surface integrals, the last term is
     \rho}{\rho}\dd\bm{v}^*\cdot\nabla P + \ii\sigma \dd
  P  \nabla\cdot \dd \bm{v}^*  \right)dV\notag\\
  & = \int\left[
+%   \left(
+%   \ii\sigma \frac{\dd P}{P} - \dd\bm{v}\cdot\nabla s + \dd
+%   \bm{v} \cdot \nabla \ln{c_s^2} + \frac{\dd\mathcal{C}}{P}
+%   \right)\dd\bm{v}^*\cdot\nabla P  
    \left(
-   \ii\sigma \frac{\dd P}{P} - \dd\bm{v}\cdot\nabla s + \dd
-   \bm{v} \cdot \nabla \ln{c_s^2} + \frac{\dd\mathcal{C}}{P}
-   \right)\dd\bm{v}^*\cdot\nabla P  + \ii\sigma \dd
-   P  \nabla\cdot \dd \bm{v}^*
+   \ii\sigma \frac{\dd P}{\Gamma P} - \dd\bm{v}\cdot\nabla s + \frac{\dd
+   \bm{v}}{\Gamma} \cdot \nabla \ln{K} +
+   \frac{\dd\mathcal{C}}{\Gamma P} \right)\dd\bm{v}^*\cdot\nabla P
+   + \ii\sigma \dd P  \nabla\cdot \dd \bm{v}^*
    \right]dV\notag\\
  & = \int\left[
-   \ii\sigma\frac{\dd P}{P}\nabla\cdot\left(P\dd\bm{v}^*\right) +
-   \left(\dd\bm{v}^*\cdot\nabla P\right) \left(\dd\bm{v} \cdot \nabla
-   \ln{c_s^2} + \frac{\dd\mathcal{C}}{P}   -  \dd\bm{v}\cdot\nabla s\right) 
+%   \ii\sigma\frac{\dd P}{P}\nabla\cdot\left(P\dd\bm{v}^*\right) +
+%   \left(\dd\bm{v}^*\cdot\nabla P\right) \left(\dd\bm{v} \cdot \nabla
+%   \ln{c_s^2} + \frac{\dd\mathcal{C}}{P}   -  \dd\bm{v}\cdot\nabla s\right) 
+%   \right]dV\notag\\
+   \ii\sigma\frac{\dd P}{\Gamma P}\left(\bm{\dd v}^*\cdot\nabla P +
+   \Gamma P\nabla\cdot\bm{\delta v}^*   \right)
+   +\left(\dd\bm{v}^*\cdot\nabla P\right) \left( \frac{\dd\bm{v}}{\Gamma} \cdot \nabla
+   \ln{K} + \frac{\dd\mathcal{C}}{\Gamma P}   -  \dd\bm{v}\cdot\nabla s\right) 
    \right]dV\notag\\
  & = \int\left\{
-   \left[\frac{1}{P}\nabla\cdot\left(P\dd\bm{v}\right) -
-   \dd\bm{v}\cdot\nabla\ln{c_s^2} - \frac{\dd\mathcal{C}}{P}  \right]\nabla\cdot\left(P\dd\bm{v}^*\right)
-   +\left(\dd\bm{v}^*\cdot\nabla P\right)\left(\dd\bm{v} \cdot \nabla
-   \ln{c_s^2} + \frac{\dd\mathcal{C}}{P}   -  \dd\bm{v}\cdot\nabla s \right)
-   \right\}dV \notag\\
-   &=\int\left[
-     \frac{1}{P}\left|\nabla\cdot\left(P\dd\bm{v}\right)\right|^2 -
+%   \left[\frac{1}{P}\nabla\cdot\left(P\dd\bm{v}\right) -
+%   \dd\bm{v}\cdot\nabla\ln{c_s^2} - \frac{\dd\mathcal{C}}{P}  \right]\nabla\cdot\left(P\dd\bm{v}^*\right)
+%   +\left(\dd\bm{v}^*\cdot\nabla P\right)\left(\dd\bm{v} \cdot \nabla
+%   \ln{c_s^2} + \frac{\dd\mathcal{C}}{P}   -  \dd\bm{v}\cdot\nabla s \right)
+%   \right\}dV \notag\\
+ \left[
+   \nabla\cdot\dd\bm{v} +
+  \frac{\dd\bm{v}}{\Gamma}\cdot\nabla\ln{P} -
+  \frac{\dd\bm{v}}{\Gamma}\cdot\nabla\ln{K} -
+  \frac{\dd\mathcal{C}}{\Gamma P}. 
+  \right]
+ \left(\bm{\dd v}^*\cdot\nabla P +
+ \Gamma P\nabla\cdot\bm{\delta v}^*   \right)\right. \notag\\
+ &\phantom{=\int\left\{\right\}}\left. 
+ + \left(\dd\bm{v}^*\cdot\nabla P\right)\left(\frac{\dd\bm{v}}{\Gamma} \cdot \nabla
+ \ln{K}
+ + \frac{\dd\mathcal{C}}{\Gamma P}   -  \dd\bm{v}\cdot\nabla s \right)
+ \right\}dV \notag\\
+ &=\int\left[
+%     \frac{1}{P}\left|\nabla\cdot\left(P\dd\bm{v}\right)\right|^2 -
+%     \left(\dd\bm{v}^*\cdot\nabla P\right)\left(\dd\bm{v}\cdot\nabla s
+%     \right) -
+%     P\left(\nabla\cdot\dd\bm{v}^*\right)\left(\dd\bm{v}\cdot\nabla\ln{c_s^2} + \frac{\dd\mathcal{C}}{P} \right)  
+    \frac{1}{\Gamma P} \Bigl\lvert \bm{\dd v}\cdot\nabla P +
+ \Gamma P\nabla\cdot\bm{\delta v}    \Bigr\rvert ^2 - 
      \left(\dd\bm{v}^*\cdot\nabla P\right)\left(\dd\bm{v}\cdot\nabla s
      \right) -
-     P\left(\nabla\cdot\dd\bm{v}^*\right)\left(\dd\bm{v}\cdot\nabla\ln{c_s^2} + \frac{\dd\mathcal{C}}{P} \right)  
+      P\left(\nabla\cdot\dd\bm{v}^*\right)\left(\dd\bm{v}\cdot\nabla\ln{K} + \frac{\dd\mathcal{C}}{P} \right) 
      \right]dV,
 \end{align}
-where we recall $s\equiv\ln{(P/\rho)}$. Hence,
+where  $s\equiv\ln{(P^{1/\Gamma}/\rho)}$. Hence,
 \begin{align}\label{integral_ex}
   &\sigma^2\int\rho\left(|\dd v_r|^2 + |\dd v_z|^2\right)dV \notag\\
 &=  \int\left\{
@@ -72,13 +103,21 @@ where we recall $s\equiv\ln{(P/\rho)}$. Hence,
   + \rho \dd v_z^*\dd v_r \left(-\frac{1}{\rho}\frac{\p P}{\p
     z}\frac{\p s}{\p r}\right)\right. \notag\\
 &\phantom{==\int}\left.+
-  \frac{1}{P}\left|\nabla\cdot\left(P\dd\bm{v}\right)\right|^2
-  \right\}dV -\int
-  P\left(\nabla\cdot\dd\bm{v}^*\right)\left(\dd\bm{v}\cdot\nabla\ln{c_s^2}\right)dV
+%  \frac{1}{P}\left|\nabla\cdot\left(P\dd\bm{v}\right)\right|^2
+ \frac{1}{\Gamma P}\Bigl\lvert \bm{\dd v}\cdot\nabla P +
+ \Gamma P\nabla\cdot\bm{\delta v}     \Bigr\rvert^2
+  \right\}dV 
+%  P\left(\nabla\cdot\dd\bm{v}^*\right)\left(\dd\bm{v}\cdot\nabla\ln{c_s^2}\right)dV
+-\int    P\left(\nabla\cdot\dd\bm{v}^*\right)\left(\dd\bm{v}\cdot\nabla\ln{K}\right)dV
   -\int \left(\nabla\cdot\dd\bm{v}^*\right)\dd\mathcal{C}dV.  
 \end{align}
-Note that the coefficients of the mixed terms are equal owing to the
-equilibrium state. 
+Note that the coefficient of $\delta v_z\delta v_r^*$ and $\delta
+v_z^*\delta v_r$ are equal owing to the
+equilibrium state (Eq. \ref{vshear}). 
+The special case $\Gamma=1,\, K = c_s^2$ gives
+Eq. \ref{int_rel}. A radially-local, vertically-global, viscous version of
+Eq. \ref{integral_ex} is given by \cite{latter06}. See also
+\cite{kato78} . 
 
 %If $c_s$ is constant then the second integral vanishes, $\sigma^2$
 %is real, and the first integral leads to the usual Solberg-Hoiland
@@ -187,7 +226,7 @@ radially-local approximation are given by
 % \frac{2\left|\nabla\epsilon\right|^2}{\left(1+\epsilon\right)^3}. 
 %\end{align}
 
-\section{Dispersion relation for unstratified disks}
+\section{Dispersion relation for unstratified disks}\label{compressible_streaming}
 Unstratified disk with $\Phi = \Phi (r)$ so that $\p_zP = \p_z\rho =
 0$. The background $\p_rP/\rho$ and $\tepsilon$ are constant. 
 Fourier analyze in $r$ and $z$ so that $\p_z\to \ii k_z$ and
@@ -212,6 +251,8 @@ under the above approximations, is
 -\frac{\dd \mathcal{C}}{\rho}  = \tstop c_s^2 \left[\ii k_x F_r\left( 1-2\tepsilon\right)
   W + \tepsilon |\bm{k}|^2 Q\right]. 
 \end{align}
+We note that the incompressible condition used by \cite{jacquet11} is
+obtained by setting $\zeta$ to zero. 
 
 Eliminate the velocity perturbations to obtain
 \begin{align}
@@ -249,4 +290,6 @@ incompressible limit, and define $\tau_\mathrm{s} \equiv
   \left(\frac{k_z\kappa}{|\bm{k}|}\right)^2  = 0,
 \end{align*}
 as derived by \cite{jacquet11} and \cite{laibe14} for the streaming
-instability. 
+instability. If $|\sigma| = O(\tau_\mathrm{s})$ then the quartic term
+is small and may be neglected. In that case we obtain the cubic
+dispersion relation of \citet{youdin05a}.

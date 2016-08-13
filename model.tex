@@ -308,8 +308,8 @@ where $\sigma$ is the complex mode frequency. In Appendix
 &= \int\left[ \rho
   |\dd v_r|^2A + \rho  \dd v_z \dd v_r^* B + \rho \dd v_z^*\dd v_r C +
   \rho |\dd v_z|^2 D\phantom{\frac{1}{1}}\right. \notag\\
-&\phantom{===}  \left. + \frac{1}{P}\left|\nabla\cdot\left(P\dd
-  \bm{v}\right)\right|^2\right]dV  -\int \left(\nabla\cdot\dd\bm{v}^*\right)\dd\mathcal{C}dV \notag\\
+&\phantom{===}  \left. + \frac{1}{P}\Bigl\lvert \nabla\cdot\left(P\dd
+  \bm{v}\right)\Bigr\rvert^2\right]dV  -\int \left(\nabla\cdot\dd\bm{v}^*\right)\dd\mathcal{C}dV \notag\\
 &\phantom{===}
 - \int P
   \left(\nabla\cdot\dd\bm{v}^*\right)\left(\dd\bm{v}\cdot\nabla\ln{c_s^2}\right)dV.\label{int_rel}
@@ -332,24 +332,29 @@ In this case, the last two integrals in Eq. \ref{int_rel} vanish. Then
 requiring $\sigma^2>0$  gives the criteria 
 for the axisymmtric \emph{stability} of an isothermal gas perfectly 
 coupled to dust,  
-%\begin{align}
-%  \kappa^2 + c_s^2 \nabla\ln{\rhog}\cdot\nabla\tepsilon &> 0,\label{dusty_solberg1}  \\
-%  -c_s^2\frac{\p\ln{\rhog}}{\p z}\left(-\kappa^2\frac{\p\tepsilon}{\p
-%    z} + r\frac{\p\Omega^2}{\p z}\frac{\p \tepsilon}{\p r} \right) & > 0, \label{dusty_solberg2}
-%\end{align} 
 \begin{align}
-  \kappa^2 - \frac{1}{\rho}\nabla P \cdot \nabla s &> 0, \label{dusty_solberg1}    \\
-  -\frac{1}{\rho}\frac{\p P}{\p z} \left(\kappa^2 \frac{\p s}{\p z} -
-  r\frac{\p\Omega^2}{\p z}\frac{\p s}{\p r}\right) &>0, \label{dusty_solberg2}
+  \kappa^2 + c_s^2 \nabla\ln{\rhog}\cdot\nabla\tepsilon &> 0,\label{dusty_solberg1}  \\
+  -c_s^2\frac{\p\ln{\rhog}}{\p z}\left(-\kappa^2\frac{\p\tepsilon}{\p
+    z} + r\frac{\p\Omega^2}{\p z}\frac{\p \tepsilon}{\p r} \right) & > 0, \label{dusty_solberg2}
 \end{align} 
+%\begin{align}
+%  \kappa^2 - \frac{1}{\rho}\nabla P \cdot \nabla s &> 0, \label{dusty_solberg1}    \\
+%  -\frac{1}{\rho}\frac{\p P}{\p z} \left(\kappa^2 \frac{\p s}{\p z} -
+%  r\frac{\p\Omega^2}{\p z}\frac{\p s}{\p r}\right) &>0, \label{dusty_solberg2}
+%\end{align} 
 where %$s = \ln{P/\rho}$, 
 $\kappa^2 \equiv r^{-3}\p_r\left(r^4\Omega^2\right)$ is the 
-square of the epicylic frequency, and we assume $\kappa^2>0$.  
-Eq. \ref{dusty_solberg1}---\ref{dusty_solberg2} has the identical form
-to the Solberg-Hoiland criteria for adiabatic gas dynamics 
-\citep[e.g.][]{tassoul78}, except here the entropy $s$ is really a
-representation of the dust distribution via $s=\ln{\left[c_s^2\left(1
-    - \tepsilon\right)\right]}$.  
+square of the epicylic frequency. We assume $\kappa^2>0$.  
+Eq. \ref{dusty_solberg1}---\ref{dusty_solberg2} are in fact the 
+the Solberg-Hoiland criteria for axisymmetric stability of adiabatic
+gas if one inserts $C_p\ln{\left(1 -
+    \tepsilon\right)}$ for the entropy in the standard
+expression for said criteria \citep[e.g.][ where $C_p$ is the heat
+  capacity]{tassoul78}.   
+
+%except here the entropy $s$ is really a
+%representation of the dust distribution via $s=\ln{\left[c_s^2\left(1
+%    - \tepsilon\right)\right]}$.  
 
 %These criteria are applicable to any adiabatic fluid. 
 %For an isothermal mixture, we may take $s=\ln{(1-\tepsilon)}$.   
@@ -451,21 +456,7 @@ then the system is potentially unstable.
 
 
 
-\subsection{Locally isothermal gas perfectly coupled to dust}\label{dusty_vsi_int}
-When $c_s(r,z)$ is non-uniform but $\tstop=0$, Eq. \ref{int_rel}
-indicates that $\sigma^2$ is generally complex, implying instability.  
-Writing $\sigma = 
--\omega + \ii s$ where $\omega$ and $s$ are the real frequency and
-growth rates, respectively, we have 
-\begin{align}
-  s = \frac{\imag\int P
-  \left(\nabla\cdot\dd\bm{v}^*\right)\left(\dd\bm{v}\cdot\nabla\ln{c_s^2}\right)dV}{2\omega\int\rho\left(|\dd
-    v_r|^2 + |\dd v_z|^2\right)dV}. \label{vsi_check}
-\end{align} 
-This is classic VSI caused by vertical shear arising from a radial
-temperature gradient \citep{nelson13,barker15,lin15}. We compute
-explicit solutions in this limit in
-\S\ref{linear_problem}---\ref{results}. 
+
 
 %This is responsible for 
 %the usual vertical shear instability in locally isothermal disks.
@@ -477,9 +468,13 @@ explicit solutions in this limit in
 %the first integral leads to the previous Solberg-Hoiland criteria for 
 %axisymmetric stability. However, when $c_s$ is non-uniform, 
 
-\subsection{Strictly isothermal gas well-coupled to dust} 
-Now consider constant $c_s$ but $\tstop\neq0$. Then Eq. \ref{int_rel}
-gives 
+\subsection{Thermodynamic view of dusty instabilities}\label{dust_work}
+Now consider constant $c_s$ but $\tstop\neq0$. 
+%When $c_s(r,z)$ is non-uniform but $\tstop=0$, 
+Eq. \ref{int_rel} indicates that $\sigma^2$ is generally complex, so
+we may have growing oscillations. Writing $\sigma = -\omega + \ii s$
+where $\omega$ and $s$ are the real frequency and growth rates, 
+respectively, the imaginary part of Eq. \ref{int_rel} gives 
 \begin{align}
   s = \frac{\imag\int \left(\nabla\cdot\dd\bm{v}^*\right)\dd\mathcal{C}dV}{2\omega\int\rho\left(|\dd
     v_r|^2 + |\dd v_z|^2\right)dV}, \label{thermal_instability}
@@ -501,10 +496,84 @@ gives
 %Eq. \ref{dusty_cooling}, however, the streaming instability has a
 %thermodynamical interpretation, similar to thermal instabilities in
 %stars \citep{latter06}.  
-which represent instabilities due to large-but-finite dust-gas
-friction. Our formalism gives these dusty instabilities a 
-thermodynamical interpretation because the dust-gas friction enters the problem
-as an energy source term \citep[cf. thermal instabilities in
-  stars, see also][]{latter06}. 
-This includes the streaming instability in
-the strong-drag limit \citep{youdin05a, jacquet11, laibe14}. 
+which represent instabilities due to dust-gas friction. 
+%Our formalism
+%gives these dusty instabilities a thermodynamical interpretation. 
+% We further discuss this concept in \S\ref{dust_as_thermo}. 
+%In \S\ref{dust_work} we showed that instabilities may 
+%arise from the term proportional $\imag\left( \nabla\cdot\dd\bm{v}^*
+%\delta C\right)$. 
+ Since drag ($\delta \mathcal{C}$) appears as a source term in our
+effective energy equation, the quantity 
+$\imag\left[\left(\nabla\cdot\dd\bm{v}^*\right)\dd\mathcal{C}\right]$
+may be thought of as a correlation between compression/expansion and  
+heating/cooling. 
+
+It is well-known that such correlations can lead to pulsational
+instabilities in stars \citep{cox67}. We thus suggest an interpretation
+of dust-drag instabilities in disks in a similar way. We give a qualitative
+description below, based on the more rigorous treatments of stellar 
+pulsational instabilities by 
+\cite{cox67} and lecture notes from \cite{samadi15} and
+J. Christensen-Dalsgaard\footnote{\url{http://astro.phys.au.dk/$\sim$jcd/oscilnotes/}}.      
+
+%and disks
+%\cite{kato78}. 
+
+Consider the Lagragian perturbation $\Delta$ of a variable $f$, 
+related to the Eulerian perturbation by $\Delta f = \delta f + 
+\bm{\xi}\cdot\nabla f$, where $\bm{\xi}$ is the Lagragian  
+displacement ($\dd v_{x,z} = -\ii\sigma\xi_{x,z}$). %Note that $\Delta
+%\mathcal{C} = \delta \mathcal{C}$ for a uniform background $C$ as
+%required for equilibrium. 
+Then Eq. \ref{lin_mass_full}---\ref{lin_energy_full} imply  
+\begin{align} 
+  \imag \left(\delta \mathcal{C}
+  \nabla\cdot\dd \bm{v}^*\right) = 
+  -|\sigma|^2\imag \left(\Delta P 
+  \frac{\Delta\rho^*}{\rho}\right). 
+\end{align}
+This reflects `$TdS  =  PdV$' from thermodynamics, if the 
+internal energy is constant. That is, dust-gas drag provides 
+heating ($TdS$) to do $PdV$ work. Whether positive or negative work is 
+done depends on the correlation between the pressure and density
+perturbations, as follows. 
+
+The full energy equation is 
+\begin{align*}
+  \frac{DP}{Dt} = \frac{P}{\rho}\frac{D\rho}{D t} + \mathcal{C}. 
+\end{align*}
+Dust-drag causes a phase difference between the 
+pressure and density evolution following a parcel. Now, consider a 
+fluid element at maximum density during an oscillation cycle, 
+so that $D\rho/ D t = 0$. If at this point dust-gas drag provides an
+effective heating ($\mathcal{C}>0$), then the fluid element is
+experiencing increasing pressure, $DP/D t>0$. It will attain
+pressure maximum \emph{after} reaching density maximum. This implies 
+pressure maximizes while the parcel is expanding: it will do 
+positive work (the enclosed area by its `$P$-$V$' curve  is 
+positive). This will increase the oscillation amplitude.   
+
+Indeed, \cite{jacquet11} explains the essence of the streaming 
+instability in dusty protoplanetary disks as dust accumulation
+(and hence compression) at a pressure bump which back-reacts on the
+gas flow in such a way to strengthen the pressure bump. A phase
+difference was also noted in the numerical calculations of
+\cite[][although they consider the full two-fluid system]{youdin07b}.   
+
+We suggest that a useful way to understand  
+dust-drag instabilities in protoplanetary disks may be to re-cast the  
+problem into that of thermodynamics, since such instabilities have 
+already been well-studied in the stellar context. 
+
+\subsection{Locally isothermal gas perfectly coupled to dust}\label{dusty_vsi_int}
+If $c_s(r,z)$ is non-uniform but $\tstop=0$, Eq. \ref{int_rel} 
+gives  
+\begin{align}
+  s = \frac{\imag\int P
+  \left(\nabla\cdot\dd\bm{v}^*\right)\left(\dd\bm{v}\cdot\nabla\ln{c_s^2}\right)dV}{2\omega\int\rho\left(|\dd
+    v_r|^2 + |\dd v_z|^2\right)dV}. \label{vsi_check}
+\end{align} 
+This is classic VSI caused by vertical shear arising from a radial
+temperature gradient \citep{nelson13,barker15,lin15}. We compute
+explicit solutions in this limit in \S\ref{results}. 
