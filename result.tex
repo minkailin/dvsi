@@ -1,8 +1,13 @@
 \section{
   Dusty vertical shear instability}\label{results} 
 
-When $\tstop=0$ we may construct exact dusty equilibra by specifying
-the dust-to-gas ratio, as described in \S\ref{eqm}. We use this to
+%When $\tstop=0$ we may construct exact dusty equilibra by specifying
+%the dust-to-gas ratio, as described in \S\ref{eqm}. 
+
+We calculate explicit solutions to the linearized
+equations in the limit of perfectly coupled dust ($\tstop=0$), so that
+the equilibria defined in \S\ref{eqm} are exact steady states. 
+We use this to
 examine the effect of dust on classic VSI, defined to be driven by the
 temperature gradient (\S\ref{dusty_vsi_int}). For simplicity we
 consider constant input values of the midplane dust-to-gas ratio
@@ -12,6 +17,17 @@ parameters of the linear problem. We fix the radial power-law index
 for the midplane gas density to $p = -1.5$, that for the
 temperature profile to $q=-1$; and set the gas disk aspect-ratio
 $h_\mathrm{g}=0.05$. These are fiducial values used in \citetalias{lin15}. 
+
+
+
+Two boundary conditions are needed for the $\tstop=0$
+problem. This is expected since this problem is exactly equivalent to
+adiabatic hydrodynamics \citep[e.g.][]{lubow93}. For simplicity we
+impose solid boundaries so that $\delta v_z(\pm\zmax)=0$.  
+We solve the linearized equations as a generalized eigenvalue problem 
+using a pseudo-spectral code adapted from \cite{lin15}. Amplitudes 
+are expanded in Chebyshev polynomials up to order $N_z=512$. We check
+results using Eq. \ref{vsi_check}.    
 
 
 \subsection{Qualitative expectations}

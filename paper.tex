@@ -8,8 +8,9 @@
 
 \usepackage{amsmath}
 \usepackage{paralist}
-%\usepackage{url}
+\usepackage{url}
 \usepackage{bm}
+%\usepackage{hyperref}
 %\usepackage[font=small,format=plain,labelfont=bf,up,textfont=it,up]{caption}
 \newcommand{\p}{\partial}
 \newcommand{\zmax}{z_\mathrm{max}}
@@ -79,8 +80,10 @@
 
 \begin{document}
 
-\title{On the entropy of 
-  isothermal dusty gas: application to protoplanetary disks}  
+%\title{On the entropy of 
+%  isothermal dusty gas: application to protoplanetary disks}  
+\title{A thermodynamic view of dusty protoplanetary disks:
+  axisymmetric stability}  
 \author{Min-Kai Lin\altaffilmark{1} and Andrew N. Youdin}
 \affil{Department of Astronomy and Steward Observatory, \\
 University of
@@ -92,8 +95,6 @@ University of
   Small solids embedded in gaseous protoplanetary disks are subject
   to strong dust-gas friction. Consequently, tightly-coupled dust
   particles almost follows the gas flow. 
-  %Tightly-coupled dust particles
-  % in protoplanetary disks almost follow the gas flow. 
   This is analogous to the 
   conservation of entropy 
   following an adiabatic fluid.  We show that in the strong drag
@@ -102,27 +103,32 @@ University of
   regarded as an effective 
   heating/cooling. We exploit this equivalence 
   to 
-\begin{inparaenum}[1)]
-\item
-  identify the entropy of isothermal dusty gas; and 
-\item 
-  generalize previous, well-known gaseous instabilities in
-  protoplanetary disks to include dust dynamics. 
-\end{inparaenum}
-This includes the axisymmetric stability of strictly isothermal dusty
-gas, allowing us to constrain the sharpness of 
-dust edges that can persist in protoplanetary disks. We also develop 
+%\begin{inparaenum}[1)]
+%\item
+%  identify the entropy of isothermal dusty gas; and 
+%\item 
+  generalize previous, well-known gaseous instabilities
+  to dusty protoplanetary disks.
+%\end{inparaenum}
+%This includes the axisymmetric stability of strictly isothermal dusty
+%gas, allowing us to constrain the sharpness of 
+%dust edges that can persist in protoplanetary disks. 
+We show that strictly isothermal, non-self-gravitating, axisymmetric
+disks perfectly coupled to dust are generally stable, however thin the
+dust layer is.  %except possibily in the presence of sharp 
+%edges in radial dependence of the dust-to-gas ratio. 
+We also develop 
 the dusty vertical shear instability (VSI) in locally isothermal
 disks. We find that  dust-loading reduces VSI growth rates, and
 preferentially stabilizes VSI modes with small radial 
 wavelengths, as well as `surface modes' concentrated near the
-disk boundaries. These results are consistent with our definition of
+disk boundaries. These results can be understood in terms of 
 the buoyancy frequency of a isothermal dusty disk. 
 %We show that vertical shear arising from
 %dust settling does not lead to axisymmetric instability. 
-We briefly discuss potential applications of the dusty/adiabatic gas
-correspondence to provide thermodynamical interpretations of dusty
-instabilities in protoplanetary disks.  
+We briefly discuss potential thermodynamical interpretations of 
+dust-gas drag dynamics, for example the streaming instability 
+as a manifestation of pulsational instabilities in stars. 
 \end{abstract}
 
 \section{Introduction}
@@ -239,12 +245,9 @@ general stability properties of the dusty problem in various
 limits. We use these results to constraint the sharpness of dust edges
 in isothermal disks. In \S\ref{linear_problem} we formulate an
 explicit stability calcultion to study the dusty VSI, for which we
-present numerical results in \S\ref{results}. We summarize and discuss
-future applications of the dusty/adiabatic gas equivalence in
-\S\ref{summary}. 
-
-
-
+present numerical results in \S\ref{results}. We 
+discuss future applications of the dusty/adiabatic gas equivalence in 
+\S\ref{discussion} before summarizing in \S\ref{summary}. 
 
 \input{model}
 \input{linear}

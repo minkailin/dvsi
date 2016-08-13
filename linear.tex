@@ -1,8 +1,5 @@
-\section{Linear problem for perfectly coupled dust}\label{linear_problem}
-We calculate explicit solutions to the linearized
-equations in the limit of perfectly coupled dust ($\tstop=0$), so that
-the equilibria defined in \S\ref{eqm} are exact steady states. We 
-consider radially-localized axisymmetric disturbances of the form  
+\section{Quasi-global linear problem}\label{linear_problem}
+We consider radially-localized axisymmetric disturbances of the form  
 \begin{align}
   \delta f (r, z) = \delta f_1(r,z)\exp{(\ii k r)},
 \end{align} 
@@ -23,7 +20,7 @@ Introducing
   W \equiv \frac{\dd\rho}{\rho}, \quad Q \equiv \frac{\dd P}{\rho},
 \end{align}
 the linearized equations for 
-locally isothermal, perfectly-coupled dusty gas with the pressure
+locally isothermal dusty gas with the pressure
 equation in place of the dust-fraction
 (Eq. \ref{masseq}---\ref{momeq}, Eq. \ref{eff_energy}) are then:    
 
@@ -46,6 +43,8 @@ equation in place of the dust-fraction
                - \frac{\dd\mathcal{C}}{\rho},\label{lin_energy} 
 \end{align}  
 where $^\prime \equiv \p_z$ and $\bm{F} \equiv -\nabla P/\rho$. 
+The linearized dust-duffusion function 
+$\dd\mathcal{C}$ is given in  Appendix \ref{lin_dust}. 
 % and $\dd\bm{F}$ is the linearized pressure
 %force, given in Appendix \ref{lin_press}. 
 Note that we have assumed a temperature profile that only depends on $r$.   
@@ -63,15 +62,15 @@ Note that we have assumed a temperature profile that only depends on $r$.
 Eq. \ref{lin_mass}---\ref{lin_energy} is a set of ordinary
 differntial equations in $z$. All coefficients and amplitudes are
 evaluated at a fiducial radius $r=r_0$, but their full $z$-dependence
-is retained.  Two boundary conditions are needed for the $\tstop=0$
-problem. This is expected since this problem is exactly equivalent to
- adiabatic hydrodynamics \citep[e.g.][]{lubow93}. For simplicity
-we impose solid boundaries so that $\delta v_z(\pm\zmax)=0$. 
+is retained. Numerical solutions are generally required for the 
+verticall-stratified problem, as we pursue below. 
 
-We solve the linearized equations as a generalized eigenvalue problem 
-using a pseudo-spectral code adapted from \cite{lin15}. Amplitudes 
-are expanded in Chebyshev polynomials up to order $N_z=512$. We check
-results using Eq. \ref{vsi_check}.    
+However, in the special case of an unstratified disk (neglecting the vertical
+component of the stellar gravity), we may also Fourier analyze in $z$
+to obtain a local dispersion relation. This is done in 
+Appendix \ref{compressible_streaming}. There we show the above linearized
+equations give the streaming instability in the appropriate limit 
+\citep{youdin05a,jacquet11}. 
 
 %\subsection{Boundary conditions}
 
