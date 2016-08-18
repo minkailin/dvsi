@@ -28,8 +28,11 @@ and
 \end{align}
 is the dust-fraction and $\epsilon=\rhod/\rhog$ is the usual
 dust-to-gas ratio. The gas pressure $P$ is given by the chosen 
-equation of state described below. The external potential $\Phi$ is
-that for a star of mass $M_*$ at the origin 
+equation of state described below. Note that Eq. \ref{dusteq} is
+equivalent to Eq. 46 of \cite{jacquet11}. 
+
+The external potential $\Phi$ is 
+that for a star of mass $M_*$, 
 \begin{align}\label{thin_disk_potential}
   \Phi(r,z) =-\frac{GM_*}{\sqrt{r^2 + z^2}}\simeq
   -\frac{GM_*}{r}\left(1 - \frac{z^2}{2r^2}\right), 
@@ -91,7 +94,7 @@ for the pressure forces, then
   \mathcal{C} = - c_s^2\nabla \left( \tepsilon \tstop \rho \bm{F}
   \right), 
 \end{align*}
-which is in the same form as radiative diffusion. In protoplanetary
+which is in the same form as cooling by radiative diffusion. In protoplanetary
 disks the heat flux, proportional to $\bm{F}$, is directly radially
 outwards and vertically upwards. This is simply a reflection of
 particle drift (inwards and downwards). Particle flux into a region contributes
@@ -433,7 +436,7 @@ axisymmetric perturbations.
 %Such disks are stable against
 %axisymmetric perturbations.  
 
-\subsubsection{Possible instability at dust edges}
+\subsubsection{Instability at dust edges}
 Notice the left-hand-side of Eq. \ref{stability_est2} is a quadratic in
 $\p_r\epsilon$. It is possible to
 violate this inequality for sufficiently large (in magnitude) radial
@@ -564,12 +567,13 @@ The full energy equation is
 Dust-drag causes a phase difference between the 
 pressure and density evolution of a fluid element. Now, consider a 
 fluid element at maximum density during an oscillation cycle, 
-so that $D\rho/ D t = 0$. If at this point dust-gas drag (or particle flux) provides an
-effective heating to the fluid element ($\mathcal{C}>0$), then it will 
-experience increasing pressure, $DP/D t>0$. It attains 
+so that $D\rho/ D t = 0$. If at this point dust-gas drag provides an
+effective heating to the fluid element ($\mathcal{C}>0$, i.e. a particle
+flux \emph{away} from it), then it will 
+experience increasing pressure, $DP/D t>0$. It will attain  
 pressure maximum \emph{after} reaching density maximum. This implies 
 pressure maximizes while the parcel is expanding: it will do 
-positive work  --- the area enclosed by its path in the `$P$-$V$' plane  is 
+positive work  --- the area enclosed by the parcel's path in the `$P$-$V$' plane  is 
 positive. This will increase the oscillation amplitude.   
 
 Indeed, \cite{jacquet11} explains the essence of the streaming 
