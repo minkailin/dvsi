@@ -96,7 +96,7 @@ RWI may also be triggered by extrema in  the dust-to-gas ratio.
 
 %gap edges. thin dust rings. 
 
-\subsection{Other dust-drag
+\subsection{New dust-drag
   instabilities}\label{dust_as_thermo} 
 
 As described in \S\ref{dust_work}, 
@@ -121,7 +121,7 @@ protoplanetary disks. They find it leads to the formation of
 `toroidal vortices'. 
 
 %give numerical example 
-We ran our one-fluid stability code to find unstable modes  
+We have applied our one-fluid stability framework to find unstable modes  
 similar to that described by \cite{loren15}. We use the same
 parameters reported by \citeauthor{loren15}, as follows. 
 %we set $p=q=0$, which eliminates VSI and minimizes streaming
@@ -171,47 +171,51 @@ state in a follow up work.
 
 \section{Summary}\label{summary}
 In this paper we highlight the similarity between an isothermal 
-dusty gas and an adiabatic, pure gas. 
-In the limit of perfect dust-gas coupling, the dust content of a fluid 
-parcel $\rhod/\rhog$ is conserved. This is analogous to entropy being 
-conserved following a adiabatic, pure gas. %s = s(\rhod/\rhog)
-We explicitly show that for 
-a locally isothermal, dusty gas that the evolutionary equation of 
-$\rhod/\rhog$ may be recast into an effective energy equation identical
-in form to that in standard adiabatic hydrodynamics. We find the 
+dusty gas and an adiabatic, pure gas. The correspondence arises
+because drag forces reduce the relative velocity between gas and
+dust. In the limit of perfect dust-gas coupling, $tstop \to 0$,  
+ dust is entrained in 
+the gas, and $\rhod/\rhog$ is conserved following the dusty flow. 
+This is analogous to entropy being conserved following a adiabatic,
+pure gas. 
+
+For $\tstop\neq 0$, the dust content of a
+fluid parcel of the dusty mixture no longer conserved. The parcel is
+is allowed to exchange dust particles with neighboring parcels owing
+to finite dust-gas friction. This is analogous to heat exchange between a 
+pure gas parcel and its surroundings. %Thus, finite dust-gas friction
+%may be interepreted as an energy source for the dusty
+%gas.   
+
+We explicitly show that for a locally isothermal, dusty gas that the
+evolutionary equation of  $\rhod/\rhog$ may be replaced by an 
+effective energy equation. We find the 
 natural definition of the entropy of the dusty gas is 
 \begin{align*}
   s  = \ln{\left(\frac{c_s^2\rhog}{\rhog+\rhod}\right)}.  
 \end{align*}
-This allows us to define the buoyancy frequency of an isothermal 
-dusty gas. 
-
-%
-%finite coupling/heat source 
-
-Finite dust-gas friction causes a relative drift between the two
-components of the mixture. Then $\rhod/\rhog $ is no
-longer conserved following a fluid parcel, as it is allowed to
-exchange dust particles with neighboring parcels owing to a non-zero
-stopping time $\tstop$. This is analogous to heat exchange between a 
-pure gas parcel and its surroundings. Thus, finite dust-gas friction
-may be interepreted as an energy/entropy source term for the dusty
-gas.   
+%This allows us to define the buoyancy frequency of an isothermal 
+%dusty gas. 
+In our framework, finite dust-gas friction appears as an energy
+source term.  This analogy with standard adiabatic
+hydrodynamics allow us to obtain dusty analogs of gaseous
+instabilities, and provide thermodynamical interpretations of  
+dust-drag instabilities. 
 
 %
 In this first study, we apply this equivalence principle to study the
-axisymmetric stability of locally isothermal, protoplanetary disks
+axisymmetric stability of isothermal, protoplanetary disks
 perfectly coupled to dust ($\tstop=0$). This is so that we may 
-compute exact, steady equilibria for analyses. Furthermore,
+compute exact, steady equilibria for analyses. Furthermore, 
 in this limit the dusty problem is \emph{identical} to adiabatic, pure
 gas dynamics. 
 
-We obtain the Solberg-Hoiland criteria to assess
+We obtain the Solberg-Hoiland criteria to assess 
 axisymmetric stability when the equation of state is strictly
-isothermal. We show that {\bf dust-settling cannot lead to
+isothermal. We show that {\bf dust settling, by itself, cannot lead to
   axisymmetric instability, however large the associated vertical
   shear} \citep[cf. \emph{non-axisymmetric} Kelvin-Helmholtz instabilities
-  induced by  dust-settling, ][]{lee10}. We also show that
+  in dusty disks][]{lee10}. We show that
 sharp edges in the dust-to-gas ratio cannot persist in protoplanetary
 disks, as these imply a sharp entropy gradient and may thus destablize
 the disk. 
@@ -226,6 +230,19 @@ shear instability (VSI) to include dust. We find that dust-loading
 generally has a stabilizing effect. In our disk models
 dust-loading does not affect VSI growth rates significantly, but
 meridional motions may be suppressed at heights where vertical 
-buoyancy dominates over vertical shear. This confirms our 
-identification of the entropy and buoyancy of an isothermal, dusty
-gas. 
+buoyancy dominates over vertical shear. These results are readily
+understood by comparing the vertical shear rate with the buoyancy of
+an isothermal, dusty gas which we have correctly identified. 
+
+We also discuss future applications of our thermodynamic framework to 
+study dusty protoplanetary disks. In particular, we emphasize  that the 
+physical origin for any instability associated with strong dust-gas
+drag is a phase lag between the pressure and total density evolution
+of fluid elements. This leads to growing oscillations as positive work
+is done, provided by dust-gas drag, which is equivalent to a `heat'
+source. %We demonstrate a potentially new dust-drag instability in
+%stratified disks that may explain 
+ 
+%We also applied
+%our framework to find unstable modes in dusty, stratified disks
+%similar to that reported recently by \cite{loren15}. 
