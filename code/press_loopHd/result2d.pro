@@ -1,23 +1,16 @@
-pro result2d, loc=loc, mode=mode, $
+pro result2d, mode=mode, $
   thick=thick, length=length, xrange=xrange, yrange=yrange, nx=nx, ny=ny, title=title 
 
   !p.font = 0 
   
-  if not keyword_set(loc) then begin 
-     loc = './'
-  endif else begin
-     location=strcompress(loc,/remove_all)
-  endelse
-
-
   ii = dcomplex(0d0, 1d0)
 
   if not keyword_set(title) then begin
 ;     title = '$\rho^{!X1/2}$'+'!X'
 ;     title+= '(' + '$\delta$' + '!X' + 'v' + '$_x$'+'!X, ' + '$\delta$' +'!Xv'+'$_z$'+'!X), '+'$\delta\epsilon$' + '!X'
 
-     title = '$\rho^{!X1/2}$'+'!X'
-     title+= '(' + '$\delta$' + '!X' + 'v' + '$_x$'+'!X, ' + '$\delta$' +'!Xv'+'$_z$'+'!X), '+'$\delta$!X($\rho_{!Xd}$!X/$\rho_{!Xg}$!X)' +'!X' 
+     title = '$\rho^{!X1/2}_{tot}$'+'!X'
+     title+= '(' + '$\delta$' + '!X' + 'v' + '$_x$'+'!X, ' + '$\delta$' +'!Xv'+'$_z$'+'!X), '+'$\delta$!X($\rho_{!Xdust}$!X/$\rho_{!Xtot}$!X)' +'!X'
      title = tex2idl(title)
   endif
   if not keyword_set(nx) then nx = 24
@@ -27,7 +20,7 @@ pro result2d, loc=loc, mode=mode, $
 
 
   params = dblarr(4,1)
-  openr,1,filepath('params.dat',root_dir='.',subdir=location)
+  openr,1,'params.dat'
   readf,1,params
   close,1
   nz      = fix(params(0,0))
@@ -35,16 +28,15 @@ pro result2d, loc=loc, mode=mode, $
   kx      = params(2,0)
   Hd      = params(3,0)
 
-  fname = 'basic.dat'
-  nz    = file_lines(filepath(fname,root_dir='.',subdir=location))
+  nz    = file_lines('basic.dat')
   basic = dblarr(7,nz)
-  openr,1, filepath(fname,root_dir='.',subdir=location)
+  openr,1,'basic.dat'
   readf,1,basic
   close,1
   
-  zaxis_data  = basic(0,*)
+  zaxis_data  = basic(0,*)/Hd
   rho    = exp(basic(1,*))
-  eps_bg    = basic(2,*)
+  eps    = basic(2,*)
   tstop  = basic(3,*)	
   omega2 = basic(4,*)
   kappa2 = basic(5,*)
@@ -61,11 +53,9 @@ pro result2d, loc=loc, mode=mode, $
   zaxis = yrange(0) + (yrange(1) - yrange(0))*dindgen(ny)/(ny-1d0)
   zaxis_big = yrange(0) + (yrange(1) - yrange(0))*dindgen(nz)/(nz-1d0)
 
- 
-  fname = 'eigenvalues.dat'
-  nmodes       = file_lines(filepath(fname,root_dir='.',subdir=location))
+  nmodes       = file_lines('eigenvalues.dat')
   eigenvalues  = dblarr(2,nmodes)
-  openr,1,filepath(fname,root_dir='.',subdir=location)
+  openr,1,'eigenvalues.dat'
   readf,1,eigenvalues
   close,1
   
@@ -74,8 +64,7 @@ pro result2d, loc=loc, mode=mode, $
 
   nlines = nmodes*nz + 0L  
   eigenvectors  = dblarr(10,nlines)
-  fname = 'eigenvectors.dat'
-  openr,1,filepath(fname,root_dir='.',subdir=location)
+  openr,1,'eigenvectors.dat'
   readf,1,eigenvectors 
   close,1
 
@@ -105,18 +94,6 @@ pro result2d, loc=loc, mode=mode, $
   eps    = dcomplex(eigenvectors(2, nbeg:nend), eigenvectors(3, nbeg:nend))
   vx     = dcomplex(eigenvectors(4, nbeg:nend), eigenvectors(5, nbeg:nend))
   vz     = dcomplex(eigenvectors(8, nbeg:nend), eigenvectors(9, nbeg:nend))
-
-
-;convert eps to dg ratio
-
-  eps = eps/(1d0 - eps_bg)^2
-
-;add bg 
-  dgratio_bg = eps_bg/(1d0 - eps_bg)  
-;
-;  eps *= 1d-2
-;  eps += dgratio_bg 
-
 
 ;  eps *=dcomplex(0d0,-1d0) ;eps(nz-1)
 ;  vx  *=dcomplex(0d0,-1d0) ;eps(nz-1)
@@ -159,7 +136,6 @@ pro result2d, loc=loc, mode=mode, $
   for i=0, nz-1 do begin
      for k=0, nz-1 do begin
         eps2d(i,k) = (re_eps(k)*cos(kx*xaxis_big(i)) - im_eps(k)*sin(kx*xaxis_big(i)))
-;        eps2d(i,k) = eps2d(i,k)*1d-8 + dgratio_bg(k)
      endfor
   endfor
   
@@ -170,27 +146,25 @@ pro result2d, loc=loc, mode=mode, $
 ;  ytitle = '!X'+ tex2idl('z/H'+'$_d$') + '!X'
 
   
-  xtitle = '!X'+ tex2idl('x/H'+'$_g$') + '!X'
-  ytitle = '!X'+ tex2idl('z/H'+'$_g$') + '!X'
+  xtitle = '!X'+ tex2idl('x/H'+'$_{dust}$') + '!X'
+  ytitle = '!X'+ tex2idl('z/H'+'$_{dust}$') + '!X'
 
   loadct,3,/silent
-  fname = 'result2d.ps'
   set_plot, 'ps'
-  device, filename=filepath(fname,root_dir='.',subdir=location)$
+  device, filename='result2d.ps'$
           ,/color, bits_per_pixel=8,xsize=16, ysize=16
   
   levels = -1d0 + 2d0*dindgen(24)/23
-  contour, eps2d, xaxis_big, zaxis_big,/fill,levels=levels,title=tex2idl(title) $
+  contour, eps2d, xaxis_big, zaxis_big,/fill,levels=levels,title=textoidl(title) $
            ,ymargin=[4,2],xmargin=[6,8], charsize=2, xtickinterval=xtickinterval, ytickinterval=xtickinterval, $
            xrange=xrange, yrange=yrange, xstyle=1, ystyle=1, xtitle=xtitle, ytitle=ytitle
-;  colorbar, position=[0.8, 0.177, 0.85, 0.913],/vertical,/right,range=[-1,1],format='(f5.2)',CHARSIZE=2, text_color='k'
- 
-  colorbar, position=[0.82, 0.177, 0.85, 0.913],/vertical,/right,format='(f5.2)',CHARSIZE=2, text_color='k',range=[min(eps2d),max(eps2d)]
-
+  colorbar, position=[0.8, 0.177, 0.85, 0.913],/vertical,/right,range=[-1,1],format='(f5.2)',CHARSIZE=2, text_color='k'
+  
   loadct, 34,/silent
   velovect, vx2d, vz2d, xaxis, zaxis,/overplot,length=length,thick=thick, color=128
   
   device,/close
   
+ 
 end
 

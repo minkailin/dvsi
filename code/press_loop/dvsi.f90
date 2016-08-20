@@ -161,9 +161,13 @@ program dvsi
   allocate(kaxis(nk))
   allocate(rates(nk))
   dlogk = 0d0 
-  if(nk .gt. 1) dlogk = log10(kmax/kmin)/(nk - 1d0)!(kmax-kmin)/(nk-1d0)
+  if(nk .gt. 1) then 
+!   dlogk = log10(kmax/kmin)/(nk - 1d0)
+    dlogk = (kmax-kmin)/(nk-1d0)
+  endif
   do j=1, nk 
-     kaxis(j) = 10d0**(log10(kmin) + dlogk*(j-1d0))!kmin + dlogk*(j-1d0) 
+!     kaxis(j) = 10d0**(log10(kmin) + dlogk*(j-1d0)) 
+      kaxis(j) = kmin + dlogk*(j-1d0)
   enddo
 
   !set up dgratio axis (output every result for every value)
@@ -324,7 +328,7 @@ subroutine eigenvalue_problem
 
      !filter out modes that grow too slow or too fast or too low frequency 
      
-     if((eigen_re.ge.min_rate).and.(eigen_mag.lt.max_rate).and.(abs(eigen_im).gt.smallh_g)) then
+     if((eigen_re.ge.min_rate).and.(eigen_mag.lt.max_rate)) then !.and.(abs(eigen_im).gt.smallh_g)) then
         
         !compute eigenfunc in real space for error tests 
         call get_eigenvec_real(i, eigen, vr, error)

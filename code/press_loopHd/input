@@ -1,0 +1,16 @@
+&params smallh_g    = 0.05	! aspect-ratio of gas layer 
+        rhog0_power =-1.5  	! power law for mid-plane gas density
+	smallq      =-1.0      	! power law for imposed radial temperature profile 
+        vstruct     = 'mlin'    ! vertical structure type: tl02 = takeuchi \& lin 2002; 'mlin': my eqm
+        Zmetal      = 0.05       ! overall metalicity (midplane gas to dust ratio times Hd = Sigma_d/Sigma_g)
+        fixZ        = .true.    ! hold metalicity constant as is varied? if yes, dgratio determined from this. if not, the dgratio = Zmetal 
+	Hdmin       = 0.1   	! min characteristic dust layer thickness, in Hg 
+	Hdmax       = 0.99  	! max characteristic dust layer thickness, in Hg
+        nHd         = 100        ! samples in Hd
+	smalld      = 0d0 	! negative of the radial power law for imposed dust-to-gas ratio profile	
+        tstop       = 0.0/      ! stopping time at the midplane 
+&grid   zmax        = 5.0       ! vertical domain size in Hg
+	nz          = 129  /    ! grid numbers = chebyshev resolution   
+&mode   kmin        = 30.        ! min radial wavenumber normalized by Hg
+        kmax        = 100.       ! max radial wavenumber normalized by Hg
+        nk          = 1       /  ! sample in k space 

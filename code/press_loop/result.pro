@@ -8,6 +8,14 @@ FUNCTION logticks_exp, axis, index, value
    RETURN, tickmark
 END
 
+
+
+
+
+
+
+
+
 pro result, xrange=xrange, yrange=yrange, mode = mode 
 
   !p.font = 0 

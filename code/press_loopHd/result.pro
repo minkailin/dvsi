@@ -8,41 +8,95 @@ FUNCTION logticks_exp, axis, index, value
    RETURN, tickmark
 END
 
-pro result, loc=loc, xrange=xrange, yrange=yrange, mode=mode 
+
+
+
+
+
+
+
+
+pro result, xrange=xrange, yrange=yrange, mode = mode 
 
   !p.font = 0 
-
-  if not keyword_set(loc) then begin 
-     loc = './'
-  endif else begin
-     location=strcompress(loc,/remove_all)
-  endelse
-
+  
   params = dblarr(5,1)
-  openr,1,filepath('params.dat',root_dir='.',subdir=location)
+  openr,1,'params.dat'
   readf,1,params
   close,1
-  nz      = fix(params(0,0))
-  smallhg = params(1,0)
-  kx      = params(2,0)
-  Hd      = params(3,0)
-  smallq  = params(4,0) 
 
+  nz       = fix(params(0,0))
+  smallhg  = params(1,0)
+  kmin     = params(2,0)
+  Hd       = params(3,0)
+  smallq   = params(4,0) 
+  
+  nmodes       = file_lines('eigenvalues.dat')
+  eigenvalues  = dblarr(2,nmodes)
+  openr,1,'eigenvalues.dat'
+  readf,1,eigenvalues
+  close,1
+  
+  growth = eigenvalues(0,*)/smallhg
+  freq   = eigenvalues(1,*)/smallhg
 
-  fname = 'basic.dat'
-  nz    = file_lines(filepath(fname,root_dir='.',subdir=location))
-  basic = dblarr(7,nz)
-  openr,1, filepath(fname,root_dir='.',subdir=location)
+  array = dblarr(3, nmodes)
+  openr,1,'Hd.dat'
+  readf,1, array
+  close,1
+  Hdust       = array(0,*)
+  dgratio     = array(1,*)
+  kaxis       = array(2,*)
+
+  ytitle  = tex2idl('$s_{max}/(h$'+'!X'+'$_g$'+'!X'+'$\Omega$'+'$_K)$') + '!X'
+  xtitle  = tex2idl('H$_d$!X$/H$!X$_g$')+'!X'
+
+  loadct,5,/silent
+
+  set_plot, 'ps'
+  device, filename='eigenvalues.ps' $
+         ,bits_per_pixel=8,xsize=8, ysize=4.5,xoffset=0,yoffset=0,/inches
+;          ,/color, bits_per_pixel=8,xsize=28.44444, ysize=16
+  plot,  Hdust, growth, xmargin=[8,2],ymargin=[3.5,0.5], ystyle=1  $
+        ,charsize=2, thick=4, psym=2, symsize=2, xrange=xrange, yrange=yrange $
+        , xtitle=xtitle, ytitle=ytitle $
+        ,ytickinterval=ytickinterval  $
+        ,xtickinterval=xtickinterval, xstyle=1, /xlog, xtickformat='logticks_exp'
+
+  device,/close
+
+  ytitle  = tex2idl('$k$!X$_{opt}$!XH$_g$') + '!X'
+  set_plot, 'ps'
+  device, filename='eigenvalues_kopt.ps' $
+         ,bits_per_pixel=8,xsize=8, ysize=4.5,xoffset=0,yoffset=0,/inches
+;          ,/color, bits_per_pixel=8,xsize=28.44444, ysize=16
+  plot,  Hdust, kaxis, xmargin=[8,2],ymargin=[3.5,0.5], ystyle=1  $
+        ,charsize=2, thick=4, psym=2, symsize=2, xrange=xrange, yrange=yrange $
+        , xtitle=xtitle, ytitle=ytitle $
+        ,ytickinterval=ytickinterval  $
+        ,xtickinterval=xtickinterval, xstyle=1, /xlog, xtickformat='logticks_exp'
+
+  device,/close
+
+  basic = dblarr(7,nz*nmodes)
+  openr,1,'basic.dat'
   readf,1,basic
   close,1
 
-  zaxis  = basic(0,*) 
-  lnrho = basic(1,*)
-  eps    = basic(2,*)
-  tstop  = basic(3,*)	
-  omega2 = basic(4,*)
-  kappa2 = basic(5,*)
-  vshear = basic(6,*)
+ ;pick a mode to plot 
+  
+  if not keyword_set(mode) then mode = 1
+
+  ibeg = nz*(mode-1)
+  iend = ibeg + nz - 1 
+
+  zaxis  = basic(0,ibeg:iend) 
+  lnrho  = basic(1,ibeg:iend)
+  eps    = basic(2,ibeg:iend)
+  tstop  = basic(3,ibeg:iend)	
+  omega2 = basic(4,ibeg:iend)
+  kappa2 = basic(5,ibeg:iend)
+  vshear = basic(6,ibeg:iend)
 
   lnrhog  = lnrho + alog(1d0 - eps) 
   dgratio = eps/(1d0 - eps) 
@@ -50,8 +104,7 @@ pro result, loc=loc, xrange=xrange, yrange=yrange, mode=mode
   xtitle  = tex2idl('$z/H_g$') + '!X'
   ytitle  = tex2idl('$10^3(\Omega^2/\Omega_K^2 - 1)$') + '!X'
   set_plot, 'ps'
-  fname = 'omega2.ps'
-  device, filename=filepath(fname,root_dir='.',subdir=location) $
+  device, filename='omega2.ps' $
           ,bits_per_pixel=8,xsize=8, ysize=4.5,xoffset=0,yoffset=0,/inches
   plot, zaxis, (omega2-1d0)*1d3,xmargin=[8.5,1.5],ymargin=[3.5,0.5], ystyle=0  $
         ,charsize=2, thick=4, xrange=xrange, yrange=yrange $
@@ -60,10 +113,9 @@ pro result, loc=loc, xrange=xrange, yrange=yrange, mode=mode
         ,xtickinterval=xtickinterval, xstyle=1
   device,/close	
 
-   ytitle  = tex2idl('$10^3(\kappa^2/\Omega^2 - 1)$') + '!X'
-   fname = 'kappa2.ps'
+  ytitle  = tex2idl('$10^3(\kappa^2/\Omega^2 - 1)$') + '!X'
   set_plot, 'ps'
-  device, filename=filepath(fname,root_dir='.',subdir=location) $
+  device, filename='kappa2.ps' $
           ,bits_per_pixel=8,xsize=8, ysize=4.5,xoffset=0,yoffset=0,/inches
   plot, zaxis, (kappa2/omega2-1d0)*1d3,xmargin=[8.5,1.5],ymargin=[3.5,0.5], ystyle=0  $
         ,charsize=2, thick=4, xrange=xrange, yrange=yrange $
@@ -71,38 +123,12 @@ pro result, loc=loc, xrange=xrange, yrange=yrange, mode=mode
         ,ytickinterval=ytickinterval  $
         ,xtickinterval=xtickinterval, xstyle=1
   device,/close
-
-  ytitle  = tex2idl('$t_{!Xstop}\Omega_{!XK}$') + '!X'
-   fname = 'tstop.ps'
-  set_plot, 'ps'
-  device, filename=filepath(fname,root_dir='.',subdir=location) $
-          ,bits_per_pixel=8,xsize=8, ysize=4.5,xoffset=0,yoffset=0,/inches
-  plot, zaxis, tstop,xmargin=[8.5,1.5],ymargin=[3.5,0.5], ystyle=0  $
-        ,charsize=2, thick=4, xrange=xrange, yrange=yrange $
-        , xtitle=xtitle, ytitle=ytitle $
-        ,ytickinterval=ytickinterval  $
-        ,xtickinterval=xtickinterval, xstyle=1
-  device,/close
-
-
-
-
-
-
-
-
-
-
-
-
-
  
-  ytitle  = tex2idl('$(r\partial$'+'!X'+'$_z$'+'$\Omega^2$!X)/$h_{!Xg}$$\Omega_K^2$') + '!X'
-  fname = 'vshear.ps'
+  ytitle  = tex2idl('$10^3(r\partial$'+'!X'+'$_z$'+'$\Omega^2)/\Omega_K^2$') + '!X'
   set_plot, 'ps'
-  device, filename=filepath(fname,root_dir='.',subdir=location)  $
+  device, filename='vshear.ps' $
           ,bits_per_pixel=8,xsize=8, ysize=4.5,xoffset=0,yoffset=0,/inches
-  plot, zaxis, vshear/smallhg,xmargin=[8.5,1.5],ymargin=[3.5,0.5], ystyle=0  $
+  plot, zaxis, vshear*1d3,xmargin=[8.5,1.5],ymargin=[3.5,0.5], ystyle=0  $
         ,charsize=2, thick=4, xrange=xrange, yrange=yrange $
         , xtitle=xtitle, ytitle=ytitle $
         ,ytickinterval=ytickinterval  $ 
@@ -110,22 +136,19 @@ pro result, loc=loc, xrange=xrange, yrange=yrange, mode=mode
   device,/close 
 
   ytitle  = tex2idl('$ln(\rho$'+'!X'+'$_g$'+'$/\rho$'+'!X'+'$_{g0})$') + '!X'
-  fname = 'rhog.ps'
   set_plot, 'ps'
-  device, filename=filepath(fname,root_dir='.',subdir=location) $
+  device, filename='rhog.ps' $
           ,bits_per_pixel=8,xsize=8, ysize=4.5,xoffset=0,yoffset=0,/inches
   plot, zaxis, lnrhog,xmargin=[8.5,1.5],ymargin=[3.5,0.5], ystyle=0  $
         ,charsize=2, thick=4, xrange=xrange, yrange=yrange $
         , xtitle=xtitle, ytitle=ytitle $
         ,ytickinterval=ytickinterval  $
         ,xtickinterval=xtickinterval, xstyle=1
-  oplot, zaxis, -zaxis^2/2d0, thick=8, linestyle=1
   device,/close	
 
   ytitle  = tex2idl('$\rho$'+'!X'+'$_d$'+'$/\rho$'+'!X'+'$_g$') + '!X'
   set_plot, 'ps'
-  fname = 'dgratio.ps'
-  device, filename= filepath(fname,root_dir='.',subdir=location)$
+  device, filename='dgratio.ps' $
           ,bits_per_pixel=8,xsize=8, ysize=4.5,xoffset=0,yoffset=0,/inches
   plot, zaxis, dgratio,xmargin=[8.5,1.5],ymargin=[3.5,0.5], ystyle=0  $
         ,charsize=2, thick=4, xrange=xrange, yrange=yrange $
@@ -134,95 +157,19 @@ pro result, loc=loc, xrange=xrange, yrange=yrange, mode=mode
         ,xtickinterval=xtickinterval, xstyle=1
   device,/close
 
-  ytitle  = tex2idl('$\rho_{!Xd}/\rho_{!Xd0}$') + '!X'
-  set_plot, 'ps'
-  fname = 'rhod.ps'
-  device, filename= filepath(fname,root_dir='.',subdir=location)$
-          ,bits_per_pixel=8,xsize=8, ysize=4.5,xoffset=0,yoffset=0,/inches
-  plot, zaxis, dgratio*exp(lnrhog),xmargin=[8.5,1.5],ymargin=[3.5,0.5], ystyle=0  $
-        ,charsize=2, thick=4, xrange=xrange, yrange=yrange $
-        , xtitle=xtitle, ytitle=ytitle $;,/ylog, ytickformat='logticks_exp' $
-        ,ytickinterval=ytickinterval  $
-        ,xtickinterval=xtickinterval, xstyle=1
-  device,/close
 
-
-
-
-
-
-
-
-
-
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-  fname = 'eigenvalues.dat'
-  nmodes       = file_lines(filepath(fname,root_dir='.',subdir=location))
-  eigenvalues  = dblarr(2,nmodes)
-  openr,1,filepath(fname,root_dir='.',subdir=location)
-  readf,1,eigenvalues
-  close,1
   
-  growth = eigenvalues(0,*)/smallhg
-  freq   = eigenvalues(1,*)/smallhg
-
-  ytitle  = tex2idl('$s/(h$'+'!X'+'$_g$'+'!X'+'$\Omega$'+'$_K)$') + '!X'
-  xtitle  = tex2idl('$\omega$'+'!X'+'$/(h$'+'!X'+'$_g$'+'!X'+'$\Omega$'+'$_K)$') + '!X'
-
-
-  loadct,5,/silent
-  fname = 'eigenvalues.ps'
-  set_plot, 'ps'
-  device, filename=filepath(fname,root_dir='.',subdir=location) $
-         ,bits_per_pixel=8,xsize=8, ysize=4.5,xoffset=0,yoffset=0,/inches
-;          ,/color, bits_per_pixel=8,xsize=28.44444, ysize=16
-  plot,  freq, growth,xmargin=[8.5,1.5],ymargin=[3.5,0.5], ystyle=1  $
-        ,charsize=2, thick=4, psym=2, symsize=2, xrange=xrange, yrange=yrange $
-        , xtitle=xtitle, ytitle=ytitle $
-        ,ytickinterval=ytickinterval  $
-        ,xtickinterval=xtickinterval, xstyle=1
-
-;  color_arr = dindgen(2)*256d0/2.
-;  oplot, [1,1]*freq[0], [1,1]*growth[0], psym=2,symsize=1.5,color=color_arr(1)
-;  device,/close
-
   nlines = nmodes*nz + 0L  
   eigenvectors  = dblarr(10,nlines)
-  fname = 'eigenvectors.dat'
-  openr,1,filepath(fname,root_dir='.',subdir=location)
+  openr,1,'eigenvectors.dat'
   readf,1,eigenvectors 
   close,1
 
- 
+  nbeg = ibeg
+  nend = iend
 
-  if not keyword_set(mode) then begin
-  temp = max(growth, ngrid) 
-;  temp = min(abs(freq),ngrid)
-  mode = ngrid + 1 
-  endif else begin
-  if(n_elements(mode eq 1))then begin
-  ngrid = mode - 1 
-  endif else begin
-  rate_target = mode[0]
-  freq_target = mode[1]
-  eigen_target = dcomplex(rate_target, freq_target)
-  temp = min( abs(dcomplex(growth,freq)-eigen_target), ngrid )
-  mode = ngrid + 1 
-  endelse
-  endelse 
-  
+  print, 'mode no., growth, freq', mode, growth(mode-1), freq(mode-1)
 
-;  oplot, [1,1]*freq[ngrid], [1,1]*growth[ngrid], psym=2,symsize=2,color=color_arr(1),thick=4 
-
-  device,/close 
-
-  print, 'mode no., growth, freq', mode, growth(ngrid), freq(ngrid)
-
-  nbeg = ngrid*nz 
-  nend = nbeg + nz - 1 
 
   bigW = dcomplex(eigenvectors(0, nbeg:nend), eigenvectors(1, nbeg:nend))
   dfrac= dcomplex(eigenvectors(2, nbeg:nend), eigenvectors(3, nbeg:nend))
@@ -249,11 +196,10 @@ pro result, loc=loc, xrange=xrange, yrange=yrange, mode=mode
   
 
   xtitle  = tex2idl('$z/H_g$') + '!X'
-  
-  fname = 'eigenvec.ps'
+
   set_plot,'ps'
-;  file = strcompress('eigenvec.ps',/remove_all)
-  device, filename=filepath(fname,root_dir='.',subdir=location) $
+  file = strcompress('eigenvec.ps',/remove_all)
+  device, filename=file $
           ,bits_per_pixel=8,xsize=8, ysize=9,xoffset=0,yoffset=0,/inches,/color
   multiplot,/reset
   multiplot,[1,3],margins=[0.15,0.1,0.02,0.01],rowspacing=0.05
@@ -277,23 +223,10 @@ pro result, loc=loc, xrange=xrange, yrange=yrange, mode=mode
   multiplot,/reset
   device,/close
   
-  
-
-
-
-
-  
-
-
-
-
-
-
-
+ 
   ytitle  = tex2idl('(|'+'$\delta$'+'!X'+'v'+'$_x$'+'!X'+'|'+'$^2$'+'+|'+'$\delta$'+'!X'+'v'+'$_y$'+'!X'+'|'+'$^2$'+')'+'$^{1/2}$'+'!X/|'+'$\delta$'+'!Xv'+'!X|') + '!X'
-  fname = 'eigenvec_vh.ps'
   set_plot, 'ps'
-  device, filename=filepath(fname,root_dir='.',subdir=location) $
+  device, filename='eigenvec_vh.ps' $
           ,bits_per_pixel=8,xsize=8, ysize=4.5,xoffset=0,yoffset=0,/inches
   plot, zaxis,  vh/vmag,xmargin=[8.5,1.5],ymargin=[3.5,0.5], ystyle=1  $
         ,charsize=2, thick=4, xrange=xrange $
@@ -302,40 +235,8 @@ pro result, loc=loc, xrange=xrange, yrange=yrange, mode=mode
         ,xtickinterval=xtickinterval, xstyle=1
   device,/close
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   err = dblarr(5, nlines)
-  fname = 'error.dat'
-  openr,1,filepath(fname,root_dir='.',subdir=location)
+  openr,1,'error.dat'
   readf,1,err
   close,1
 
@@ -346,24 +247,22 @@ pro result, loc=loc, xrange=xrange, yrange=yrange, mode=mode
   err5 = err(4,nbeg:nend) ;energy error 
 
   ytitle = 'normalized error'
-  fname = 'eigenvec_err.ps'
   set_plot, 'ps'
-  device, filename=filepath(fname,root_dir='.',subdir=location) $
+  device, filename='eigenvec_err.ps' $
           ,bits_per_pixel=8,xsize=8, ysize=4.5,xoffset=0,yoffset=0,/inches
-  plot, zaxis(1:nz-2),  err1(1:nz-2),xmargin=[8.5,1.5],ymargin=[3.5,0.5], ystyle=1  $
+  plot, zaxis,  err1,xmargin=[8.5,1.5],ymargin=[3.5,0.5], ystyle=1  $
         ,charsize=2, thick=4, xrange=xrange $
-        , xtitle=xtitle, ytitle=ytitle, yrange=[0.,max(err(*,nbeg+1:nend-1))] $
+        , xtitle=xtitle, ytitle=ytitle, yrange=[0.,max(err(*,nbeg:nend))] $
         ,ytickinterval=ytickinterval  $
         ,xtickinterval=xtickinterval, xstyle=1
-  oplot, zaxis(1:nz-2), err2(1:nz-2), thick=4, linestyle=1
-  oplot, zaxis(1:nz-2), err3(1:nz-2), thick=4, linestyle=2
-  oplot, zaxis(1:nz-2), err4(1:nz-2), thick=4, linestyle=3
-  oplot, zaxis(1:nz-2), err5(1:nz-2), thick=4, linestyle=4
+  oplot, zaxis, err2, thick=4, linestyle=1
+  oplot, zaxis, err3, thick=4, linestyle=2
+  oplot, zaxis, err4, thick=4, linestyle=3
+  oplot, zaxis, err5, thick=4, linestyle=4
   device,/close
   
   nonadia = dblarr(4, nlines)
-  fname = 'nonadia.dat'
-  openr,1,filepath(fname,root_dir='.',subdir=location)
+  openr,1,'nonadia.dat'
   readf,1,nonadia
   close,1
 
@@ -377,15 +276,14 @@ pro result, loc=loc, xrange=xrange, yrange=yrange, mode=mode
 
   result = int_tabulated(zaxis, integrand1 + integrand2)
 
-  result/=-2d0*eigenvalues(1,ngrid)*denom
+  result/=-2d0*eigenvalues(1,mode-1)*denom
 
   print, 'growth from int relation', result/smallhg
 
   
   ytitle = 'non-adia. growth'
-  fname = 'eigenvec_nonadia.ps'
   set_plot, 'ps'
-  device, filename=filepath(fname,root_dir='.',subdir=location) $
+  device, filename='eigenvec_nonadia.ps' $
           ,bits_per_pixel=8,xsize=8, ysize=4.5,xoffset=0,yoffset=0,/inches
   plot, zaxis,  abs(integrand1),xmargin=[8.5,1.5],ymargin=[3.5,0.5], ystyle=1  $
         ,charsize=2, thick=4, xrange=xrange $
