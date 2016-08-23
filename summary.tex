@@ -133,34 +133,56 @@ $\mathrm{max}(\epsilon) = 0.025$. The midplane stopping time is
 $t_\mathrm{s0}=0.02\OmK^{-1}$. The disk parameters are $p=-1.5,\, q=-1$, and  
 $\hgas=0.05$. We set $k = \pi/H_\mathrm{d}$.      
 
-Fig. \ref{result2d_loren} shows an unstable mode found for this setup,
-with  
+Fig. \ref{compare_eigenvals_ts0d02} shows the unstable modes found for
+this setup. We find the usual VSI modes, here with $\omega> 3,\, s<
+0.2$. However, we also find the mode marked by the blue asterisk with
 frequency 
 \begin{align*}
 \sigma = (0.3631\ii - 0.1251)\hgas\OmK. 
 \end{align*}
 This growth rate corresponds to $8.8$ orbits, comparable to the $12$
-orbits reported by \citeauthor{loren15}. We find this mode 
-persists when $q=0$, so it is not the VSI.  For the above parameters
-we also estimate a much smaller growth
-rate for the streaming instability (using
-Eq. \ref{streaming_dispersion}) of 
+orbits reported by \citeauthor{loren15}. We visualize this mode in
+Fig. \ref{result2d_loren}. We find this mode 
+persists when $q=0$, so it is not the VSI. 
+Using Eq. \ref{streaming_dispersion} with the above parameters,  
+we also estimate a much smaller growth 
+rate for the streaming instability of 
 $O(10^{-3}\hgas\OmK)$, We thus also rule out
-SI, as did \citeauthor{loren15}. 
+SI, as did \citeauthor{loren15}. However, the mode disappears with
+$\tstop=0$, so it is associated with finite dust-gas drag. 
+
+\begin{figure}
+  \includegraphics[width=\linewidth]{figures/compare_eigenvals_ts0d02}
+  \caption{Unstable modes in a locally isothermal, dusty disk
+    with stopping time  
+    $\tstop=0.02\OmK^{-1}$. Modes with $\omega>3$ are due to
+    VSI. The mode marked by the blue asterisk, visualized in
+    Fig. \ref{result2d_loren}, is associated with finite dust-gas
+    drag.   
+    \label{compare_eigenvals_ts0d02}
+  }
+\end{figure}
+
 
 \begin{figure}
   \includegraphics[width=\linewidth]{figures/result2d_loren.ps}
-  \caption{Possible eigenmode of the dusty instability discovered by 
-    \cite{loren15} in their numerical simulations. The growth rate and 
-    radial spacing of the `toroidal vortices' are similar to that
-    reported by \citeauthor{loren15}. The instability is driven by
-    dust-gas drag. The color scale shows the
+  \caption{The mode marked by the blue asterisk in
+    Fig. \ref{compare_eigenvals_ts0d02}. This is a possible eigenmode
+    of the dusty instability discovered by  
+    \cite{loren15} in their numerical simulations. The instability growth timescale and 
+    radial spacing of the `toroidal vortices' are similar to that 
+    reported by \citeauthor{loren15}. This instability is driven by
+    dust-gas drag. The color scale shows the 
     perturbed  
     dust-to-gas ratio, $\delta\epsilon$; and the arrows show
     $\sqrt{\rho}\left(\dd v_x, \dd v_z\right)$.
     \label{result2d_loren}
   }
 \end{figure}
+
+
+
+
 
 This preliminary calculation only serves to highlight the possibility
 of new axisymmetric dust-drag instabilities in stratified disks. One 
