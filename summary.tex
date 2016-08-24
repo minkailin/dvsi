@@ -13,8 +13,9 @@ where $K$ is a prescribed function and $\Gamma$ is the constant
 adiabatic index. Then eliminating $\tepsilon$ from the dust equation
 \ref{dusteq} gives 
 \begin{align}\label{poly_energy}
-  \frac{D P}{D t} = - \Gamma P\nabla\cdot\bm{v}  + P \bm{v}\cdot\nabla \ln{K}
-  + \frac{\Gamma P}{\rhog}\nabla\cdot\left(\tepsilon\tstop\nabla
+  \frac{D P}{D t} &= - \Gamma P\nabla\cdot\bm{v}  + P \bm{v}\cdot\nabla
+  \ln{K} + \mathcal{C},\\
+  \mathcal{C}& = \frac{\Gamma P}{\rhog}\nabla\cdot\left(\tepsilon\tstop\nabla
   P\right).
 \end{align}
 Thus the dusty gas behaves like a pure gas with adiabatic index
@@ -22,6 +23,9 @@ $\Gamma$. The entropy is given by
 \begin{align}
   s = \ln{\left[K^\frac{1}{\Gamma}(r,z)\left(1 - \tepsilon\right)\right]}.  
 \end{align}
+The results of \S\ref{iso_perfect}---\ref{dust_work} remain valid for the strictly 
+polytropic disk with $K=$constant, while one can set $c_s^2\to K$ in
+\S\ref{dusty_vsi_int}. 
 %When $K$ is constant, the corresponding Solberg-Hoiland criteria for
 %axisymmetric stability may be obtained from that in standard adiabatic 
 %hydrodynamics \citep[e.g.][]{tassoul78} by
@@ -33,14 +37,13 @@ The dusty/adiabatic gas equivalence means that pure
 gas dynamics codes can be applied to simulate locally
 isothermal/polytropic dusty gas with minimal modification. In fact, no
 modification is needed  
-for strictly isothermal or polytropic gas ($c_s$ or $K$ being
-constant, respectively) perfectly-coupled to dust. The usual 
-adiabatic energy equation is effectively a dust continuity
+for strictly isothermal or polytropic gas perfectly-coupled to dust:  
+the standard adiabatic energy equation substitutes for the dust continuity
 equation. When $c_s$ or $K$ is not constant and/or $\tstop\neq0$ one
-can simply add corresponding source terms in energy equation. In the
-large but finite coupling case, this source term is analogous to
-radiative diffusion \citep{price15}, which is also standard in many
-hydrodynamics codes.      
+should add corresponding source terms in energy equation. 
+This source term associated with dust-gas drag, $\mathcal{C}$, is 
+analogous to radiative diffusion \citep{price15}, which is also
+standard in many hydrodynamics codes.      
 
 \subsection{Dusty analogs of other gaseous instabilities}  
 

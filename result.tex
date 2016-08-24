@@ -4,34 +4,32 @@
 %When $\tstop=0$ we may construct exact dusty equilibra by specifying
 %the dust-to-gas ratio, as described in \S\ref{eqm}. 
 
-We calculate explicit solutions to the linearized
-equations in the limit of perfectly coupled dust ($\tstop=0$), so that
-the equilibria defined in \S\ref{eqm} are exact steady states. 
-We use this to
-examine the effect of dust on classic VSI, defined to be driven by the
-temperature gradient (\S\ref{dusty_vsi_int}). For simplicity we
-consider constant input values of the midplane dust-to-gas ratio
+
+We present numerical solutions to the linearized
+equations to examine the effect of dust on the VSI. 
+We consider perfectly coupled dust ($\tstop=0$) so that the 
+equilibria defined in \S\ref{eqm} are exact steady states. 
+
+For simplicity we input constant values of the midplane dust-to-gas ratio
 $\epsilon_0$ and the characteristic dust thickness $\Hd$. These,
 together with the perturbation wavenumber $k$, comprises main the
 parameters of the linear problem. We fix the radial power-law index
 for the midplane gas density to $p = -1.5$, that for the
 temperature profile to $q=-1$; and set the gas disk aspect-ratio
-$h_\mathrm{g}=0.05$. These are fiducial values used in \citetalias{lin15}. 
-
-
+$h_\mathrm{g}=0.05$. These are fiducial values used by 
+\citet[][\citetalias{lin15} in this section]{lin15}. 
 
 Two boundary conditions are needed for the $\tstop=0$
-problem. This is expected since this problem is exactly equivalent to
-adiabatic hydrodynamics \citep[e.g.][]{lubow93}. For simplicity we
+problem. This is expected since this problem is equivalent to
+adiabatic hydrodynamics \citep[e.g.][]{lubow93}. We 
 impose solid boundaries so that $\delta v_z(\pm\zmax)=0$.  
 We solve the linearized equations as a generalized eigenvalue problem 
 using a pseudo-spectral code adapted from \cite{lin15}. Amplitudes 
 are expanded in Chebyshev polynomials up to order $N_z=512$. We check
 results using Eq. \ref{vsi_check}.    
 
-
-\subsection{Qualitative expectations}
-\citetalias{lin15} find the appropriate way to compare 
+\subsection{Qualitative expectations}\label{vsi_est}
+\cite{lin15} found the appropriate way to compare 
 destabilizing vertical shear to stabilizing vertical buoyancy is
 $r\p_z\Omega/\OmK$ against $N_z^2/\OmK^2$. We see from \S\ref{vertshear}
 and \S\ref{vbuoyancy} that $|r\p_z\Omega|\sim q h_\mathrm{g}\OmK$ for a
@@ -43,17 +41,17 @@ VSI where $\epsilon \gtrsim h_\mathrm{g}$.
 
 \subsection{Effect of dust-loading}
 We first vary the midplane dust-to-gas ratio 
-$\epsilon_0\in[10^{-3},1]$, fixing the dust thickness to 
+$\epsilon_0\in[10^{-3},1]$, fixing the dust thickness to  
 $\Hd=0.99\Hg$. Then  $\epsilon$ is roughly constant with height. We
 set the vertical domain to $\zmax=5\Hg$.  
 
-We compare in Fig. \ref{compare_vshear_fixHd} the basic state
+Fig. \ref{compare_vshear_fixHd} compares the basic state
 vertical shear rate, which is destabilizing, and the vertical buoyancy
 frequency, which is stabilizing. For the nearly dust-free disk
 $\epsilon_0=10^{-3}$ the vertical shear dominates buoyancy for all
-$|z|>0$. However, a heavy dust-load with $\epsilon_0=1$ renders the
-buoyancy to dominate over vertical shear in the disk atmosphere
-$|z|\gtrsim 2.5$. We thus expect instability all heights for
+$|z|>0$. However, a heavy dust-load with $\epsilon_0=1$ renders the 
+buoyancy to dominate over vertical shear in the disk atmosphere 
+$|z|\gtrsim 2.5$. We thus expect instability all heights for 
 $\epsilon_0=10^{-3}$, but to be restricted to the midplane for
 $\epsilon_0=1$. 
 
@@ -72,17 +70,21 @@ $\epsilon_0=1$.
 Fig. \ref{vsi_dust_loading} show unstable modes for different values
 of $\epsilon_0$ with fixed perturbation wavenumber  $k\Hg = 30$. The
 eigenvalue distributions for $\epsilon_0 \leq 10^{-2}$ are similar to the
-dust-free fiducial case considered by \citetalias{lin15}, consisting
+dust-free fiducial case considered by \citetalias{lin15}. This is
+expected since $\epsilon_0 < \hgas$ (\S\ref{vsi_est}). Eigenvalues 
+consists 
 of the roughly horizontal `body modes' and the nearly-vertical
 `surface modes'. The latter is due to the imposed vertical boundaries
 \citep{barker15}.  
 
 We find that increasing the dust-to-gas ratio reduce VSI growth
-rates. Notably `surface modes', which are typically fastest growing in
+rates. Notably, `surface modes', which are typically fastest growing in
 the dust-free case, are surpressed in dusty disks for $\epsilon_0\geq
-0.1$. The body modes' growth rates remain $\sim O(h_\mathrm{g}\OmK)$
+0.1$ (i.e. $\epsilon_0> \hgas$).  
+The body modes' growth rates remain $ O(h_\mathrm{g}\OmK)$ 
 but their oscillation frequency increases with
-$\epsilon_0$. The total number of modes do not change
+$\epsilon_0$. %i.e. increases with buoyancing freq 
+The total number of modes do not change
 significantly. This is in contrast with the effect of increasing
 cooling times, where \citetalias{lin15} find fewer unstable modes.
 %until the system is eventually completely stable. 
@@ -105,11 +107,11 @@ we compare the fundamental mode between the nearly
 dust-free case $\epsilon_0=10^{-3}$ an a dusty disk with
 $\epsilon_0=1$. Dust-loading preferentially
 stabilizes the disk atmosphere against the VSI, restricting
-meridional motions to $|z|\lesssim 2\Hg$, where most of the disk mass
-reside. This is consistent with the above comparison of the basic state vertical
+meridional motions to $|z|\lesssim 2\Hg$. 
+This is consistent with Fig. \ref{compare_vshear_fixHd} comparing the basic state vertical
 shear and buoyancy. Notice also the perturbed dust-to-gas ratio,
 $\delta\epsilon$, shifts from being maximized at the disk boundaries
-to the midplane. 
+to the midplane.  
 
 \begin{figure}
 %  \includegraphics[scale=0.54, clip=true, trim=0cm 2.5cm 0cm 0cm]{figures/result2d_dg1d-3.ps}\\
@@ -124,17 +126,13 @@ to the midplane.
     }
 \end{figure}
 
-
-
-
-
-
 In Fig. \ref{vsi_dust_loading_vareps} we plot the growth rates as a
 function of $\epsilon_0$ for different perturbation wavenumbers $k$. We
 find that dust-loading stabilizes the VSI more effectively for shorter
 wavelength perturbations. This is because for high wavenumbers the
-dominant modes are surface modes, which are stabilized by
-dust-loading. The figure suggest that VSI becomes much less efficient
+dominant modes are surface modes, which are effectively stabilized by
+dust-loading since bouyancy forces are larges near the disk
+boundaries. The figure suggest that VSI becomes much less efficient
 for $\epsilon_0\gtrsim 0.1$ and $k\Hg\gtrsim 50$. 
 
 \begin{figure}
@@ -147,23 +145,28 @@ for $\epsilon_0\gtrsim 0.1$ and $k\Hg\gtrsim 50$.
     }
 \end{figure}
 
+
+
+
 \subsection{Effect of dust thickness} 
 We now vary the dust layer thickness $\Hd$ but fix the metalicity 
-$Z \equiv \epsilon_0 \Hd/\Hg = \text{constant}$. This then gives the
+$Z \equiv \epsilon_0 \Hd/\Hg = 0.03$. This then gives the
 required midplane dust-to-gas ratio. Since we will consider thin dust
 layers, here we use a smaller 
 domain with $\zmax=2\Hg$ so that $\epsilon$ does not become
 too small. 
 
-We set $Z=0.03$ and analyse two disks with $\Hd=0.1\Hg$ and 
+We analyze two disks with $\Hd=0.1\Hg$ and 
 $\Hd=0.99\Hg$. Fig. \ref{compare_vshear_fixZ} compares the vertical
 vhear rate and buoyancy frequency. For $|z|\gtrsim 0.4\Hg$ the two
 disks have the same profile with vertical shear dominating over
-buoyancy. We thus expect instabilities away from the disk midplane in 
+buoyancy. We thus expect perturbations away from the disk midplane in 
 both cases. For $|z|\lesssim 0.4\Hg$, a thin dust 
 layer with $\Hd=0.1\Hg$ boosts the vertical shear rate, but the
-associated buoyancy is larger still. Thus we expect the mid-plane of
-the disk with $\Hd=0.1\Hg$ to be stable.  
+associated buoyancy is larger still, implying the mid-plane should be
+stable. 
+%Thus we expect the mid-plane of 
+%the disk with $\Hd=0.1\Hg$ to have limited vertical motions.  
 
 \begin{figure}
   \includegraphics[width=\linewidth]{figures/compare_vshear_Nz2_fixZ} 
@@ -175,7 +178,7 @@ the disk with $\Hd=0.1\Hg$ to be stable.
     }
 \end{figure}
 
-Fig. \ref{result2d_fixZ} compares the fastest-growing VSI body modes  
+Fig. \ref{result2d_fixZ} compares the fastest growing VSI body modes  
 with $k\Hg=30$ for the two cases above.\citepalias[The thinner domain
   adopted here eliminates surface modes, ][]{lin15}.   
 We find very similar mode 
@@ -208,9 +211,9 @@ surface layers \citep{gammie96}.
 \end{figure}
 
 Fig. \ref{compare_eigenvals_fixZ} shows the maximum VSI growth rates
-as a function of the dust layer thickness. As before, we find growth
+as a function of $\Hd$. As before, we find growth
 rates are most affected by the vertical structure of the dust layer
-when the perturbation wavenumer is large. VSI growth rates converge as
+when the perturbation wavenumer is large. Notice VSI growth rates converge as
 $\Hd\to 0$. %to dust free values?    
 Thus a thin dust layer, however large its associated vertical shear,
 does not affect the VSI. The non-monotonic behavior for $\Hd\gtrsim
@@ -237,18 +240,18 @@ of minima in growth rates in Fig. \ref{compare_eigenvals_fixZ}.
 \end{figure}
 
 \subsection{Validity}
-We have considered $\tstop=0$ for simplicity. When $\tstop\neq0$, a 
+We considered $\tstop=0$ in order to perform stability analysis on an
+exact steady state. When $\tstop\neq0$, a 
 disk initialized as in \S\ref{eqm} will evolve 
 due to dust-gas relative drift. In particular, in the
 absence of turbulent/diffusive processes, dust particles settle to the
-midplane on a timescale $t_\mathrm{settle}\OmK \sim 1/\tstop\OmK$
-\citep{takeuchi02}. For the previous results to be valid (i.e. the
-basic state does not evolve significantly) we require VSI growth
-timescales $t_\mathrm{grow}\ll t_\mathrm{settle}$. Since the maximum
-VSI growth rate is $\sim h_\mathrm{g}\OmK$, we need stopping times
-such that 
+midplane on a timescale $t_\mathrm{settle}\sim 1/\tstop\OmK^2$
+\citep{takeuchi02}. However, we expect the above results to remain
+valid provided the VSI growth
+timescale $t_\mathrm{grow}\ll t_\mathrm{settle}$. Since 
+VSI growth rates are $O(h_\mathrm{g}\OmK)$, we require 
 \begin{align}
   \tstop\OmK \ll h_\mathrm{g}. 
 \end{align} 
-For thin PPD with $h_\mathrm{g}\sim 0.05$, our dusty VSI results are
-valid for $\tstop\OmK \ll O(10^{-2})$.  
+For thin PPDs with $h_\mathrm{g}\sim 0.05$, this is satisfied 
+for $\tstop\OmK \ll O(10^{-2})$.  

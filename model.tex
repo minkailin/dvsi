@@ -339,7 +339,7 @@ Eq. \ref{integral_ex}. Note that $B=C$ from dynamical equilibrium
 Eq. \ref{int_rel}.    
 
 
-\subsection{Strictly isothermal gas perfectly coupled to dust}   
+\subsection{Strictly isothermal gas perfectly coupled to dust}\label{iso_perfect}
 When $c_s^2$ is a constant and $\tstop=0$, the dusty-gas equations are
 exactly equivalent to that for adiabatic hydrodyamics with unit adiabatic
 index. Although the gas is strictly isothermal, the mixture behaves 
@@ -548,7 +548,7 @@ J. Christensen-Dalsgaard\footnote{\url{http://astro.phys.au.dk/$\sim$jcd/oscilno
 The Lagragian perturbation $\Delta$ of a variable $f$ is 
 related to its Eulerian perturbation by $\Delta f = \delta f + 
 \bm{\xi}\cdot\nabla f$; where $\bm{\xi}$ is the Lagragian  
-displacement ($\dd v_{x,z} = -\ii\sigma\xi_{x,z}$). 
+displacement ($    \xi_{x,z} =  \ii \dd v_{x,z}/\sigma$). 
 %Note that $\Delta
 %\mathcal{C} = \delta \mathcal{C}$ for a uniform background $C$ as
 %required for equilibrium. 
@@ -594,8 +594,10 @@ thermodynamics. Then dust-drag instabilities appear in the equations in the
 same way as pulsational instabities in stars, which has already been 
 well studied. Whether or not the dusty disk is actually unstable
 depends on details of the dust-drag or `cooling' function
-$\mathcal{C}$. However, we might generally expect the system to
-support a range of modes. On physical grounds, unstable modes 
+$\mathcal{C}$. However, given the complexity of $\mathcal{C}$ (
+Appendix \ref{lin_dust}), we might generally expect the system to
+support a range of modes, stable and unstable. 
+On physical grounds, growing modes  
 \emph{must} be so by causing a phase lag between pressure and total
 density.    
 
@@ -616,6 +618,6 @@ gives
   \left(\nabla\cdot\dd\bm{v}^*\right)\left(\dd\bm{v}\cdot\nabla\ln{c_s^2}\right)dV}{2\omega\int\rho\left(|\dd
     v_r|^2 + |\dd v_z|^2\right)dV}. \label{vsi_check}
 \end{align} 
-This is classic VSI caused by vertical shear arising from a radial
-temperature gradient \citep{nelson13,barker15,lin15}. We compute
-explicit solutions in this limit in \S\ref{results}. 
+This is VSI caused by vertical shear arising from a radial
+temperature gradient \citep{nelson13,barker15,lin15}. We present 
+numerical solutions of the VSI with perfectly-coupled dust in \S\ref{results}. 
