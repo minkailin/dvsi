@@ -6,6 +6,7 @@
         fixZ        = .true.    ! hold metalicity constant as is varied? if yes, dgratio determined from this. if not, the dgratio = Zmetal 
 	Hdmin       = 0.1   	! min characteristic dust layer thickness, in Hg 
 	Hdmax       = 0.99  	! max characteristic dust layer thickness, in Hg
+        varHd       = 0d0 
         nHd         = 100        ! samples in Hd
 	smalld      = 0d0 	! negative of the radial power law for imposed dust-to-gas ratio profile	
         tstop       = 0.0/      ! stopping time at the midplane 

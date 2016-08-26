@@ -1,13 +1,13 @@
 module global
   implicit none 
-  logical :: fixZ 
+  logical :: fixZ
   character*4 :: vstruct 
   integer, parameter :: nvar = 5 
   real*8, parameter :: pi = 2d0*acos(0d0)
   complex*16, parameter :: ii = (0d0, 1d0), zero = (0d0, 0d0)
 
   integer :: nz, bignz, Nzmid
-  real*8 :: smallh_g, rhog0_power, smallq, dgratio, delta, smalld, tstop, Hd
+  real*8 :: smallh_g, rhog0_power, smallq, dgratio, delta, smalld, tstop, Hd, varHd
   real*8 :: zmax, Zmetal 
   real*8 :: dlnHg_dlnr, beta 
   real*8 :: krad, bc_tol 
@@ -47,7 +47,7 @@ program dvsi
   real*8, external  :: rotation, kappa_sq, vertical_shear
   real*8, external  :: Fr, Fz, F_dot_deleps, div_F, F_dot_dellncs2, gr, gz
   real*8, external  :: stopping_time 
-  namelist /params/ smallh_g, rhog0_power, smallq, vstruct, Hd, Zmetal, fixZ, smalld, tstop 
+  namelist /params/ smallh_g, rhog0_power, smallq, vstruct, Hd, varHd, Zmetal, fixZ, smalld, tstop 
   namelist /grid/ zmax, nz 
   namelist /mode/ krad
 

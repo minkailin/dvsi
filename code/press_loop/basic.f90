@@ -80,7 +80,7 @@ real*8 function deps_tilde_dr(zhat)
   real*8, intent(in) :: zhat 
   real*8, external :: eps_tilde
 
-if(vstruct.eq.'mlin')  deps_tilde_dr = -smalld*dgratio*smallh_g*exp(-zhat**2d0/2d0/delta**2d0)
+if(vstruct.eq.'mlin')  deps_tilde_dr =(-smalld*dgratio + varHd*(zhat**2d0/delta**2d0)*dlnHg_dlnr)*smallh_g*exp(-zhat**2d0/2d0/delta**2d0)
 if(vstruct.eq.'tl02')  deps_tilde_dr = eps_tilde(zhat)*( -smalld*smallh_g + beta**2d0*zhat**2d0*smallh_g*dlnHg_dlnr*exp(zhat**2d0/2d0) )
 end function deps_tilde_dr
 
@@ -90,10 +90,15 @@ real*8 function d2eps_tilde_dr2(zhat)
    implicit none
   real*8, intent(in) :: zhat 
   real*8, external :: eps_tilde, deps_tilde_dr
-  real*8 :: temp 
-
-if(vstruct.eq.'mlin')  d2eps_tilde_dr2 = (smalld*smallh_g)**2d0*dgratio*exp(-zhat**2d0/2d0/delta**2d0) 
+  real*8 :: temp, delta2 
   
+if(vstruct.eq.'mlin')  then 
+!   d2eps_tilde_dr2 = (smalld*smallh_g)**2d0*dgratio*exp(-zhat**2d0/2d0/delta**2d0) 
+   d2eps_tilde_dr2  = smalld**2d0*dgratio - varHd*(zhat**2d0/delta**2d0)*dlnHg_dlnr**2d0
+   d2eps_tilde_dr2  = d2eps_tilde_dr2 + varHd*( -smalld*dgratio + (zhat**2d0/delta**2d0)*dlnHg_dlnr )*zhat**2d0*dlnHg_dlnr/delta**2d0 
+   d2eps_tilde_dr2  = d2eps_tilde_dr2*smallh_g**2d0*exp(-zhat**2d0/2d0/delta**2d0) 
+endif
+
 if(vstruct.eq.'tl02') then 
   temp = beta**2d0*zhat**2d0*smallh_g**2d0*(-2d0 - zhat**2d0)*dlnHg_dlnr**2d0*exp(zhat**2d0/2d0)
   d2eps_tilde_dr2 = eps_tilde(zhat)*temp + deps_tilde_dr(zhat)**2d0/eps_tilde(zhat)

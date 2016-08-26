@@ -7,7 +7,7 @@ module global
   complex*16, parameter :: ii = (0d0, 1d0), zero = (0d0, 0d0)
 
   integer :: nz, bignz, Nzmid, nk, nHd
-  real*8 :: smallh_g, rhog0_power, smallq, dgratio, delta, smalld, tstop, Hd, beta
+  real*8 :: smallh_g, rhog0_power, smallq, dgratio, delta, smalld, tstop, Hd, varHd, beta
   real*8 :: zmax, Hdmin, Hdmax, Zmetal 
   real*8 :: dlnHg_dlnr, dlogk, dlogdgr 
   real*8 :: kmin, kmax, krad, dgrmin, dgrmax, bc_tol, growth, freq
@@ -50,7 +50,7 @@ program dvsi
   real*8, external  :: rotation, kappa_sq, vertical_shear
   real*8, external  :: Fr, Fz, F_dot_deleps, div_F, F_dot_dellncs2, gr, gz
   real*8, external  :: stopping_time 
-  namelist /params/ smallh_g, rhog0_power, smallq, vstruct, Zmetal, fixZ, Hdmin, Hdmax, nHd, smalld, tstop 
+  namelist /params/ smallh_g, rhog0_power, smallq, vstruct, Zmetal, fixZ, Hdmin, Hdmax, varHd, nHd, smalld, tstop 
   namelist /grid/ zmax, nz 
   namelist /mode/ kmin, kmax, nk 
 

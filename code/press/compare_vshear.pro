@@ -137,7 +137,7 @@ pro compare_vshear, loc=loc, xrange=xrange, yrange=yrange, label=label, legend=l
   plot,  zaxis, abs(vshear),xmargin=[8,1.5],ymargin=[3.25,1.75], ystyle=1   $
          ,charsize=2, thick=4, psym=2, symsize=2, xrange=xrange, yrange=yrange $
          , xtitle=xtitle, ytitle=ytitle, title = tex2idl(title+'!X') $
-         ,ytickinterval=ytickinterval  $
+         ,ytickinterval=1  $
          ,xtickinterval=xtickinterval, xstyle=1, color = col_arr[0],/nodata
 ;  oplot, [-1,1]*1d10, [0,0], thick=1
   if not keyword_set(ct) then ct = 11

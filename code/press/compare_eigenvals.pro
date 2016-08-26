@@ -68,7 +68,7 @@ function resolution_test, eigen_lowres, eigen_highres
 end
 
 
-pro compare_eigenvals, loc=loc, highres=highres, xrange=xrange, yrange=yrange, label=label, legend=legend, title=title, ct=ct, tol=tol 
+pro compare_eigenvals, loc=loc, highres=highres, xrange=xrange, yrange=yrange, label=label, legend=legend, title=title, ct=ct, tol=tol, mode=mode
 
   common tolerance, err 
 
@@ -121,8 +121,31 @@ pro compare_eigenvals, loc=loc, highres=highres, xrange=xrange, yrange=yrange, l
          ,ytickinterval=ytickinterval  $
          ,xtickinterval=xtickinterval, xstyle=1, color = col_arr[0],/nodata
 
-  if not keyword_set(ct) then ct = 11
+
+
+
+
+  if not keyword_set(mode) then begin
+     temp = max(growth, ngrid)
+     mode = ngrid + 1
+  endif else begin
+     if(n_elements(mode eq 1))then begin
+        ngrid = mode - 1
+     endif else begin
+        rate_target = mode[0]
+        freq_target = mode[1]
+        eigen_target = dcomplex(rate_target, freq_target)
+        temp = min( abs(dcomplex(growth,freq)-eigen_target), ngrid )
+        mode = ngrid + 1
+     endelse
+  endelse
+
+   if not keyword_set(ct) then ct = 11
   loadct,ct,/silent
+ 
+
+
+ 
   for n=0, ncases-1 do begin
      
      eigenvalues1 = get_data(loc[n])
@@ -146,6 +169,15 @@ pro compare_eigenvals, loc=loc, highres=highres, xrange=xrange, yrange=yrange, l
      
      oplot, freq, growth, psym=4, symsize=1.5, thick=4, color=col_arr[n]
   endfor
+
+   color_arr = dindgen(2)*256d0/2.
+;  oplot, [1,1]*freq[ngrid], [1,1]*growth[ngrid], psym=2,symsize=1.5,color=color_arr(1)
+
+
+
+
+
+
 
   if keyword_set(legend) then begin
      x0=legend(0)
