@@ -10,9 +10,11 @@ equations to examine the effect of dust on the VSI.
 We consider perfectly coupled dust ($\tstop=0$) so that the 
 equilibria defined in \S\ref{eqm} are exact steady states. 
 
-For simplicity we input constant values of the midplane dust-to-gas ratio
-$\epsilon_0$ and its characteristic height $H_\epsilon$, the latter being 
-specified via the dust thickness $\Hd$. 
+For simplicity, we mostly consider constant midplane
+dust-to-gas ratios $\epsilon_0$ and its characteristic height
+$H_\epsilon$. The latter is specified via the dust layer thickness
+$\Hd(r_0)$. (We will allow for radial dependices in $\epsilon_0$ and
+$H_\epsilon$ in \S\ref{varHd}.)   
 These, together with the perturbation wavenumber $k$, comprises main the
 parameters of the linear problem. We fix the radial power-law index
 for the midplane gas density to $p = -1.5$, that for the
@@ -239,6 +241,57 @@ of minima in growth rates in Fig. \ref{compare_eigenvals_fixZ}.
     \label{compare_eigenvals_fixZ}
     }
 \end{figure}
+
+
+\subsection{Effect of a radially-varying dust-to-gas ratio}\label{varHd}
+{\bf move to appendix?}
+
+Here we allow the dust-to-gas ratio $\epsilon$ to depend on
+$r$. Specifically we let $\epsilon_0\propto r^{-1}$ and
+$H_\epsilon \propto \Hg$ (cf. constant values in the previous
+calculations). Then
+\begin{align*}
+  \frac{\p\epsilon}{\p r} =
+  \left(\frac{z^2}{H_\epsilon^2}\frac{d\ln{\Hg}}{dr} -
+    \frac{1}{r}\right)\epsilon.   
+\end{align*}
+We fix $Z=0.01$, $\Hd=0.8\Hg$ at $r=r_0$, and
+$k\Hg=30$.      
+
+Fig. \ref{compare_vshear_varHd} shows that a radially-varying
+dust-to-gas ratio increases the magnitude of the vertical shear rate
+away from the midplane (see also Eq. \ref{vshear2}). Thus we find
+higher VSI growth rates, as shown in Fig. \ref{vsi_dust_varHd}. 
+Surfaces mode are more effectively enhanced by the additional vertical 
+shear induced by $\p_r\epsilon$. However, all growth rates remain
+$O(\hgas\OmK)$. Importantly, the increase in the growth rate of the
+fundamental mode is small. Thus we do not expect the radial
+dependence in $\epsilon$ to significantly affect the VSI in a dusty
+disk. 
+
+\begin{figure}
+  \includegraphics[width=\linewidth]{figures/compare_vshear_Nz2_varHd} 
+  \caption{Vertical shear rate (solid) compared to vertical buoyancy
+    (dotted) in a locally isothermal, dusty disk 
+    with metalicity $Z=0.01$ and dust thickness $\Hd=0.8\Hg$.
+    Black curves assume a dust-to-gas ratio that only depends on
+    height; whereas the blue curve also allows a radial dependence in
+    $\epsilon$. See text for details.  
+    \label{compare_vshear_varHd}
+    }
+\end{figure}
+
+
+
+\begin{figure}
+  \includegraphics[width=\linewidth]{figures/compare_eigenvals_varHd} 
+  \caption{Unstable VSI modes in the disk models of
+    Fig. \protect\ref{compare_vshear_varHd}.  
+    \label{vsi_dust_varHd}
+    }
+\end{figure}
+
+
 
 \subsection{Validity}
 We considered $\tstop=0$ in order to perform stability analysis on an
