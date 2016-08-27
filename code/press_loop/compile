@@ -1,0 +1,1 @@
+ifort -O3 -o dvsi.exe *.f90 -mkl 
