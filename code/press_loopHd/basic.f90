@@ -12,9 +12,15 @@ real*8 function dlnrhog_dr(zhat)
   implicit none 
   real*8, intent(in) :: zhat 
  
-if(vstruct.eq.'mlin') then 
-  dlnrhog_dr = smallh_g*rhog0_power + dlnHg_dlnr*smallh_g*( zhat**2d0 + 2d0*dgratio*delta**2d0*( 1d0 - exp(-zhat**2d0/2d0/delta**2d0) ) ) &
-              + smalld*dgratio*smallh_g*delta**2d0*(1d0 - exp(-zhat**2d0/2d0/delta**2d0) )
+  if(vstruct.eq.'mlin') then 
+     if(varHd.eq.0d0) then 
+        dlnrhog_dr = smallh_g*rhog0_power + dlnHg_dlnr*smallh_g*( zhat**2d0 + 2d0*dgratio*delta**2d0*( 1d0 - exp(-zhat**2d0/2d0/delta**2d0) ) ) &
+             + smalld*dgratio*smallh_g*delta**2d0*(1d0 - exp(-zhat**2d0/2d0/delta**2d0) )
+     else 
+         dlnrhog_dr = smallh_g*rhog0_power + dlnHg_dlnr*smallh_g*zhat**2d0 &
+             + smalld*dgratio*smallh_g*delta**2d0*(1d0 - exp(-zhat**2d0/2d0/delta**2d0) ) &
+             + smallh_g*dgratio*zhat**2d0*dlnHg_dlnr*exp(-zhat**2d0/2d0/delta**2d0) 
+     endif
 endif
 
 if(vstruct.eq.'tl02')  dlnrhog_dr = smallh_g*rhog0_power + dlnHg_dlnr*smallh_g*zhat**2d0
@@ -27,9 +33,15 @@ real*8 function d2lnrhog_dr2(zhat)
   real*8, intent(in) :: zhat 
   
 if(vstruct.eq.'mlin') then
-  d2lnrhog_dr2 = -2d0*dlnHg_dlnr**2d0*smallh_g**2d0*( zhat**2d0 + 2d0*dgratio*delta**2d0*( 1d0 - exp(-zhat**2d0/2d0/delta**2d0) ) ) &
-                 -4d0*smalld*dgratio*smallh_g**2d0*delta**2d0*dlnHg_dlnr*( 1d0 - exp(-zhat**2d0/2d0/delta**2d0) ) &
-                 -(smalld*smallh_g*delta)**2d0*dgratio*( 1d0 - exp(-zhat**2d0/2d0/delta**2d0) )
+   if(varHd.eq.0d0) then
+      d2lnrhog_dr2 = -2d0*dlnHg_dlnr**2d0*smallh_g**2d0*( zhat**2d0 + 2d0*dgratio*delta**2d0*( 1d0 - exp(-zhat**2d0/2d0/delta**2d0) ) ) &
+           -4d0*smalld*dgratio*smallh_g**2d0*delta**2d0*dlnHg_dlnr*( 1d0 - exp(-zhat**2d0/2d0/delta**2d0) ) &
+           -(smalld*smallh_g*delta)**2d0*dgratio*( 1d0 - exp(-zhat**2d0/2d0/delta**2d0) )
+   else
+       d2lnrhog_dr2 = -2d0*dlnHg_dlnr**2d0*zhat**2d0 - smalld**2d0*dgratio*delta**2d0*(1d0 - exp(-zhat**2d0/2d0/delta**2d0) ) &
+            + dgratio*zhat**2d0*dlnHg_dlnr*( dlnHg_dlnr*(zhat**2d0/delta**2d0 - 2d0) - 2d0*smalld )*exp(-zhat**2d0/2d0/delta**2d0)
+       d2lnrhog_dr2 = d2lnrhog_dr2*smallh_g**2d0
+   endif
 endif  
 
 if(vstruct.eq.'tl02') d2lnrhog_dr2 = -2d0*dlnHg_dlnr**2d0*smallh_g**2d0*zhat**2d0
