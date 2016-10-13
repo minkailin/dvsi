@@ -1,7 +1,35 @@
 \section{Single fluid description of dusty gas}\label{setup} 
-In the limit of strong dust-gas drag (stopping time $\tstop\to 0$) 
-\cite{laibe14} give a single fluid description of the mixture:  
-(their Eq. 84 --- 85 and Eq. 87): 
+We model an accretion disk as a mixture of gas with dust treated as a 
+pressureless fluid. We denote their density and
+velocity field as $(\rhog,\bm{v}_\mathrm{g})$ and
+$(\rhod,\bm{v}_\mathrm{d})$, respectively. The two fluids 
+interact via a drag force parameterized by a stopping time $\tstop$
+such that 
+\begin{align}  
+  \rhod\left.\frac{\p \bm{v}_\mathrm{d}}{\p t}\right|_\mathrm{drag}= -
+  \rhog\left.\frac{\p \bm{v}_\mathrm{g}}{\p t}\right|_\mathrm{drag}=
+  - \frac{\rhog\rhod}{\left(\rhod+\rhog\right)}\frac{\left(\bm{v}_\mathrm{d} -
+    \bm{v}_\mathrm{g}\right)}{\tstop}. 
+\end{align}
+is the dust-gas friction force per unit volume. Note that $\tstop$ 
+differs slightly from the stopping time $\tau_\mathrm{s} =
+\tstop\rhog/\left(\rhog+\rhod\right)$ defined in previous studies
+\citep[e.g.][]{youdin05a,jacquet11}.   
+
+We consider the limit of tightly-coupled dust particles with 
+$\tstop\OmK\ll 1 $, where $\OmK$ is the Keplerian orbital
+frequency. This allows us to simplify the problem by using the
+`terminal velocity approximation' so that the dust-gas velocity
+difference is 
+\begin{align}
+  \bm{v}_\mathrm{d} - \bm{v}_\mathrm{g} = \frac{\nabla
+    P}{\rhog}\tstop, 
+\end{align}
+\citep{youdin05a,jacquet11}. 
+
+%In the limit of strong dust-gas drag (stopping time $\tstop\to 0$) 
+In this limit of strong dust-gas drag, \cite{laibe14} give a single
+fluid description of the mixture (their Eq. 84 --- 85 and Eq. 87):  
 
 \begin{align}
   &\frac{D\rho}{Dt} = -\rho\nabla\cdot\bm{v}, \label{masseq}\\ 
@@ -10,19 +38,18 @@ In the limit of strong dust-gas drag (stopping time $\tstop\to 0$)
   \tstop \nabla P \right),\label{dusteq}  
 \end{align}
 where $D/Dt \equiv \p_t + \bm{v}\cdot\nabla$ is the Lagragian
-derivative; 
+derivative \emph{following the mixture} with center-of-mass velocity  
+\begin{align}
+  \bm{v} \equiv \frac{\rhog\bm{v}_\mathrm{g} + 
+    \rhod\bm{v}_\mathrm{d}}{\rho}, 
+\end{align}
+and 
 \begin{align}
   \rho \equiv \rhog + \rhod
 \end{align}
-is the total density with $\rhog$ and $\rhod$ being the gas and dust
-density, respectively; 
-\begin{align}
-  \bm{v} \equiv \frac{\rhog\bm{v}_\mathrm{g} + 
-    \rhod\bm{v}_\mathrm{d}}{\rho}
-\end{align}
-is the center-of-mass velocity with $\bm{v}_\mathrm{g}$ and
-$\bm{v}_\mathrm{d}$ being the gas and dust velocities, respectively; 
-and 
+is the total mixture density. 
+
+In Eq. \ref{dusteq}, 
 \begin{align}
   \tepsilon \equiv \frac{\rhod}{\rho}  = \frac{\epsilon}{1+\epsilon} 
 \end{align}
@@ -31,7 +58,7 @@ dust-to-gas ratio. The gas pressure $P$ is given by the chosen
 equation of state described below. Note that Eq. \ref{dusteq} is
 equivalent to Eq. 46 of \cite{jacquet11}. 
 
-The external potential $\Phi$ is 
+For the disk problem the external potential $\Phi$ is  
 that for a star of mass $M_*$, 
 \begin{align}\label{thin_disk_potential}
   \Phi(r,z) =-\frac{GM_*}{\sqrt{r^2 + z^2}}\simeq
@@ -45,11 +72,38 @@ $|z|\ll r$. We shall adopt this approximate potential in order to
 obtain analytic expressions for the disk equilibria.  
 
 \subsection{Locally isothermal equation of state}\label{loc_iso_eos}
-We adopt 
+To complete the system of equations we need to specify a gas equation
+of state. We start with the 
+energy equation for an ideal gas of adiabatic index $\gamma$: 
+\begin{align}
+  \frac{\p P}{\p t} + \bm{v}_\mathrm{g}\cdot\nabla P = - \gamma P
+  \nabla\cdot \bm{v}_\mathrm{g}  + \mathcal{H} - \Lambda 
+%\frac{\rho \mathcal{R}}{\mu}\frac{T
+%  - T_\mathrm{ref}}{t_\mathrm{cool}}, \label{realenergy}
+\end{align}
+where $\mathcal{H} = 
+(\gamma-1)\tepsilon|\rhog\left(\bm{v}_\mathrm{d}-\bm{v}_\mathrm{g}\right)|^2$
+accounts for heating due to dust-gas drag \citep{laibe14}; and 
+\begin{align}
+  \Lambda = \frac{\rho \mathcal{R}}{\mu}\frac{T
+  - T_\mathrm{ref}}{t_\mathrm{cool}}, \label{realenergy}
+\end{align}
+represents radiative cooling on a characteristic timescale
+$\tcool$ that relaxes the gas back to a prescribed temperature profile  
+$T_\mathrm{ref}$, where $\mathcal{R},\, \mu$ are  the gas constant and
+mean molecular weight of the gas, respectively.  
+
+We now simplify the gas energy equation by considering short cooling 
+times $\tcool\to 0$, appropriate for the outer parts of an irradiated
+protoplanetary disk \citep{chiang97,lin15}. Then the disk temperature
+$T = T_\mathrm{ref}$ at all times, and so we may
+adopt a locally isothermal equation of state 
 \begin{align}\label{eos}
   P = c_s^2(r,z)\rhog = c_s^{2}(1 - \tepsilon)\rho,   
 \end{align}
-where $c_s$ is a prescribed sound-speed profile fixed in time. 
+where $c_s(r,z)= \sqrt{\mathcal{R}T_\mathrm{ref}/\mu}$ is a prescribed
+sound-speed profile fixed in time.  
+
 In practice we consider vertically 
 isothermal disks with \begin{align}\label{power_temp}
   c_s^2(r) \propto r^{q},
@@ -65,24 +119,37 @@ isothermal dusty disks to in fact behave as if it
 had a temperture \emph{increasing} away from $z=0$.   
 
 \subsection{Effective energy equation}
-We show that for a prescribed temperature distribution, the mixture
-obeys an evolutionary energy equation, due to the advection of the
-dust-fraction. Eliminate $\tepsilon$ in favor of $P$, 
+Although we have eliminated the need of an evolutionary energy
+equation (Eq. \ref{realenergy}) by choosing a locally isothermal
+equation of state (Eq. \ref{eos}), we show that the mixture 
+nevertheless obeys an effective evolutionary energy equation. This is
+because advection of the dust-fraction, described by
+Eq. \ref{dusteq}, can be transformed into an energy-like 
+equation. We 
+%We show that for a prescribed temperature distribution, the mixture
+%obeys an evolutionary energy equation, due to the advection of the
+%dust-fraction. 
+eliminate $\tepsilon$ in favor of $P$, 
 \begin{align*}
   \tepsilon = 1 - \frac{P}{c_s^2(r,z)\rho}, 
 \end{align*}
 then Eq. \ref{dusteq} becomes
 \begin{align}
-\frac{DP}{Dt} &= - P \nabla\cdot\bm{v} + P\bm{v}\cdot\nabla\ln{c_s^2}
+%\frac{DP}{Dt} 
+\frac{\p P}{\p t} + \bm{v}\cdot\nabla P  
+&= - P \nabla\cdot\bm{v} + P\bm{v}\cdot\nabla\ln{c_s^2}
                 + \mathcal{C},  \label{eff_energy} \\
 \mathcal{C}&\equiv c_s^2 \nabla\cdot\left[\tstop\left(1 -
   \frac{P}{c_s^2\rho}\right)\nabla 
   P\right].
 \end{align}
-Eq. \ref{eff_energy} is the energy equation for an ideal gas of adiabatic index
-$\gamma=1$, i.e. isothermal evolution, but now with additional energy source 
-terms due to the imposed temperature profile via $\nabla c_s^2$, as
-well as dust-gas drag via $\mathcal{C}$. 
+Comparing with Eq. \ref{realenergy}, we see that 
+Eq. \ref{eff_energy} is the energy equation for an ideal gas of
+adiabatic index $\gamma=1$, but now with the imposed temperature
+gradient $\nabla c_s^2$ and dust-gas drag $\mathcal{C}$ playing the
+role of radiative cooling ($\Lambda$ in 
+Eq. \ref{realenergy}). 
+
 %In this form, the function $\mathcal{C}$ can be interpreted
 %as a cooling term.    
 If we denote 
@@ -108,7 +175,7 @@ Eq. \ref{eff_energy} can be written in conservative form,
     \right\}\\
   = \left[P\bm{v} - \tstop\left(c_s^2 - \frac{P}{\rho}\right)\nabla
     P\right]\cdot\nabla\ln{c_s^2}. 
-\end{align*}
+\end{align*} 
 We may thus re-interpret $P$ as the mixture's energy density, but the
 energy flux has an additional contribution from the pressure
 gradient and dust-gas friction. The term on the right-hand-side, owing
