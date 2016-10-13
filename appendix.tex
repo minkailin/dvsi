@@ -44,7 +44,7 @@ by parts and ignoring surface integrals, the last term is
 %   \bm{v} \cdot \nabla \ln{c_s^2} + \frac{\dd\mathcal{C}}{P}
 %   \right)\dd\bm{v}^*\cdot\nabla P  
    \left(
-   \ii\sigma \frac{\dd P}{\Gamma P} - \dd\bm{v}\cdot\nabla s + \frac{\dd
+   \ii\sigma \frac{\dd P}{\Gamma P} - \dd\bm{v}\cdot\nabla \seff + \frac{\dd
    \bm{v}}{\Gamma} \cdot \nabla \ln{K} +
    \frac{\dd\mathcal{C}}{\Gamma P} \right)\dd\bm{v}^*\cdot\nabla P
    + \ii\sigma \dd P  \nabla\cdot \dd \bm{v}^*
@@ -57,7 +57,7 @@ by parts and ignoring surface integrals, the last term is
    \ii\sigma\frac{\dd P}{\Gamma P}\left(\dd\bm{v}^*\cdot\nabla P +
    \Gamma P\nabla\cdot\dd\bm{v}^*   \right)
    +\left(\dd\bm{v}^*\cdot\nabla P\right) \left( \frac{\dd\bm{v}}{\Gamma} \cdot \nabla
-   \ln{K} + \frac{\dd\mathcal{C}}{\Gamma P}   -  \dd\bm{v}\cdot\nabla s\right) 
+   \ln{K} + \frac{\dd\mathcal{C}}{\Gamma P}   -  \dd\bm{v}\cdot\nabla \seff\right) 
    \right]dV\notag\\
  & = \int\left\{
 %   \left[\frac{1}{P}\nabla\cdot\left(P\dd\bm{v}\right) -
@@ -76,7 +76,7 @@ by parts and ignoring surface integrals, the last term is
  &\phantom{=\int\left\{\right\}}\left. 
  + \left(\dd\bm{v}^*\cdot\nabla P\right)\left(\frac{\dd\bm{v}}{\Gamma} \cdot \nabla
  \ln{K}
- + \frac{\dd\mathcal{C}}{\Gamma P}   -  \dd\bm{v}\cdot\nabla s \right)
+ + \frac{\dd\mathcal{C}}{\Gamma P}   -  \dd\bm{v}\cdot\nabla \seff \right)
  \right\}dV \notag\\
  &=\int\left[
 %     \frac{1}{P}\left|\nabla\cdot\left(P\dd\bm{v}\right)\right|^2 -
@@ -85,24 +85,24 @@ by parts and ignoring surface integrals, the last term is
 %     P\left(\nabla\cdot\dd\bm{v}^*\right)\left(\dd\bm{v}\cdot\nabla\ln{c_s^2} + \frac{\dd\mathcal{C}}{P} \right)  
     \frac{1}{\Gamma P} \Bigl\lvert \dd \bm{v}\cdot\nabla P +
  \Gamma P\nabla\cdot\dd \bm{v}    \Bigr\rvert ^2 - 
-     \left(\dd\bm{v}^*\cdot\nabla P\right)\left(\dd\bm{v}\cdot\nabla s
+     \left(\dd\bm{v}^*\cdot\nabla P\right)\left(\dd\bm{v}\cdot\nabla \seff
      \right) -
       P\left(\nabla\cdot\dd\bm{v}^*\right)\left(\dd\bm{v}\cdot\nabla\ln{K} + \frac{\dd\mathcal{C}}{P} \right) 
      \right]dV,
 \end{align}
-where  $s\equiv\ln{(P^{1/\Gamma}/\rho)}$. Hence,
+where  $\seff\equiv\ln{(P^{1/\Gamma}/\rho)}$. Hence,
 \begin{align}\label{integral_ex}
   &\sigma^2\int\rho\left(|\dd v_r|^2 + |\dd v_z|^2\right)dV \notag\\
 &=  \int\left\{
   \rho |\dd v_r|^2 \left(\kappa^2 - \frac{1}{\rho}\frac{\p P}{\p
-    r}\frac{\p s}{\p r}\right)
+    r}\frac{\p \seff}{\p r}\right)
   + \rho |\dd v_z|^2\left(-\frac{1}{\rho}\frac{\p P}{\p
-    z}\frac{\p s}{\p z}\right)
+    z}\frac{\p \seff}{\p z}\right)
    + \rho \dd v_z \dd v_r^*\left(r\frac{\p\Omega^2}{\p z} -
   \frac{1}{\rho}\frac{\p P}{\p
-    r}\frac{\p s}{\p z}\right) 
+    r}\frac{\p \seff}{\p z}\right) 
   + \rho \dd v_z^*\dd v_r \left(-\frac{1}{\rho}\frac{\p P}{\p
-    z}\frac{\p s}{\p r}\right)\right. \notag\\
+    z}\frac{\p \seff}{\p r}\right)\right. \notag\\
 &\phantom{==\int}\left.+
 %  \frac{1}{P}\left|\nabla\cdot\left(P\dd\bm{v}\right)\right|^2
  \frac{1}{\Gamma P}\Bigl\lvert \dd\bm{v}\cdot\nabla P +

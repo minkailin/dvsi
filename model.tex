@@ -185,15 +185,27 @@ heat source.
 %We comment that 
 
 \subsection{Entropy of an isothermal dusty gas }
-%Having made the connection between the dust fraction (or dust-to-gas
-%ratio) of the mixture and an energy equation, we now define 
-We define the (dimensionless) entropy of the mixture as 
+
+The gas component of the mixture has an entropy that is not conserved 
+because of the (locally) isothermal equation of state 
+adopted. However, we can define an effective (dimensionless)
+entropy for the \emph{entire mixture} as 
 \begin{align}
-   s \equiv \ln \frac{P}{\rho} = \ln{\left[c_s^2(1-\tepsilon)\right]}.  
-\end{align}
-We shall see that by defining the entropy this way, many of the 
+   \seff \equiv \ln \frac{P}{\rho} = \ln{\left[c_s^2(1-\tepsilon)\right]}.  
+\end{align} 
+We shall see that by defining an effective entropy this way, many of the 
 results concerning the stability of dusty gas will have identical form
-and interpretations to that in standard adiabatic hydrodynamics. 
+and interpretations to that in standard adiabatic hydrodynamics of 
+pure gas. For example, if $c_s^2$ is constant and $\tstop=0$, then
+$D\seff/ D t = 0$ since $D\tepsilon/D t=0$ in that case.  
+
+The physical reason for this analogy is that with strong drag, the dust is almost
+perfectly entrained in the gas flow, but there is some gain/loss of 
+dust particles between different gas parcels if dust-gas
+friction if finite. This property is analogous to the entropy of an adiabatic
+pure gas subject to heating/cooling: entropy is conserved following
+a gas parcel, except if there is heat exchange between a fluid parcel
+and the surrounding.  
 
 \section{Dynamical equilibria}\label{eqm}
  
@@ -213,7 +225,11 @@ with $P=P(\tepsilon,\rho)$ given by the equation of state
 \S\ref{steady_state}.  
 However, disk structures obtained this way generally do not satisfy 
 the steady state effective energy Eq. \ref{eff_energy} 
-except in the limit of perfectly coupled dust ($\tstop\to0$).  
+except in the limit of perfectly coupled dust ($\tstop\to0$).  In
+practice the dust-component would settle on a timescale
+$t_\mathrm{settle}\sim 1/\OmK^2\tstop$, but for tightly-coupled dust
+particles this is much longer than that to establish vertical
+hydrostatic equilibrium in the gas component ($\sim 1/\OmK$).   
 
 True steady states may be calculated by invoking an underlying gas
 turbulence, which leads to dust diffusion \citep{takeuchi02, youdin07, 
@@ -312,8 +328,8 @@ obtain
 %&= \frac{\p\ln{\rho}}{\p r}\frac{\p}{\p
 %    z}\left[c_s^2(1-\tepsilon)\right] - \frac{\p\ln{\rho}}{\p z}
 %  \frac{\p}{\p r} \left[c_s^2(1-\tepsilon)\right]\\  
-   = \frac{1}{\rho}\left(\frac{\p P}{\p r}\frac{\p s}{\p z} -\frac{\p
-    P}{\p z}\frac{\p s}{\p r} \right). 
+   = \frac{1}{\rho}\left(\frac{\p P}{\p r}\frac{\p \seff}{\p z} -\frac{\p
+    P}{\p z}\frac{\p \seff}{\p r} \right). 
 \end{align}
 Writing Eq. \ref{vshear} in terms of the gas density and dust-to-gas
 ratio with a power-law temperature profile (Eq. \ref{power_temp}) gives 
@@ -321,18 +337,19 @@ ratio with a power-law temperature profile (Eq. \ref{power_temp}) gives
   &r\frac{\p \Omega^2}{\p z}  =
   \frac{c_s^2(r)}{\left(1+\epsilon\right)^2}\left\{
   \frac{\p\epsilon}{\p r}\frac{\p\ln{\rhog}}{\p z}
-  -\frac{\p\epsilon}{\p z}\frac{\p\ln{\rhog}}{\p r}\right.\notag\\
+%  -\frac{\p\epsilon}{\p z}\left[\frac{\p\ln{\rhog}}{\p r} + \frac{q}{r}\right]\right.\notag\\
+ -\frac{\p\epsilon}{\p z}\frac{\p\ln{P}}{\p r}\right.\notag\\
   &\phantom{ r\frac{\p \Omega^2}{\p z}  =
     \frac{c_s^2(r)}{\left(1+\epsilon\right)^2}\left\{\right\} }
-  \left. -\frac{q}{r}\left[\frac{\p\epsilon}{\p z} + \left(1+\epsilon\right)\frac{\p\ln{\rhog}}{\p z}\right]
-  \right\} 
+  \left. -\frac{q}{r} \left(1+\epsilon\right)\frac{\p\ln{\rhog}}{\p z} \right\} 
 \end{align}
 The first two terms correspond to vertical shear caused by spatial
-variations in the dust-to-gas ratio; while the second term
+variations in the dust-to-gas ratio; while the third term
 proportional to $q$ corresponds to vertical shear due to the 
-radial temperature gradient.
+radial temperature gradient. The last term is present in the dust-free
+limit. 
 
-We can compare these sources by
+We can compare these sources by 
 evaluating them using the equilibrium
 solutions in \S\ref{steady_state}. We assume the disk is radially
 smooth so that $\p_r\sim 1/r$, and the dust-to-gas ratio
@@ -342,22 +359,23 @@ $\epsilon\ll1$. This gives
   \frac{\left|r\p_z\Omega\right|_{\text{
         dust/gas gradient}}}{\left|r\p_z\Omega\right|_{\text{
         temp. gradient}}} \sim
-  \epsilon \frac{\mathrm{max}\left(\delta^2,
-    1\right)}{\left|q\right|\left(\epsilon + \delta^2\right)},
+ % \epsilon \frac{\mathrm{max}\left(\delta^2,
+  %  1\right)}{\left|q\right|\left(\epsilon + \delta^2\right)},
+ \epsilon \frac{\mathrm{max}\left(\delta^2,
+    1\right)}{\left|q\right|\left(1+\epsilon\right)\delta^2},
 \end{align}
 where $\delta\equiv \Htilde/\Hgas$. 
 Since $|q|=O(1)$ in PPDs, Eq. \ref{vshear_split} indicates that
-vertical shear due to variations in the dust-to-gas ratio can be at
-most comparable to that due to the radial temperature gradient. 
-This only occurs for thin dust layers with $\delta^2\ll \epsilon$ (so 
-the above ratio $\sim 1/|q|$). Otherwise, vertical shear is associated
-with $\p_rc_s^2$. 
+vertical shear due to variations in the dust-to-gas ratio dominates 
+over that due to the radial temperature gradient for thin dust layers
+such that $\delta^2\ll \epsilon$. Otherwise, vertical shear is
+associated with $\p_rc_s^2$.  
 
 \subsection{Vertical buoyancy}\label{vbuoyancy}
 Having identified the entropy of an isothermal dusty gas, we find the
 vertical buoyancy frequency $N_z$ of the mixture is given by 
 \begin{align}
-  N_z^2 \equiv - \frac{1}{\rho}\frac{\p P}{\p z}\frac{\p s}{\p z} &=
+  N_z^2 \equiv - \frac{1}{\rho}\frac{\p P}{\p z}\frac{\p \seff}{\p z} &=
   \frac{c_s^2(r)}{\left(1+\epsilon\right)^2}\frac{\p\ln\rhog}{\p 
   z}\frac{\p\epsilon}{\p z} \\ &
                                   =
