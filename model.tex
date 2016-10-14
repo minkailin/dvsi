@@ -2,8 +2,12 @@
 We model an accretion disk as a mixture of gas with dust treated as a 
 pressureless fluid. We denote their density and
 velocity field as $(\rhog,\bm{v}_\mathrm{g})$ and
-$(\rhod,\bm{v}_\mathrm{d})$, respectively. The two fluids 
-interact via a drag force parameterized by a stopping time $\tstop$
+$(\rhod,\bm{v}_\mathrm{d})$, respectively. The mixture has a single 
+temperature $T$, and the mixture pressure $P$ arise solely from the 
+gas component.  
+
+The two fluids interact via a drag force parameterized by a stopping
+time $\tstop$ 
 such that 
 \begin{align}  
   \rhod\left.\frac{\p \bm{v}_\mathrm{d}}{\p t}\right|_\mathrm{drag}= -
@@ -29,13 +33,14 @@ difference is
 
 %In the limit of strong dust-gas drag (stopping time $\tstop\to 0$) 
 In this limit of strong dust-gas drag, \cite{laibe14} give a single
-fluid description of the mixture (their Eq. 84 --- 85 and Eq. 87):  
-
+fluid description of the mixture: 
 \begin{align}
   &\frac{D\rho}{Dt} = -\rho\nabla\cdot\bm{v}, \label{masseq}\\ 
   &\frac{D\bm{v}}{Dt} = - \nabla\Phi - \frac{1}{\rho}\nabla  P, \label{momeq}\\ 
   &\frac{D\tepsilon}{Dt} = -\frac{1}{\rho} \nabla \cdot \left(\tepsilon 
-  \tstop \nabla P \right),\label{dusteq}  
+  \tstop \nabla P \right),\label{dusteq}\\
+  &\frac{D T}{D t} = - \left(\gamma-1\right)T\nabla\cdot\bm{v} +
+  \mathcal{H}_\mathrm{drag} + \mathcal{H}_\mathrm{eff}  - \Lambda, \label{tempeq} 
 \end{align}
 where $D/Dt \equiv \p_t + \bm{v}\cdot\nabla$ is the Lagragian
 derivative \emph{following the mixture} with center-of-mass velocity  
@@ -47,16 +52,32 @@ and
 \begin{align}
   \rho \equiv \rhog + \rhod
 \end{align}
-is the total mixture density. 
+is the total mixture density. For an ideal gas the pressure is given
+by $P = \mathcal{R}\rhog T/\mu $, where $\mathcal{R}$ is
+the gas constant and $\mu$ is the mean molecular weight. 
 
 In Eq. \ref{dusteq}, 
 \begin{align}
   \tepsilon \equiv \frac{\rhod}{\rho}  = \frac{\epsilon}{1+\epsilon} 
 \end{align}
 is the dust-fraction and $\epsilon=\rhod/\rhog$ is the usual
-dust-to-gas ratio. The gas pressure $P$ is given by the chosen 
-equation of state described below. Note that Eq. \ref{dusteq} is
+dust-to-gas ratio. Note that Eq. \ref{dusteq} is 
 equivalent to Eq. 46 of \cite{jacquet11}. 
+
+For the mixture's temperature evolution, Eq. \ref{tempeq}, $\gamma$ is
+the adiabatic index; $\mathcal{H}_\mathrm{drag}$ represents heating
+due to dust-gas drag and $\mathcal{H}_\mathrm{eff}$ is an effective
+energy source arising from transforming from the two-fluid to
+one-fluid description \citep[see][ for details]{laibe14}. We also
+include a simple model of radiative cooling,
+\begin{align}
+  \Lambda = \frac{T -
+    T_\mathrm{ref}}{t_\mathrm{cool}}, \label{realenergy} 
+\end{align}
+which relaxes the mixture back to a prescribed temperature profile   
+$T_\mathrm{ref}$ on a timescale of $\tcool$. We will shortly simplify
+the problem by considering rapid cooling, $\tcool\to0$. 
+
 
 For the disk problem the external potential $\Phi$ is  
 that for a star of mass $M_*$, 
@@ -72,26 +93,16 @@ $|z|\ll r$. We shall adopt this approximate potential in order to
 obtain analytic expressions for the disk equilibria.  
 
 \subsection{Locally isothermal equation of state}\label{loc_iso_eos}
-To complete the system of equations we need to specify a gas equation
-of state. We start with the 
-energy equation for an ideal gas of adiabatic index $\gamma$: 
+For later comparison it is convenient to re-write the temperature
+evolution, Eq. \ref{tempeq}, to that for the pressure: 
 \begin{align}
   \frac{\p P}{\p t} + \bm{v}_\mathrm{g}\cdot\nabla P = - \gamma P
-  \nabla\cdot \bm{v}_\mathrm{g}  + \mathcal{H} - \Lambda 
+  \nabla\cdot \bm{v}_\mathrm{g}  + \mathcal{H} 
 %\frac{\rho \mathcal{R}}{\mu}\frac{T
 %  - T_\mathrm{ref}}{t_\mathrm{cool}}, \label{realenergy}
 \end{align}
-where $\mathcal{H} = 
-(\gamma-1)\tepsilon|\rhog\left(\bm{v}_\mathrm{d}-\bm{v}_\mathrm{g}\right)|^2$
-accounts for heating due to dust-gas drag \citep{laibe14}; and 
-\begin{align}
-  \Lambda = \frac{\rho \mathcal{R}}{\mu}\frac{T
-  - T_\mathrm{ref}}{t_\mathrm{cool}}, \label{realenergy}
-\end{align}
-represents radiative cooling on a characteristic timescale
-$\tcool$ that relaxes the gas back to a prescribed temperature profile  
-$T_\mathrm{ref}$, where $\mathcal{R},\, \mu$ are  the gas constant and
-mean molecular weight of the gas, respectively.  
+where $\mathcal{H}$ collects together dust-drag heating and radiative
+cooling. 
 
 We now simplify the gas energy equation by considering short cooling 
 times $\tcool\to 0$, appropriate for the outer parts of an irradiated
