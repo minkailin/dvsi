@@ -655,23 +655,50 @@ Eq. \ref{pdv} for pure oscillations.  Thus growing modes in fact arise if
 positive work is done by the mixture during an oscillation. This in
 turn requires pressure to lag density, discussed next.  
 
-\subsubsection{Physical picture of dust-drag instabilities}
-
+\subsubsection{Physical picture of dust-drag instabilities} 
 The full energy equation is 
 \begin{align*}
   \frac{DP}{Dt} = \frac{P}{\rho}\frac{D\rho}{D t} + \mathcal{C}. 
 \end{align*}
-Dust-drag causes a phase difference between the 
-pressure and density evolution of a fluid element. Now, consider a 
-fluid element at maximum density during an oscillation cycle, 
-so that $D\rho/ D t = 0$. If at this point dust-gas drag provides an
-effective heating to the fluid element ($\mathcal{C}>0$, i.e. a particle
-flux \emph{away} from it), then it will 
-experience increasing pressure, $DP/D t>0$. It will attain  
-pressure maximum \emph{after} reaching density maximum. This implies 
-pressure maximizes while the parcel is expanding: it will do 
-positive work  --- the area enclosed by the parcel's path in the `$P$-$V$' plane  is 
-positive. This will increase the oscillation amplitude.   
+Dust-drag causes a phase difference between the pressure and density 
+evolution of a fluid element. In Fig. \ref{pdv_cartoon}, we show that
+if pressure lags behind density, then positive
+work done ($\mathcal{W}>0$) and would lead to growing oscillations
+($s>0$).  
+
+\begin{figure}
+  \includegraphics[width=\linewidth]{figures/drag}\\
+\includegraphics[width=\linewidth]{figures/pdv}
+  \caption{Thermodynamic interpretation of overstable modes caused by
+    dust-gas drag. Top: pressure and density evolution in time. 
+    Bottom: oscillation cycle in the $P$-$V$ plane. In the case shown,
+    dust-drag causes 
+    pressure to lag behind density, which results in a clockwise path in
+    the $P$-$V$ plane, implying positive work done by the fluid and
+    hence would lead to growing oscillation amplitudes.  
+    \label{pdv_cartoon}
+  }
+\end{figure}
+
+Consider a fluid element at maximum density during an oscillation cycle
+(point $A$), so that $D\rho/ D t = 0$. If dust-gas drag provides an
+effective heating to the fluid element at $A$ (i.e. gas influx)  then
+it will experience increasing pressure, $DP/D t>0$. It attains
+pressure maximum (point $B$) \emph{after} reaching density maximum.   
+This implies pressure maximizes while the parcel is expanding: 
+the parcel's path in the `$P$-$V$' plane  is clockwise, as shown in
+the bottom panel of Fig. \ref{pdv_cartoon}. This corresponds to
+positive work done.  
+
+Our thermodynamic interpretation does not rigorously explain
+\emph{why} dust drag causes a pressure lag behind density, but merely shows
+that this \emph{must} be the case for any growing modes associated the
+dust drag. To understand how dust-drag causes this lag requires an
+explicit solution to the linearized equations with detailed treatment
+of the function $\mathcal{C}$. However, given the complexity of
+$\mathcal{C}$ (see Appendix \ref{lin_dust}), we might generally expect
+the system to  support a range of stable and unstable modes, with the
+latter being associated with pressure-density lag. 
 
 Indeed, \cite{jacquet11} explains the essence of the streaming 
 instability in dusty protoplanetary disks as dust accumulation
@@ -682,26 +709,10 @@ pulsational instabilities. A phase difference was also noted in the
 numerical calculations of the streaming instability by 
 \citet{youdin07b}.    
 
-We suggest understanding dusty instabilities in
-protoplanetary disks by re-casting the problem into that of
-thermodynamics. Then dust-drag instabilities appear in the equations in the 
-same way as pulsational instabities in stars, which has already been 
-well studied. Whether or not the dusty disk is actually unstable
-depends on details of the dust-drag or `cooling' function
-$\mathcal{C}$. However, given the complexity of $\mathcal{C}$ (see
-Appendix \ref{lin_dust}), we might generally expect the system to 
-support a range of stable and unstable modes. On physical grounds,
-growing modes \emph{must} be so by causing a phase lag between
-pressure and total density.    
-
-
  %Whether the phase
 %difference is positive or negative depends on the cooling function
 %$\mathcal{C}$, but we may expect a system to generally have both
 %modes, and that with a phase lag are unstable. 
-
-
-
 
 \subsection{Locally isothermal gas perfectly coupled to dust}\label{dusty_vsi_int}
 If $c_s(r,z)$ is non-uniform but $\tstop=0$, Eq. \ref{int_rel} 
