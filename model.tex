@@ -414,7 +414,7 @@ discussion is based on the corresponding axisymmetric linearized
 equations. A variable $f$ is
 subject to Eulerian perturbations of the form 
 \begin{align}
-  \delta f(r,z)\exp{\left(-\ii\sigma t\right)},
+ \real\left[ \delta f(r,z)\exp{\left(-\ii\sigma t\right)},\right]
 \end{align}
 where $\sigma$ is the complex mode frequency. In Appendix
 \ref{var_prin} we derive the integral relation,  
@@ -467,35 +467,6 @@ gas if one inserts $C_p\ln{\left(1 -
 expression for said criteria \citep[e.g.][ where $C_p$ is the heat
   capacity]{tassoul78}.   
 
-%except here the entropy $s$ is really a
-%representation of the dust distribution via $s=\ln{\left[c_s^2\left(1
-%    - \tepsilon\right)\right]}$.  
-
-%These criteria are applicable to any adiabatic fluid. 
-%For an isothermal mixture, we may take $s=\ln{(1-\tepsilon)}$.   
-%from the definition of $s$ and  
-%the equation of state (Eq. \ref{eos}) with uniform sound-speed. 
-%\begin{align}
-%  s \equiv \ln \frac{P}{\rho} = \ln{(1-\tepsilon)} 
-%\end{align}
-% The first equality is
-%similar to the usual defintion for gas entropy (with unit adiabatic
-%index). The second follows from the imposed equation of state,
-%Eq. \ref{eos}, with a constant sound-speed. 
-%The stability conditions are thus
-%In accretion disks, $\rhog$, $\rhod$ and $\tepsilon$ are expected to
-%decrease away from the mid-plane
-%\begin{align*}  
-%  \frac{\p\rhog}{\p |z|} < 0,
-%, \quad \frac{\p \rhog}{\p r} < 0,   
-%\end{align*}
-%and similarly for $\rhod$, $\tepsilon$, and the dust-to-gas ratio $\epsilon$. 
-%We may thus evaluate the stability criteria at $z>0$ without loss of
-%generality. 
-
-%We insert the vertical shear profile,
-%Eq. \ref{vshear}, into Eq. \ref{dusty_solberg} and write the result 
-%in terms of $\epsilon$, to find 
 
 \subsubsection{Order-of-magnitude estimates} 
 We evaluate the above stability criteria for the vertically-Gaussian
@@ -522,9 +493,8 @@ become
 
 Eq. \ref{stability_est1}---\ref{stability_est2} are easily satisfied
 in thin accretion disks where radial gradients are $O(1/r)$, 
-$h_\mathrm{g},\epsilon,\ll 1$ and $\Htilde/H_\mathrm{g}$ not too
-large.  
-Then the
+$h_\mathrm{g}\ll 1$ and $\Htilde/H_\mathrm{g}$ not too
+large.  Then the
 magnitude of the second term on the left-hand-side  of either
 inequality is much less than unity. Thus radially smooth, strictly
 isothermal disks perfectly coupled with dust are stable against
@@ -608,31 +578,8 @@ respectively, the imaginary part of Eq. \ref{int_rel} gives
   s = \frac{\imag\int \left(\nabla\cdot\dd\bm{v}^*\right)\dd\mathcal{C}dV}{2\omega\int\rho\left(|\dd
     v_r|^2 + |\dd v_z|^2\right)dV}, \label{thermal_instability}
 \end{align}
-%In this case 
-%the effective energy equation is 
-%\begin{align}\label{dusty_cooling}
-%  \frac{DP}{Dt} &= - P \nabla \cdot \bm{v} + \mathcal{C}
-%\end{align} 
-%The function $\mathcal{C}$ can be considered as a cooling term. 
-%By
-%analogy with enabling VSI in an adiabatic gas through cooling
-%\citep{nelson13,lin15}, we may expect a `dusty VSI' to develop 
-%if this term is large enough (physically meaning diffusion of the
-%dust-fraction is strong). 
-%Note that $\mathcal{C}$ is also responsible for the streaming
-%instability  in the strong-drag limit \citep{laibe14}, though this
-%does not require vertical stratification. In the form of
-%Eq. \ref{dusty_cooling}, however, the streaming instability has a
-%thermodynamical interpretation, similar to thermal instabilities in
-%stars \citep{latter06}.  
 which represent instabilities due to dust-gas friction. 
-%Our formalism
-%gives these dusty instabilities a thermodynamical interpretation. 
-% We further discuss this concept in \S\ref{dust_as_thermo}. 
-%In \S\ref{dust_work} we showed that instabilities may 
-%arise from the term proportional $\imag\left( \nabla\cdot\dd\bm{v}^*
-%\delta C\right)$. 
- Since drag ($\delta \mathcal{C}$) appears as a source term in our
+Since drag ($\delta \mathcal{C}$) appears as a source term in our
 effective energy equation, the quantity 
 $\imag\left[\left(\nabla\cdot\dd\bm{v}^*\right)\dd\mathcal{C}\right]$
 may be thought of as a correlation between compression/expansion and  
@@ -642,13 +589,16 @@ It is well-known that such correlations can lead to pulsational
 instabilities in stars \citep{cox67}. One may thus interpret 
 dust-drag instabilities in a similar way. We give a
 qualitative 
-description below, based on the more rigorous treatments of stellar 
+description below, adapted from the more rigorous treatments of stellar 
 pulsations by 
-\cite{cox67} and lecture notes from \cite{samadi15} and
+\cite{cox67} and lecture notes by \cite{samadi15} and
 J. Christensen-Dalsgaard\footnote{\url{http://astro.phys.au.dk/$\sim$jcd/oscilnotes/}}.      
 
 %and disks
 %\cite{kato78}. 
+
+
+\subsubsection{Work done by dusty gas} 
 
 The Lagragian perturbation $\Delta$ of a variable $f$ is 
 related to its Eulerian perturbation by $\Delta f = \delta f + 
@@ -662,13 +612,50 @@ Then Eq. \ref{lin_mass_full}---\ref{lin_energy_full} imply
   \imag \left(\delta \mathcal{C}
   \nabla\cdot\dd \bm{v}^*\right) = 
   -|\sigma|^2\imag \left(\Delta P 
-  \frac{\Delta\rho^*}{\rho}\right). 
+  \frac{\Delta\rho^*}{\rho}\right), \label{pdv}
 \end{align}
-This reflects `$TdS  =  PdV$' from thermodynamics, if the 
-internal energy is constant. That is, dust-gas drag provides 
-heating ($TdS$) to do $PdV$ work. Whether positive or negative work is 
-done depends on the correlation between the pressure and density
-perturbations, as follows. 
+which states that `PdV' work (right hand side) is
+provided by dust-drag friction. This can be seen explicitly as
+follows. 
+
+The average rate of work done by the dusty-gas is
+\begin{align}
+  \mathcal{W} = \frac{1}{T_p}\int^{t+T_p}_{t}dt^\prime\int_M P
+  \frac{Dv}{Dt^\prime} dm 
+\end{align}
+\citep{cox67}, 
+where $T_p$ is the oscillation period, $v=1/\rho$ is the specific
+volume of the mixture, and the spatial integral is taken over the
+total mass $M$ of the mixture and $dm$ is the mass element. 
+
+Our aim is to relate the work done by the mixture, $\mathcal{W}$, 
+to the growth rate of oscillation amplitudes, $s$. To do this, we
+first evaluate $\mathcal{W}$ assuming pure oscillations (perturbations
+with time dependence $e^{\ii\omega t}$ and real $\omega$), then show
+that in fact the amplitudes grow if the work done is positive. 
+
+Noting that only products in the perturbations contribute to 
+$\mathcal{W}$, we find that for real $\omega$: 
+\begin{align}
+  \mathcal{W} = - \frac{\omega}{2} \int \imag\left(\Delta P
+  \frac{\Delta \rho^*}{\rho}\right)dV,\label{work_real}
+\end{align}
+where the integral is taken over the volume of the
+mixture. Eq. \ref{work_real} show that a phase difference between
+pressure and density leads to work done. 
+
+Now combining Eq. \ref{work_real}, \ref{pdv} and \ref{thermal_instability}
+gives  
+\begin{align}
+s = \frac{2}{\mathcal{I}^2}\mathcal{W}, \label{growth_work}
+\end{align}
+where $\mathcal{I}^2>0$  is the integral in the denominator of
+Eq. \ref{thermal_instability}, and we have set $\sigma= - \omega$ in
+Eq. \ref{pdv} for pure oscillations.  Thus growing modes in fact arise if
+positive work is done by the mixture during an oscillation. This in
+turn requires pressure to lag density, discussed next.  
+
+\subsubsection{Physical picture of dust-drag instabilities}
 
 The full energy equation is 
 \begin{align*}
