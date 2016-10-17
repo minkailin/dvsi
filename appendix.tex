@@ -3,7 +3,13 @@
 Here we consider the more general equation of state for the gas with
 $P = K \rhog^{\Gamma}$ where $K$ is a prescribed function of position
 and $\Gamma$ is a constant. The effective energy equation is then
-Eq. \ref{poly_energy}. The linearized equations for axisymmetric
+Eq. \ref{poly_energy}. We also include the self-gravitational
+potential $\psi$ of the gas
+plus dust mixture, which satisfies 
+%\begin{align}
+$  \nabla^2 \psi  = 4 \pi G \rho. $
+%\end{align} 
+The linearized equations for axisymmetric
 disturbances are  
 
 \begin{align}
@@ -13,10 +19,11 @@ disturbances are
    \ii\sigma\frac{\delta P}{P} &= \Gamma \nabla\cdot\dd\bm{v} +
   \dd\bm{v}\cdot\nabla\ln{P} - \dd\bm{v}\cdot\nabla\ln{c_s^2} - \frac{\dd\mathcal{C}}{P}.\label{lin_energy_full}\\
   -\ii\sigma\dd v_r  &= 2\Omega\dd v_\phi + 
-  \delta\bm{F}\cdot\hat{\bm{r}},\\
+  \hat{\bm{r}} \cdot \delta\bm{F} -  \hat{\bm{r}} \cdot \nabla\dd\psi ,\\
   \ii\sigma\dd v_\phi &= \frac{\kappa^2}{2\Omega}\dd v_r + \frac{\p
     v_\phi}{\p z}\dd v_z,\\
-  -\ii\sigma\dd v_z &=  \delta\bm{F}\cdot\hat{\bm{z}}, 
+  -\ii\sigma\dd v_z &=  \hat{\bm{z}} \cdot \delta\bm{F}  -  \hat{\bm{z}} \cdot \nabla\dd\psi, \\ 
+\nabla^2 \delta\psi & = 4\pi G \dd\rho. 
 \end{align}  
 where the linearizd pressure force $\delta \bm{F}$ is given in
 Appendix \ref{lin_press}. These equations do not assume the
@@ -27,7 +34,8 @@ linearized meridional momentum equations, we find
   \sigma^2\int\rho\left(|\dd v_r|^2 + |\dd v_z|^2\right)dV = \int\left( \rho
   \kappa^2 |\dd v_r|^2 + \rho r\frac{\p \Omega^2}{\p z} \dd v_z \dd
   v_r^*  + \ii\sigma \rho \dd \bm{F}\cdot\dd\bm{v}^*
-  \right)dV,
+  - \ii \sigma \rho \nabla\dd\psi\cdot  \dd\bm{v}^* 
+  \right)dV,\label{meridional}
 \end{align}
 where the integral is taken over the volume of the fluid. Integrating
 by parts and ignoring surface integrals, the last term is
@@ -90,7 +98,19 @@ by parts and ignoring surface integrals, the last term is
       P\left(\nabla\cdot\dd\bm{v}^*\right)\left(\dd\bm{v}\cdot\nabla\ln{K} + \frac{\dd\mathcal{C}}{P} \right) 
      \right]dV,
 \end{align}
-where  $\seff\equiv\ln{(P^{1/\Gamma}/\rho)}$. Hence,
+where  $\seff\equiv\ln{(P^{1/\Gamma}/\rho)}$. 
+The self-gravitational part of Eq. \ref{meridional} is, again
+nelgecting surface terms when integrating by parts, 
+\begin{align}
+-\int \ii\sigma \rho \nabla\dd\psi \cdot\dd  \bm{v}^* &= \int \ii\sigma
+  \dd\psi \nabla\cdot\left(\rho\dd\bm{v}^*\right) dV
+ = \int \left|\sigma\right|^2 \dd\psi \dd \rho^*dV 
+  = -\frac{1}{4\pi G}\int   \left|\sigma\right|^2
+   \left|\nabla\psi\right|^2 dV,  
+\end{align}
+where the linearized continuity and Poisson equations have been used. 
+
+Hence,
 \begin{align}\label{integral_ex}
   &\sigma^2\int\rho\left(|\dd v_r|^2 + |\dd v_z|^2\right)dV \notag\\
 &=  \int\left\{
@@ -107,6 +127,7 @@ where  $\seff\equiv\ln{(P^{1/\Gamma}/\rho)}$. Hence,
 %  \frac{1}{P}\left|\nabla\cdot\left(P\dd\bm{v}\right)\right|^2
  \frac{1}{\Gamma P}\Bigl\lvert \dd\bm{v}\cdot\nabla P +
  \Gamma P\nabla\cdot\dd\bm{v}     \Bigr\rvert^2
+ - \frac{1}{4\pi G}\left|\sigma\nabla\dd\psi\right|^2 
   \right\}dV 
 %  P\left(\nabla\cdot\dd\bm{v}^*\right)\left(\dd\bm{v}\cdot\nabla\ln{c_s^2}\right)dV
 -\int    P\left(\nabla\cdot\dd\bm{v}^*\right)\left(\dd\bm{v}\cdot\nabla\ln{K}\right)dV
@@ -114,8 +135,8 @@ where  $\seff\equiv\ln{(P^{1/\Gamma}/\rho)}$. Hence,
 \end{align}
 Note that the coefficient of $\delta v_z\delta v_r^*$ and $\delta
 v_z^*\delta v_r$ are equal owing to the equilibrium state
-(Eq. \ref{vshear}). The special case $\Gamma=1,\, K = c_s^2$ gives
-Eq. \ref{int_rel}. Similar integral relations are given by
+(Eq. \ref{vshear}). The non-self-gravitating case with $\Gamma=1,\, K = c_s^2$ gives
+Eq. \ref{int_rel}. Similar integral relations are given by 
 \cite{kato78, kley93,latter06}.  
 
 %If $c_s$ is constant then the second integral vanishes, $\sigma^2$
