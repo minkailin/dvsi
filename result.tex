@@ -243,6 +243,52 @@ of minima in growth rates in Fig. \ref{compare_eigenvals_fixZ}.
     }
 \end{figure}
 
+\subsection{Axisymmetric stability of ultra-thin dust layers}
+In \S\ref{iso_perfect} we asserted that in the limit of perfectly
+coupled dust (as considered here) that radially smooth, strictly
+isothermal disks are stable against axisymmetric perturbations, no
+matter how thin the dust layer is. We now demonstrate this
+numerically. 
+
+For comparison with previous studies of dusty disks, we also use 
+the Richardson number $\rich \equiv N_z^2/\left(r\p_z\Omega\right)^2$
+to label the calculations here \citep{youdin02}.   
+Numerical simulations show   
+non-axisymmetric instabilities develops when $\rich\lesssim0.1$, brought about
+by very thin dust layers \citep{chiang08, lee10}. We show that \emph{axisymmetric}
+instabilities never develop, however small $\rich$. 
+
+We shall consider ultra thin dust layers with $\Hd\leq 0.01\Hg$ and thus
+restrict the vertical domain to $\zmax = 0.02\Hg$. We fix the 
+metalicity $Z=0.01$ so the midpane dust-to-gas ratio $\epsilon_0$ is 
+$O(1)$.  We consider radial wavenumbers such $k\Hd=1$. 
+
+Fig. \ref{ultra_thin} shows the maximum growth rate  as a function of
+the radial temperature gradient, $q$. For all cases the vertical
+shear is dominated by that due to the dust layer (see
+\S\ref{vertshear}). However, we see that growth rates $s\propto
+|q|$. In particular, this holds for $\rich < 0.1$, the critical value
+for non-axisymmetric instabilities. 
+
+Axisymmetric instability is associated with the thermal
+contribution to vertical shear: as $q\to0$,  $\p_z\Omega$ becomes
+entirely due to dust-settling and there is no instability ($s\to
+0$). This result is independent of $\rich$, so the Richardson number
+is not useful in characterizing the axisymmetric stability of dust
+layers. 
+
+\begin{figure}
+  \includegraphics[width=\linewidth]{figures/compare_eigenvals_thindust} 
+  \caption{Maximum VSI growth rate for ultra-thin dust layers $\Hd
+    \leq 0.01\Hg$. Vertical shear is dominated by that due to
+    dust-settling, but axisymmetric instability is associated with the
+    radial temperature gradient $q$.
+    \label{ultra_thin}
+    }
+\end{figure}
+
+
+
 
 \subsection{Effect of a radially-varying dust-to-gas ratio}\label{varHd}
 {\bf move to appendix?}
