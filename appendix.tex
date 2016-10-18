@@ -168,23 +168,23 @@ with divergence
 The explicit forms for $\dd\bm{F}$ and $\nabla\cdot\dd\bm{F}$, in the
 radially-local approximation, are
 \begin{align}
-  &\dd F_r = - W F_r - \ii k Q,\\
+  &\dd F_r = - W F_r - \ii k_x Q,\\
   &\dd F_z = - W F_z - \left[Q^\prime + Q
     \left(\ln{\rho}\right)^\prime\right]  = - \ii\sigma \dd v_z, 
 \end{align} 
 where the last equality is the linearized
 vertical momentum equation; and 
 \begin{align}
-  \nabla\cdot\dd\bm{F} &= F_r\left(\p_r\ln{\rho} - \ii k \right)W - F_z
-  W^\prime - W \nabla\cdot\bm{F} + \ii kQ \p_r\ln{\rho} +
+  \nabla\cdot\dd\bm{F} &= F_r\left(\p_r\ln{\rho} - \ii k_x \right)W - F_z
+  W^\prime - W \nabla\cdot\bm{F} + \ii k_x Q \p_r\ln{\rho} +
   \left(\ln{\rho}\right)^\prime\left[Q^\prime + Q
     \left(\ln{\rho}\right)^\prime\right] \notag\\
-  & \phantom{=} + k^2 Q - \left\{Q^{\prime\prime} + 2
+  & \phantom{=} + k_x^2 Q - \left\{Q^{\prime\prime} + 2
     Q^\prime\left(\ln{\rho}\right)^\prime
     + Q\left[\left(\ln{\rho}\right)^{\prime\prime}+\left(\ln{\rho}\right)^{\prime
       2}\right]\right\}\notag\\
-    &= \left[\left(\p_r\ln{\rho}-\ii k\right)F_r - \nabla\cdot\bm{F} +
-      F_z^\prime\right]W + \left(\ii k \p_r\ln{\rho} + k^2\right)Q  -
+    &= \left[\left(\p_r\ln{\rho}-\ii k_x\right)F_r - \nabla\cdot\bm{F} +
+      F_z^\prime\right]W + \left(\ii k_x \p_r\ln{\rho} + k_x^2\right)Q  -
       \ii\sigma \dd v_z^\prime.
 \end{align}
 
@@ -218,9 +218,9 @@ The linearized dust-fraction $\dd\tepsilon$ and its derivatives in the
 radially-local approximation are given by
 \begin{align}
   \dd\tepsilon      &= (1-\tepsilon)W - \frac{Q}{c_s^2}, \\
-  \p_r\dd\tepsilon &= \left[(1-\tepsilon)\left(\ii k -
+  \p_r\dd\tepsilon &= \left[(1-\tepsilon)\left(\ii k_x -
     \p_r\ln{\rho}\right) - \p_r\tepsilon\right]W + \left(\p_r\ln{c_s^2}
-  + \p_r\ln{\rho} - \ii k \right)\frac{Q}{c_s^2},\\
+  + \p_r\ln{\rho} - \ii k_x \right)\frac{Q}{c_s^2},\\
   \dd\tepsilon^\prime &= (1-\tepsilon)W^\prime - \tepsilon^\prime W -
   \left(\frac{Q}{c_s^2}\right)^\prime. 
 \end{align}
@@ -246,7 +246,7 @@ radially-local approximation are given by
 % \frac{2\left|\nabla\epsilon\right|^2}{\left(1+\epsilon\right)^3}. 
 %\end{align}
 
-\section{Dispersion relation in an unstratified isothermal dusty disk}\label{compressible_streaming}
+\section{One-fluid dispersion relation for the streaming instability}\label{compressible_streaming}
 We consider an unstratified disk with $\Phi = \Phi (r)$ so that $\p_zP = \p_z\rho =
 0$. The background $\p_rP/\rho$ and $\tepsilon$ are constants. 
 We Fourier analyze in $r$ and $z$ so that $\p_z\to \ii k_z$ and
@@ -256,11 +256,11 @@ background gradients when compared with that of perturbations. The linearized
 equations are, after eliminating the azimuthal velocity: 
 
 \begin{align}
-  \ii \sigma W &=\nabla\cdot \bm{\dd v} = \ii k_x \dd v_x + \ii k_z \dd v_z,\\
+  \ii \sigma W &=\nabla\cdot \dd \bm{ v} = \ii k_x \dd v_x + \ii k_z \dd v_z,\\
     \sigma^2 \dd v_x &= \kappa^2 \dd v_x - \ii \sigma F_r W +
     k_x\sigma Q,\\
   -\ii\sigma\dd v_z &= -\ii k_zQ,\\
-\ii \zeta \sigma  Q & = \frac{P}{\rho} \nabla \cdot \bm{\dd v}   -
+\ii \zeta \sigma  Q & = \frac{P}{\rho} \nabla \cdot \dd\bm{v}   -
   \frac{\dd \mathcal{C}}{\rho}. 
 \end{align}
 The artifical factor $\zeta = 1$  is inserted to keep track of the

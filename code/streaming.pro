@@ -50,11 +50,10 @@ pro streaming, eta=eta, kx=kx, kz=kz, dgratio=dgratio, tstop=tstop
 
   work2 = rhs2/lhs2 
 
-  work = work1 
+  work1 = imaginary(work1)*freq(grid)*1d4
+  work2 = imaginary(work2)*freq(grid)*1d4
 
-  work = imaginary(work)/freq(grid)
-
-  print, 'freq, growth, work', freq(grid), growth(grid), work
+  print, 'freq, growth, work', freq(grid), growth(grid), work1, work2
 
    stheory = 4d0*dfrac*tstop^3d0*((1d0-2d0*dfrac)*(1d0-dfrac)*kx)^2d0*ksq/kz^2d0
 
