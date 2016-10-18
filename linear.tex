@@ -64,43 +64,88 @@ Eq. \ref{lin_mass}---\ref{lin_energy} is a set of ordinary
 differntial equations in $z$. All coefficients and amplitudes are
 evaluated at a fiducial radius $r=r_0$, but their full $z$-dependence
 is retained. Numerical solutions are generally required for the 
-verticall-stratified problem, as we pursue below. 
+verticall-stratified problem. We pursue this in \S\ref{results} 
 
-However, in the special case of an unstratified disk (neglecting the vertical
+
+\section{Compressible streaming instability}  
+In the special case of an unstratified disk (neglecting the vertical
 component of the stellar gravity), we may also Fourier analyze in $z$
-to obtain a local dispersion relation. This is done in 
-Appendix \ref{compressible_streaming}. There we show the above linearized
+to obtain a local dispersion relation of the form 
+$\sum_{j=1}^{5}c_j\sigma^j = 0$. 
+This is done in 
+Appendix \ref{compressible_streaming}. 
+
+
+
+
+
+There we show the above linearized
 equations give the streaming instability in the appropriate limit 
 \citep{youdin05a,jacquet11}. 
 
+
+
+
+
+
+
+
+\begin{deluxetable*}{llrrrrr}
+  \tablecolumns{7}
+  \tablecaption{Selected eigenfrequencies for the streaming
+    instability. \label{bstar_compare}
+  }
+  \tablehead{
+    \colhead{Mode} & 
+    \colhead{$\tau_\mathrm{s}\OmK$} &
+    \colhead{$\epsilon$} &
+     \colhead{$K_x = K_z$} &
+      \colhead{$\sigma/\OmK$ (two-fluid)} &
+    \colhead{$\sigma/\OmK$ (one-fluid, Eq. \ref{streaming_dispersion})}   &
+    \colhead{$\mathcal{W}$ (arbitrary units) } 
+  }
+\startdata
+ linA, \cite{youdin07} &  $0.1$       & 3.0 & 30    & $-0.3480 +
+ 0.4190\ii$ & $0.3647 + 0.4251\ii$ & $0.196$\\ 
+
+linB, \cite{youdin07} & $0.1$        &  0.2 & 6 & $0.4999 +
+0.0154\ii$&   $-0.4999 + 0.0054\ii$  & $6.95$ \\
+
+linC,  \cite{bai10b}  & $10^{-2}$   &  2.0 & 1500&   $0.1049 +
+0.5981\ii$   &  $0.1344 + 0.6665\ii$  & $0.0198$\\
+
+linD, \cite{bai10b} &  $10^{-3}$   &  2.0 & 2000 & $0.3225 +
+0.3154\ii$& $0.3228 + 0.3155\ii$ &  $1.77\times10^{-3}$
+\enddata
+\end{deluxetable*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 %\subsection{Boundary conditions}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 %Eq. \ref{lin_mass}---\ref{lin_energy} can be reduced to a set of
 %first-order differential equations for $W, Q$ and $\dd v_z$. We can
 %see this schematically as follows. Eq. \ref{lin_xmom} and
