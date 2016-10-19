@@ -70,7 +70,7 @@ is retained. We now discuss explicit solutions to these equations.
 \section{Compressible streaming instability}\label{si}
 In the special case of an unstratified disk (neglecting the vertical
 component of the stellar gravity), we may also Fourier analyze in $z$
-to obtain a local dispersion relation of the form  
+to obtain algebraic dispersion relation of the form  
 $\sum_{j=0}^{5}c_j(k_x,k_z)\sigma^j = 0$, where $k_z$ is a real
 vertical wavenumber. The coefficients $c_j$ can be read 
 off Eq. \ref{streaming_dispersion} in  Appendix \ref{compressible_streaming}. 
@@ -80,8 +80,8 @@ $\tstop$ \citep{youdin05a,jacquet11}.
 
 We solve Eq. \ref{streaming_dispersion} for selected cases where the  
 growth rates of the streaming instability have been 
-calculated analytically from full two-fluid disk models, as well as
-numerically from particle-gas simulations 
+calculated analytically from full two-fluid disk models and measured 
+from direct numerical particle-gas simulations 
 \citep[namely][]{youdin07b,bai10b}. These authors use normalized
 wavenumbers $K_x = \eta r k_x$ and similarly for $K_z$, where
 \begin{align} 
@@ -89,16 +89,27 @@ wavenumbers $K_x = \eta r k_x$ and similarly for $K_z$, where
   \frac{1}{2\left(1-\tepsilon\right)}\frac{F_r}{r\OmK^2}, 
 \end{align} 
 measures the pressure offset of Keplerian rotation. We use
-$\eta=0.05c_s/r\OmK$. They also parametrize the stopping time with
+$\eta=0.05c_s/r\OmK$. They also define the stopping time as 
 $\tau_\mathrm{s}=\tstop/(1-\tepsilon)$. 
  
 Table \ref{si_compare} compares the eigenfrequencies obtained from the
-one-fluid dispersion relation to that from the above studies. As
+one-fluid dispersion relation to that from the above studies. As  
 expected eigenfrequencies agree better with decreasing $\tstop$ since
-in that limit the mixture behaves more like a single fluid. Most
+in that limit the mixture behaves more like a single fluid. Most 
 importantly, we find the work done $\mathcal{W}>0$ in all cases, and
 hence find growing oscillations. Thus the streaming instability stems
 from the pressure evolution lagging behind that of the total density.  
+
+Notice also there is better agreement between eigenfrequencies for
+smaller $\mathcal{W}$, i.e. smaller phase pressure-density phase
+lags. While this is generally achieved with decreasing $\tstop$, other
+problem parameters may affect the magnitude of this phase lag.
+For example, `linA' and `linB' have the same $\tstop$ but linA shows
+better agreement with the one-fluid growth rate. This suggest that how
+well dust and gas are effectively coupled is problem-dependent. 
+
+%"generalized stokes number" would include other problem parameters,
+%e.g. wavenumber  
 
 \begin{deluxetable*}{llrrrrr}
   \tablecolumns{7}

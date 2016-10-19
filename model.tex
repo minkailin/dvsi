@@ -651,23 +651,23 @@ Then combining Eq. \ref{work_real}, \ref{pdv} and
 \ref{thermal_instability} 
 gives  
 \begin{align}
-s = \frac{1}{\mathcal{I}^2}\mathcal{W}, \label{growth_work}
+s = \frac{\mathcal{W}}{\mathcal{I}^2}, \label{growth_work}
 \end{align}
 where we have set $\sigma= - \omega$ in 
 Eq. \ref{pdv}. Eq. \ref{growth_work} shows that if the average work
 done is positive during a periodic oscillation, $\mathcal{W}>0$, then
 then its amplitude would actually grow ($s>0$).  
 
-To see when/where positive work is done, 
-consider a point in the volume. We set $\Delta\rho = 1$ here 
+Under what condition is positive work is done? 
+Consider a point in the volume where $\Delta\rho = 1$  
 and take $\omega>0$ without loss of generality. (Thus the phase of
-perturbations increase in time.) This point contributes to positive
-work done if $-\omega \imag\left(\Delta
+perturbations increase in time.) This point contributes to positive 
+work done if $-\omega \imag\left(\Delta 
 P\Delta\rho^*\right)>0$, which requires $\imag\left(\Delta
 P\right)<0$. This corresponds to pressure lagging behind density since
 $\imag\left(\Delta\rho\right)=0$.   
 
-\subsubsection{Physical picture of dust-drag instabilities} 
+\subsubsection{Physical picture of dust-gas drag instabilities} 
 
 %We now use physical arguments to show that $\mathcal{W}>0$ if pressure
 %perturbations (from the gas) lags behind the total density of the gas
@@ -680,16 +680,29 @@ $\imag\left(\Delta\rho\right)=0$.
 %evolution of a fluid element. 
 
 Fig. \ref{pdv_cartoon} gives a graphical demonstration that 
-if gas pressure lags behind total density, then positive work done 
+if gas pressure lags behind density, then positive work done 
 ($\mathcal{W}>0$) because it leads to a clockwise path in the
-`P-V' plane. Consider a fluid element at maximum density during an
-oscillation cycle (point $A$), so that $D\rho/ D t = 0$. If dust-gas
-drag provides an effective heating to the fluid element at $A$
-(i.e. gas influx)  then it will experience increasing pressure, $DP/D
-t>0$. It attains pressure maximum (point $B$) \emph{after} reaching
-density maximum.    
-From $A$ to $B$, pressure forces increase while the parcel is already
-expanding. This corresponds to positive work done.    
+`P-V' plane. From $A$ to $B$, a fluid parcel is expanding to return to 
+equilbrium, but pressure (i.e. restoring) forces is still
+increasing. This over-compensation corresponds to positive work done. 
+Similarly, from $C$ to $D$ the parcel is contracting but pressure 
+(restoring) forces are still dropping, which allows the 
+parcel's contraction to over-shoot its equilibrium density. The
+overall positive work done leads to growth in the oscillation amplitude. 
+
+%Consider a fluid element at maximum density during an
+%oscillation cycle (point $A$), so that $D\rho/ D t = 0$. If dust-gas
+%drag provides an effective heating to the fluid element at $A$
+%(i.e. gas influx)  then it will experience increasing pressure, $DP/D
+%t>0$. It attains pressure maximum (point $B$) \emph{after} reaching
+%density maximum. 
+
+When applied to dusty gas, the work done is attributed to finite 
+dust-gas drag, which allows relative drift between gas and dust. 
+A pressure-density lag of $A$ to $B$ is achieved if, 
+after a region reaches maximum total density, its 
+gas component is still increasing. This in turn implies a sufficiently
+large particle flux \emph{out} of that region. 
 
 \begin{figure}
   \includegraphics[width=\linewidth]{figures/drag}\\
