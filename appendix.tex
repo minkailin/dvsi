@@ -195,7 +195,7 @@ vertical momentum equation; and
 We consider small grains in the Epstein regime, with fixed internal
 density and size, so that
 \begin{align}
-  \tstop  =  \frac{K}{\rho c_s}
+  \tstop  =  \frac{K}{\rho c_s}\label{epstein}
 \end{align}
 \citep{price15}, where $K$ is a constant. Then the dust diffusion
 function becomes
@@ -248,11 +248,14 @@ radially-local approximation are given by
 
 \section{One-fluid dispersion relation for the streaming instability}\label{compressible_streaming}
 We consider an unstratified disk with $\Phi = \Phi (r)$ so that $\p_zP = \p_z\rho =
-0$. The background $\p_rP/\rho$ and $\tepsilon$ are constants. 
+0$. The background $\p_rP/\rho$, $\tepsilon$ and $c_s^2$ are constant
+input parameters. Then for the Epstein drag law, Eq. \ref{epstein}, we
+have $\mathcal{C}=0$ in the background state. 
 We Fourier analyze in $r$ and $z$ so that $\p_z\to \ii k_z$ and
 $\p_r\to \ii k_x$ when acting on perturbations, and denote $|\bm{k}|^2
 \equiv k_x^2 + k_z^2$. We neglect 
-background gradients when compared with that of perturbations. The linearized
+background gradients when compared with that of
+perturbations. The linearized
 equations are, after eliminating the azimuthal velocity: 
 
 \begin{align}

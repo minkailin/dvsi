@@ -3,16 +3,17 @@ pro streaming, eta=eta, kx=kx, kz=kz, dgratio=dgratio, tstop=tstop
   ii    = dcomplex(0d0, 1d0)
   dfrac = dgratio/(1d0 + dgratio)
   ksq   = kx^2d0 + kz^2d0
+  kappa2 = 1d0 - 6d0*(1d0-dfrac)*eta 
 
   kzsq  = kz^2d0/ksq 
 
-  c0 = 2d0*kx*tstop*(1d0 - dfrac)*(1d0 - 2d0*dfrac)*kzsq
+  c0 = 2d0*kx*tstop*(1d0 - dfrac)*(1d0 - 2d0*dfrac)*kzsq*kappa2 
   
-  c1 = kzsq
+  c1 = kzsq*kappa2
 
-  c2 = -ii*tstop*( dfrac - 2d0*ii*kx*(1d0-dfrac)^2d0 )
+  c2 = -ii*tstop*( dfrac*kappa2 - 2d0*ii*kx*(1d0-dfrac)^2d0 )
 
-  c3 = eta^2d0*(1d0 - 2d0*ii*kx*(1d0 - dfrac))/(ksq*(1d0-dfrac)) + 1d0
+  c3 = eta^2d0*(kappa2 - 2d0*ii*kx*(1d0 - dfrac))/(ksq*(1d0-dfrac)) + 1d0
   c3 =-c3
   
   c4 = ii*dfrac*tstop
@@ -40,8 +41,8 @@ pro streaming, eta=eta, kx=kx, kz=kz, dgratio=dgratio, tstop=tstop
   
 ;;  stop
 
-  lhs1 = eta^2d0*sigma^2d0*(1d0 - sigma^2d0 - 2d0*ii*kx*(1d0-dfrac))
-  rhs1 = kz^2d0 - sigma^2d0*ksq
+  lhs1 = eta^2d0*sigma^2d0*(kappa2 - sigma^2d0 - 2d0*ii*kx*(1d0-dfrac))
+  rhs1 = kz^2d0*kappa2 - sigma^2d0*ksq
 
   work1  = lhs1/rhs1 
 
