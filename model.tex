@@ -197,9 +197,13 @@ heat source.
 
 \subsection{Entropy of an isothermal dusty gas }
 
-The gas component of the mixture has an entropy that is not conserved 
-because of the (locally) isothermal equation of state 
-adopted. However, we can define an effective (dimensionless)
+The gas component of the mixture has a specific entropy
+$S = C_p\ln{P/\rhog^\gamma}$, where $C_p$ is the heat capacity at constant
+pressure. However, this is not a useful quantity for (locally)
+isothermal gas. 
+
+Nevertheless, since we have shown that an isothermal dusty gas
+effectively has $\gamma=1$ we can define an effective (dimensionless)  
 entropy for the \emph{entire mixture} as 
 \begin{align}
    \seff \equiv \ln \frac{P}{\rho} = \ln{\left[c_s^2(1-\tepsilon)\right]}.  
@@ -419,7 +423,8 @@ subject to Eulerian perturbations of the form
 where $\sigma$ is the complex mode frequency. In Appendix
 \ref{var_prin} we derive the integral relation,  
 \begin{align}
-&  \sigma^2\int\rho\left(|\dd v_r|^2 + |\dd v_z|^2\right)dV \notag\\
+%&  \sigma^2\int\rho\left(|\dd v_r|^2 + |\dd v_z|^2\right)dV \notag\\
+  \sigma^2\mathcal{I}^2
 &= \int\left[ \rho
   |\dd v_r|^2A + \rho  \dd v_z \dd v_r^* B + \rho \dd v_z^*\dd v_r C +
   \rho |\dd v_z|^2 D\phantom{\frac{1}{1}}\right. \notag\\
@@ -429,10 +434,10 @@ where $\sigma$ is the complex mode frequency. In Appendix
 - \int P
   \left(\nabla\cdot\dd\bm{v}^*\right)\left(\dd\bm{v}\cdot\nabla\ln{c_s^2}\right)dV.\label{int_rel}
 \end{align} 
-The real coefficients $A,B,C,D$ can be read off 
-Eq. \ref{integral_ex}. Note that $B=C$ from dynamical equilibrium
-(Eq. \ref{vshear}). We now consider various limits of
-Eq. \ref{int_rel}.    
+The real integral $\mathcal{I}^2>0$ and coefficients $A,B,C,D$ can be
+read off Eq. \ref{integral_ex}. %Note that $B=C$ from dynamical equilibrium
+%(Eq. \ref{vshear}). 
+We now consider various limits of Eq. \ref{int_rel}.    
 
 
 \subsection{Strictly isothermal gas perfectly coupled to dust}\label{iso_perfect}
@@ -464,8 +469,7 @@ Eq. \ref{dusty_solberg1}---\ref{dusty_solberg2} are in fact the
 the Solberg-Hoiland criteria for axisymmetric stability of adiabatic
 gas if one inserts $C_p\ln{\left(1 -
     \tepsilon\right)}$ for the entropy in the standard
-expression for said criteria \citep[e.g.][ where $C_p$ is the heat
-  capacity]{tassoul78}.   
+expression for said criteria \citep[e.g.]{tassoul78}.   
 
 
 \subsubsection{Order-of-magnitude estimates} 
@@ -569,29 +573,28 @@ $L_\epsilon\lesssim O(10\Hg)$, which is more realistic.
 
 \subsection{Thermodynamics of dust-drag instabilities}\label{dust_work}
 Now consider constant $c_s$ but $\tstop\neq0$. 
-%When $c_s(r,z)$ is non-uniform but $\tstop=0$, 
 Eq. \ref{int_rel} indicates that $\sigma^2$ is generally complex, so
-we may have growing oscillations. Writing $\sigma = -\omega + \ii s$
-where $\omega$ and $s$ are the real frequency and growth rates, 
-respectively, the imaginary part of Eq. \ref{int_rel} gives 
+we may have growing oscillations (overstability). Writing $\sigma =
+-\omega + \ii s$ where $\omega$ and $s$ are the real frequency and
+growth rates, respectively, the imaginary part of Eq. \ref{int_rel}
+gives  
 \begin{align}
-  s = \frac{\imag\int \left(\nabla\cdot\dd\bm{v}^*\right)\dd\mathcal{C}dV}{2\omega\int\rho\left(|\dd
-    v_r|^2 + |\dd v_z|^2\right)dV}, \label{thermal_instability}
+%  s = \frac{\imag\int \left(\nabla\cdot\dd\bm{v}^*\right)\dd\mathcal{C}dV}{2\omega\int\rho\left(|\dd
+%    v_r|^2 + |\dd v_z|^2\right)dV}, \label{thermal_instability}
+  s = \frac{\imag\int \left(\nabla\cdot\dd\bm{v}^*\right)\dd\mathcal{C}dV}{2\omega\mathcal{I}^2}. \label{thermal_instability}
 \end{align}
-which represent instabilities due to dust-gas friction. 
+This represents instability due to dust-gas friction. 
 Since drag ($\delta \mathcal{C}$) appears as a source term in our
 effective energy equation, the quantity 
 $\imag\left[\left(\nabla\cdot\dd\bm{v}^*\right)\dd\mathcal{C}\right]$
 may be thought of as a correlation between compression/expansion and  
-heating/cooling. 
+heating/cooling.  
 
 It is well-known that such correlations can lead to pulsational
-instabilities in stars \citep{cox67}. One may thus interpret 
-dust-drag instabilities in a similar way. We give a
-qualitative 
-description below, adapted from the more rigorous treatments of stellar 
-pulsations by 
-\cite{cox67} and lecture notes by \cite{samadi15} and
+instabilities in stars \citep{cox67}. We thus interpret  
+dust-drag instabilities in a similar way, 
+adapting from the treatment of stellar 
+pulsations by \cite{cox67} and lecture notes by \cite{samadi15} and 
 J. Christensen-Dalsgaard\footnote{\url{http://astro.phys.au.dk/$\sim$jcd/oscilnotes/}}.      
 
 %and disks
@@ -600,102 +603,114 @@ J. Christensen-Dalsgaard\footnote{\url{http://astro.phys.au.dk/$\sim$jcd/oscilno
 
 \subsubsection{Work done by dusty gas} 
 
-The Lagragian perturbation $\Delta$ of a variable $f$ is 
-related to its Eulerian perturbation by $\Delta f = \delta f + 
-\bm{\xi}\cdot\nabla f$; where $\bm{\xi}$ is the Lagragian  
-displacement ($    \xi_{x,z} =  \ii \dd v_{x,z}/\sigma$). 
-%Note that $\Delta
-%\mathcal{C} = \delta \mathcal{C}$ for a uniform background $C$ as
-%required for equilibrium. 
-Then Eq. \ref{lin_mass_full}---\ref{lin_energy_full} imply  
-\begin{align} 
-  \imag \left(\delta \mathcal{C}
-  \nabla\cdot\dd \bm{v}^*\right) = 
-  -|\sigma|^2\imag \left(\Delta P 
-  \frac{\Delta\rho^*}{\rho}\right), \label{pdv}
-\end{align}
-which states that `PdV' work (right hand side) is
-provided by dust-drag friction. This can be seen explicitly as
-follows. 
+The physical interpretation of Eq. \ref{thermal_instability} is that 
+work done by pressure forces in the dusty gas leads to growth in
+oscillation amplitudes. To see this, we first compute the work done
+assuming periodic oscillations. We then show that if the work done is positive, then the
+oscillation amplitude in fact grows: the work done leads the
+system to `overshoot' its equilibrium. 
 
-The average rate of work done by the dusty-gas is
+The average rate of work done is 
 \begin{align}
   \mathcal{W} = \frac{1}{T_p}\int^{t+T_p}_{t}dt^\prime\int_M P
-  \frac{Dv}{Dt^\prime} dm 
+  \frac{Dv}{Dt^\prime} dm \label{work_def} 
 \end{align}
 \citep{cox67}, 
 where $T_p$ is the oscillation period, $v=1/\rho$ is the specific
 volume of the mixture, and the spatial integral is taken over the
 total mass $M$ of the mixture and $dm$ is the mass element. 
-
-Our aim is to relate the work done by the mixture, $\mathcal{W}$, 
-to the growth rate of oscillation amplitudes, $s$. To do this, we
-first evaluate $\mathcal{W}$ assuming pure oscillations (perturbations
-with time dependence $e^{\ii\omega t}$ and real $\omega$), then show
-that in fact the amplitudes grow if the work done is positive. 
-
-Noting that only products in the perturbations contribute to 
-$\mathcal{W}$, we find that for real $\omega$: 
+Noting that only products of perturbations contribute to
+$\mathcal{W}$, we find that for periodic oscillations (time dependence 
+$e^{\ii\omega t}$ and real $\omega$): 
 \begin{align}
   \mathcal{W} = - \frac{\omega}{2} \int \imag\left(\Delta P
   \frac{\Delta \rho^*}{\rho}\right)dV,\label{work_real}
 \end{align}
-where the integral is taken over the volume of the
-mixture. Eq. \ref{work_real} show that a phase difference between
-pressure and density leads to work done. 
+where %the integral is taken over the volume of the
+%mixture; and 
+ the Lagragian perturbation $\Delta$ of a variable $f$ is 
+$\Delta f = \delta f + \bm{\xi}\cdot\nabla f$; where $\bm{\xi}$ is the
+Lagragian displacement ($    \xi_{x,z} =  \ii \dd v_{x,z}/\sigma$).  
+Eq. \ref{work_real} show that a phase difference between gas pressure and
+the total density leads to work done
+($\mathcal{W}\neq0$).  
 
-Now combining Eq. \ref{work_real}, \ref{pdv} and \ref{thermal_instability}
+Now, quite generally, Eq. \ref{lin_mass_full}---\ref{lin_energy_full} 
+imply the integrand of the numerator in Eq. \ref{thermal_instability} 
+is 
+\begin{align} 
+  \imag \left(\delta \mathcal{C}
+  \nabla\cdot\dd \bm{v}^*\right) = 
+  -|\sigma|^2\imag \left(\Delta P 
+  \frac{\Delta\rho^*}{\rho}\right). \label{pdv}
+\end{align}
+%This states that `PdV' work (the right-hand-side) is 
+%provided by dust-drag friction, and can be seen explicitly as 
+%follows. 
+Then combining Eq. \ref{work_real}, \ref{pdv} and
+\ref{thermal_instability} 
 gives  
 \begin{align}
 s = \frac{1}{\mathcal{I}^2}\mathcal{W}, \label{growth_work}
 \end{align}
-where $\mathcal{I}^2>0$  is the integral in the denominator of
-Eq. \ref{thermal_instability}, and we have set $\sigma= - \omega$ in
-Eq. \ref{pdv} for pure oscillations.  Thus growing modes in fact arise if
-positive work is done by the mixture during an oscillation. This in
-turn requires pressure to lag density, discussed next.  
+where we have set $\sigma= - \omega$ in 
+Eq. \ref{pdv}. Eq. \ref{growth_work} shows that if the average work
+done is positive during a periodic oscillation, $\mathcal{W}>0$, then
+then its amplitude would actually grow ($s>0$).  
+
+To see when/where positive work is done, 
+consider a point in the volume. We set $\Delta\rho = 1$ here 
+and take $\omega>0$ without loss of generality. (Thus the phase of
+perturbations increase in time.) This point contributes to positive
+work done if $-\omega \imag\left(\Delta
+P\Delta\rho^*\right)>0$, which requires $\imag\left(\Delta
+P\right)<0$. This corresponds to pressure lagging behind density since
+$\imag\left(\Delta\rho\right)=0$.   
 
 \subsubsection{Physical picture of dust-drag instabilities} 
-The full energy equation is 
-\begin{align*}
-  \frac{DP}{Dt} = \frac{P}{\rho}\frac{D\rho}{D t} + \mathcal{C}. 
-\end{align*}
-Dust-drag causes a phase difference between the pressure and density 
-evolution of a fluid element. In Fig. \ref{pdv_cartoon}, we show that
-if pressure lags behind density, then positive
-work done ($\mathcal{W}>0$) and would lead to growing oscillations
-($s>0$).  
+
+%We now use physical arguments to show that $\mathcal{W}>0$ if pressure
+%perturbations (from the gas) lags behind the total density of the gas
+%plus dust mixture. 
+%The full energy equation is  
+%\begin{align*}
+%  \frac{DP}{Dt} = \frac{P}{\rho}\frac{D\rho}{D t} + \mathcal{C}. 
+%\end{align*} 
+%Dust-drag causes a phase difference between the pressure and density 
+%evolution of a fluid element. 
+
+Fig. \ref{pdv_cartoon} gives a graphical demonstration that 
+if gas pressure lags behind total density, then positive work done 
+($\mathcal{W}>0$) because it leads to a clockwise path in the
+`P-V' plane. Consider a fluid element at maximum density during an
+oscillation cycle (point $A$), so that $D\rho/ D t = 0$. If dust-gas
+drag provides an effective heating to the fluid element at $A$
+(i.e. gas influx)  then it will experience increasing pressure, $DP/D
+t>0$. It attains pressure maximum (point $B$) \emph{after} reaching
+density maximum.    
+From $A$ to $B$, pressure forces increase while the parcel is already
+expanding. This corresponds to positive work done.    
 
 \begin{figure}
   \includegraphics[width=\linewidth]{figures/drag}\\
 \includegraphics[width=\linewidth]{figures/pdv}
   \caption{Thermodynamic interpretation of overstable modes caused by
     dust-gas drag. Top: pressure and density evolution in time. 
-    Bottom: oscillation cycle in the $P$-$V$ plane. In the case shown,
+    Bottom: oscillation cycle in the P-V plane. In the case shown,
     dust-drag causes 
     pressure to lag behind density, which results in a clockwise path in
-    the $P$-$V$ plane, implying positive work done by the fluid and
+    the P-V plane, implying positive work done by the fluid and
     hence would lead to growing oscillation amplitudes.  
     \label{pdv_cartoon}
   }
 \end{figure}
 
-Consider a fluid element at maximum density during an oscillation cycle
-(point $A$), so that $D\rho/ D t = 0$. If dust-gas drag provides an
-effective heating to the fluid element at $A$ (i.e. gas influx)  then
-it will experience increasing pressure, $DP/D t>0$. It attains
-pressure maximum (point $B$) \emph{after} reaching density maximum.   
-This implies pressure maximizes while the parcel is expanding: 
-the parcel's path in the `$P$-$V$' plane  is clockwise, as shown in
-the bottom panel of Fig. \ref{pdv_cartoon}. This corresponds to
-positive work done.  
-
-Our thermodynamic interpretation does not explain
-\emph{why} dust drag causes a pressure lag behind density, but merely shows
+This thermodynamic interpretation does not explain
+\emph{why} dust drag causes pressure to lag behind density, but merely shows
 that this \emph{must} be the case for any growing modes associated the
-dust drag. To rigorously understand how dust-drag causes this lag requires an
-explicit solution to the linearized equations with detailed treatment
-of the function $\mathcal{C}$. However, given the complexity of
+dust drag. To rigorously understand how dust-drag causes this
+lag requires an explicit solution to the linearized equations with
+detailed treatment of the function $\mathcal{C}$. However, given the complexity of
 $\mathcal{C}$ (see Appendix \ref{lin_dust}), we might generally expect
 the dusty disks to  support a range of stable and unstable modes, with the
 latter being associated with pressure-density lag. 
@@ -704,12 +719,16 @@ Indeed, \cite{jacquet11} explains the essence of the streaming
 instability in dusty protoplanetary disks as dust accumulation
 (and hence compression) at a pressure bump, which then drags the 
 gas towards it (and hence heating) to strengthen the pressure
-bump. That is, heating occurs upon compression, as occurs for stellar 
-pulsational instabilities. A phase difference was also noted in the 
-numerical calculations of the streaming instability by 
-\citet{youdin07b}.    
+bump. That is, heating occurs upon compression, as in stellar  
+pulsational instabilities. In \S\ref{si} we check that the
+streaming instability fits into this thermodynamic interpretation in
+the strong drag limit.  
 
- %Whether the phase
+%A phase difference was also noted in the 
+%numerical calculations of the streaming instability by 
+%\citet{youdin07b}.    
+
+%Whether the phase
 %difference is positive or negative depends on the cooling function
 %$\mathcal{C}$, but we may expect a system to generally have both
 %modes, and that with a phase lag are unstable. 
@@ -718,9 +737,11 @@ numerical calculations of the streaming instability by
 If $c_s(r,z)$ is non-uniform but $\tstop=0$, Eq. \ref{int_rel} 
 gives  
 \begin{align}
+%  s = \frac{\imag\int P
+%  \left(\nabla\cdot\dd\bm{v}^*\right)\left(\dd\bm{v}\cdot\nabla\ln{c_s^2}\right)dV}{2\omega\int\rho\left(|\dd 
+%    v_r|^2 + |\dd v_z|^2\right)dV}. \label{vsi_check} 
   s = \frac{\imag\int P
-  \left(\nabla\cdot\dd\bm{v}^*\right)\left(\dd\bm{v}\cdot\nabla\ln{c_s^2}\right)dV}{2\omega\int\rho\left(|\dd
-    v_r|^2 + |\dd v_z|^2\right)dV}. \label{vsi_check}
+    \left(\nabla\cdot\dd\bm{v}^*\right)\left(\dd\bm{v}\cdot\nabla\ln{c_s^2}\right)dV}{2\omega\mathcal{I}^2}. \label{vsi_check} 
 \end{align} 
 This is VSI caused by vertical shear arising from a radial
 temperature gradient \citep{nelson13,barker15,lin15}. We present 
