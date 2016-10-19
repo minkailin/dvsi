@@ -3,7 +3,8 @@ pro streaming, eta=eta, kx=kx, kz=kz, dgratio=dgratio, tstop=tstop
   ii    = dcomplex(0d0, 1d0)
   dfrac = dgratio/(1d0 + dgratio)
   ksq   = kx^2d0 + kz^2d0
-  kappa2 = 1d0 - 6d0*(1d0-dfrac)*eta 
+  smallh = 0.05
+  kappa2 = 1d0 - 6d0*(1d0-dfrac)*eta*smallh
 
   kzsq  = kz^2d0/ksq 
 
