@@ -44,7 +44,7 @@ pro streaming, eta=eta, kx=kx, kz=kz, dgratio=dgratio, tstop=tstop
 
   lhs1 = eta^2d0*sigma^2d0*(kappa2 - sigma^2d0 - 2d0*ii*kx*(1d0-dfrac))
   rhs1 = kz^2d0*kappa2 - sigma^2d0*ksq
-
+  
   Q1  = lhs1/rhs1 ;this is Q if W=1
 
   rhs2  = ii*(sigma + 2d0*kx*tstop*(1d0-dfrac)*(1d0-2d0*dfrac))
@@ -52,19 +52,37 @@ pro streaming, eta=eta, kx=kx, kz=kz, dgratio=dgratio, tstop=tstop
 
   Q2 = rhs2/lhs2  ; this is Q if W = 1 
 
-  work1 = imaginary(Q1)*freq(grid)*1d4
-  work2 = imaginary(Q2)*freq(grid)*1d4
+  vx = -ii*sigma*2d0*(1d0-dfrac)*eta + kx*sigma*Q1/eta 
+  vx/= sigma^2d0 - kappa2 
+
+  vz = Q1*kz/eta/sigma 
+
+  ke = abs(vx)^2d0 + abs(vz)^2d0
+
+  xi_x = ii*vx/sigma 
+  lagrangian_Q = Q1 + xi_x*(-2d0*(1d0-dfrac)*eta)
+  lagrangian_Q2 = Q2 + xi_x*(-2d0*(1d0-dfrac)*eta)
+  
+  work1 = imaginary(lagrangian_Q)*freq(grid)*1d4 
+  work2 = imaginary(lagrangian_Q2)*freq(grid)*1d4 
 
   print, 'freq, growth, work', freq(grid), growth(grid), work1, work2
 
   sign = signum(freq(grid))
   
-  re_Q = real_part(Q1)
-  im_Q = imaginary(Q1)
+  re_Q = real_part(lagrangian_Q)
+  im_Q = imaginary(lagrangian_Q)
 
   arg = atan2(im_Q, re_Q)  
   
   print, 'phase lag is', sign*arg*360.0/(2d0*!dpi)
 
-  stop
+  s_check = abs(sigma)^2d0*imaginary(lagrangian_Q-Q1) 
+  s_check/= 2d0*freq(grid)*ke
+
+  sig_check = kx*vx + kz*vz
+  sig_check/=eta 
+
+  print, 's_check', s_check
+
 end
