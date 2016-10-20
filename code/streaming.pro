@@ -45,26 +45,26 @@ pro streaming, eta=eta, kx=kx, kz=kz, dgratio=dgratio, tstop=tstop
   lhs1 = eta^2d0*sigma^2d0*(kappa2 - sigma^2d0 - 2d0*ii*kx*(1d0-dfrac))
   rhs1 = kz^2d0*kappa2 - sigma^2d0*ksq
 
-  work1  = lhs1/rhs1 
+  Q1  = lhs1/rhs1 ;this is Q if W=1
 
   rhs2  = ii*(sigma + 2d0*kx*tstop*(1d0-dfrac)*(1d0-2d0*dfrac))
   lhs2  = ii*sigma/(1d0-dfrac) - tstop*dfrac*ksq/eta^2d0
 
-  work2 = rhs2/lhs2 
+  Q2 = rhs2/lhs2  ; this is Q if W = 1 
 
-  work1 = imaginary(work1)*freq(grid)*1d4
-  work2 = imaginary(work2)*freq(grid)*1d4
+  work1 = imaginary(Q1)*freq(grid)*1d4
+  work2 = imaginary(Q2)*freq(grid)*1d4
 
   print, 'freq, growth, work', freq(grid), growth(grid), work1, work2
 
-   stheory = 4d0*dfrac*tstop^3d0*((1d0-2d0*dfrac)*(1d0-dfrac)*kx)^2d0*ksq/kz^2d0
-
-;; ;  stheory = 4d0*dfrac*(1d0-dfrac)^2*(2d0*dfrac-1d0)^2*kx^4/kz^2
+  sign = signum(freq(grid))
   
-   freqtheory = 2d0*(1d0-dfrac)*(2d0*dfrac-1d0)*tstop*kx
+  re_Q = real_part(Q1)
+  im_Q = imaginary(Q1)
+
+  arg = atan2(im_Q, re_Q)  
   
-   print, 's,om theory=', stheory, freqtheory
+  print, 'phase lag is', sign*arg*360.0/(2d0*!dpi)
 
-
-
+  stop
 end
