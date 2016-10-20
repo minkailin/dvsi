@@ -63,8 +63,10 @@ Note that we have assumed a temperature profile that only depends on $r$.
 Eq. \ref{lin_mass}---\ref{lin_energy} is a set of ordinary
 differntial equations in $z$. All coefficients and amplitudes are
 evaluated at a fiducial radius $r=r_0$, but their full $z$-dependence
-is retained. We now discuss explicit solutions to these equations. 
-% Numerical solutions are generally required for the 
+is retained. We now discuss solutions to these equations in an unstratified disk 
+ for the streaming instability (\S\ref{si}), and a stratified disk for the VSI (\S\ref{results}).  
+ 
+ % Numerical solutions are generally required for the 
 %vertically-stratified problem. 
 
 \section{Compressible streaming instability}\label{si}
@@ -98,16 +100,16 @@ one-fluid dispersion relation to that from the above studies. As
 expected eigenfrequencies agree better with decreasing $\tstop$ since
 in that limit the mixture behaves more like a single fluid. Most 
 importantly, we find the work done $\mathcal{W}>0$ in all cases, and
-hence find growing oscillations. Thus the streaming instability stems
-from the pressure evolution lagging behind that of the total density.  
+hence find growing oscillations. This implies the streaming instability stems
+from the gas pressure evolution lagging behind that of the total (and hence dust) density.  
 
-Notice also there is better agreement between eigenfrequencies for
-smaller $\mathcal{W}$, i.e. smaller phase pressure-density phase
-lags. While this is generally achieved with decreasing $\tstop$, other
-problem parameters may affect the magnitude of this phase lag.
-For example, `linA' and `linB' have the same $\tstop$ but linA shows
-better agreement with the one-fluid growth rate. This suggest that how
-well dust and gas are effectively coupled is problem-dependent. 
+Notice also eigenfrequencies agree better for 
+smaller pressure-density phase lags. While this is generally true with decreasing $\tstop$, other 
+problem parameters may affect the magnitude of this phase lag, and hence the validity of the one-fluid model.  
+For example, `linA' has a larger $\tstop$ than `linB', but linA's one and 
+two-fluid growth rates differ by $\sim 1\%$; compare to $\sim 10\%$ error for linB. 
+However, linB has a larger phase lag. This means that the effective coupling strength between dust and gas 
+is problem-dependent. 
 
 %"generalized stokes number" would include other problem parameters,
 %e.g. wavenumber  
