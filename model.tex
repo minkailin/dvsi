@@ -420,7 +420,16 @@ subject to Eulerian perturbations of the form
 \begin{align}
  \real\left[ \delta f(r,z)\exp{\left(-\ii\sigma t\right)}\right], 
 \end{align}
-where $\sigma$ is the complex mode frequency. In Appendix
+where $\sigma$ is the complex mode frequency. For later convenience we
+write 
+\begin{align}
+  \sigma = \ii s - \omega,
+\end{align}
+where $s$ and $\omega$ are the growth rate and real frequencies,
+respectively. Thus perturbations have time dependence $e^{st +
+  \ii\omega t}$.  
+
+In Appendix
 \ref{var_prin} we derive the integral relation,  
 \begin{align}
 %&  \sigma^2\int\rho\left(|\dd v_r|^2 + |\dd v_z|^2\right)dV \notag\\
@@ -574,15 +583,16 @@ $L_\epsilon\lesssim O(10\Hg)$, which is more realistic.
 \subsection{Thermodynamics of dust-drag instabilities}\label{dust_work}
 Now consider constant $c_s$ but $\tstop\neq0$. 
 Eq. \ref{int_rel} indicates that $\sigma^2$ is generally complex, so
-we may have growing oscillations (overstability). Writing $\sigma =
--\omega + \ii s$ where $\omega$ and $s$ are the real frequency and
-growth rates, respectively, the imaginary part of Eq. \ref{int_rel}
+we may have growing oscillations (overstability). %Writing $\sigma =
+%-\omega + \ii s$ where $\omega$ and $s$ are the real frequency and
+%growth rates, respectively, 
+The imaginary part of Eq. \ref{int_rel}
 gives  
 \begin{align}
 %  s = \frac{\imag\int \left(\nabla\cdot\dd\bm{v}^*\right)\dd\mathcal{C}dV}{2\omega\int\rho\left(|\dd
 %    v_r|^2 + |\dd v_z|^2\right)dV}, \label{thermal_instability}
   s = \frac{\imag\int \left(\nabla\cdot\dd\bm{v}^*\right)\dd\mathcal{C}dV}{2\omega\mathcal{I}^2}. \label{thermal_instability}
-\end{align}
+\end{align} 
 This represents instability due to dust-gas friction. 
 Since drag ($\delta \mathcal{C}$) appears as a source term in our
 effective energy equation, the quantity 
