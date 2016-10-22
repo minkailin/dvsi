@@ -40,10 +40,11 @@ modification is needed
 for strictly isothermal or polytropic gas perfectly-coupled to dust:  
 the standard adiabatic energy equation substitutes for the dust continuity
 equation. When $c_s$ or $K$ is not constant and/or $\tstop\neq0$ one
-should add corresponding source terms in the energy equation. 
+should add corresponding source terms in the energy equation
+(e.g. Eq. \ref{poly_energy}). 
 The source term associated with dust-gas drag, $\mathcal{C}$, is 
 analogous to radiative diffusion \citep{price15}, which is also
-standard in many hydrodynamics codes.      
+featured in many hydrodynamics codes.      
 
 \subsection{Dusty analogs of other gaseous instabilities}  
 
@@ -66,7 +67,7 @@ to previous studies of GI in vertically stratified disks
 from the midplane \citep[e.g.][]{mamat10, kim12,lin14c}. 
 While we expect only the total surface density and
 characteristic temperatures are relevant to stability  
-\citep{toomre64}, having a non-trivial vertical temperature
+\citep{toomre64}, a non-trivial effective vertical temperature
 structure, induced by dust, may modify the vertical structure of 3D
 waves and unstable modes. We will examine this linear problem in a following 
 study.  
@@ -83,25 +84,33 @@ study.
 The Rossby wave instability (RWI) is a non-axisymmetric, 2D shear
 instability that operates in thin disks when it has radial structure
 \citep{lovelace99,li00}. These studies consider adiabatic pure gas and 
-show instability is possible if there is an extrema in the quantity
+show instability is possible if there is an extrema in the generalized
+potential vorticity 
 \begin{align}
- \eta = \frac{\kappa^2}{2\Omega\Sigma}\mathcal{S}^{2/\gamma},  
+ \mathcal{V} = \frac{\kappa^2}{2\Omega\Sigma}\mathcal{S}^{2/\gamma},  
 \end{align} 
 where $\mathcal{S} = \Pi/\Sigma^\gamma$. Here, $\Sigma$ is the total
 surface density and $\Pi$ is the vertically integrated pressure. 
 
 From the dusty/adiabatic gas equivalence, we deduce the corresponding
 condition for RWI in a (locally isothermal or polytroipc) dusty gas is
-also given by extrema in $\eta$ with $\mathcal{S} = \exp{s}$ (and
-$\tepsilon\to \Sigma_\mathrm{d}/\Sigma$). Since
-the dusty entropy $s$ reflects the dust distribution, we expect that
-RWI may also be triggered by extrema in  the dust-to-gas ratio. 
+also given by extrema in $\mathcal{V}$ with $\mathcal{S} = \exp{\left(\Gamma
+S_\mathrm{eff}\right)}$ and $\tepsilon = \Sigma_\mathrm{d}/\Sigma$. Since
+the effective entropy reflects the dust distribution, we expect that
+RWI may also be triggered by extrema in the dust-to-gas ratio, e.g. 
+narrow dust rings. This would lead to direction formation of dusty
+vortices. 
 
+%{\bf so may it's not vortex formation then dust-trapping. could just
+%  form dusty vortices in one go}
 
 %gap edges. thin dust rings. 
 
 \subsection{New dust-drag
   instabilities}\label{dust_as_thermo} 
+
+%{\bf vsi enabled by drag? slipping between dust and gas reduces
+ % effective buoyancy}
 
 As described in \S\ref{dust_work}, 
 the physical cause of dust-drag instabilities is a phase lag between
@@ -153,8 +162,8 @@ Using Eq. \ref{streaming_dispersion} with the above parameters,
 we also estimate a much smaller growth 
 rate for the streaming instability of 
 $O(10^{-3}\hgas\OmK)$, We thus also rule out
-SI, as did \citeauthor{loren15}. However, the mode disappears with
-$\tstop=0$, so it is associated with finite dust-gas drag. 
+SI, as did \citeauthor{loren15}. However, the mode disappears with $\tstop=0$, so it \emph{is}
+associated with finite dust-gas drag. 
 
 \begin{figure}
   \includegraphics[width=\linewidth]{figures/compare_eigenvals_ts0d02}
@@ -184,20 +193,30 @@ $\tstop=0$, so it is associated with finite dust-gas drag.
   }\label{result2d_loren}
 \end{figure}
 
+One possible interpretation of this mode is `drag-driven VSI', to be 
+compared with `cooling-driven VSI' studied by \cite{lin15}. In the
+latter case, buoyancy forces are eliminated by fast
+cooling, allowing vertical shear to destabilize the disk. Now, in an
+isothermal dusty disk if $\tstop=0$ then mixture is 
+effectively adiabatic: dust-induced buoyancy forces are
+strongest. However, having $\tstop\neq0$ allow dust particles to slip
+past the gas, reducing buoyancy. That is, dust-gas drag
+provies an effective cooling. 
 
+We stress that this example only serves to highlight
+the possibility of new axisymmetric dust-drag instabilities in
+stratified disks. A major caveat of the above result is that 
+%the base state is not an exact equilibrium, because dust-settling would occur
+%in practice. (
+ the background dust settling timescale is comparable to the instability
+growth timescale. It is essential to construct
+exact equilibria for a meaningful stability analysis. We defer this
+to future work.  
 
-
-
-This preliminary calculation only serves to highlight the possibility
-of new axisymmetric dust-drag instabilities in stratified disks. One 
-issue is that the base state for the above calculation is not a true
-equilibrium (although \citeauthor {loren15} find the dust settling
-time is longer than the instability growth time). We will study
-this instability in more detail with a proper basic
-state in a follow up work.  
+%also unclear what are "proper" vertical bc for dusty disks 
 
 \section{Summary}\label{summary}
-In this paper we highlight the similarity between an isothermal 
+In this paper we describe the similarity between an isothermal 
 dusty gas and an adiabatic, pure gas. The correspondence arises
 because drag forces reduce the relative velocity between gas and
 dust. In the limit of perfect dust-gas coupling, $\tstop \to 0$,  
@@ -206,75 +225,78 @@ the gas, and the dust-to-gas ratio $\rhod/\rhog$ is conserved
 following the dusty flow. This is analogous to entropy being conserved
 following a adiabatic, pure gas. 
 
-For finite dust-gas friction, $\tstop\neq 0$, the dust content of a
-fluid parcel of the dusty mixture no longer conserved. A fluid parcel 
+For finite dust-gas drag, $\tstop\neq 0$, the dust content of a 
+parcel of the mixture no longer conserved. The parcel 
 can exchange dust particles with neighboring parcels owing 
 to dust-gas relative drift. This is analogous to heat exchange between
-a  pure gas parcel and its surroundings. 
+a pure gas parcel and its surroundings. 
 
-We explicitly show that for a locally isothermal, dusty gas that the
+We explicitly show that for a locally isothermal, dusty gas that the 
 evolutionary equation of  $\rhod/\rhog$ may be replaced by an 
-effective energy equation. We find the 
-natural definition of the entropy of the dusty gas is 
+effective energy equation. This leads to a 
+natural definition of the effective entropy of isothermal dusty gas as  
 \begin{align*}
   \seff  = \ln{\left(\frac{c_s^2\rhog}{\rhog+\rhod}\right)}.  
 \end{align*}
 %This allows us to define the buoyancy frequency of an isothermal 
 %dusty gas. 
-In our framework, finite dust-gas friction appears as an energy
-source term.  This analogy with standard adiabatic
-hydrodynamics allow us to obtain dusty analogs of gaseous
+Finite dust-gas friction then appears as an energy
+source term.  This analogy with standard 
+hydrodynamics with cooling/heating allow us to obtain dusty analogs of gaseous
 instabilities, and provide thermodynamical interpretations of  
 dust-drag instabilities. 
 
-%
-In this first study, we apply this equivalence principle to study the
-axisymmetric stability of isothermal, protoplanetary disks
-perfectly coupled to dust ($\tstop=0$). This is so that we may 
-compute exact, steady equilibria for analyses. Furthermore, 
-in this limit the dusty problem is \emph{identical} to adiabatic, pure
-gas dynamics. 
 
 We obtain the Solberg-Hoiland criteria for axisymmetric stability for
 strictly isothermal, perfectly-coupled dusty gas.  
-We show that the vertical shear associated with thin dust
- layers \emph{cannot} lead to axisymmetric
-  instabilities, however large it is.  
-This is consistent with the fact that only 
-\emph{non-axisymmetric} Kelvin-Helmholtz instabilities have been 
-observed in numerical simulations in the perfectly-coupled limit 
-\citep{chiang08,barranco09,lee10}. We show that 
-sharp radial edges in the dust-to-gas ratio cannot persist in
-protoplanetary disks, as these imply a sharp entropy gradient and may
-thus destablize the disk. 
+Applying this to typical protoplanetary disks, we find that 
+the vertical shear associated with dust 
+ layers \emph{cannot} lead to axisymmetric  
+  instabilities, however thin the dust layer is.   
+%This is consistent with the fact that only 
+%\emph{non-axisymmetric} Kelvin-Helmholtz instabilities have been 
+%observed in numerical simulations in the perfectly-coupled limit 
+%\citep{chiang08,barranco09,lee10}. 
+Instead, sharp radial  edges in the dust-to-gas ratio could destabilized the
+disk, as these imply sharp gradients in the disk's effective entropy
+profile. % {\bf presumably this limits how sharp dust rings can be} 
 
-%does not preclude non-axisymmetric instabilities. but if there is a
-%global radial temp gradient, then vertical shear arising from
-%it will always be comparable to dust-settling. but there is vsi with
-%global rad temp grad 
+We  apply our thermodynamic framework to interpret
+the streaming instability \citep[SI, ][]{youdin05a,jacquet11} and to generalize the vertical shear
+instability \citep[VSI, ][]{nelson13,lin15} to dusty disks. We
+explicitly show that the SI occurs because the evolution of gas
+pressure lags behind  dust density; a general property of \emph{all}
+instabilities driven by strong dust-gas drag. 
+It takes a finite time for the gas to respond to
+the dust motion. A lag implies a time interval when
+gas pressure is still increasing while dust is already being expelled. 
+The dusty gas then does positive work, which goes into amplifying
+oscillation amplitudes. This interpretation is analogous to stellar pulsational
+instabilities \citep{cox67}. 
 
-For locally isothermal disks, $c^2_s=c_s^2(r)$, we generalize the 
-vertical shear instability (VSI) to dusty disks, which is still 
-driven by the radial temperature gradient. We find that 
-dust-loading is generally stabilizing. In our disk models 
+For the VSI we find dust-loading is generally stabilizing. In our disk models 
 dust-loading does not affect VSI growth rates significantly, but
-meridional motions may be suppressed at heights where dust-induced
+meridional motions may be suppressed where the dust-induced
 vertical buoyancy dominates over vertical shear, consistent with our
 previous study \citep{lin15}.  
 
-%These results are readily
-%understood by comparing the vertical shear rate with the buoyancy of
-%an isothermal, dusty gas which we have correctly identified. 
-
 We also discuss future applications of our thermodynamic framework to 
-study dusty protoplanetary disks. In particular, we emphasize the 
-physical origin of any instability driven by strong dust-gas
-drag is a phase lag between the pressure and total density evolution
-of the dusty gas mixture. This leads to growing modes because 
-positive work is done during an oscillation cycle, provided by
-dust-gas drag, which is equivalent to a `heat' 
-source. This interpretation is entirely analogous to pulsational
-instabilities in stars. 
+study dusty protoplanetary disks. Because isothermal dusty gas has an
+effective entropy, we suggest that purely hydrodynamic processes, such
+as the Rossby Wave Instability \citep{li00} or the `Zombie Vortex
+Instability' \citep{marcus15} could have dusty counter-parts.   
+Furthermore, hydrodynamic instabilities driven by thermal cooling, such as VSI in
+stably-stratified disks \citep{lin15} or the `Convective
+Overstability' \citep{klahr14, lyra14},  may also find dusty analogs 
+because finite dust-gas drag is equivalent to a heat sink/source. 
+
+%In particular, we emphasize the 
+%physical origin of any instability driven by strong dust-gas
+%drag is a phase lag between the pressure and total density evolution
+%of the dusty gas mixture. This leads to growing modes because 
+%positive work is done during an oscillation cycle, provided by
+%dust-gas drag, which is equivalent to a `heat' 
+%source. 
 
 %We demonstrate a potentially new dust-drag instability in
 %stratified disks that may explain 

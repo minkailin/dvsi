@@ -123,10 +123,11 @@ These results can be understood in terms of
 buoyancy forces in an isothermal dusty disk. 
 %We show that vertical shear arising from
 %dust settling does not lead to axisymmetric instability. 
-We discuss thermodynamical interpretations of 
-dust-gas drag instabilities, for example the streaming
-instability in protoplanetary disks, as a phase lag between the pressure 
-and density of a dusty gas, much like pulsational instabilities 
+We also duscuss thermodynamical interpretations of 
+dust-gas drag instabilities, and show that the streaming
+instability in protoplanetary disks occur because drag causes 
+a phase lag between the gas pressure  
+and dust density, much like pulsational instabilities 
 in stars.  
 \end{abstract}
 
@@ -186,25 +187,25 @@ additional source terms in the momentum and energy equations.
 
 The one-fluid approach is appropriate for 
 simulating gas tightly coupled to dust particles with small $\tstop$.  
-This can be numerically challenging for the two-fluid and Lagragian
-particles framework; but is straight forward to simulate in the
+This can be numerically challenging for two-fluid models and 
+following Lagragian particles; but is straight forward to simulate in the 
 one-fluid formulation \citep{price15}.  The single fluid formalism
 also has the important advantage that it is 
-amenable to standard analytical methods
-\citep{youdin05a,jacquet11}. This is the necessary  approach to gain
-physical insight and explain some of the above newer dusty
-instabilities. 
+amenable to standard analytical methods \citep{youdin05a,jacquet11}.  
+This is the necessary  approach to gain physical insight. 
+
 
 In this work, we are motivated to develop a general analytical
-framework to  study the stability of dusty protoplanetary
-disks by drawing on the physical and mathematical parallel between dusty gas and standard
-hydrodynamics. This is possible in certain limits of astrophysical
-interest.  
+framework to study the stability of dusty protoplanetary 
+disks by drawing on the physical and mathematical parallel between
+dusty gas and standard hydrodynamics. This is possible in certain limits of astrophysical
+interest, allowing us to interpret dusty phenomenon through standard
+hydrodynamics.   
 
 We consider tightly coupled dust particles with $\tstop\Omega\ll
 1$, where $\Omega$ is the disk orbital frequency. We may then use the
 `terminal velocity approximation' to set $\Delta \bm{v} = \tstop\nabla
-P/\rhog$, where $P$ is the gas pressure \citep{youdin05a,
+P/\rhog$, where $P$ is the gas pressure \citep{youdin05a, 
   jacquet11,laibe14}. %This eliminates the evolutionary equation for
 %$\Delta \bm{v}$. 
  We also consider irradiated protoplanetary disks 
@@ -219,8 +220,8 @@ isothermal dusty gas dynamics are equivalent to that of adiabatic, pure gas
 dynamics. This is because tightly-coupled dust particles are almost
 entrained in the gas, which is is analogous to the advection
 of entropy following an adiabatic fluid. We will formally relate the 
-entropy of isothermal dusty gas to its dust content. Finite  
-dust-gas drag can be interpreted as heating/cooling: the relative
+effective entropy of isothermal dusty gas to its dust content. Finite  
+dust-gas drag act as effective heating/cooling: the relative
 motion between dust and gas causes a fluid parcel to exchange dust
 particles with its surroundings; an effect similar to heat exchange
 between a gas parcel and its surroundings.   
@@ -235,19 +236,23 @@ analyses for pure gas disks to the dusty case. We explicitly demonstrate this fo
 perfectly coupled dust in strictly and locally isothermal disks. We 
 show that strictly isothermal protoplanetary disks are generally
 stable to axisymmetric perturbations, regardless of how  thin the dust
-layer is. We also study the effect of dust-loading on the vertical shear
-instability \citep[VSI,][]{nelson13,lin15,barker15}. We provide 
-thermodynamical interpretations of our dusty stability calculations. 
+layer is. We put forward a thermodynamical thermodynamical interpretation of
+dust-gas drag instabilities, and apply it to the
+streaming instability \citep[SI, ][]{youdin05a,youdin07b,jacquet11}. 
+We also study the effect of dust-loading on the vertical shear
+instability \citep[VSI,][]{nelson13,lin15,barker15}. 
 
 This paper is organized as follows. In \S\ref{setup} we list the
-equations describing tightly-coupled dusty gas. We show they are in 
+one-fluid equations describing tightly-coupled dusty gas. We show that for a
+fixed equation of state, these are in 
 fact the usual hydrodynamic equations in disguise. 
-We describe approximate  equilibrium solutions in \S\ref{eqm}. In \S\ref{limits} we discuss
-general stability properties of the dusty disk in various
-limits. There, we give a thermodynamical interpretation of
-instabilities caused by directly by dust-gas drag. In
-\S\ref{linear_problem} we list the linearized equations, which we
-solve numerically in \S\ref{results} to study the dusty VSI. We 
+We describe equilibrium solutions in \S\ref{eqm} which are used in
+explicit calculations. In \S\ref{limits} we discuss
+general stability properties of dusty disks. We then move onto
+explicit stablity analyses. In  
+\S\ref{linear_problem} we list the linearized equations, and solve 
+them for the SI in \S\ref{si}, and in 
+ \S\ref{results} study dusty VSI. We 
 discuss future applications of the dusty/adiabatic gas equivalence in 
 \S\ref{discussion} before summarizing in \S\ref{summary}. 
 

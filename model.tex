@@ -239,20 +239,29 @@ with $P=P(\tepsilon,\rho)$ given by the equation of state
 (Eq. \ref{eos}). An explicit solution is presented in
 \S\ref{steady_state}.  
 However, disk structures obtained this way generally do not satisfy 
-the steady state effective energy Eq. \ref{eff_energy} 
-except in the limit of perfectly coupled dust ($\tstop\to0$).  In
-practice the dust-component would settle on a timescale
-$t_\mathrm{settle}\sim 1/\OmK^2\tstop$, but for tightly-coupled dust
-particles this is much longer than that to establish vertical
-hydrostatic equilibrium in the gas component ($\sim 1/\OmK$).   
+the steady state effective energy Eq. \ref{eff_energy} because
+$\mathcal{C}\neq0$ for general solutions to
+Eq. \ref{steady_momr}---\ref{steady_momz}. 
 
+In practice the dust particles settle vertically on a timescale 
+$t_\mathrm{settle}\sim 1/\OmK^2\tstop$, although for tightly-coupled dust
+particles this is much longer than that to establish vertical
+hydrostatic equilibrium in the gas component ($\sim 1/\OmK$).  
 True steady states may be calculated by invoking an underlying gas
 turbulence, which leads to dust diffusion \citep{takeuchi02, youdin07, 
-  lyra13}. This complication is beyond the scope of this paper and we 
-defer it to a future work. Here, we will either consider $\tstop = 0$,
-or assume that $\tstop$ is sufficiently small such that the background
-disk (as obtained from Eq. \ref{steady_momr}---\ref{steady_momz}) does 
-not evolve significantly.  %relative to perturbations 
+ lyra13}. This complication is beyond the scope of this paper. 
+
+In this work, we will assume that $\tstop$  is sufficiently small so
+that settling occurs on much longer timescales  than that of interest; or
+consider equilibria with $\mathcal{C}\equiv 0$, namely   
+\begin{inparaenum}[1)] 
+\item 
+  unstratified disks with finite dust-gas drag (\S\ref{si});  
+\item 
+  perfectly-coupled dust with $\tstop=0$ (\S\ref{results}). 
+\end{inparaenum} 
+Vertical settling is absent in both cases. 
+
 
 %Eq. \ref{steady_dust} makes it difficult to obtain equilibrium
 %solutions explicitly. However, if the diffusive process is slow and
@@ -361,7 +370,7 @@ ratio with a power-law temperature profile (Eq. \ref{power_temp}) gives
 The first two terms correspond to vertical shear caused by spatial
 variations in the dust-to-gas ratio; while the third term
 proportional to $q$ corresponds to vertical shear due to the 
-radial temperature gradient. The last term is present in the dust-free
+radial temperature gradient. The last term survives in the dust-free
 limit. 
 
 We can compare these sources by 
@@ -623,10 +632,10 @@ system to `overshoot' its equilibrium.
 The average rate of work done is 
 \begin{align}
   \mathcal{W} = \frac{1}{T_p}\int^{t+T_p}_{t}dt^\prime\int_M P
-  \frac{Dv}{Dt^\prime} dm \label{work_def} 
+  \frac{D\upsilon}{Dt^\prime} dm \label{work_def} 
 \end{align}
 \citep{cox67}, 
-where $T_p$ is the oscillation period, $v=1/\rho$ is the specific
+where $T_p$ is the oscillation period, $\upsilon=1/\rho$ is the specific
 volume of the mixture, and the spatial integral is taken over the
 total mass $M$ of the mixture and $dm$ is the mass element. 
 Noting that only products of perturbations contribute to
@@ -664,18 +673,37 @@ gives
 s = \frac{\mathcal{W}}{\mathcal{I}^2}, \label{growth_work}
 \end{align}
 where we have set $\sigma= - \omega$ in 
-Eq. \ref{pdv}. Eq. \ref{growth_work} shows that if the average work
+Eq. \ref{pdv}. Eq. \ref{growth_work} states that if the average work
 done is positive during a periodic oscillation, $\mathcal{W}>0$, then
-then its amplitude would actually grow ($s>0$).  
+then its amplitude would actually grow ($s>0$).  %and not be periodic 
 
-Under what condition is positive work is done? 
-Consider a point in the volume where $\Delta\rho = 1$  
-and take $\omega>0$ without loss of generality. (Thus the phase of
-perturbations increase in time.) This point contributes to positive 
-work done if $-\omega \imag\left(\Delta 
-P\Delta\rho^*\right)>0$, which requires $\imag\left(\Delta
-P\right)<0$. This corresponds to pressure lagging behind density since
-$\imag\left(\Delta\rho\right)=0$.   
+Positive work done is done by a parcel if $-\omega \imag\left(\Delta  
+P\Delta\rho^*\right)>0$. Without loss of generality, take $\omega>0$
+and consider a mass element with $\Delta\rho = 1$. Then positive work 
+requires $\imag\left(\Delta
+P\right)<0$.  This corresponds to pressure perturbations \emph{lagging}
+behind that in density (or displacements), since the phase of
+the assumed perturbations increase in time.  
+
+
+Fig. \ref{pdv_cartoon} gives a graphical demonstration that 
+if gas pressure lags behind density, then %positive work done 
+$\mathcal{W}>0$ because it leads to a clockwise path in the
+`P-V' plane. From $A$ to $B$, a fluid parcel is expanding to return to 
+equilbrium, but pressure (i.e. restoring) forces is still
+increasing. This over-compensation causes the parcel to expand
+beyond its equilibrium volume. 
+%corresponds to positive work done. 
+Similarly, from $C$ to $D$ the parcel is already contracting towards
+equilibrium, but pressure
+forces are still dropping. This allows the  
+parcel's contraction to over-shoot its equilibrium density. The
+overall positive work done leads to growth in the oscillation amplitude. 
+
+
+
+
+%$\imag\left(\Delta\rho\right)=0$.   
 
 \subsubsection{Physical picture of dust-gas drag instabilities} 
 
@@ -689,17 +717,6 @@ $\imag\left(\Delta\rho\right)=0$.
 %Dust-drag causes a phase difference between the pressure and density 
 %evolution of a fluid element. 
 
-Fig. \ref{pdv_cartoon} gives a graphical demonstration that 
-if gas pressure lags behind density, then positive work done 
-($\mathcal{W}>0$) because it leads to a clockwise path in the
-`P-V' plane. From $A$ to $B$, a fluid parcel is expanding to return to 
-equilbrium, but pressure (i.e. restoring) forces is still
-increasing. This over-compensation corresponds to positive work done. 
-Similarly, from $C$ to $D$ the parcel is contracting but pressure 
-(restoring) forces are still dropping, which allows the 
-parcel's contraction to over-shoot its equilibrium density. The
-overall positive work done leads to growth in the oscillation amplitude. 
-
 %Consider a fluid element at maximum density during an
 %oscillation cycle (point $A$), so that $D\rho/ D t = 0$. If dust-gas
 %drag provides an effective heating to the fluid element at $A$
@@ -707,12 +724,27 @@ overall positive work done leads to growth in the oscillation amplitude.
 %t>0$. It attains pressure maximum (point $B$) \emph{after} reaching
 %density maximum. 
 
-When applied to dusty gas, the work done is attributed to finite 
-dust-gas drag, which allows relative drift between gas and dust. 
-A pressure-density lag of $A$ to $B$ is achieved if, 
-after a region reaches maximum total density, its 
-gas component is still increasing. This in turn implies a sufficiently
-large particle flux \emph{out} of that region. 
+%Applying the above argument to isothermal dusty gas, 
+For dusty gas, the work done during oscillations 
+ is attributed to finite dust-gas drag. The relative
+drift between gas and dust causes a phase difference between the two
+components. 
+
+A parcel of the isothermal dusty-gas mixture does 
+postive work if  
+\begin{align*}
+-\sgn\left(\omega\right)\imag\left(\Delta\rhog\Delta\rhod^*\right)>0,
+\end{align*}
+meaning that gas follows dust. Instabilities are thus not possible if the
+gas does not respond to dust-drag (i.e. no back-reaction). The
+pressure-density lag shown in Fig. \ref{pdv_cartoon} is achieved if, 
+after a parcel reaches maximum total density, its 
+gas content is still increasing ($A$ to $B$). This in turn implies a sufficiently
+large particle flux \emph{out} of the parcel.   
+
+{\bf lagrangian derivative follows the mixture. this highlights one
+  perk of the one-fluid framework. in two-fluid models there are two
+  types of lagragian deriv, not clear which fluid to follow.}
 
 \begin{figure}
   \includegraphics[width=\linewidth]{figures/drag}\\
@@ -728,11 +760,12 @@ large particle flux \emph{out} of that region.
   }
 \end{figure}
 
-This thermodynamic interpretation does not explain
-\emph{why} dust drag causes pressure to lag behind density, but merely shows
+This thermodynamic interpretation does not explain 
+\emph{why} drag forces causes gas pressure to lag behind the dust
+density, but merely shows 
 that this \emph{must} be the case for any growing modes associated the
-dust drag. To rigorously understand how dust-drag causes this
-lag requires an explicit solution to the linearized equations with
+dust-gas drag. To rigorously understand how dust-drag causes this 
+lag requires an explicit solution to the linearized equations with 
 detailed treatment of the function $\mathcal{C}$. However, given the complexity of
 $\mathcal{C}$ (see Appendix \ref{lin_dust}), we might generally expect
 the dusty disks to  support a range of stable and unstable modes, with the
@@ -743,7 +776,7 @@ instability in dusty protoplanetary disks as dust accumulation
 (and hence compression) at a pressure bump, which then drags the 
 gas towards it (and hence heating) to strengthen the pressure
 bump. That is, heating occurs upon compression, as in stellar  
-pulsational instabilities. In \S\ref{si} we check that the
+pulsational instabilities \citep{cox67}. In \S\ref{si} we check that the
 streaming instability fits into this thermodynamic interpretation in
 the strong drag limit.  
 

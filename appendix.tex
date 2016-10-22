@@ -259,13 +259,15 @@ perturbations. The linearized
 equations are, after eliminating the azimuthal velocity: 
 
 \begin{align}
-  \ii \sigma W &=\nabla\cdot \dd \bm{ v} = \ii k_x \dd v_x + \ii k_z \dd v_z,\\
+  \ii \sigma W &=\nabla\cdot \dd \bm{ v} = \ii k_x \dd v_x + \ii k_z \dd v_z,\label{streaming_mass}\\
     \sigma^2 \dd v_x &= \kappa^2 \dd v_x - \ii \sigma F_r W +
-    k_x\sigma Q,\\
-  -\ii\sigma\dd v_z &= -\ii k_zQ,\\
+    k_x\sigma Q,\label{streaming_vx}\\
+  -\ii\sigma\dd v_z &= -\ii k_zQ,\label{streaming_vz}\\
 \ii \zeta \sigma  Q & = \frac{P}{\rho} \nabla \cdot \dd\bm{v}   -
   \frac{\dd \mathcal{C}}{\rho}. 
 \end{align}
+%{\bf bg pressure gradient neglected in energy eq (is this ok? could
+%  fix, but get more complicated dispersion}
 The artifical factor $\zeta = 1$  is inserted to keep track of the
 left-hand-side of the energy equation. We note that the incompressible
 condition used by \cite{jacquet11} is obtained by setting $\zeta$ to zero. 
@@ -276,6 +278,7 @@ under the above approximations, is
 -\frac{\dd \mathcal{C}}{\rho}  = \tstop c_s^2 \left[\ii k_x F_r\left( 1-2\tepsilon\right)
   W + \tepsilon |\bm{k}|^2 Q\right]. 
 \end{align}
+%{\bf only the second term contributes to work done? dont think so}
 
 We eliminate the velocity perturbations to obtain
 \begin{align}

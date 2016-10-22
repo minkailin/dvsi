@@ -72,7 +72,7 @@ is retained. We now discuss solutions to these equations in an unstratified disk
 \section{Compressible streaming instability}\label{si}
 In the special case of an unstratified disk (neglecting the vertical
 component of the stellar gravity), we may also Fourier analyze in $z$
-to obtain algebraic dispersion relation of the form  
+to obtain an algebraic dispersion relation of the form  
 $\sum_{j=0}^{5}c_j(k_x,k_z)\sigma^j = 0$, where $k_z$ is a real
 vertical wavenumber. The coefficients $c_j$ can be read 
 off Eq. \ref{streaming_dispersion} in  Appendix \ref{compressible_streaming}. 
@@ -82,7 +82,7 @@ $\tstop$ \citep{youdin05a,jacquet11}.
 
 {\bf note: kappa2 accounts for dust effect assuming smallh=0.05}
 We solve Eq. \ref{streaming_dispersion} for selected cases where SI  
-growth rate have been 
+growth rates have been 
 calculated analytically from full two-fluid disk models and measured 
 from direct numerical particle-gas simulations 
 \citep[namely][]{youdin07b,bai10b}. These authors use normalized
@@ -102,21 +102,28 @@ in that limit the mixture behaves more like a single fluid. Most
 importantly, we find the work done $\mathcal{W}>0$ in all cases, and
 hence find growing oscillations. 
 
+{\bf note: important to use largrangian pressure pert properly}
 We also checked the growth rates $s$ satisfy 
 \begin{align} 
   s = \frac{\left|\sigma\right|^2\imag\left(\Delta P
-    \Delta\rho^*/\rho\right)}{2\real\left(\sigma\right)\mathcal{I}^2}, \label{si_check}
+    \Delta\rho^*/\rho\right)}{2\real\left(\sigma\right)\rho\left(\left|\dd
+  v_x\right|^2+\left|\dd
+  v_z\right|^2\right)}, \label{si_check}
 \end{align}
 as implied by Eq. \ref{thermal_instability} and
-Eq. \ref{pdv}. Interestingly, we find that for cases with
-$\epsilon>1$, Eq. \ref{si_check} can be satisified with $\Delta P \to
-\Delta P - \dd P$, i.e. the advection part of the Lagragian
-pressure perturbation is dominant. Conversely, for `linB' with $\epsilon
-< 1$, one can take $\Delta P \simeq \dd P$ in Eq. \ref{si_check}. This
-suggests that for SI in gas-dominated disks the distinction between
-Eulerian and Lagragian presure perturbations is unimportant. 
+Eq. \ref{pdv}. %, or directly from
+%Eq. \ref{streaming_mass}---\ref{streaming_vz}. 
+Interestingly, we find that for cases with
+$\epsilon>1$, Eq. \ref{si_check} can be satisified with $\Delta
+P\simeq \ii\dd v_x \p_rP/\sigma$, i.e. the radial pressure gradient
+is responsible for growth. Conversely, for `linB' with $\epsilon
+< 1$, one can approximate $\Delta P \simeq \dd P$ in Eq. \ref{si_check}. This
+suggests that for SI in gas-dominated disks, the distinction between
+Eulerian and Lagragian pressure perturbations is unimportant. 
+{\bf but weak growth in this case}
+%However
+%in that case the gro 
 
-{\bf note: important to use largrangian pressure pert}
 In Table \ref{si_compare} we also calculate the phase difference
 between the Lagragian pressure perturbation and density perturbations
 as    
@@ -124,16 +131,24 @@ as
 \varphi \equiv -\sgn(\omega)\arg\left(\Delta P\Delta\rho^*\right)
         = \sgn(\omega)\arg\left(\Delta\rhog^*\Delta\rhod\right),\notag
 \end{align*}
-where we have applied the isothermal equation of state for the second equality.
-Then $\varphi > 0 $ indicates pressure lagging behind density, which
+%where we have applied the isothermal equation of state for the second equality.
+then $\varphi > 0 $ indicates pressure lagging behind density, which
 is true for all the cases. In particular, `linB' indicates that growth
 rates vanish as $\varphi \to 0$.  
-Thus the streaming instability stems  
+Thus the streaming instability indeed stems  
 from the gas pressure evolution lagging behind that of the dust 
 density. 
 
 %"generalized stokes number" would include other problem parameters,
 %e.g. wavenumber  
+
+
+{\bf suppose large scale pressure grad drops outwards. 
+pert the sys by kicking more dust inwards. gas moves out, into region 
+  of lower pressure in the bg. i.e. create pressure bump at larger
+  radius. it attracts the first dust particles back out, plus some more
+  because bump is larger. (move gas from higher density to lower
+  density produce asymmetric bump/trough.}
 
 \begin{deluxetable*}{llrrrrrr}
   \tablecolumns{8}
