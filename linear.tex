@@ -69,7 +69,7 @@ is retained. We now discuss solutions to these equations in an unstratified disk
  % Numerical solutions are generally required for the 
 %vertically-stratified problem. 
 
-\section{Compressible streaming instability}\label{si}
+\section{Dust-drag instabilities}\label{si}
 In the special case of an unstratified disk (neglecting the vertical
 component of the stellar gravity), we may also Fourier analyze in $z$
 to obtain an algebraic dispersion relation of the form  
@@ -80,13 +80,47 @@ There we also show that this dispersion relation reduces to that for
 the streaming instability (SI) in the limit of incompressible gas and small
 $\tstop$ \citep{youdin05a,jacquet11}.   
 
+
+ 
+\subsection{Overstable dusty epicycles}
+In the special case of $k_z=0$, the incompressible dispersion
+relation, Eq. \ref{streaming_incompressible} reduces to 
+\begin{align}      %streaming_incompressible
+\ii \sigma^2 - \frac{\sigma}{\tepsilon \taus}  - \left(\ii \kappa^2 +
+  \frac{k_xF_r}{\epsilon}\right) = 0. \label{kz_zero_si}
+\end{align}
+If the quadratic term is neglected, then $\imag{\sigma}<0$, implying
+stability, as concluded by \cite{youdin05a}. 
+
+However, retaining all the terms (but still in the incompressible
+limit) can yield instability, as follows. Eq. \ref{kz_zero_si} admit
+pure oscillations with $\sigma = -\omega$ provided that 
+\begin{align*}
+  \omega &= \pm \kappa,\\
+  \taus & = \frac{\epsilon\kappa}{\tepsilon k _x\left|F_r\right|}
+         \equiv \tau_{\mathrm{s}*}.
+\end{align*}
+If we linearize about this state of marginal stability by writing
+$\sigma = - \kappa + \ii \dd s$ and $\taus = \tau_{\mathrm{s}*} +
+\dd\taus$ and assume $|\dd s|\ll \kappa$ then 
+\begin{align*} 
+\dd s = \frac{2\tepsilon }{1 +
+  4\tepsilon^2\tau_{\mathrm{s}*}^2}\dd \taus. 
+\end{align*}
+Thus given $\tepsilon$ and $k_x$, there are overstable modes with
+stopping times slightly larger than $\tau_{\mathrm{s}*}$. 
+
+%{\bf note: several approx used}
+
+\subsection{Streaming instability}
+
 {\bf note: kappa2 accounts for dust effect assuming smallh=0.05}
 We solve Eq. \ref{streaming_dispersion} for selected cases where SI  
 growth rates have been 
 calculated analytically from full two-fluid disk models and measured 
 from direct numerical particle-gas simulations 
 \citep[namely][]{youdin07b,bai10b}. These authors use normalized
-wavenumbers $K_x = \eta r k_x$ and similarly for $K_z$, where
+wavenumbers $K_{x,z} = \eta r k_{x,z}$ where
 \begin{align} 
   \eta \equiv -\frac{1}{2\rhog r\OmK^2}\frac{\p P}{\p r} = 
   \frac{1}{2\left(1-\tepsilon\right)}\frac{F_r}{r\OmK^2}, 
@@ -94,7 +128,10 @@ wavenumbers $K_x = \eta r k_x$ and similarly for $K_z$, where
 measures the pressure offset of Keplerian rotation. We use
 $\eta=0.05c_s/r\OmK$. They also define the stopping time as 
 $\tau_\mathrm{s}=\tstop/(1-\tepsilon)$. 
- 
+
+
+
+
 Table \ref{si_compare} compares the eigenfrequencies obtained from the
 one-fluid dispersion relation to that from the above studies. As  
 expected eigenfrequencies agree better with decreasing $\tstop$ since
