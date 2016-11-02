@@ -84,10 +84,10 @@ $\tstop$ \citep{youdin05a,jacquet11}.
 If we further consider the limit $k_z=0$, the incompressible dispersion
 relation, Eq. \ref{streaming_incompressible}, reduces to 
 \begin{align}      %streaming_incompressible
-\ii \sigma^2 - \frac{\sigma}{\tepsilon \taus}  - \left(\ii \kappa^2 +
+\ii \sigma^2 - \frac{\sigma}{\epsilon \tstop}  - \left(\ii \kappa^2 +
   \frac{k_xF_r}{\epsilon}\right) = 0. \label{kz_zero_si}
 \end{align} 
-Here we use $\tau_\mathrm{s}=\tstop/(1-\tepsilon)$ for convenience. 
+%Here we use $\tau_\mathrm{s}=\tstop/(1-\tepsilon)$ for convenience. 
 If the quadratic term is neglected, then $\imag{\sigma}<0$, implying
 stability, as concluded by \cite{youdin05a}. 
 
@@ -96,10 +96,10 @@ limit) can yield instability, as follows. Eq. \ref{kz_zero_si} admit
 pure oscillations with $\sigma = -\omega$ when 
 \begin{align*}
   \omega &= \pm \kappa, \\
-  \taus & = \frac{\epsilon\omega}{\tepsilon k _x F_r }
-         \equiv \tau_{\mathrm{s}0}.
+  \tstop & = \frac{\omega}{ k _x F_r }
+         \equiv t_{\mathrm{s}0}.
 \end{align*} 
-Since $\taus\geq 0$, we require $k_xF_r > 0$ if $\omega = \kappa$;
+Since $\tstop\geq 0$, we require $k_xF_r > 0$ if $\omega = \kappa$;
 and $k_xF_r < 0$ if $\omega = -\kappa$. For $k_x>0$ these marginally
 stable epicycles require radial pressure gradients decreasing and increasing
 outwards, respectively.  
@@ -107,20 +107,36 @@ outwards, respectively.
 %We require $\omega/k_xF_r> 0$  
 
 We now perturb about this state of marginal stability by writing
-$\sigma = - \omega + \dd \sigma$ with $\dd\sigma = \ii\dd s -
-\dd\omega$, $\taus = \tau_{\mathrm{s}0} +
-\dd\taus$, and assume the $\dd$ quantities are small in
+$\sigma = \dd \sigma - \omega $ with $\dd\sigma = \ii\dd s -
+\dd\omega$, $\tstop = t_{\mathrm{s}0} +
+\dd\tstop $, and assume the $\dd$ quantities are small in
 magnitude. Then 
 \begin{align*} 
-\dd s = \frac{2\tepsilon\kappa^2 }{1 +
-  4\tepsilon^2\tau_{\mathrm{s}0}^2\kappa^2}\dd \taus. 
+\dd s = \frac{2\epsilon \kappa^2 }{1 +
+  4\epsilon^2 t_{\mathrm{s}0}^2\kappa^2}\dd \tstop. 
 \end{align*}
-Thus given $\tepsilon$ and $k_x$, there exist growing modes
+Thus given $k_xF_r$, there exist growing modes 
 when the stopping time is slightly larger than
-$\tau_{\mathrm{s}c}$. These correspond to slowly-growing epicycles
-\citep[cf. the `convective overstability', ][]{klahr14,lyra14,latter16}.   
+$t_{\mathrm{s}0}$.  
 
 %{\bf note: several approx used}
+
+If we instead fix $\tstop$ and vary $k_xF_r$ about marginal stability,
+a similar exercise yields  
+\begin{align*} 
+  \dd s = \frac{\epsilon \tstop^3}{1 +
+  4\epsilon^2 \tstop^2 \kappa^2}\dd \left(k_x^2F_r^2\right).  
+\end{align*}
+Thus it is possible to destabilize the system by slightly increasing
+$|k_xF_r|>\kappa/ \tstop$ (i.e. shorter radial wavelengths and/or
+stronger pressure gradients).   
+
+
+ 
+\citep[cf. the `convective overstability', ][]{klahr14,lyra14,latter16}.  
+
+
+
 
 \subsection{Streaming instability}
 
@@ -138,7 +154,8 @@ wavenumbers $K_{x,z} = \eta r k_{x,z}$ where
   \frac{1}{2\left(1-\tepsilon\right)}\frac{F_r}{r\OmK^2}, 
 \end{align} 
 measures the pressure offset of Keplerian rotation. We use
-$\eta=0.05c_s/r\OmK$. 
+$\eta=0.05c_s/r\OmK$. They also define the stopping time as
+$\tau_\mathrm{s}=\tstop/(1-\tepsilon)$.  
 
 Table \ref{si_compare} compares the eigenfrequencies obtained from the
 one-fluid dispersion relation to that from the above studies. As  
@@ -226,13 +243,43 @@ linD, \cite{bai10b} &  $10^{-3}$   &  2.0 & 2000 & $0.3225 +
 \end{deluxetable*}
 
 
+\subsection{Numerical example}
+
+To demonstrate the above instabilities we numerically solve the
+full dispersion relation, Eq. \ref{streaming_dispersion} at fixed $K_x
+= 1500$ and $\tepsilon=2$. Growth rates are shown in 
+Fig. \ref{dusty_growth} as a function of $K_z$ at fixed $\taus\OmK=0.01$
+(top panel, which includes `linC' in Table \ref{si_compare}); and as a
+function of $\taus\OmK$ at fixed $K_z=50$ (bottom panel).   
+
+The top panel shows that the streaming instability vanishes as
+$K_z\to0$, but it dominates most of $K_z$
+-space. The overstable epicycles become important for 
+$K_z\lesssim 100$, but their growth rates are weak. We thus
+expect streaming instabilities to dominate, provided small
+lengthscales can be resolved. 
+
+In the bottom panel we confirm that the overstable epicycles require a
+sufficiently large stopping time at fixed wavenumbers. The vertical
+dashed line is the critical stopping time 
+\begin{align*}
+  \tau_{\mathrm{s}0}\OmK = \frac{1}{2K_x\left(1-\tepsilon\right)^2} 
+\end{align*}
+in the above notation. For this example, $\tau_{\mathrm{s}0}\OmK\simeq
+0.003$, as observed. On the other hand, the streaming instability
+shows weak dependence on $\taus$ for this range of stopping times. 
 
 
-
-
-
-
-
+\begin{figure}
+  \includegraphics[width=\linewidth]{figures/streaming2}
+  \includegraphics[width=\linewidth]{figures/streaming3}
+  \caption{Growth rates of dust-drag instabilities with fixed radial
+    wavenumber and dust-to-gas ratio, as a function of
+    the vertical wavenumber at fix stopping time (top); and as a
+    function of stopping time at fixed vertical wavenumber (bottom).  
+\label{dusty_growth}
+  }
+\end{figure}
 
 
 
