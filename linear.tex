@@ -91,45 +91,80 @@ relation, Eq. \ref{streaming_incompressible}, reduces to
 If the quadratic term is neglected, then $\imag{\sigma}<0$, implying
 stability, as concluded by \cite{youdin05a}. 
 
-However, retaining all the terms (but still in the incompressible
-limit) can yield instability, as follows. Eq. \ref{kz_zero_si} admit
-pure oscillations with $\sigma = -\omega$ when 
+
+Now, writing $\sigma = \ii s - \omega$, the real and imaginary parts of 
+Eq. \ref{kz_zero_si}  are
+\begin{align}
+\omega^2 - s^2 - \frac{s}{\epsilon\tstop}  - \kappa^2 &= 0, \label{epi_overs1}\\
+\omega\left(2 s + \frac{1}{\epsilon\tstop}\right) - \frac{k_xF_r}{\epsilon} & =
+                                                                     0.  \label{epi_overs2}
+\end{align}
+The growth rate satisfies
 \begin{align*}
-  \omega &= \pm \kappa, \\
-  \tstop & = \frac{\omega}{ k _x F_r }
-         \equiv t_{\mathrm{s}0}.
-\end{align*} 
-Since $\tstop\geq 0$, we require $k_xF_r > 0$ if $\omega = \kappa$;
-and $k_xF_r < 0$ if $\omega = -\kappa$. For $k_x>0$ these marginally
-stable epicycles require radial pressure gradients decreasing and increasing
-outwards, respectively.  
+\left( \frac{k_xF_r\tstop}{1 + 2 s\epsilon\tstop}\right)^2 - s^2
+  - \frac{s}{\epsilon \tstop} = \kappa^2. %\omega = \frac{k_xF_r\tstop}{1 + 2 s\epsilon\tstop}
+\end{align*}
+
+Assuming slow growth such that $\epsilon s \tstop \ll 1$, we find 
+\begin{align}
+  s \simeq \epsilon \tstop \left(k_xF_r\tstop\right)^2 - \kappa^2,
+\end{align}
+Growth is possible for
+sufficiently large stopping times, and/or large radial pressure
+gradients, and/or sufficiently small radial wavelengths. 
+%For small growth rates the real frequency $|\omega| =  
+%O(\kappa)$, so these are overstable epicycles. 
+
+It is interesting to note that Eq. \ref{epi_overs1}---\ref{epi_overs2}
+admit pure oscillations with $s \equiv 0$, $\omega = 
+\pm\kappa$ if 
+\begin{align}
+  \tstop = \frac{\kappa}{k_x\left|F_r\right|}. 
+\end{align}
+This is the condition for marginal stability. 
+
+
+
+
+% However, retaining all the terms (but still in the incompressible
+% limit) can yield instability, as follows. Eq. \ref{kz_zero_si} admit
+% pure oscillations with $\sigma = -\omega$ when 
+% \begin{align*}
+%   \omega &= \pm \kappa, \\
+%   \tstop & = \frac{\omega}{ k _x F_r }
+%          \equiv t_{\mathrm{s}0}.
+% \end{align*} 
+% Since $\tstop\geq 0$, we require $k_xF_r > 0$ if $\omega = \kappa$;
+% and $k_xF_r < 0$ if $\omega = -\kappa$. For $k_x>0$ these marginally
+% stable epicycles require radial pressure gradients decreasing and increasing
+% outwards, respectively.  
 
 %We require $\omega/k_xF_r> 0$  
 
-We now perturb about this state of marginal stability by writing
-$\sigma = \dd \sigma - \omega $ with $\dd\sigma = \ii\dd s -
-\dd\omega$, $\tstop = t_{\mathrm{s}0} +
-\dd\tstop $, and assume the $\dd$ quantities are small in
-magnitude. Then 
-\begin{align*} 
-\dd s = \frac{2\epsilon \kappa^2 }{1 +
-  4\epsilon^2 t_{\mathrm{s}0}^2\kappa^2}\dd \tstop. 
-\end{align*}
-Thus given $k_xF_r$, there exist growing modes 
-when the stopping time is slightly larger than
-$t_{\mathrm{s}0}$.  
+% We now perturb about this state of marginal stability by writing
+% $\sigma = \dd \sigma - \omega $ with $\dd\sigma = \ii\dd s -
+% \dd\omega$, $\tstop = t_{\mathrm{s}0} +
+% \dd\tstop $, and assume the $\dd$ quantities are small in
+% magnitude. Then 
+% \begin{align*} 
+% \dd s = \frac{2\epsilon \kappa^2 }{1 +
+%   4\epsilon^2 t_{\mathrm{s}0}^2\kappa^2}\dd \tstop. 
+% \end{align*}
+% Thus given $k_xF_r$, there exist growing modes 
+% when the stopping time is slightly larger than
+% $t_{\mathrm{s}0}$.  
 
-%{\bf note: several approx used}
+% %{\bf note: several approx used}
 
-If we instead fix $\tstop$ and vary $k_xF_r$ about marginal stability,
-a similar exercise yields  
-\begin{align*} 
-  \dd s = \frac{\epsilon \tstop^3}{1 +
-  4\epsilon^2 \tstop^2 \kappa^2}\dd \left(k_x^2F_r^2\right).  
-\end{align*}
-Thus it is possible to destabilize the system by slightly increasing
-$|k_xF_r|>\kappa/ \tstop$ (i.e. shorter radial wavelengths and/or
-stronger pressure gradients).   
+% If we instead fix $\tstop$ and vary $k_xF_r$ about marginal stability,
+% a similar exercise yields  
+% \begin{align*} 
+%   \dd s = \frac{\epsilon \tstop^3}{1 +
+%   4\epsilon^2 \tstop^2 \kappa^2}\dd \left(k_x^2F_r^2\right).  
+% \end{align*}
+% Thus it is possible to destabilize the system by slightly increasing
+% $|k_xF_r|>\kappa/ \tstop$ (i.e. shorter radial wavelengths and/or
+% stronger pressure gradients).   
 
 
  
@@ -269,6 +304,12 @@ in the above notation. For this example, $\tau_{\mathrm{s}0}\OmK\simeq
 0.003$, as observed. On the other hand, the streaming instability
 shows weak dependence on $\taus$ for this range of stopping times. 
 
+
+\begin{align*}
+  s = \epsilon \left(1 - \tepsilon
+  \right)\taus\OmK^2\left[4K_x^2\left(1-\tepsilon\right)^4\left(\taus\OmK\right)^2
+  -1 \right]
+\end{align*}
 
 \begin{figure}
   \includegraphics[width=\linewidth]{figures/streaming2}
