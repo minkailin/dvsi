@@ -6,23 +6,29 @@ pro streaming, eta=eta, kx=kx, kz=kz, dgratio=dgratio, tstop=tstop
   smallh = 0.05
   kappa2 = 1d0 - 6d0*(1d0-dfrac)*eta*smallh
 
+  bta = 0d0 ;2d0*ii*(1d0-dfrac)*kx*eta^2d0/(dfrac*ksq) 
+
+
   kzsq  = kz^2d0/ksq 
 
   c0 = 2d0*kx*tstop*(1d0 - dfrac)*(1d0 - 2d0*dfrac)*kzsq*kappa2 
   
   c1 = kzsq*kappa2
 
-  c2 = -ii*tstop*( dfrac*kappa2 - 2d0*ii*kx*(1d0-dfrac)^2d0 )
+  c2 = -ii*tstop*( dfrac*kappa2*(1d0-bta)  - 2d0*ii*kx*(1d0-dfrac)*(1d0 - dfrac*(1d0+bta)) )
 
-  c3 = eta^2d0*(kappa2 - 2d0*ii*kx*(1d0 - dfrac))/(ksq*(1d0-dfrac)) + 1d0
+  c3 = eta^2d0*(kappa2 - 2d0*ii*kx*(1d0 - dfrac))/(ksq*(1d0-dfrac)) + 1d0;*( 1d0 + 2d0*ii*eta^2d0/kx )
   c3 =-c3
   
-  c4 = ii*dfrac*tstop
+  c4 = ii*dfrac*tstop*(1d0-bta)
 
   c5 = eta^2d0/(1d0-dfrac)/ksq 
 
   coeffs = [c0, c1, c2, c3, c4, c5]
  
+; coeffs=[c2,c3,c4]
+
+
 ;  c0 = 2.0*kx*tstop*(1d0 - dfrac)*(1d0 - 2d0*dfrac)
 ;  c1 = 1d0
 ;  c2 = -ii*dfrac*tstop*(ksq/kz^2)
@@ -77,7 +83,7 @@ pro streaming, eta=eta, kx=kx, kz=kz, dgratio=dgratio, tstop=tstop
   
   print, 'phase lag is', sign*arg*360.0/(2d0*!dpi)
 
-  s_check = abs(sigma)^2d0*imaginary(lagrangian_Q-Q1) 
+  s_check = abs(sigma)^2d0*imaginary(lagrangian_Q) 
   s_check/= 2d0*freq(grid)*ke
 
   sig_check = kx*vx + kz*vz
