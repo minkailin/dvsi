@@ -84,7 +84,7 @@ file = strcompress('streaming3.ps',/remove_all)
 device, filename=file $
         ,bits_per_pixel=8,xsize=8, ysize=4.5,xoffset=0,yoffset=0,/inches,/color 
 plot, tstop_axis, rate[0,*],xmargin=[8.3,1.7],ymargin=[3.2,1.8], ystyle=0, xstyle=1 $
-      ,charsize=1.5, thick=4, xrange=xrange, title=tex2idl(title), xtitle=xtitle,$
+      ,charsize=2, thick=4, xrange=xrange, title=tex2idl(title), xtitle=xtitle,$
       linestyle = 0, ytitle =ytitle, xtickinterval=xtickinterval, ytickinterval=ytickinterval,charthick=2, yrange=[0d0,max(rate)], /xlog, xtickformat='logticks_exp', $
       psym=2,symsize=1
        
@@ -97,7 +97,7 @@ oplot, [tcrit,tcrit],[0,1d2], linestyle=2,thick=2
 
 
 xyouts, 0.0011, 0.036, 'streaming instability', charsize=1.5;, align=1
-xyouts, 0.0051, 0.0075, 'overstable epicycle', charsize=1.5,align=1
+xyouts, 0.00505, 0.0075, 'overstable dusty epicycle', charsize=1.5,align=1
 
 if keyword_set(legend) then begin
    x0=legend(0)

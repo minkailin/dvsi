@@ -66,6 +66,7 @@ endfor
 
 filter = where(rate le 0d0)
 rate(filter) = -1d0
+freq(filter) = - 1d0
 
 loadct,10,/silent
 color_arr = dindgen(5)*256d0/5.
@@ -79,7 +80,7 @@ file = strcompress('streaming2.ps',/remove_all)
 device, filename=file $
         ,bits_per_pixel=8,xsize=8, ysize=4.5,xoffset=0,yoffset=0,/inches,/color 
 plot, kz_axis, rate[0,*],xmargin=[8.3,1.7],ymargin=[3.2,1.8], ystyle=0, xstyle=1 $
-      ,charsize=1.5, thick=4, xrange=xrange, title=tex2idl(title), xtitle=xtitle,$
+      ,charsize=2, thick=4, xrange=xrange, title=tex2idl(title), xtitle=xtitle,$
       linestyle = 0, ytitle =ytitle, xtickinterval=xtickinterval, ytickinterval=ytickinterval,charthick=2, yrange=[0d0,max(rate)], /xlog, xtickformat='logticks_exp', $
       psym=2,symsize=1
        
@@ -88,7 +89,7 @@ for n=1, nmodes-1 do begin
 endfor 
 
 xyouts, 1500, 0.7, 'streaming instability', charsize=1.5,align=1
-xyouts, 0.01, 0.1, 'overstable epicycle', charsize=1.5
+xyouts, 0.01, 0.1, 'overstable dusty epicycle', charsize=1.5
 
 if keyword_set(legend) then begin
    x0=legend(0)
@@ -109,7 +110,7 @@ file = strcompress('streaming2_re.ps',/remove_all)
 device, filename=file $
         ,bits_per_pixel=8,xsize=8, ysize=4.5,xoffset=0,yoffset=0,/inches,/color 
 plot, kz_axis, freq[0,*],xmargin=[8.3,1.7],ymargin=[3.2,1.8], ystyle=0, xstyle=1 $
-      ,charsize=1.5, thick=4, xrange=xrange, title=title, xtitle=xtitle,$
+      ,charsize=2, thick=4, xrange=xrange, title=title, xtitle=xtitle,$
       linestyle = 0, ytitle =ytitle, xtickinterval=xtickinterval, ytickinterval=ytickinterval,charthick=2, yrange=[min(freq),max(freq)], /xlog, xtickformat='logticks_exp', $
       psym=2,symsize=1
        

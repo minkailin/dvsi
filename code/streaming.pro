@@ -91,4 +91,9 @@ pro streaming, eta=eta, kx=kx, kz=kz, dgratio=dgratio, tstop=tstop
 
   print, 's_check', s_check
 
+
+overstable_s = dgratio*(1d0 - dfrac)*tstop*(4d0*kx^2d0*(1d0-dfrac)^4d0*tstop^2d0-1d0)
+
+print, 'overstable epi=', overstable_s
+
 end

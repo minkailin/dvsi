@@ -64,7 +64,7 @@ Eq. \ref{lin_mass}---\ref{lin_energy} is a set of ordinary
 differntial equations in $z$. All coefficients and amplitudes are
 evaluated at a fiducial radius $r=r_0$, but their full $z$-dependence
 is retained. We now discuss solutions to these equations in an unstratified disk 
- for the streaming instability (\S\ref{si}), and a stratified disk for the VSI (\S\ref{results}).  
+in \S\ref{si} and a stratified disk in \S\ref{results}.  
  
  % Numerical solutions are generally required for the 
 %vertically-stratified problem. 
@@ -80,7 +80,7 @@ There we also show that this dispersion relation reduces to that for
 the streaming instability (SI) in the limit of incompressible gas and small
 $\tstop$ \citep{youdin05a,jacquet11}.   
  
-\subsection{Overstable epicycles}
+\subsection{Overstable dusty epicycles}
 If we further consider the limit $k_z=0$, the incompressible dispersion
 relation, Eq. \ref{streaming_incompressible}, reduces to 
 \begin{align}      %streaming_incompressible
@@ -88,18 +88,16 @@ relation, Eq. \ref{streaming_incompressible}, reduces to
   \frac{k_xF_r}{\epsilon}\right) = 0. \label{kz_zero_si}
 \end{align} 
 %Here we use $\tau_\mathrm{s}=\tstop/(1-\tepsilon)$ for convenience. 
-If the quadratic term is neglected, then $\imag{\sigma}<0$, implying
-stability, as concluded by \cite{youdin05a}. 
+Neglecting the quadratic term leads to stability, $\imag{\sigma}<0$,
+as concluded by \cite{youdin05a}.  
 
-
-Now, writing $\sigma = \ii s - \omega$, the real and imaginary parts of 
-Eq. \ref{kz_zero_si}  are
+However, the real and imaginary parts of Eq. \ref{kz_zero_si}  are
 \begin{align}
-\omega^2 - s^2 - \frac{s}{\epsilon\tstop}  - \kappa^2 &= 0, \label{epi_overs1}\\
 \omega\left(2 s + \frac{1}{\epsilon\tstop}\right) - \frac{k_xF_r}{\epsilon} & =
-                                                                     0.  \label{epi_overs2}
+                                                                     0, \label{epi_overs1} \\
+\omega^2 - s^2 - \frac{s}{\epsilon\tstop}  - \kappa^2 &= 0, \label{epi_overs2}
 \end{align}
-The growth rate satisfies
+so the growth rate satisfies 
 \begin{align*}
 \left( \frac{k_xF_r\tstop}{1 + 2 s\epsilon\tstop}\right)^2 - s^2
   - \frac{s}{\epsilon \tstop} = \kappa^2. %\omega = \frac{k_xF_r\tstop}{1 + 2 s\epsilon\tstop}
@@ -107,24 +105,81 @@ The growth rate satisfies
 
 Assuming slow growth such that $\epsilon s \tstop \ll 1$, we find 
 \begin{align}
-  s \simeq \epsilon \tstop \left(k_xF_r\tstop\right)^2 - \kappa^2,
+  &|\omega| \simeq \left|k_xF_r\right| \tstop, \\
+  &s \simeq \epsilon \tstop \left[\left(k_xF_r\tstop\right)^2 - \kappa^2\right],\label{epi_grow}
 \end{align}
-Growth is possible for
-sufficiently large stopping times, and/or large radial pressure
-gradients, and/or sufficiently small radial wavelengths. 
+Notice the $\tstop$ and $\tstop^3$ dependence for 
+$\omega$ and $s$. This is also true for the streaming 
+instability for sufficiently small $\tstop$ \citep{jacquet11}. Unlike
+SI though, here there can be growth when $\epsilon=1$, whereas the SI
+is severly suppressed at equal dust-to-gas ratio.  
+
+
+According to Eq. \ref{epi_grow}, growth is possible for sufficiently
+large stopping times, and/or large radial pressure gradients, and/or
+sufficiently small radial wavelengths. For example, given $k_xF_r$
+instability requires 
+\begin{align}
+\tstop > \frac{\kappa}{k_x\left|F_r\right|}\equiv t_{\mathrm{s}0}.\label{epi_grow_criterion}
+\end{align}
+The mode is marginally stable if $\tstop = t_{\mathrm{s}0}$. 
+
+These slowly-growing modes have $|\omega|\simeq \kappa$, so they correspond to
+overstable epicycles. This property is similar to the `convective 
+overstability' discussed in dust-free disks 
+\citep{klahr14,lyra14,latter16}. In that case, the combination of an 
+unstable radial entropy gradient ($N_r^2  \propto \p_rP\p_rS < 0 $) and
+finite thermal relaxation time leads to growing epicycles. Indeed, the
+effective radial buoyancy frequency in our dusty disk 
+with negligble background density gradient is unstable, 
+\begin{align}
+  N_r^2 \equiv F_r\frac{\p S_\mathrm{eff}}{\p r} =
+  -\frac{\rho}{P}F_r^2<0.  
+\end{align}
+
+Convective overstability cannot exist in our locally isothermal disks,
+which have zero cooling times. On the other hand, dust-gas drag 
+is equivalent to heating/cooling in our framework. Thus it may not be 
+surprising to find a dusty analog of the convective 
+overstability. Both growth rates scale with 
+$|N_r^2|$, and both require finite effective cooling times.  
+
+However, the structure of the modes differ. The dusty epicycles 
+have no vertical structure and require $k_x\neq0$; whereas the
+convective overstability has no radial structure but require 
+$k_z\neq0$. Dusty epicycles may thus operate in  
+razor-thin disks, but convective overstability requires the vertical
+dimension. 
+ 
+An important caveat is that the one-fluid approximation for dusty gas 
+may not hold well when $|\omega| \gtrsim 
+\Omega$ \citep{youdin05a}, as is the case for dusty epicycles. Their
+existence should be checked with full dust-plus-gas 
+simulations. Several 2D, razor-thin disk simulations do suggest a
+dusty instability that destory vortices
+\citep{fu14b,raettig15,surville16}. These setups are significantly
+more complex than our models, but \citeauthor{raettig15} did find 
+particle clumping in a test simulation without a vortex. These results
+might be related to the overstable dusty epicycles discussed here.       
+
+%While there is some uncertainty on the reality of the overstable dusty
+%epicyclic modes, 
+Real disks are three-dimensional, so the importance of dusty 
+epicycles should be compared with $k_z\neq0$ modes, which
+includes the classic streaming instability \citep{youdin05a},
+discussed next. 
+
+
 %For small growth rates the real frequency $|\omega| =  
 %O(\kappa)$, so these are overstable epicycles. 
 
-It is interesting to note that Eq. \ref{epi_overs1}---\ref{epi_overs2}
-admit pure oscillations with $s \equiv 0$, $\omega = 
-\pm\kappa$ if 
-\begin{align}
-  \tstop = \frac{\kappa}{k_x\left|F_r\right|}. 
-\end{align}
-This is the condition for marginal stability. 
-
-
-
+%We finally note that Eq. \ref{epi_overs1}---\ref{epi_overs2} 
+%admit pure oscillations with $s \equiv 0$, $\omega = 
+%\pm\kappa$ if 
+%\begin{align}
+%  \tstop = \frac{\kappa}{k_x\left|F_r\right|}. 
+%\end{align}
+%This is the condition for marginal stability.  
 
 % However, retaining all the terms (but still in the incompressible
 % limit) can yield instability, as follows. Eq. \ref{kz_zero_si} admit
@@ -167,12 +222,6 @@ This is the condition for marginal stability.
 % stronger pressure gradients).   
 
 
- 
-\citep[cf. the `convective overstability', ][]{klahr14,lyra14,latter16}.  
-
-
-
-
 \subsection{Streaming instability}
 
 {\bf note: kappa2 accounts for dust effect assuming smallh=0.05}
@@ -200,6 +249,7 @@ importantly, we find the work done $\mathcal{W}>0$ in all cases, and
 hence find growing oscillations. 
 
 {\bf note: important to use largrangian pressure pert properly}
+
 We also checked the growth rates $s$ satisfy 
 \begin{align} 
   s = \frac{\left|\sigma\right|^2\imag\left(\Delta P
@@ -240,12 +290,12 @@ density.
 %e.g. wavenumber  
 
 
-{\bf suppose large scale pressure grad drops outwards. 
-pert the sys by kicking more dust inwards. gas moves out, into region 
-  of lower pressure in the bg. i.e. create pressure bump at larger
-  radius. it attracts the first dust particles back out, plus some more
-  because bump is larger. (move gas from higher density to lower
-  density produce asymmetric bump/trough.}
+%{\bf suppose large scale pressure grad drops outwards. 
+%pert the sys by kicking more dust inwards. gas moves out, into region 
+%  of lower pressure in the bg. i.e. create pressure bump at larger
+%  radius. it attracts the first dust particles back out, plus some more
+%  because bump is larger. (move gas from higher density to lower
+%  density produce asymmetric bump/trough.}
 
 \begin{deluxetable*}{llrrrrrr}
   \tablecolumns{8}
@@ -280,57 +330,67 @@ linD, \cite{bai10b} &  $10^{-3}$   &  2.0 & 2000 & $0.3225 +
 
 \subsection{Numerical example}
 
-To demonstrate the above instabilities we numerically solve the
+We numerically solve the
 full dispersion relation, Eq. \ref{streaming_dispersion} at fixed $K_x
 = 1500$ and $\epsilon=2$. Growth rates are shown in 
-Fig. \ref{dusty_growth} as a function of $K_z$ at fixed $\taus\OmK=0.01$
-(top panel, which includes `linC' in Table \ref{si_compare}); and as a
-function of $\taus\OmK$ at fixed $K_z=50$ (bottom panel).   
+Fig. \ref{dusty_growth1} as a function of $K_z$ at fixed $\taus\OmK=0.01$
+(which includes `linC' in Table \ref{si_compare}); and in
+Fig. \ref{dusty_growth2} as a function of $\taus\OmK$ at fixed
+$K_z=50$.   
 
-The top panel shows that the streaming instability vanishes as
-$K_z\to0$, but it dominates most of $K_z$
--space. The overstable epicycles become important for 
-$K_z\lesssim 100$, but their growth rates are weak. We thus
-expect streaming instabilities to dominate, provided small
-lengthscales can be resolved. 
-
-In the bottom panel we confirm that the overstable epicycles require a
-sufficiently large stopping time at fixed wavenumbers. The vertical
-dashed line is the critical stopping time 
-\begin{align*}
-  \tau_{\mathrm{s}0}\OmK = \frac{1}{2K_x\left(1-\tepsilon\right)^2} 
-\end{align*}
-in the above notation. For this example, $\tau_{\mathrm{s}0}\OmK\simeq
-0.003$, as observed. On the other hand, the streaming instability
-shows weak dependence on $\taus$ for this range of stopping times. 
-
-
+Fig. \ref{dusty_growth1} show the overstable dusty epicycles' growth
+rates are weakly depedent on $K_z$. They are well approximated by
+that in the $K_z=0$ limit, Eq. \ref{epi_grow}, which becomes 
 \begin{align*}
   s = \epsilon \left(1 - \tepsilon
   \right)\taus\OmK^2\left[4K_x^2\left(1-\tepsilon\right)^4\left(\taus\OmK\right)^2
   -1 \right]
 \end{align*}
+in the above notation. 
+For the case considerd in Fig. \ref{dusty_growth1} we find
+$s\simeq0.067\OmK$, as observed. By contrast, the streaming
+instability requires $K_z>0$, and dominates when
+$K_z\gtrsim 100$. 
 
 \begin{figure}
   \includegraphics[width=\linewidth]{figures/streaming2}
-  \includegraphics[width=\linewidth]{figures/streaming3}
   \caption{Growth rates of dust-drag instabilities with fixed radial
     wavenumber and dust-to-gas ratio, as a function of
-    the vertical wavenumber at fix stopping time (top); and as a
-    function of stopping time at fixed vertical wavenumber (bottom).  
-\label{dusty_growth}
+    the vertical wavenumber at fix stopping time. \label{dusty_growth1}
   }
 \end{figure}
 
+In Fig. \ref{dusty_growth2} we fix the wavenumbers and vary the
+stopping time. The vertical dashed line is the critical stopping time
+for the overstable dusty epicycles, Eq. \ref{epi_grow_criterion},
+which is  
+\begin{align*}
+  \tau_{\mathrm{s,min}}\OmK = \frac{1}{2K_x\left(1-\tepsilon\right)^2} 
+\end{align*}
+in the above notation. For this example, $\tau_{\mathrm{s,min}}\OmK\simeq 
+0.003$, as observed. On the other hand, the streaming instability
+shows weak dependence on $\taus$ for this range of stopping times 
+(it ultimated vanishes as $\taus\to0$). 
 
+\begin{figure}
+  \includegraphics[width=\linewidth]{figures/streaming3}
+  \caption{Growth rates of dust-drag instabilities with fixed radial
+    wavenumber and dust-to-gas ratio, as a
+    function of stopping time at fixed vertical wavenumber. The
+    vertical dashed line correspond to the minimum stopping time for
+    growth of the dusty epicycle, given by
+    Eq. \protect\ref{epi_grow_criterion}. \label{dusty_growth2}
+  }
+\end{figure}
 
-
-
-
-
-
-
-
+These calculations suggest that in a realistic 3D dusty disk where
+vertical motions are allowed, the classic streaming
+instability is dominant because there exists $K_z$ values for which it
+dominates. This also renders the uncertainties in the  
+approximations used to describe the dusty epicycle modes
+irrelevant. On the other hand, the one-fluid framework can capture the
+streaming instability in the appropriate limit, as seen in Table
+\ref{si_compare}. 
 
 
 
