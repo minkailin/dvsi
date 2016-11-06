@@ -39,7 +39,7 @@ pro streaming, eta=eta, kx=kx, kz=kz, dgratio=dgratio, tstop=tstop
   freq   = real_part(roots)
   growth = imaginary(roots)
   
- ; filter = where(abs(freq) gt 1d0)
+  filter = where(abs(freq) gt sqrt(kappa2))
  ; growth(filter) = 0d0 
 
   temp = max(growth, grid)
@@ -92,8 +92,8 @@ pro streaming, eta=eta, kx=kx, kz=kz, dgratio=dgratio, tstop=tstop
   print, 's_check', s_check
 
 
-overstable_s = dgratio*(1d0 - dfrac)*tstop*(4d0*kx^2d0*(1d0-dfrac)^4d0*tstop^2d0-1d0)
+;overstable_s = dgratio*(1d0 - dfrac)*tstop*(4d0*kx^2d0*(1d0-dfrac)^4d0*tstop^2d0-1d0)
 
-print, 'overstable epi=', overstable_s
+;print, 'overstable epi=', overstable_s
 
 end

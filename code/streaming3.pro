@@ -67,8 +67,10 @@ dfrac = dgratio/(1d0 + dgratio)
   
 endfor
 
-filter = where(rate le 0d0)
+
+filter = where( (rate le 0d0) or (abs(freq) gt sqrt(kappa2)) )
 rate(filter) = -1d0
+freq(filter) = - 1d0
 
 
 
