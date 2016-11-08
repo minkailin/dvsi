@@ -35,15 +35,17 @@ polytropic disk with $K=$constant, while one sets $c_s^2\to K$ in
 %Eqs. \ref{dusty_solberg1}---\ref{dusty_solberg2}. 
 
 \subsection{Higher order corrections}
-{\bf notes for self. maybe exclude in final. }
+%{\bf notes for self. maybe exclude in final. }
 
-As discussed in \S\ref{spurious_epi}, the first-order one-fluid 
-formulation (Eqs. \ref{masseq}---\ref{tempeq}) can produce
-spuriously-growing modes with frequency $|\sigma|\gtrsim \Omega$. This
-results from neglecting terms of $O(|\Delta\bm{v}|^2)$. The full set
-of one-fluid equations is significantly more complex than our
+The simplified one-fluid formulation,
+Eqs. \ref{masseq}---\ref{tempeq}, can 
+produce spuriously-growing modes with frequency $|\sigma|\gtrsim
+\Omega$ (see Appendix \S\ref{spurious_epi}). This 
+results from neglecting terms of $O(|\Delta\bm{v}|^2)$ when converting
+the two-fluid equations to the one-fluid formulation. The full
+one-fluid equations is significantly more complex than our 
 model \cite[e.g.][]{laibe14}. However, it is possible to improve upon
-the first-order equations whilst retaining similarilty to
+the first-order formulation whilst retaining similarilty to  
 standard hydrodynamics.  
 
 The full one-fluid equations of motion includes the acceleration term 
@@ -53,12 +55,7 @@ The full one-fluid equations of motion includes the acceleration term
 -\frac{1}{\rho}\nabla\cdot\left(\frac{\rhod\rhog}{\rho}\Delta\bm{v}\otimes\Delta\bm{v}\right) 
 \equiv  \frac{1}{\rho}\nabla\cdot \bm{T},
 \end{align}
-where $\bm{T}$ is an effective stress tensor. %This term is neglected
-%when working to $O(\left|\Delta\bm{v}\right|)$, as we have done
-%thusfar.  % In 
-% general $\Delta\bm{v}$ obeys an evolutionary equation. In that case, the stress 
-% tensor $\bm{T}$ is reminenscent of magnetic tension in
-% magneto-hydrodynamics. 
+where $\bm{T}$ is an effective stress tensor. 
 In the terminal velocity approximation with $\Delta\bm{v} = \tstop
 \nabla P/\rhog$, we have 
 \begin{align}
@@ -66,24 +63,32 @@ In the terminal velocity approximation with $\Delta\bm{v} = \tstop
 \end{align}
 If we define 
 \begin{align}
-  \bm{g} \equiv \sqrt{4\pi G \epsilon \rho} \frac{\nabla P}{\rho} \tstop,
+  \bm{g} \equiv \sqrt{4\pi G \epsilon \rho} \frac{\nabla P}{\rho}
+  \tstop,\label{effective_g} 
 \end{align}
 then
 \begin{align}
-\bm{T} = - \frac{1}{4\pi G} \bm{g}\otimes\bm{g}. \label{effective_g}
+\bm{T} = - \frac{1}{4\pi G} \bm{g}\otimes\bm{g}, \label{effective_gstress}
 \end{align}
+%{\bf tensor virial theorems?}
+which is just the anisotropic part of the  
+gravitational stress tensor in self-gravitating hydrodynamics 
+\citep{lynden-bell72}. However, unlike self-gravity, where $\bm{g}$ is
+determined through the Poisson equation; here $\bm{g}$ is directly
+related to $P$ (Eq. \ref{effective_g}), which itself obeys an 
+evolutionary equation for isothermal gas (Eq. \ref{eff_energy}).  
 
-{\bf tensor virial theorems?}
+Nevertheless, Eq. \ref{effective_g}---\ref{effective_gstress}
+indicates that pressure gradients provide torques for angular momentum
+transport of the mixture as a whole. This is only possible for
+non-axisymmetric pressure forces so that $T_{r\phi}\neq0$.   
 
-However, Eq. \ref{effective_g} is just the 
-gravitational stress tensor in self-gravitating hydrodynamics
-%\footnote{Technically there is an isotropic part, which} 
-\citep{lynden-bell72}. 
+In a subsequent paper we will extend the one-fluid formulation by
+including $\bm{T}$ in the equation of motion. 
+In particular, we will explore whether this can surpress the suprious
+modes discussed in Appendix \S\ref{spurious_epi}. 
 
- It is  
-
-
-
+%stratified case require more boundary conditions 
 
 \subsection{Implications for numerical simulations}
 The dusty/adiabatic gas equivalence means that pure
