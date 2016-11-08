@@ -253,8 +253,8 @@ input parameters. Then for the Epstein drag law, Eq. \ref{epstein}, we
 have $\mathcal{C}=0$ in the background state. 
 We Fourier analyze in $r$ and $z$ so that $\p_z\to \ii k_z$ and
 $\p_r\to \ii k_x$ when acting on perturbations, and denote $|\bm{k}|^2
-\equiv k_x^2 + k_z^2$. We consider large $k_x$ and background
-gradients when compared with that of  perturbations. 
+\equiv k_x^2 + k_z^2$. We consider large $k_x$ and thus neglect background
+gradients when compared to that of perturbations.  
 %neglect the radial density gradient compared to that of pertuburbations 
 %(formally setting $\p_r\rho=0$). 
  This is also done in most local studies of
@@ -347,8 +347,7 @@ becomes
   \frac{k_xF_r}{\epsilon}\right) = 0. \label{kz_zero_si}
 \end{align} 
 Neglecting the quadratic term leads to stability, $\imag{\sigma}<0$, 
-as found by \cite{youdin05a} in their full two-fluid analysis as 
-$k_z\to0$.  
+as found by \cite{youdin05a} in their full two-fluid analysis. 
 % However, the real and imaginary parts of Eq. \ref{kz_zero_si}  are
 % \begin{align}
 % \omega\left(2 s + \frac{1}{\epsilon\tstop}\right) - \frac{k_xF_r}{\epsilon} & =
@@ -371,17 +370,16 @@ Accordingly, given $k_xF_r$, growth is possible if
 \end{align}
 The mode is marginally stable when $\tstop =
 t_{\mathrm{s}0}$. Alternatively, for fixed $\tstop$ growth is enabled
-by a sufficiently large $k_xF_r$. Unlike the streaming instability,
+by a sufficiently large $\left|k_xF_r\right|$. Unlike the streaming instability,
 which is strongly surpressed when $\epsilon=1$, these modes can still
 grow at equal dust-to-gas ratio.  
 
-These growing epicycles have $|\omega|\gtrsim \kappa$. 
-However, these modes are absent in full two-fluid
-models \citep{youdin05a}. The discrepency lies in the fact that the
-first-order  one-fluid equations are only valid for low-frequency waves with
-$|\sigma|\lesssim \Omega$. Thus only 
-low-frequency modes should be retained from analyses based on the
-first-order one-fluid approximation. 
+These growing epicycles with $|\omega|\gtrsim \kappa$ are absent in
+full two-fluid models \citep{youdin05a}. The discrepency lies in the
+fact that the one-fluid equations, to first order in $\tstop$, are
+only valid for low-frequency waves with $|\sigma|\lesssim
+\Omega$. Thus only low-frequency modes should be retained from
+analyses based on Eqs. \ref{masseq}---\ref{tempeq}. 
 
 %When this is violated,
 %terms of $O(\tstop^2)$ should be retained in deriving the one-fluid
@@ -423,9 +421,9 @@ to simulate dusty gas.
 %resolution to resolve high $K_z$ modes.  
 For example, 2D, razor-thin disks would allow the spurious epicycles
 to dominate, since in that case the streaming instability cannot
-operate. Fig. \ref{dusty_growth1} suggest that in a realistic 3D disks
-where a range of $K_z$ is allowed, the streaming instability should
-dominate. 
+operate. However, Fig. \ref{dusty_growth1} show that in realistic 3D
+disks where a range of $K_z$ is allowed, the streaming instability
+should dominate. 
 
 Thus simulations based on the first-order one-fluid equations should
 be set up to surpress these spurious epicycles. This might be

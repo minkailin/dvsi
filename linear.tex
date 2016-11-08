@@ -82,9 +82,8 @@ $\tstop$ \citep{youdin05a,jacquet11}.
  
 \subsection{Numerical examples}
 
-{\bf note: kappa2 accounts for dust effect assuming smallh=0.05}
+%{\bf note: kappa2 accounts for dust effect assuming smallh=0.05}
 
-%We now consider the streaming instability with $k_z\neq 0$. 
 We solve the full dispersion relation, Eq. \ref{streaming_dispersion} for selected cases where SI  
 growth rates have been 
 calculated analytically from full two-fluid disk models and measured 
@@ -106,7 +105,7 @@ in that limit the mixture behaves more like a single fluid. Most
 importantly, we find the work done $\mathcal{W}>0$ in all cases, and
 hence find growing oscillations. 
 
-{\bf note: important to use largrangian pressure pert properly}
+%{\bf note: important to use largrangian pressure pert properly}
 
 We also checked the growth rates $s$ satisfy 
 \begin{align} 
@@ -125,7 +124,7 @@ is responsible for growth. Conversely, for `linB' with $\epsilon
 < 1$, one can approximate $\Delta P \simeq \dd P$ in Eq. \ref{si_check}. This
 suggests that for SI in gas-dominated disks, the distinction between
 Eulerian and Lagragian pressure perturbations is unimportant. 
-{\bf but weak growth in this case}
+%{\bf but weak growth in this case}
 %However
 %in that case the gro 
 
@@ -193,14 +192,14 @@ The streaming
 instability bears some similarity  to the `convective 
 overstability' in dust-free, non-isothermal disks 
 \citep{klahr14,lyra14,latter16}. In that case, the combination of an 
-unstable radial entropy gradient ($N_r^2  \propto \p_rP\p_rS < 0 $) and
-finite thermal relaxation time leads to epicyclics with
-growth rate $\propto  -N_r^2$ 
+unstable radial buoyancy frequency ($N_r^2 < 0 $) and
+finite thermal relaxation time leads to growing epicyclics. %with
+%growth rate $\propto  -N_r^2$ 
 
 Indeed, the effective radial buoyancy frequency in our dusty disk 
 with negligble background density gradient is unstable, 
 \begin{align}
-  N_r^2 \equiv F_r\frac{\p S_\mathrm{eff}}{\p r} =
+  N_r^2 \equiv -\frac{1}{\rho}\frac{\p P}{\p r}\frac{\p S_\mathrm{eff}}{\p r} =
   -\frac{\rho}{P}F_r^2<0.  
 \end{align}
 Convective overstability cannot exist in our locally isothermal disks,
@@ -211,12 +210,12 @@ One might then think of the streaming instability as a dusty relative
 to the convective  overstability. Explicit solutions in the small
 $\tstop$ limit show that streaming instability growth rates are
 also $\propto |N_r^2|$  \citep{jacquet11}, as is for the convective
-overstability \citep{lyra14}. Furthermore, both instabilities require
+overstability \citep{lyra14,latter16}. Furthermore, both instabilities require
 finite effective cooling times, and both require $k_z\neq0$. 
-{\bf note: si osc freq not too small compared to kappa} 
+%{\bf note: si osc freq not too small compared to kappa} 
 
 However, the convective overstability is most unstable at $k_x=0$
-\citep{latter14}  whereas the streaming instability growth rate is maximized at finite $k_x$
+\citep{lyra14}  whereas the streaming instability growth rate is maximized at finite $k_x$
 \citep{youdin05a}. Nevertheless, they share the same underlying
 physical mechanism, i.e. pressure-density phase lags.  
 
