@@ -3,8 +3,8 @@ We model an accretion disk as a mixture of gas with dust treated as a
 pressureless fluid. We denote their density and
 velocity field as $(\rhog,\bm{v}_\mathrm{g})$ and
 $(\rhod,\bm{v}_\mathrm{d})$, respectively. The mixture has a single 
-temperature $T$, and the mixture pressure $P$ arise solely from the 
-gas component.  
+temperature $T$, and its pressure $P$ arise solely from the 
+gas component. %neglect turbulence, viscosity, self-g and b fields.  
 
 The two fluids interact via a drag force parameterized by a stopping
 time $\tstop$ 
@@ -12,29 +12,40 @@ such that
 \begin{align}  
   \rhod\left.\frac{\p \bm{v}_\mathrm{d}}{\p t}\right|_\mathrm{drag}= -
   \rhog\left.\frac{\p \bm{v}_\mathrm{g}}{\p t}\right|_\mathrm{drag}=
-  - \frac{\rhog\rhod}{\left(\rhod+\rhog\right)}\frac{\left(\bm{v}_\mathrm{d} -
-    \bm{v}_\mathrm{g}\right)}{\tstop}. 
+  - \frac{\rhog\rhod}{\rho}\frac{\Delta\bm{v}}{\tstop}. 
 \end{align}
-is the dust-gas friction force per unit volume. Note that $\tstop$ 
+is the dust-gas friction force per unit volume, where
+\begin{align}
+  \Delta\bm{v} \equiv\bm{v}_\mathrm{d} - \bm{v}_\mathrm{g} 
+\end{align}
+is the dust-gas velocity difference; and 
+\begin{align}
+  \rho \equiv \rhog + \rhod
+\end{align}
+is the total density. 
+Note that $\tstop$ 
 differs slightly from the stopping time $\tau_\mathrm{s} =
-\tstop\rhog/\left(\rhog+\rhod\right)$ used in some studies
+\tstop\rhog/\rho$ used in some studies
 \citep[e.g.][]{youdin05a,jacquet11}.   
 
-We consider tightly-coupled dust particles with 
-$\tstop\OmK\ll 1 $, where $\OmK$ is the Keplerian orbital
-frequency. This allows us to simplify the problem by using the
-`terminal velocity approximation' so that the dust-gas velocity
-difference is 
+In general $\Delta\bm{v}$ obeys a complicated evolutionary equation
+\citep[see, e.g.][]{youdin05a}. However, for tightly-coupled dust
+particles with $\tstop\OmK\ll 1 $, where $\OmK$ is the Keplerian orbital
+frequency, we can use the 
+`terminal velocity approximation' to set %The dust-gas velocity difference 
+%Then so that the dust-gas velocity
+%difference is 
 \begin{align}
-  \Delta\bm{v}\equiv\bm{v}_\mathrm{d} - \bm{v}_\mathrm{g} = \frac{\nabla
-    P}{\rhog}\tstop, 
+  \Delta\bm{v} = \frac{\nabla
+    P}{\rhog}\tstop 
 \end{align}
-\citep{youdin05a,jacquet11}. More generally, though, $\Delta\bm{v}$
-obeys an evolutionary   
+\citep{youdin05a,jacquet11}. This equation implies that dust particles
+drift towards pressure maxima. 
 
 %In the limit of strong dust-gas drag (stopping time $\tstop\to 0$) 
-In this limit of strong dust-gas drag, \cite{laibe14} give a single
-fluid description of the mixture, to $O\left(\tstop\right)$, as:  
+In the limit of strong dust-gas drag ($\tstop\to0$), \cite{laibe14}
+give a single fluid description of the mixture, to
+$O\left(\tstop\right)$, as:   
 \begin{align} 
   &\frac{D\rho}{Dt} = -\rho\nabla\cdot\bm{v}, \label{masseq}\\ 
   &\frac{D\bm{v}}{Dt} = - \nabla\Phi - \frac{1}{\rho}\nabla  P, \label{momeq}\\ 
@@ -47,13 +58,9 @@ where $D/Dt \equiv \p_t + \bm{v}\cdot\nabla$ is the Lagragian
 derivative \emph{following the mixture} with center-of-mass velocity  
 \begin{align}
   \bm{v} \equiv \frac{\rhog\bm{v}_\mathrm{g} + 
-    \rhod\bm{v}_\mathrm{d}}{\rho}, 
+    \rhod\bm{v}_\mathrm{d}}{\rho}. 
 \end{align}
-and 
-\begin{align}
-  \rho \equiv \rhog + \rhod
-\end{align}
-is the total mixture density. For an ideal gas the pressure is given
+For an ideal gas the pressure is given
 by $P = \mathcal{R}\rhog T/\mu $, where $\mathcal{R}$ is
 the gas constant and $\mu$ is the mean molecular weight. 
 
@@ -209,21 +216,35 @@ entropy for the \emph{mixture} as
 \begin{align}
    \seff \equiv \ln \frac{P}{\rho} = \ln{\left[c_s^2(1-\tepsilon)\right]}.  
 \end{align} 
-This follows naturally by combining the effective 
-energy Eq. \ref{eff_energy} and Eq. \ref{masseq}. 
-With an effective entropy defined this way, many of the 
-results concerning the stability of dusty gas will have identical form
-and interpretations to that in standard adiabatic hydrodynamics of 
-pure gas. For example, if $c_s^2$ is constant and $\tstop=0$, then
-$D\seff/ D t = 0$ since $D\tepsilon/D t=0$ in that case.  
+%This follows naturally by combining the effective 
+%energy Eq. \ref{eff_energy} and Eq. \ref{masseq}. 
+Then 
+\begin{align*}
+  \frac{D \seff}{D t} = \bm{v}\cdot\nabla\ln{c_s^2} +
+  \frac{c_s^2}{P}\nabla\cdot\left(\tstop\tepsilon\nabla P\right), 
+\end{align*}
+which is just the statement of entropy evolution in standard  
+hydrodynamics, albeit with source terms. With an effective
+entropy defined this way, many of the  
+results concerning the stability of (locally) isothermal dusty gas
+will have identical form and interpretations to that for pure gas.   
 
-The physical reason for this analogy is that with strong drag, the
-dust is almost perfectly entrained in the gas flow, but there is some
-gain/loss of dust particles between different gas parcels. This
-property is analogous to the entropy of an adiabatic pure gas subject
-to heating/cooling: entropy is conserved following a gas parcel,
-except if there is heat exchange between a fluid parcel and the
-surrounding.   
+%If $c_s^2$ is constant and $\tstop=0$, then 
+%$D\seff/ D t = D\tepsilon/D t=0$. In this case the effective 
+%entropy is conserved because the dust-fraction is `frozen in' the
+%flow. 
+
+The physical reason for this analogy is that with strong drag
+($\tstop\to0$), dust is almost perfectly entrained in the gas, but
+there is some gain/loss of dust particles between different  
+gas parcels. This is analogous to the entropy of an ideal 
+pure gas subject to heating/cooling: entropy is conserved following
+a gas parcel, except if there is heat exchange between a fluid parcel and the
+surrounding. For strictly isothermal gas perfectly coupled to dust
+(constant $c_s^2$ and $\tstop=0$) we have 
+$D\seff/ D t = D\tepsilon/D t=0$. In this case the effective 
+entropy is exactly conserved because the dust-fraction is `frozen in' the
+flow. 
 
 \section{Dynamical equilibria}\label{eqm}
  
@@ -306,7 +327,7 @@ where
 is the gas scale-height in the dust-free limit and $\OmK$ is the
 Keplerian frequency, respectively. 
 
-We usually consider gas-dominated disks with $\epsilon_0 \ll 1$.  
+We usually consider gas-dominated disks with $\epsilon_0 < 1$.  
 Then $\rhog(r,z)$ is effectively Gaussian, as in the 
 dust-free case. The dust density is approximately 
 \begin{align}
@@ -368,7 +389,8 @@ ratio with a power-law temperature profile (Eq. \ref{power_temp}) gives
  -\frac{\p\epsilon}{\p z}\frac{\p\ln{P}}{\p r}\right.\notag\\
   &\phantom{ r\frac{\p \Omega^2}{\p z}  =
     \frac{c_s^2(r)}{\left(1+\epsilon\right)^2}\left\{\right\} }
-  \left. -\frac{q}{r} \left(1+\epsilon\right)\frac{\p\ln{\rhog}}{\p z} \right\} 
+  \left. -\frac{q}{r} \left(1+\epsilon\right)\frac{\p\ln{\rhog}}{\p z}
+  \right\}. 
 \end{align}
 The first two terms correspond to vertical shear caused by spatial
 variations in the dust-to-gas ratio. The third term
@@ -413,7 +435,7 @@ applies to the equilibria in \S\ref{eqm}. Thus,
 N_z\lesssim
 O\left(\sqrt{\epsilon_0}\OmK\right). 
 \end{align*}
-However, for thick dust layers such that $H_\epsilon \gg \Hg$, 
+However, for well-mixed dust layers such that $H_\epsilon \gg \Hg$, 
 $\mathrm{max}\left(N_z\right)$ may occur outside a finite vertical domain.  
 
 
