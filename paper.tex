@@ -86,8 +86,8 @@
 
 %\title{On the entropy of 
 %  isothermal dusty gas: application to protoplanetary disks}  
-\title{A thermodynamic view of dusty protoplanetary disks:
-  axisymmetric stability}  
+\title{A thermodynamic view of dusty protoplanetary disks I:
+axisymmetric stability}  
 \author{Min-Kai Lin\altaffilmark{1} and Andrew N. Youdin}
 \affil{Department of Astronomy and Steward Observatory, \\
 University of
@@ -99,37 +99,39 @@ University of
   Small solids embedded in gaseous protoplanetary disks are subject
   to strong dust-gas friction. Consequently, tightly-coupled dust
   particles almost follows the gas flow. 
-  This property is analogous to 
-  entropy  conservation
-  following an adiabatic fluid.  We show that an isothermal dusty gas indeed behaves like an  
+  This is analogous to entropy conservation
+  following an adiabatic gas.  
+  Motivated by this similarity, we develop a thermodynamical
+  framework to study dusty gas dynamics in protoplanetary disks. We  
+ show that an isothermal dusty gas behaves like an  
   adiabatic pure gas; and that finite dust-gas coupling may be
   regarded as an effective 
   heating/cooling. We exploit this equivalence 
-  to generalize previous, well-known gaseous instabilities
-  to dusty accretion disks.
-%We show that strictly isothermal, non-self-gravitating, axisymmetric
-%disks perfectly coupled to dust are generally stable, however thin the
-%dust layer is. 
-We show that in the limit of perfect coupling, dust settling in
-itself cannot lead to axisymmetric instabilities, however thin the dust layer becomes.     
-However, sufficiently sharp radial gradients in the dust-to-gas ratio
-can destabilize the disk.  
-We also extend 
-the vertical shear instability (VSI) to locally isothermal, dusty 
-disks. We find that  dust-loading reduces VSI growth rates, and
-preferentially stabilize modes with small radial 
-wavelengths, as well as `surface modes' concentrated near the
-disk boundaries. 
-These results can be understood in terms of 
-buoyancy forces in an isothermal dusty disk. 
+  to show that 
+\begin{inparaenum}[1)] 
+\item 
+ the settling of perfectly coupled dust cannot cause axisymmetric 
+ instabilties, however thin the dust layer becomes; 
+\item 
+  the streaming instability neccessarily involves a pressure response
+  that lags dust density; 
+\item dust-loading generally stabilizes the vertical shear
+  instability, and can be understood as a result of dust-induced
+  buoyancy forces. 
+\end{inparaenum}  
+%growth rates, and 
+%preferentially stabilize modes with small radial 
+%wavelengths, as well as `surface modes' concentrated near the
+%disk boundaries. 
+%These results can be understood in terms of 
+%buoyancy forces in an isothermal dusty disk. 
 %We show that vertical shear arising from
 %dust settling does not lead to axisymmetric instability. 
-We also duscuss thermodynamical interpretations of 
-dust-gas drag instabilities, and show that the streaming
-instability in protoplanetary disks occur because drag causes 
-a phase lag between the gas pressure  
-and dust density, much like pulsational instabilities 
-in stars.  
+We also discuss future applications of the dusty/adiabatic gas
+equivalence in finding dusty analogs of other hydrodynamic
+instabilities, as well as a way to simulate dusty protoplanetary disks
+using purely hydrodynamic codes with minimal effort. 
+
 \end{abstract}
 
 \section{Introduction}
@@ -243,7 +245,13 @@ streaming instability \citep[SI, ][]{youdin05a,youdin07b,jacquet11}.
 We also study the effect of dust-loading on the vertical shear
 instability \citep[VSI,][]{nelson13,lin15,barker15}. 
 
-This paper is organized as follows. In \S\ref{setup} we list the
+This paper is organized as follows. We first explain in  
+\S\ref{grow_osc} how a pressure-density phase lag in fluids can lead to
+instability. This motives us to find an analogy between dusty gas and
+pure hydrodynamics, as it would allow us to understand dust dynamics
+within the framework of standard hydrodynamics. 
+
+We begin our formal discussion in in \S\ref{setup} by listing the 
 one-fluid equations describing tightly-coupled dusty gas. We show that for a
 fixed equation of state, these are in 
 fact the usual hydrodynamic equations in disguise. 
@@ -256,6 +264,85 @@ them for the SI in \S\ref{si}, and in
  \S\ref{results} study dusty VSI. We 
 discuss future applications of the dusty/adiabatic gas equivalence in 
 \S\ref{discussion} before summarizing in \S\ref{summary}. 
+
+
+
+
+\section{Growing oscillations by doing work}\label{grow_osc}
+A general result in fluid dynamics is that work is done whenever the
+pressure and density evolution of the fluid are not in phase. If 
+the average work done is positive, then oscillation amplitudes 
+grow: the work done allows the system to `overshoot' beyond
+the amplitude of preceeding oscillations. 
+
+%To see this, we first compute the work done
+%assuming periodic oscillations. We then show that if the work done is positive, then the
+%oscillation amplitude in fact grows: the work done leads the
+%system to `overshoot' past the amplitude of the preceeding oscillation
+%cycle. 
+%its equilibrium. {\bf should be overshoot the max displacement}
+
+Fig. \ref{pdv_cartoon} gives a graphical demonstration that 
+if pressure lags behind density, then positive is work done 
+because it leads to a clockwise path in the 
+`P-V' plane. The annotations consider the particular case where the
+phase lag arises because the fluid has two components (gas and dust,
+see below) but the following description is general. 
+
+From $A$ to $B$, a fluid parcel is expanding to return to 
+equilbrium, but pressure (i.e. restoring) forces is still 
+increasing. This over-compensation causes the parcel to expand
+beyond the maximum volume of the previous cycle. 
+Similarly, from $C$ to $D$ the parcel is already contracting towards
+equilibrium, but pressure 
+forces are still dropping. This allows the  
+parcel's contraction to over-shoot the maximum density attained in the
+previous cycle. 
+The overall positive work done leads to growth in the oscillation amplitude. 
+This effect is similar to being pushed downwards on a swing on the way
+down. 
+
+
+\begin{figure}
+  \includegraphics[width=\linewidth]{figures/drag}\\
+\includegraphics[width=\linewidth]{figures/pdv}
+  \caption{Thermodynamic interpretation of growing oscillations in a
+    fluid. Top: pressure and density evolution in time. 
+    Bottom: oscillation cycle in the P-V plane. In the case shown, 
+    dust-drag causes 
+    pressure to lag behind density, which results in a clockwise path in
+    the P-V plane, implying positive work done by the fluid and
+    hence would lead to growing oscillation amplitudes.  
+    \label{pdv_cartoon}
+  }
+\end{figure}
+
+There are several situations where the pressure and density of a fluid
+are not in phase. The obvious case is if the fluid is subject to
+external heating/cooling. For example, in strongly irradiated
+protoplanetary disks the
+disk temperature is time-independent but varies with radius
+\citep{chiang97}. Then the pressure of a fluid parcel varies with 
+position as well. There is no reason to expect $P$ and $\rho$ to
+be in phase. In fact, we will show that this is responsible for 
+the vertical shear instability \citep{lin15}.  
+
+%temperature of a fluid parcel changes with position
+
+Another possibility, as annotated in Fig. \ref{pdv_cartoon}, is a dusty gas. The
+relevant density here is the total density $\rho = \rhod + \rhog$, 
+but the fluid pressure $P$ is due to gas only. If dust were 
+perfectly-coupled to the gas, then $P$ and $\rho$ would be in phase, 
+and there is no work done. However, for finite dust-gas drag, $\rhod$ and
+$\rhog$ are not neccessarily in phase. If this causes $P$ to lag
+$\rho$, then the positive work done would lead to growing
+oscillations. Indeed, we show that this is true for the streaming
+instability. 
+
+In order to apply this thermodynamic interpretation of dust-gas drag
+instabilities, we need to develop an analogy between dusty-gas
+and pure gas dynamics. We show this is possible in the limit of
+strong drag and a fixed gas equation of state. 
 
 \input{model}
 \input{linear}
