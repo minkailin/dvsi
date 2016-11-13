@@ -204,6 +204,10 @@ heat source.
 
 %We comment that 
 
+An effective energy equation can also be derived for other 
+fixed gas equations of state, such as polytropic gas. We discuss this
+in \S\ref{gen_poly}.
+
 \subsection{Entropy of an isothermal dusty gas }
 
 The specific entropy of an ideal gas is 
@@ -437,6 +441,15 @@ O\left(\sqrt{\epsilon_0}\OmK\right).
 However, for well-mixed dust layers such that $H_\epsilon \gg \Hg$, 
 $\mathrm{max}\left(N_z\right)$ may occur outside a finite vertical domain.  
 
+The physical origin for this vertical buoyancy, which exists even in vertically isothermal
+disk, lies in the fact that coupling gas to dust particles increases
+the gas' inertia, but pressure (i.e. restoring) forces are
+unchanged. The increased weight of the fluid resists vertical
+oscillations and hence there is an associated buoyancy force. However,
+if $\tstop\neq0$ so the gas-dust coupling is imperfect, then gas is no
+longer `weighed down' by the dust, and can slip past it. This
+diminishes the dust-induced buoyancy.   
+
 
  % N_z^2 
 %\end{align}
@@ -561,12 +574,12 @@ $\p_r\epsilon$. It is possible to
 violate this inequality for sufficiently large (in magnitude) radial
 gradients  in the dust-to-gas ratio, 
 \begin{align}
-  \frac{\p\ln{\epsilon}}{\p\ln{r}} > S_+ \quad \mathrm{or} \quad 
-  \frac{\p\ln{\epsilon}}{\p\ln{r}} < S_-,
+  \frac{\p\ln{\epsilon}}{\p\ln{r}} > \chi_+ \quad \mathrm{or} \quad 
+  \frac{\p\ln{\epsilon}}{\p\ln{r}} < \chi_-,
 \end{align}
 \emph{for instability}, where
 \begin{align}\label{spm}
-S_\pm = \frac{1}{2}\frac{H_\mathrm{g}^2}{\Htilde^2} 
+\chi_\pm = \frac{1}{2}\frac{H_\mathrm{g}^2}{\Htilde^2} 
   \left[
   \frac{\p\ln{\rhog}}{\p\ln{r}} \pm 
   \sqrt{
