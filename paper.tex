@@ -88,12 +88,21 @@
 %  isothermal dusty gas: application to protoplanetary disks}  
 \title{A thermodynamic view of dusty protoplanetary disks I:
 axisymmetric stability}  
-\author{Min-Kai Lin\altaffilmark{1} and Andrew N. Youdin}
-\affil{Department of Astronomy and Steward Observatory, \\
+\author{Min-Kai Lin\altaffilmark{1,2,3}}
+\author{Andrew N. Youdin\altaffilmark{1}}
+%\affil{Department of Astronomy and Steward Observatory, 
+%University of
+ % Arizona, Tucson, AZ 85721, USA\\
+%Institute of Astronomy and Astrophysics, Academia Sinica, 
+%Taipei 10617, Taiwan}
+\altaffiltext{1}{Department of Astronomy and Steward Observatory, 
 University of
-  Arizona, 933 North Cherry Avenue, Tucson, AZ 85721, USA}
-\altaffiltext{1}{Steward Theory Fellow}
-\email{minkailin@email.arizona.edu}
+Arizona, Tucson, AZ 85721, USA}
+\altaffiltext{2}{Steward Theory Fellow}
+\altaffiltext{3}{Institute of Astronomy and Astrophysics, Academia Sinica, 
+Taipei 10617, Taiwan
+}
+\email{mklin@asiaa.sinica.edu.tw}
 
 \begin{abstract}
   Small solids embedded in gaseous protoplanetary disks are subject
@@ -116,7 +125,7 @@ University of
   the streaming instability neccessarily involves a pressure response
   that lags dust density; 
 \item dust-loading generally stabilizes the vertical shear
-  instability, and can be understood as a result of dust-induced
+  instability, which can be understood as a effect of dust-induced
   buoyancy forces. 
 \end{inparaenum}  
 %growth rates, and 
@@ -129,8 +138,9 @@ University of
 %dust settling does not lead to axisymmetric instability. 
 We also discuss future applications of the dusty/adiabatic gas
 equivalence in finding dusty analogs of other hydrodynamic
-instabilities, as well as a way to simulate dusty protoplanetary disks
-using purely hydrodynamic codes with minimal effort. 
+phenomena (e.g. Rossby wave instability, convective overstability, and 
+zombie vortices), and to simulate dusty protoplanetary disks
+using purely hydrodynamic codes. 
 
 \end{abstract}
 
@@ -248,20 +258,20 @@ instability \citep[VSI,][]{nelson13,lin15,barker15}.
 This paper is organized as follows. We first explain in  
 \S\ref{grow_osc} how a pressure-density phase lag in fluids can lead to
 instability. This motives us to find an analogy between dusty gas and
-pure hydrodynamics, as it would allow us to understand dust dynamics
-within the framework of standard hydrodynamics. 
+pure hydrodynamics, as it allows us to understand dusty-gas dynamics
+within a thermodynamic framework. 
 
-We begin our formal discussion in in \S\ref{setup} by listing the 
+We begin our formal discussion in \S\ref{setup} by listing the 
 one-fluid equations describing tightly-coupled dusty gas. We show that for a
 fixed equation of state, these are in 
 fact the usual hydrodynamic equations in disguise. 
-We describe equilibrium solutions in \S\ref{eqm} which are used in
-explicit calculations. In \S\ref{limits} we discuss
+We describe equilibrium solutions in \S\ref{eqm} that are used in
+explicit calculations. In \S\ref{limits} we discuss 
 general stability properties of dusty disks. We then move onto
-explicit stablity analyses. In  
+numerical stability analyses. In  
 \S\ref{linear_problem} we list the linearized equations, and solve 
 them for the SI in \S\ref{si}, and in 
- \S\ref{results} study dusty VSI. We 
+ \S\ref{results} to study the dusty VSI. We 
 discuss future applications of the dusty/adiabatic gas equivalence in 
 \S\ref{discussion} before summarizing in \S\ref{summary}. 
 
@@ -299,8 +309,8 @@ forces are still dropping. This allows the
 parcel's contraction to over-shoot the maximum density attained in the
 previous cycle. 
 The overall positive work done leads to growth in the oscillation amplitude. 
-This effect is similar to being pushed downwards on a swing on the way
-down. 
+This effect is similar to being pushed downwards on a swing on
+descent. 
 
 
 \begin{figure}

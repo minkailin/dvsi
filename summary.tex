@@ -41,7 +41,7 @@ The one-fluid formulation,
 Eqs. \ref{masseq}---\ref{tempeq}, can 
 produce spuriously-growing modes with frequency $|\sigma|\gtrsim
 \Omega$ (see Appendix \S\ref{spurious_epi}). This 
-results from neglecting terms of $O(|\widetilde{\bm{v}}|^2)$ when converting
+results from neglecting terms of $O(|\widetilde{\bm{v}}|^2)$ after converting
 the full two-fluid equations to the one-fluid formulation. The full
 one-fluid equations 
 %is significantly more complex than our 
@@ -196,9 +196,9 @@ The conditions required for ConO might be realized in a locally
 isothermal dusty disk. Since $\p_rP < 0$ in typical disk models, 
 if the dust-induced radial entropy gradient is negative, then
 $N_r^2  =  F_r \p_r\seff < 0$. In 
-fact, typical disk models used for the streaming
-instability have negligible background radial density gradient, then  
-$N_r^2= -\rho F_r^2/P$.  
+fact, the typical disk models used to study the streaming
+instability have zero background radial density gradient, in which
+case  $N_r^2= -\rho F_r^2/P$.  
 
 Locally isothermal disks have $\tcool=0$, so the pure gas ConO cannot
 exist. However, we have shown that dust-gas drag provides an effective
@@ -242,7 +242,7 @@ disturbance matches the local vertical buoyancy frequency
 \citep{marcus13}.  
 
 Since buoyancy is critical for the ZVI, it requires an almost
-purely adiabatic gas ($\tcool\to\infty$). This limits its
+purely adiabatic gas ($\tcool\OmK\gg 1$). This limits its
 applicability to the inner most parts of typical protoplanetary disks
 \citep{lesur16}. 
 
@@ -291,7 +291,7 @@ The total metalicity is $Z=0.01$ and the dust scale-height $H_\mathrm{d} =
 0.4H_\mathrm{g}$, giving a maximum dust-to-gas ratio
 $\mathrm{max}(\epsilon) = 0.025$. The midplane stopping time is 
 $t_\mathrm{s0}=0.02\OmK^{-1}$. The gas disk parameters are $(p,q,
-\hgas) =(-1.5, -1,0.05)$.  We set $k = \pi/H_\mathrm{d}$.      
+\hgas) =(-1.5, -1,0.05)$.  We set $k_x = \pi/H_\mathrm{d}$.      
 
 Fig. \ref{compare_eigenvals_ts0d02} shows the unstable modes found for
 this setup. We find the usual VSI modes, here with $\omega> 3\hgas\OmK,\, s<

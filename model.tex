@@ -42,19 +42,17 @@ frequency, we can use the
 \citep{jacquet11}. This equation implies that dust particles
 drift towards pressure maxima. 
 
-%In the limit of strong dust-gas drag (stopping time $\tstop\to 0$) 
-In the limit of strong dust-gas drag ($\tstop\to0$), \cite{laibe14}
-give a single fluid description of the mixture, to
-$O\left(\tstop\right)$, as:   
+In the limit of strong dust-gas drag, $\tstop\to0$, the mixture obeys 
+the first-order (in $\tstop$) single-fluid equations: 
 \begin{align} 
   &\frac{D\rho}{Dt} = -\rho\nabla\cdot\bm{v}, \label{masseq}\\ 
   &\frac{D\bm{v}}{Dt} = - \nabla\Phi - \frac{1}{\rho}\nabla  P, \label{momeq}\\ 
   &\frac{D\tepsilon}{Dt} = -\frac{1}{\rho} \nabla \cdot \left(\tepsilon 
   \tstop \nabla P \right),\label{dusteq}\\
   &\frac{D T}{D t} = - \left(\gamma-1\right)T\nabla\cdot\bm{v} +
-  \mathcal{H}_\mathrm{drag} + \mathcal{H}_\mathrm{eff}  - \Lambda, \label{tempeq} 
+  \mathcal{H}_\mathrm{drag} + \mathcal{H}_\mathrm{eff}  - \Lambda  \label{tempeq} 
 \end{align}
-where $D/Dt \equiv \p_t + \bm{v}\cdot\nabla$ is the Lagragian
+\citep{laibe14}, where $D/Dt \equiv \p_t + \bm{v}\cdot\nabla$ is the Lagragian
 derivative \emph{following the mixture} with center-of-mass velocity  
 \begin{align}
   \bm{v} \equiv \frac{\rhog\bm{v}_\mathrm{g} + 
@@ -118,24 +116,27 @@ protoplanetary disk \citep{chiang97,lin15}. Then the disk temperature
 $T = T_\mathrm{ref}$ at all times, and so we may
 adopt a locally isothermal equation of state 
 \begin{align}\label{eos}
-  P = c_s^2(r,z)\rhog = c_s^{2}(1 - \tepsilon)\rho,   
+  P = c_s^2(r,z)\rhog = c_s^{2}\left(1 - \tepsilon\right)\rho,   
 \end{align}
 where $c_s(r,z)= \sqrt{\mathcal{R}T_\mathrm{ref}/\mu}$ is a prescribed
-sound-speed profile fixed in time.  
-
-In practice we consider vertically 
+sound-speed profile fixed in time. In practice we consider vertically 
 isothermal disks with \begin{align}\label{power_temp}
   c_s^2(r) \propto r^{q},
 \end{align}
 where $q$ is the power-law index for the disk temperature. For $q=0$
-the disk is strictly isothermal. 
+the disk is strictly isothermal.  
 
-If we define the effective sound-speed $c_{s,\mathrm{eff}} = c_s\sqrt{\left(1 -
-    \tepsilon\right)}$, then the equation of state has the standard
-form $P=c_{s,\mathrm{eff}}^2\rho$. Since the dust-fraction $\tepsilon$
-typically decrease away from the midplane, we expect vertically
-isothermal dusty disks to in fact behave as if it
-had a temperture \emph{increasing} away from $z=0$.   
+Notice Eq. \ref{eos} resembles an ideal gas equation of state but with  
+effective temperature $T_\mathrm{eff} = 
+T_\mathrm{ref}\left(1-\tepsilon\right)$. %sound-speed $c_{s,\mathrm{eff}} = c_s\sqrt{\left(1 -
+This effective mixture  
+temperature is lowered with dust-loading. 
+%   \tepsilon\right)}$. 
+%then the equation of state has the standard
+%form $P=c_{s,\mathrm{eff}}^2\rho$. 
+Since $\tepsilon$ typically decrease away from the midplane, we expect
+vertically isothermal dusty disks to in fact behave as if it had a
+temperture \emph{increasing} away from $z=0$.  
 
 \subsection{Effective energy equation}
 Although we have eliminated the need of an evolutionary energy
@@ -442,8 +443,8 @@ $\mathrm{max}\left(N_z\right)$ may occur outside a finite vertical domain.
 
 \section{Limiting behaviours}\label{limits}
 
-In this section we review the basic properties of the 
-single-fluid mixture using Eqs.\ref{masseq}--\ref{momeq} with 
+In this section we discuss the basic properties of the 
+dusty-gas mixture using Eqs.\ref{masseq}--\ref{momeq} with 
 Eq. \ref{eff_energy} in place of the dust continuity equation. Our
 discussion is based on the corresponding axisymmetric linearized
 equations. A variable $f$ is
@@ -515,7 +516,7 @@ Eq. \ref{dusty_solberg1}---\ref{dusty_solberg2} are in fact the
 the Solberg-Hoiland criteria for axisymmetric stability of adiabatic
 gas if one inserts $C_p\ln{\left(1 -
     \tepsilon\right)}$ for the entropy in the standard
-expression for said criteria \citep[e.g.]{tassoul78}.   
+expression for said criteria \citep{tassoul78}.   
 
 
 \subsubsection{Order-of-magnitude estimates} 
@@ -548,7 +549,8 @@ large.  Then the
 magnitude of the second term on the left-hand-side  of either
 inequality is much less than unity. Thus radially smooth, strictly
 isothermal disks perfectly coupled with dust are stable against
-axisymmetric perturbations.  
+axisymmetric perturbations. This result holds for arbitrarily thin
+dust layers. 
 
 %Such disks are stable against
 %axisymmetric perturbations.  
@@ -653,8 +655,8 @@ J. Christensen-Dalsgaard\footnote{\url{http://astro.phys.au.dk/$\sim$jcd/oscilno
 The physical interpretation of Eq. \ref{thermal_instability} is that 
 work done by pressure forces in the dusty gas leads to growth in
 oscillation amplitudes. To demonstrate this, we calculate the average
-work done during a periodic oscillation, then show that if the work
-done is positive, then the growth rate is positive, i.e. the
+work done during a periodic oscillation, and show that if the work
+done is positive, then the 
 oscillation amplitude would actually grow. 
 
 Consider oscillations in the dusty gas with period $T_p$. 
@@ -679,7 +681,7 @@ $e^{\ii\omega t}$ and real $\omega$):
 where %the integral is taken over the volume of the
 %mixture; and 
  the Lagragian perturbation $\Delta$ of a variable $f$ is 
-$\Delta f = \delta f + \bm{\xi}\cdot\nabla f$; where $\bm{\xi}$ is the
+$\Delta f = \delta f + \bm{\xi}\cdot\nabla f$ and $\bm{\xi}$ is the
 Lagragian displacement ($    \xi_{x,z} =  \ii \dd v_{x,z}/\sigma$).  
 Eq. \ref{work_real} show that a phase difference between gas pressure and
 the total density leads to work done
@@ -705,10 +707,10 @@ s = \frac{\mathcal{W}}{\mathcal{I}^2}, \label{growth_work}
 \end{align}
 where we have set $\sigma= - \omega$ in 
 Eq. \ref{pdv}. Eq. \ref{growth_work} states that if the average work
-done is positive during a periodic oscillation, $\mathcal{W}>0$, then
+done is positive during an oscillation, $\mathcal{W}>0$, then 
 then its amplitude would actually grow ($s>0$).  %and not be periodic 
 
-Positive work done is done by a parcel if $-\omega \imag\left(\Delta  
+Positive work is done by a fluid parcel if $-\omega \imag\left(\Delta  
 P\Delta\rho^*\right)>0$. Without loss of generality, take $\omega>0$
 and consider a mass element with $\Delta\rho = 1$. Then positive work 
 requires $\imag\left(\Delta
@@ -743,7 +745,7 @@ the assumed perturbations increase in time.
 For dusty gas, the work done during oscillations 
  is attributed to finite dust-gas drag. The relative
 drift between gas and dust causes a phase difference between the two
-components. 
+components, and hence between pressure and total density. 
 
 A parcel of the isothermal dusty-gas mixture does 
 postive work if  
@@ -764,13 +766,13 @@ large particle flux \emph{out} of the parcel.
 
 This thermodynamic interpretation does not explain 
 \emph{why} drag forces causes gas pressure to lag behind the dust
-density, but merely shows 
+density, but shows 
 that this \emph{must} be the case for any growing modes associated the
 dust-gas drag. To rigorously understand how dust-drag causes this 
 lag requires an explicit solution to the linearized equations with 
 detailed treatment of the function $\mathcal{C}$. However, given the complexity of
 $\mathcal{C}$ (see Appendix \ref{lin_dust}), we might generally expect
-the dusty disks to  support a range of stable and unstable modes, with the
+ dusty disks to  support a range of stable and unstable modes, with the
 latter being associated with pressure-density lag. 
 
 Indeed, \cite{jacquet11} explains the essence of the streaming 
