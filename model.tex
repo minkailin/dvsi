@@ -403,8 +403,9 @@ radial temperature gradient, and survives in the dust-free limit.
 We can compare these sources by 
 evaluating them using the equilibrium
 solutions in \S\ref{steady_state}. We assume the disk is radially
-smooth so that $\p_r\sim 1/r$, and the dust-to-gas ratio
-$\epsilon\ll1$. This gives 
+smooth so that $\p_r\sim 1/r$. % and the dust-to-gas ratio
+% $\epsilon\ll1$. 
+This gives 
 
 \begin{align}\label{vshear_split}
   \frac{\left|r\p_z\Omega\right|_{\text{
@@ -420,7 +421,8 @@ Since $|q|=O(1)$ in PPDs, Eq. \ref{vshear_split} indicates that
 vertical shear due to variations in the dust-to-gas ratio dominates 
 over that due to the radial temperature gradient for thin dust layers
 such that $\delta^2\ll \epsilon$. Otherwise, vertical shear is
-associated with $\p_rc_s^2$.  
+associated with the radial temperature gradient. %However, axisymmtric
+%\emph{instability} always caused by $\p_rc_s^2$.  
 
 \subsection{Vertical buoyancy}\label{vbuoyancy}
 Having identified the entropy of an isothermal dusty gas, we find the
@@ -442,13 +444,13 @@ However, for well-mixed dust layers such that $H_\epsilon \gg \Hg$,
 $\mathrm{max}\left(N_z\right)$ may occur outside a finite vertical domain.  
 
 The physical origin for this vertical buoyancy, which exists even in vertically isothermal
-disk, lies in the fact that coupling gas to dust particles increases
-the gas' inertia, but pressure (i.e. restoring) forces are
+disks, is that coupling gas to dust particles increases
+the fluid's inertia, but pressure (i.e. restoring) forces are
 unchanged. The increased weight of the fluid resists vertical
 oscillations and hence there is an associated buoyancy force. However,
 if $\tstop\neq0$ so the gas-dust coupling is imperfect, then gas is no
-longer `weighed down' by the dust, and can slip past it. This
-diminishes the dust-induced buoyancy.   
+longer `weighed down' by the dust, and can slip past it. Thus finite
+drag diminishes the dust-induced buoyancy.   
 
 
  % N_z^2 
@@ -460,10 +462,10 @@ In this section we discuss the basic properties of the
 dusty-gas mixture using Eqs.\ref{masseq}--\ref{momeq} with 
 Eq. \ref{eff_energy} in place of the dust continuity equation. Our
 discussion is based on the corresponding axisymmetric linearized
-equations. A variable $f$ is
+equations. A variable $X$ is
 subject to Eulerian perturbations of the form 
 \begin{align}
- \real\left[ \delta f(r,z)\exp{\left(-\ii\sigma t\right)}\right], 
+ \real\left[ \delta X(r,z)\exp{\left(-\ii\sigma t\right)}\right], 
 \end{align}
 where $\sigma$ is the complex mode frequency. For later convenience we
 write 
@@ -728,10 +730,11 @@ P\Delta\rho^*\right)>0$. Without loss of generality, take $\omega>0$
 and consider a mass element with $\Delta\rho = 1$. Then positive work 
 requires $\imag\left(\Delta
 P\right)<0$.  This corresponds to pressure perturbations \emph{lagging}
-behind that in density (or displacements), since the phase of
-the assumed perturbations increase in time.  
-
+behind that in density (or displacements).%, since the phase of
+%the assumed perturbations increase in time.  
 %$\imag\left(\Delta\rho\right)=0$.   
+
+
 
 \subsubsection{Physical requirement of dust-gas drag instabilities}  
 
@@ -754,9 +757,12 @@ the assumed perturbations increase in time.
 
 %Applying the above argument to isothermal dusty gas, 
 
-
-For dusty gas, the work done during oscillations 
- is attributed to finite dust-gas drag. The relative
+The discussion above applies to any single fluid with a pressure and
+density. In the case of interest --- dusty gas --- the work done 
+is attributed to finite dust-gas drag. 
+%For dusty gas, the work done during oscillations 
+ %is attributed to finite dust-gas drag. 
+The relative 
 drift between gas and dust causes a phase difference between the two
 components, and hence between pressure and total density. 
 

@@ -2,11 +2,11 @@
 To compute explicit solutions to the linear problem, 
 we consider radially-localized axisymmetric disturbances of the form  
 \begin{align}
-  \delta f (r, z) = \delta f_1(r,z)\exp{(\ii k_x r)},
+  \delta X (r, z) = \delta X_1(r,z)\exp{(\ii k_x r)},
 \end{align} 
 %and similarly for $\dd P$ and $\dd\bm{v}$. 
 where $k_x$ is a real wavenumber such that $|k_xr|\gg 1$, and the 
-amplitude $\dd f_1(r,z)$ is 
+amplitude $\dd X_1(r,z)$ is 
 a slowly-varying function of $r$. Then 
 $\p_r\to i k_x$ when acting on the above primitive perturbations, and we may
 neglect curvature terms. We take  
@@ -185,6 +185,25 @@ linD, \cite{bai10b} &  $10^{-3}$   &  2.0 & 2000 & $0.3225 +
 \end{deluxetable*}
 
 
+% \subsection{Eulerian interpretation}
+
+% We can also consider SI in the Eulerian sense \citep[as
+% did][]{jacquet11}. Eq. \ref{thermal_instability} imply SI requires
+% \begin{align*}
+%   \frac{\imag\left[\delta\mathcal{C}\nabla\cdot\dd\bm{v}^*\right]}{\real(\sigma)}<0. 
+% \end{align*}
+% The linearized dust diffusion or `cooling' term $\delta\mathcal{C}$
+% for this problem is given by Eq. \ref{lin_drag_si}. Thus the
+% requirement is 
+% \begin{align*}
+% \tepsilon |\bm{k}|^2 
+%   \frac{\imag\left(\ii \sigma^* QW^*\right)}{\real(\sigma)}
+% -k_x F_r\left( 1-2\tepsilon\right) 
+%  | W |^2\frac{\imag\left(\sigma^*\right)}{\real(\sigma)} < 0, 
+% \end{align*}
+% where we have used Eq. \ref{streaming_mass}. 
+% For slow growth and/or large $\left|\bm{k}\right|^2$ the second term 
+% is small compared to the first. In this case instablity is due to  
 
 
 %\subsection{Boundary conditions}

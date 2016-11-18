@@ -12,7 +12,7 @@ polytropic disk
   P = K(r,z)\rhog^{\Gamma}, 
 \end{align}
 where $K$ is a prescribed function and $\Gamma$ is the constant
-adiabatic index. Then eliminating $\tepsilon$ from the dust equation
+polytropic index. Then eliminating $\tepsilon$ from the dust equation
 \ref{dusteq} gives 
 \begin{align}\label{poly_energy}
   \frac{D P}{D t} &= - \Gamma P\nabla\cdot\bm{v}  + P \bm{v}\cdot\nabla
@@ -106,10 +106,12 @@ hydrodynamics.
 \subsection{Implications for numerical simulations}
 The dusty/adiabatic gas equivalence means that pure
 gas dynamics codes can be applied to simulate locally
-isothermal/polytropic dusty gas with minimal modification. In fact, no
-modification is needed  
-for strictly isothermal or polytropic gas perfectly-coupled to dust:  
-the standard adiabatic energy equation substitutes for the dust continuity
+isothermal/polytropic dusty gas. One need not add any new 
+equations to evolve the dust component: 
+%In fact, no
+%modification is needed  
+%for strictly isothermal or polytropic gas perfectly-coupled to dust:  
+ the standard energy equation substitutes for the dust continuity
 equation. When $c_s$ or $K$ is not constant and/or $\tstop\neq0$ one
 should add corresponding source terms in the energy equation
 (e.g. Eq. \ref{poly_energy}). 
