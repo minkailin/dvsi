@@ -72,7 +72,8 @@ pro streaming, eta=eta, kx=kx, kz=kz, dgratio=dgratio, tstop=tstop
   work1 = imaginary(lagrangian_Q)*freq(grid)*1d4 
   work2 = imaginary(lagrangian_Q2)*freq(grid)*1d4 
 
-  print, 'freq, growth, work', freq(grid), growth(grid), work1, work2
+  print, 'freq, growth, work'
+  print, freq(grid), growth(grid), work1, work2, format='(4(e22.15,x))'
 
   sign = signum(freq(grid))
   
