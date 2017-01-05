@@ -30,18 +30,19 @@ equation in place of the dust-fraction
   \dd v_r \p_r\ln{\rho} + \dd v_z\p_z\ln{\rho},\label{lin_mass}\\
   -\ii\sigma\dd v_r  &= 2\Omega\dd v_\phi 
 % +  \delta\bm{F}\cdot\hat{\bm{r}}
-- W F_r - \ii k_x Q,\label{lin_xmom}\\
+- W F_r - \ii k_x Q - \ii k_x\dd\psi,\label{lin_xmom}\\
   \ii\sigma\dd v_\phi &= \frac{\kappa^2}{2\Omega}\dd v_r + \frac{\p
     v_\phi}{\p z}\dd v_z, \label{lin_ymom}\\
   -\ii\sigma\dd v_z &= - W F_z - \left[Q^\prime + Q
-    \left(\ln{\rho}\right)^\prime\right]  %\delta\bm{F}\cdot\hat{\bm{z}} 
+    \left(\ln{\rho}\right)^\prime\right] - \dd\psi^\prime  %\delta\bm{F}\cdot\hat{\bm{z}} 
 ,\label{lin_zmom}\\
   \ii\sigma Q &= \frac{P}{\rho}\left(\ii k_x \dd v_r + \dd
                v_z^\prime\right) + \frac{1}{\rho}\left(\dd v_r\p_rP + \dd v_z \p_zP\right)\notag\\
                 &\phantom{=}-\frac{P}{\rho} \dd v_r\p_r
                \ln{c_s^2} %, \label{lin_energy} 
 %+ \dd v_z \p_z\ln{c_s^2}\right),\label{lin_energy} 
-               - \frac{\dd\mathcal{C}}{\rho},\label{lin_energy} 
+               - \frac{\dd\mathcal{C}}{\rho},\label{lin_energy}\\
+\dd\psi^{\prime\prime}  &= 4\pi G \rho W + k_x^2\dd\psi, \label{lin_sg}
 \end{align}  
 where $^\prime \equiv \p_z$ and recall $\bm{F} \equiv -\nabla P/\rho$. 
 The linearized dust-duffusion function 
@@ -60,16 +61,59 @@ Note that we have assumed a temperature profile that only depends on $r$.
 %small grains in the Epstein regime. Note that for the axisymmetric
 %problem, $\dd\bm{F}$ is purely meridional. 
 
-Eq. \ref{lin_mass}---\ref{lin_energy} is a set of ordinary
+Eq. \ref{lin_mass}---\ref{lin_sg} is a set of ordinary
 differntial equations in $z$. All coefficients and amplitudes are
 evaluated at a fiducial radius $r=r_0$, but their full $z$-dependence
-is retained. We now discuss solutions to these equations in an unstratified disk 
-in \S\ref{si} and a stratified disk in \S\ref{results}.  
+is retained. We now discuss solutions to these equations for a
+razor-thin, self-gravitating disk in \S\ref{sgi}; and for 3D
+non-self-gravitating, unstratified and stratified disks 
+in \S\ref{si} and \S\ref{results}, respectively.   
  
  % Numerical solutions are generally required for the 
 %vertically-stratified problem. 
 
+
+\section{Secular gravitational instability}\label{sgi}
+We first consider a razor-thin disk so that $\rho =
+\Sigma\delta(z)$. Here $\delta$ is the delta function and $\Sigma$ is
+the total surface density. Note that $\epsilon$ and 
+$\tepsilon$ now refers to the global dust-to-gas ratio and dust 
+fraction, respectively. We neglect the vertical dimension   
+in Eq. \ref{lin_mass}---\ref{lin_energy}. The background disk is
+uniform. The linearized dust-gas drag term is then
+$-\delta\mathcal{C}/\rho = \tstop\tepsilon c_s^2k_x^2 Q$. The
+thin-disk solution to Eq. \ref{lin_sg} is $\dd\psi = -2\pi G
+\Sigma W/\left|k_x\right|$    
+
+These simplifications yield the dispersion relation
+\begin{align*}
+  \left(\ii\sigma - \tstop\tepsilon c_s^2k_x^2\right)\left( 2 \pi G
+    \Sigma \left|k_x\right|  - \kappa^2 + \sigma^2 \right) = \ii
+  \sigma c_s^2 k_x^2\left(1 - \tepsilon\right). 
+\end{align*}
+Searching for slowly and purely growing modes, $\sigma = \ii s$ with 
+$|s|\ll \kappa$, we find 
+\begin{align}  
+s = \frac{\tstop\tepsilon c_s^2 k_x^2 \left( 2 \pi \Sigma G
+    \left|k_x\right| - \kappa^2\right)}{\kappa^2 -2 \pi \Sigma G
+    \left|k_x\right| + c_s^2k_x^2\left(1-\tepsilon\right) }. \label{sgi_disp}
+\end{align}
+This is just the secular gravitational instability in the absence of
+turbulent dust diffusion but strong drag
+\citep[][ their Eq. 13 becomes Eq. \ref{sgi_disp} in this limit with
+a change of variables]{takahashi14}. This is gravitational instability
+mediated by dust-gas drag. A similar effect occurs in viscous
+self-gravitating gas disks \citep{gammie96,lin16}. In fact, if we
+identify $\nu \equiv \tstop c_s^2$ as a kinematic viscosity, then
+Eq. \ref{sgi_disp} is effectively 
+\citeauthor{gammie96}'s Eq. 18. 
+
+This exercise shows that the one-fluid framework, futher simplified by
+the terminal velocity approximation, is sufficient to capture the SGI
+in the strong drag limit. 
+
 \section{Streaming instability}\label{si}
+We now consider 3D but non-self-gravitating disks.  
 In the special case of an unstratified disk (neglecting the vertical
 component of the stellar gravity), we may also Fourier analyze in $z$
 to obtain an algebraic dispersion relation of the form  
