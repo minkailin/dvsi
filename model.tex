@@ -652,7 +652,7 @@ $L_\epsilon\lesssim O(10\Hg)$, which is more realistic.
 \subsection{Thermodynamics of dust-drag instabilities}\label{dust_work}
 Now consider constant $c_s$ but $\tstop\neq0$. 
 Eq. \ref{int_rel} indicates that $\sigma^2$ is generally complex, so
-we may have growing oscillations (overstability). %Writing $\sigma =
+we may have growing oscillations. %Writing $\sigma =
 %-\omega + \ii s$ where $\omega$ and $s$ are the real frequency and
 %growth rates, respectively, 
 The imaginary part of Eq. \ref{int_rel}
@@ -660,9 +660,9 @@ gives
 \begin{align}
 %  s = \frac{\imag\int \left(\nabla\cdot\dd\bm{v}^*\right)\dd\mathcal{C}dV}{2\omega\int\rho\left(|\dd
 %    v_r|^2 + |\dd v_z|^2\right)dV}, \label{thermal_instability}
-  s = \frac{\imag\int \left(\nabla\cdot\dd\bm{v}^*\right)\dd\mathcal{C}dV}{2\omega\mathcal{I}^2}. \label{thermal_instability}
+  s = \frac{\imag\int \left(\nabla\cdot\dd\bm{v}^*\right)\dd\mathcal{C}dV}{2\omega\mathcal{I}^2}, \label{thermal_instability}
 \end{align} 
-This represents instability due to dust-gas friction. 
+assuming $\omega\neq0$. This represents overstability due to dust-gas friction. 
 Since drag ($\delta \mathcal{C}$) appears as a source term in our
 effective energy equation, the quantity 
 $\imag\left[\left(\nabla\cdot\dd\bm{v}^*\right)\dd\mathcal{C}\right]$
@@ -671,7 +671,7 @@ heating/cooling.
 
 It is well-known that such correlations can lead to pulsational
 instabilities in stars \citep{cox67}. We thus interpret  
-dust-drag instabilities in a similar way, 
+dust-drag overstabilities in a similar way, 
 adapting from the treatment of stellar 
 pulsations by \cite{cox67} and lecture notes by \cite{samadi15} and 
 J. Christensen-Dalsgaard\footnote{\url{http://astro.phys.au.dk/$\sim$jcd/oscilnotes/print-chap-full.pdf}}.      
@@ -751,7 +751,7 @@ behind that in density (or displacements).%, since the phase of
 
 
 
-\subsubsection{Physical requirement of dust-gas drag instabilities}  
+\subsubsection{Physical requirement of dust-gas drag overstabilities}  
 
 %We now use physical arguments to show that $\mathcal{W}>0$ if pressure
 %perturbations (from the gas) lags behind the total density of the gas
@@ -835,8 +835,9 @@ gives
 %  \left(\nabla\cdot\dd\bm{v}^*\right)\left(\dd\bm{v}\cdot\nabla\ln{c_s^2}\right)dV}{2\omega\int\rho\left(|\dd 
 %    v_r|^2 + |\dd v_z|^2\right)dV}. \label{vsi_check} 
   s = \frac{\imag\int P
-    \left(\nabla\cdot\dd\bm{v}^*\right)\left(\dd\bm{v}\cdot\nabla\ln{c_s^2}\right)dV}{2\omega\mathcal{I}^2}. \label{vsi_check} 
+    \left(\nabla\cdot\dd\bm{v}^*\right)\left(\dd\bm{v}\cdot\nabla\ln{c_s^2}\right)dV}{2\omega\mathcal{I}^2}, \label{vsi_check} 
 \end{align} 
+again assuming $\omega\neq0$. 
 This is VSI caused by vertical shear arising from a radial
 temperature gradient \citep{nelson13,barker15,lin15}. We present 
 numerical solutions of the VSI with perfectly-coupled dust in \S\ref{results}. 
