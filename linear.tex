@@ -44,8 +44,9 @@ equation in place of the dust-fraction
                - \frac{\dd\mathcal{C}}{\rho},\label{lin_energy}\\
 \dd\psi^{\prime\prime}  &= 4\pi G \rho W + k_x^2\dd\psi, \label{lin_sg}
 \end{align}  
-where $^\prime \equiv \p_z$ and recall $\bm{F} \equiv -\nabla P/\rho$. 
-The linearized dust-duffusion function 
+where $^\prime \equiv \p_z$ and recall $\bm{F} \equiv -\nabla
+P/\rho$. Self-gravity has been restored temporarily for the next
+section (only). The linearized dust-duffusion function 
 $\dd\mathcal{C}$ is given in  Appendix \ref{lin_dust}. 
 % and $\dd\bm{F}$ is the linearized pressure
 %force, given in Appendix \ref{lin_press}. 
@@ -64,25 +65,33 @@ Note that we have assumed a temperature profile that only depends on $r$.
 Eq. \ref{lin_mass}---\ref{lin_sg} is a set of ordinary
 differntial equations in $z$. All coefficients and amplitudes are
 evaluated at a fiducial radius $r=r_0$, but their full $z$-dependence
-is retained. We now discuss solutions to these equations for a
-razor-thin, self-gravitating disk in \S\ref{sgi}; and for 3D
-non-self-gravitating, unstratified and stratified disks 
-in \S\ref{si} and \S\ref{results}, respectively.   
+is retained. We next discuss solutions to these equations.  We first
+show that the above equations yield the secular
+gravitational instability and streaming instability in the strong
+drag regime in \S\ref{sgi} and \S\ref{si}, respectively. We then
+consider 3D, stratified disks in \S\ref{results} to study the dusty
+vertical shear instability.
+
+%for a
+%razor-thin, self-gravitating disk in \S\ref{sgi}; and for 3D
+%non-self-gravitating, unstratified and stratified disks 
+%in \S\ref{si} and \S\ref{results}, respectively.   
  
  % Numerical solutions are generally required for the 
 %vertically-stratified problem. 
 
+%\section{Connection to previous results}
 
-\section{Secular gravitational instability}\label{sgi}
-We first consider a razor-thin disk so that $\rho =
-\Sigma\delta(z)$. Here $\delta$ is the delta function and $\Sigma$ is
-the total surface density. Note that $\epsilon$ and 
-$\tepsilon$ now refers to the global dust-to-gas ratio and dust 
-fraction, respectively. We neglect the vertical dimension   
-in Eq. \ref{lin_mass}---\ref{lin_energy}. The background disk is
-uniform. The linearized dust-gas drag term is then
-$-\delta\mathcal{C}/\rho = \tstop\tepsilon c_s^2k_x^2 Q$. The
-thin-disk solution to Eq. \ref{lin_sg} is $\dd\psi = -2\pi G
+\subsection{Secular gravitational instability}\label{sgi}
+We first consider a razor-thin, self-gravitating disk so that $\rho =
+\Sigma\delta(z)$. Here $\delta$ is the Dirac delta function and $\Sigma$ is
+the total surface density. Now $\epsilon$ and 
+$\tepsilon$ refers to the global dust-to-gas ratio and dust 
+fraction, respectively. The background disk is
+uniform and we neglect the vertical dimension   
+in Eq. \ref{lin_mass}---\ref{lin_energy}. The linearized dust-gas drag
+term is then $-\delta\mathcal{C}/\rho = \tstop\tepsilon c_s^2k_x^2
+Q$. The thin-disk solution to Eq. \ref{lin_sg} is $\dd\psi = -2\pi G
 \Sigma W/\left|k_x\right|$    
 
 These simplifications yield the dispersion relation
@@ -98,21 +107,20 @@ s = \frac{\tstop\tepsilon c_s^2 k_x^2 \left( 2 \pi \Sigma G
     \left|k_x\right| - \kappa^2\right)}{\kappa^2 -2 \pi \Sigma G
     \left|k_x\right| + c_s^2k_x^2\left(1-\tepsilon\right) }. \label{sgi_disp}
 \end{align}
-This is just the secular gravitational instability in the absence of
-turbulent dust diffusion but strong drag
-\citep[][ their Eq. 13 becomes Eq. \ref{sgi_disp} in this limit with
-a change of variables]{takahashi14}. This is gravitational instability
-mediated by dust-gas drag. A similar effect occurs in viscous
+This is secular gravitational instability mediated by strong
+dust-gas drag with negligible turbulent dust diffusion 
+\citep[][ their Eq. 13 becomes our Eq. \ref{sgi_disp} in this limit
+after 
+a change of variables]{takahashi14}. A similar effect occurs in viscous
 self-gravitating gas disks \citep{gammie96,lin16}. In fact, if we
-identify $\nu \equiv \tstop c_s^2$ as a kinematic viscosity, then
-Eq. \ref{sgi_disp} is effectively 
-\citeauthor{gammie96}'s Eq. 18. 
+identify $\nu \equiv \tstop \tepsilon c_s^2$ as a kinematic viscosity,
+then Eq. \ref{sgi_disp} is identical to \citeauthor{gammie96}'s Eq. 18. 
 
 This exercise shows that the one-fluid framework, futher simplified by
-the terminal velocity approximation, is sufficient to capture the SGI
+the terminal velocity approximation, is sufficient to capture SGI
 in the strong drag limit. 
 
-\section{Streaming instability}\label{si}
+\subsection{Streaming instability}\label{si}
 We now consider 3D but non-self-gravitating disks.  
 In the special case of an unstratified disk (neglecting the vertical
 component of the stellar gravity), we may also Fourier analyze in $z$
