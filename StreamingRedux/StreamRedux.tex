@@ -1,0 +1,240 @@
+% !TEX TS-program = pdflatexmk
+
+\documentclass[12pt, preprint,numberedappendix]{emulateapj}
+%\documentclass[12pt, preprint]{aastex}
+
+\newcommand\submitms{n}		% set to y to follow AAS ``ms'' names, etc.
+\newcommand\bibinc{n}		% set to y if bib pasted in .tex, set to n to use bibtex
+
+
+\usepackage{pdfsync}
+\usepackage{subeqnarray}
+\usepackage{natbib}
+
+
+\bibliographystyle{apj}
+
+\newcommand{\ie}{i.e.\ }
+\newcommand{\eg}{e.g.\ }
+\newcommand{\ep}{\epsilon}
+
+%% MATHY SYMBOLS
+\newcommand{\p}{\partial}
+\newcommand{\nab}{\vc{\nabla}}
+\newcommand{\xv}{\vc{x}}
+\newcommand{\kv}{\vc{k}}
+\newcommand{\brak}[1]{\langle #1\rangle} %put in brackets
+\newcommand{\vcs}[1]{\mbox{\boldmath{$\scriptstyle{#1}$}}}
+\newcommand{\vc}[1]{\mbox{\boldmath{$#1$}}}
+\DeclareMathSymbol{\varOmega}{\mathord}{letters}{"0A}
+\DeclareMathSymbol{\varSigma}{\mathord}{letters}{"06}
+\DeclareMathSymbol{\varPsi}{\mathord}{letters}{"09}
+
+%% LABEL HELPERS %%
+\newcommand{\Eq}[1]{Equation\,(\ref{#1})}
+\newcommand{\Eqs}[2]{Equations (\ref{#1}) and~(\ref{#2})}
+\newcommand{\Eqss}[2]{Equations (\ref{#1})--(\ref{#2})}
+\newcommand{\App}[1]{Appendix~\ref{#1}}
+\newcommand{\Sec}[1]{Sect.~\ref{#1}}
+\newcommand{\Chap}[1]{Chapter~\ref{#1}}
+\newcommand{\Fig}[1]{Fig.~\ref{#1}}
+\newcommand{\Figs}[2]{Figs.~\ref{#1} and \ref{#2}}
+\newcommand{\Figss}[2]{Figs.~\ref{#1}--\ref{#2}} 
+\newcommand{\Tab}[1]{Table \ref{#1}}
+
+%% UNITS %%
+\newcommand{\gcc}{\;\mathrm{g\; cm^{-3}}}
+\newcommand{\gsc}{\;\mathrm{g\; cm^{-2}}}
+\newcommand{\cm}{\; {\rm cm}}
+\newcommand{\mm}{\; {\rm mm}}
+%\newcommand{\ps}{\; {\rm s^{-1}}}
+\newcommand{\km}{\; {\rm km}}
+\newcommand{\au}{\; \varpi_{\rm AU}}
+\newcommand{\AU}{\; {\rm AU}}
+\def\K{\; {\rm K}}
+
+%% PLANET FORMATION %%
+\def \RH {R_\mathrm{H}}
+\def \RB {R_\mathrm{B}}
+\def \vH {v_\mathrm{H}}
+\def \ve {v_\mathrm{esc}}
+\def \Mi {M_\mathrm{iso}}
+
+%% PLANETESIMAL / PARTICLE-GAS %%
+\newcommand{\ts}{t_{\rm stop}}
+\newcommand{\taus}{\tau_{\rm s}} 
+\newcommand{\vsett}{v_{\rm sett}}
+\newcommand{\vdr}{v_{\rm drift}}
+\newcommand{\diff}{\nU_s}
+\newcommand{\Sc}{\rm Sc}
+\newcommand{\gs}{_{\rm g}}
+\newcommand{\ps}{_{\rm p}}
+
+%% COMPACT LIST%%
+\newenvironment{packed_item}{
+\begin{itemize}
+  \setlength{\itemsep}{1pt}
+  \setlength{\parskip}{0pt}
+  \setlength{\parsep}{0pt}
+}{\end{itemize}}
+
+\begin{document}
+
+\slugcomment{Draft Modified \today}
+
+
+\shorttitle{Idea}
+\shortauthors{Youdin }
+
+\title{Recap of Linear Streaming Instability}
+\author{Andrew N.\ Youdin}
+\affil{Steward Observatory, University of Arizona}
+
+%\begin{abstract}
+%\end{abstract}
+
+\section{Full, Compressible Two Fluid Treatment}
+\subsection{Basic Equations}
+
+Shearing box equations for particle continuity and momentum, vertically unstratified.
+\begin{eqnarray}
+  \frac{\p \rho_{\rm p}}{\p t} + \vc{W} \cdot \nab \rho_{\rm p}
+     - \frac{3}{2} \varOmega x \frac{\p \rho_{\rm p}}{\p y}
+     &=&  - \rho_{\rm p}\nab \cdot \vc{W} \, ,
+  \label{eq:dustcontinuity}\\
+  \frac{\p \vc{W}}{\p t} + (\vc{W}\cdot\nab)\vc{W} 
+      - \frac{3}{2} \varOmega x \frac{\p \vc{W}}{\p y}
+     & =& 2 \varOmega W_y \hat{\vc{x}} \nonumber \\
+     &  & \hspace{-2.cm} - \frac{1}{2} \varOmega W_x \hat{\vc{y}}
+      - \frac{1}{\ts}\left(\vc{W}-\vc{U}\right)\, .
+  \label{eq:dusteqmot}
+\end{eqnarray}
+Shearing box equations for gas continuity and momentum.
+\begin{eqnarray}
+  \frac{\p \rho_{\rm g}}{\p t} + \vc{U}\cdot \nab \rho_{\rm g}
+      - \frac{3}{2} \varOmega x \frac{\p \rho_{\rm g}}{\p y}
+     & = & - \rho_{\rm g} \nab \cdot \vc{U} \, ,
+  \label{eq:continuity}\\
+  \frac{\partial \vc{U}}{\p t} + (\vc{U}\cdot\nab)\vc{U}
+      - \frac{3}{2} \varOmega x \frac{\p \vc{U}}{\p y} 
+      &=& 2 \varOmega U_y \hat{\vc{x}} \nonumber \\
+      & & \hspace{-1.0cm}- \frac{1}{2} \varOmega U_x \hat{\vc{y}}
+      - c_{\rm s}^2 \nab \ln \rho_{\rm g} \nonumber \\
+      & & \hspace{-1.0cm} +  2 \eta  \varOmega^2 r \hat{\vc{x}}
+      - \frac{\ep}{\ts}\left(\vc{U}-\vc{W}\right)
+  \, . \label{eq:gaseqmot}
+\end{eqnarray}
+The equilibrium solutions are $U_z = W_z = 0$ and
+\begin{eqnarray}
+  {U_x \over \eta v_{\rm K}} &=& \,\,\, {2 \epsilon \taus \over D_{\ep \tau}} 
+     \equiv \tilde{U}_x
+      \, , \label{eq:NSHux} \\
+  {U_y  \over \eta v_{\rm K}} &=&  -{1+ \epsilon + \taus^2 \over D_{\ep \tau}} 
+     \equiv \tilde{U}_y
+      \, , \label{eq:NSHuy} \\
+  {W_x  \over \eta v_{\rm K}} &=& -\frac{2 \tau_{\rm s}}  {D_{\ep\tau}}  
+     \equiv \tilde{W}_x
+      \, , \label{eq:NSHWx} \\
+  {W_y  \over \eta v_{\rm K}} &=& -\frac{ 1+\ep} {D_{\ep \tau}} 
+      \equiv \tilde{W}_y
+      \, . \label{eq:NSHWy}
+\end{eqnarray}
+where the drift denominator $D_{\ep \tau} = (1+\epsilon)^2+\tau_{\rm s}^2$. 
+The equilibrium relative speeds are simply related to (shear modified) Coriolis forces as:
+\begin{subeqnarray}
+\Delta V_x &=& W_x - U_x = 2 W_y \taus  \\
+%      &\equiv& S_x \tau_s \eta v_{\rm K}  \nonumber \\
+\Delta V_y &=& W_y - U_y =  -{W_x \over 2} \taus  %\nonumber \\
+%      &\equiv& S_y \taus^2 \eta v_{\rm K}
+\end{subeqnarray}
+  %We define order unity (or smaller if $\ep \gg1$) parameters $S_x$ and $S_y$. 
+
+\subsection{Linear equations}
+We consider linear perturbations to the equations of motion.  We adopt dimensionless variables for compactness with the units of $1 \over \varOmega$ for time and $\eta r$ for length and $\rho_{g,0}$ for density.  Explicitly we expand our dynamical variables in terms of equilibrium and perturbed terms as:
+\begin{subeqnarray}
+{W_x \over \eta v_{\rm K}} &=&  \tilde{W}_x + w_x \,\,\, ,\,\,\, {W_y \over \eta v_{\rm K}} = \tilde{W}_y + w_y\\
+{U_x \over \eta v_{\rm K}} &=& \tilde{U}_x + u_x\,\,\, , \,\,\, {U_y \over \eta v_{\rm K}} = \tilde{U}_y + u_y\\
+{W_z \over \eta v_{\rm K}} &=& w_z \,\,\, , \,\,\, {U_z \over \eta v_{\rm K}} = u_z\\
+{\rho_p \over \rho_{\rm g0}} &=& \epsilon + \delta \,\,\, ,\,\,\, {\rho_p \over \rho_{\rm g0}} = 1 + \delta\\
+{1 \over \Omega \ts} &=& {1 \over \taus} \left(1 + \delta_{\rm g} \right) 
+\end{subeqnarray} 
+The final perturbation to the stopping time assumes $\ts \propto 1 / \rho_{\rm g}$.  The details of this assumption are not important for (nearly) incompressible gas, the relevant case for protoplanetary disks.
+
+Perturbed quantities are given a Fourier dependence $\propto \exp[ST + \imath(K_x X + K_z Z)]$, in terms of the normalized time $T$ and coordinates $X$ and $Z$.  The normalized complex growth rate $S = \Gamma - \imath \omega$ includes the pure growth term, $\Gamma$ and the oscillatory frequency $\omega$.	We also introduce $S_{\rm p} = S + \imath K_x W_x$ and $S_{\rm g} = S + \imath K_x U_x$ because these doppler shifted frequencies give more compact notation. The linearized equations of motion are
+\begin{subeqnarray}
+S_{\rm p} \delta &=&- \imath \epsilon(K_x w_x + K_z w_z)  \\
+(S_{\rm p} + \taus^{-1}) w_x &=& 2 w_y + \tau_s^{-1} u_x - 2 W_y \delta_{\rm g} \\
+(S_{\rm p} + \taus^{-1}) w_y &=& - w_x/2 + \taus^{-1} u_y + (W_x/2) \delta_{\rm g}\\
+(S_{\rm p} + \taus^{-1}) w_z &=& \taus^{-1} u_z \\
+S_{\rm g} \delta_{\rm g} &=& -\imath (K_x u_x + K_z u_z) \slabel{eq:gascont}\\
+(S_{\rm g} + \ep \taus^{-1}) u_x &=& 2 u_y + \ep \taus^{-1} w_x - \imath K_x C^2 \delta_{\rm g} \nonumber \\
+&&+ 2 W_y \delta \\
+(S_{\rm g} + \ep \taus^{-1}) u_y &=& - u_x/2 + \ep \taus^{-1} w_y - (W_x/2) \delta \\
+(S_{\rm g} + \ep \taus^{-1}) u_z &=& \ep \taus^{-1} w_z  - \imath K_z C^2 \delta_{\rm g}
+\end{subeqnarray} 
+where the tildes have been dropped from the mean velocities.  
+
+\section{Incompressible Analysis}
+The original and simpler case of the streaming instability is for incompressible gas, with $\nabla \cdot \vc{U} = 0$ from the outset.  In the linearized equations, we can identify $h \equiv C^2 \delta_{\rm g}$ as the (assumed order unity) enthalpy perturbation and then the incompressible limit $C\rightarrow \infty$ is equivalent to setting $\delta \rightarrow 0$ everywhere except the pressure terms.  Thus we replace \Eq{eq:gascont} with
+\begin{equation}
+K_x u_x + K_z u_z = 0
+\end{equation} 
+and modify the other equations containing $\delta_{\rm g}$ as described.  
+
+An alternate formulation expressed the radial and horizonal motions in terms of their vorticity (curl) and divergence as
+\begin{subeqnarray}
+\Gamma &=& K_z w_x - K_x w_z \\
+\Gamma_{\rm g} &=& K_z u_x - K_x u_z \\
+\xi &=& K_x w_x + K_z w_z \\
+\xi_{\rm g} &=& K_x u_x + K_z u_z = 0
+\end{subeqnarray} 
+With this formulation, note that $K^2 w_x = K_x \xi + K_z \Gamma$ with $K^2 = K_x^2 + K_z^2$.
+
+The linearized equations are now reduced from 8 to 6 equations as
+\begin{subeqnarray}
+S_{\rm p} \delta &=&- \imath \epsilon \xi  \\
+(S_{\rm p} + \taus^{-1}) \xi &=& 2 K_x w_y \\
+(S_{\rm p} + \taus^{-1}) \Gamma &=& 2 K_z w_y + \taus^{-1} \Gamma_{\rm g}\\
+(S_{\rm p} + \taus^{-1}) w_y &=& - {K_x \xi + K_z \Gamma \over 2 K^2} + \taus^{-1} u_y \\
+(S_{\rm g} + \ep \taus^{-1}) \Gamma_{\rm g} &=& 2 K_z u_y + \ep \taus^{-1} \Gamma + 2 K_z W_y \delta \\
+(S_{\rm g} + \ep \taus^{-1}) u_y &=& - {K_z \Gamma_{\rm g} \over 2K^2} + \ep \taus^{-1} w_y - {W_x \over 2} \delta 
+\end{subeqnarray} 
+
+\section{Center of Mass Formulation}
+The streaming instability equations in YG05 were presented in terms of the center of mass and relative velocities
+\begin{subeqnarray}
+\vc{V} &=& {\rho_{\rm p} \vc{W} + \rho_{\rm g} \vc{U} \over \rho}\\
+\Delta \vc{V} &=& \vc{W}
+\end{subeqnarray} 
+where $\rho = \rho_{\rm p} + \rho_{\rm g}$.  The perturbed variable for the COM problem are
+\begin{subeqnarray}
+\delta_\rho &=& {\delta \over 1+\ep}\\
+\vc{v} &=& f_{\rm p} \vc{w} + f_{\rm g} \vc{u} + f_{\rm g}^2 \delta (\tilde{W} -  \tilde{U})\\
+\Delta \vc{v} &=& \vc{w} - \vc{u}
+\end{subeqnarray} 
+where $f_{\rm g} = 1/(1+\ep)$ and $f_{\rm p} = \ep f_{\rm g}$.
+
+%\begin{figure}[tb!] %  figure placement: here, top, bottom, or page
+%\if\submitms y
+% 	\includegraphics[width=6in]{f.eps}
+% \else
+%	\hspace{-1cm}
+%   	\includegraphics[width=3.9in]{../figs/.pdf} 
+%\fi
+%   	\caption{}
+%   	\label{fig:}
+%\end{figure}
+
+\acknowledgements
+%Portions of this project were supported by the {\it NASA} {\it Astrophysics Theory Program} and  {\it Origins of Solar Systems Program}  through grant NNX10AF35G.\\
+
+\if\bibinc n
+\bibliography{refs}
+\fi
+
+\if\bibinc y
+\begin{thebibliography}
+\end{thebibliography}
+\fi
+
+\end{document}
