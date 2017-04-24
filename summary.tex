@@ -34,67 +34,6 @@ polytropic disk with $K=$constant, while one sets $c_s^2\to K$ in
 %using this definition of entropy in
 %Eqs. \ref{dusty_solberg1}---\ref{dusty_solberg2}. 
 
-\subsection{Higher order corrections}
-%{\bf notes for self. maybe exclude in final. }
-
-The one-fluid formulation, 
-Eqs. \ref{masseq}---\ref{tempeq}, can 
-produce spuriously-growing modes with frequency $|\sigma|\gtrsim
-\Omega$ (see Appendix \S\ref{spurious_epi}). This 
-results from neglecting terms of $O(|\widetilde{\bm{v}}|^2)$ after converting
-the full two-fluid equations to the one-fluid formulation. The full
-one-fluid equations 
-%is significantly more complex than our 
-%model \cite[e.g.][]{laibe14}. It 
- includes an evolutionary equation for $\widetilde{\bm{v}}$, which has no
- hydrodynamic counter-part \citep{laibe14}. However, it is
- still possible to improve upon 
- the first-order formulation whilst retaining similarilty to  
- standard hydrodynamics.  
-%without having the complexity of the full equations 
-
-The full one-fluid equations of motion includes the acceleration term 
-\begin{align}
-%\left.\frac{D\bm{v}}{Dt}\right|_\mathrm{add} = 
-%\bm{a} =  
--\frac{1}{\rho}\nabla\cdot\left(\frac{\rhod\rhog}{\rho}\widetilde{\bm{v}}\otimes\widetilde{\bm{v}}\right) 
-\equiv  \frac{1}{\rho}\nabla\cdot \bm{T} 
-\end{align}
-\citep{youdin05a}, 
-where $\bm{T}$ is an effective stress tensor. 
-In the terminal velocity
-approximation with $\widetilde{\bm{v}} = \tstop 
-\nabla P/\rhog$, we have 
-\begin{align}
-\bm{T} = - \frac{\epsilon\tstop^2}{\rho}\nabla P \otimes \nabla P.
-\end{align}
-If we define 
-\begin{align}
-  \bm{g} \equiv \sqrt{4\pi G \epsilon \rho} \frac{\nabla P}{\rho}
-  \tstop,\label{effective_g} 
-\end{align}
-then
-\begin{align}
-\bm{T} = - \frac{1}{4\pi G} \bm{g}\otimes\bm{g}, \label{effective_gstress}
-\end{align}
-%{\bf tensor virial theorems?}
-which is just the anisotropic part of the  
-gravitational stress tensor in self-gravitating hydrodynamics 
-\citep{lynden-bell72}.
-
- However, unlike self-gravity, where $\bm{g}$ is
-determined through the Poisson equation; here $\bm{g}$ is directly
-related to $P$ (Eq. \ref{effective_g}), which itself obeys an 
-evolutionary equation (Eq. \ref{eff_energy}). 
-Nevertheless, Eq. \ref{effective_g}---\ref{effective_gstress}
-show that correlations in  pressure gradients lead to 
-momentum transport of the mixture as a whole. This is similar to Reynolds stresses in
-a turbulent disk \citep{balbus99}. In particular, 
-outwards angular momentum transport requires $\p_rP\p_\phi P > 0$.    
-
-In a following paper we will include $\bm{T}$ in the one-fluid
-equations and futher explore the analogy between dusty-gas and viscous
-hydrodynamics. 
 
 
 
@@ -103,21 +42,7 @@ hydrodynamics.
 
 %stratified case require more boundary conditions 
 
-\subsection{Implications for numerical simulations}
-The dusty/adiabatic gas equivalence means that pure
-gas dynamics codes can be applied to simulate locally
-isothermal/polytropic dusty gas. One need not add any new 
-equations to evolve the dust component: 
-%In fact, no
-%modification is needed  
-%for strictly isothermal or polytropic gas perfectly-coupled to dust:  
- the standard energy equation substitutes for the dust continuity
-equation. When $c_s$ or $K$ is not constant and/or $\tstop\neq0$ one
-should add corresponding source terms in the energy equation
-(e.g. Eq. \ref{poly_energy}). 
-The source term associated with dust-gas drag, $\mathcal{C}$, is 
-analogous to radiative diffusion \citep{price15}, which is also
-featured in many hydrodynamics codes.      
+
 
 \subsection{Dusty analogs of other gaseous instabilities}  
 
@@ -130,11 +55,11 @@ instability (GI). This is because dust particles contribute to the
 total disk mass but not thermal pressure, which effectively lowers the
 disk temperature \citep[][]{thompson88,shi13}. For typical dust-loading 
 $\epsilon, Z\ll1$, this effect is unimportant. However, if $\epsilon$ is
-large (e.g. due to dust settling) then the effective temperature may 
+large (e.g. due to dust settling) then the reduced temperature $\tilde{T}$ may 
 be lowered to enable instability. 
 
-As noted in \S\ref{loc_iso_eos}, dust settling causes the effective
-temperature to \emph{increase} away from the midplane. This contrasts
+As noted in \S\ref{loc_iso_eos}, dust settling causes 
+$\tilde{T}$ to \emph{increase} away from the midplane. This contrasts
 to previous studies of GI in vertically stratified disks
  where the temperature decreases
 from the midplane \citep[e.g.][]{mamat10, kim12,lin14c}. 
@@ -267,114 +192,194 @@ the required adiabatic conditions for ZVI can be realized through
 dust-loading, and thus produce a `dusty ZVI'. 
 
 
-\subsection{New dust-drag
-  instabilities}\label{dust_as_thermo} 
-
-%{\bf vsi enabled by drag? slipping between dust and gas reduces
- % effective buoyancy}
-
-As described in \S\ref{dust_work}, 
-the physical cause of dust-drag instabilities is a phase lag between
-the pressure and density response in a dusty gas\footnote{
-In fact, we expect a phase difference between pressure and the total
-density  whenever $\tstop\neq0$; not just $\tstop\OmK\ll 1$ as 
-considered in this work. This is simply because of the finite
-relaxation time required for dust to respond to gas, and vice versa. 
-An effective energy equation in the form of Eq. \ref{eff_energy} can
-still be obtained for general $\tstop$. The
-heat flux $\bm{F}$ in the cooling function $\mathcal{C}$ is determined
-through solution to the relative velocity $\Delta \bm{v} =
-\bm{v}_\mathrm{d}-\bm{v}_\mathrm{g}$ \citep{youdin05a,laibe14}.  We
-thus expect the `pressure-density lag' interpretation of dust-drag 
-instabilities to be generally applicable.}. 
-This may be used to re-interpret the streaming instability or to
-understand other dusty instabilities. For example,
-\cite{loren15,loren16} have recently discovered a new axisymmetric 
-instability in their two-fluid numerical simulations of dusty
-protoplanetary disks. They find it leads to the formation of
-`toroidal vortices'. 
-
-%give numerical example 
-We have applied our one-fluid stability analysis to find unstable modes  
-similar to that described by \cite{loren15}. We use the same
-parameters reported by them as follows. 
-%we set $p=q=0$, which eliminates VSI and minimizes streaming
-%instabilities as there is no radial pressure gradient at the disk
-%midplane.   
-The total metalicity is $Z=0.01$ and the dust scale-height $H_\mathrm{d} =
-0.4H_\mathrm{g}$, giving a maximum dust-to-gas ratio
-$\mathrm{max}(\epsilon) = 0.025$. The midplane stopping time is 
-$t_\mathrm{s0}=0.02\OmK^{-1}$. The gas disk parameters are $(p,q,
-\hgas) =(-1.5, -1,0.05)$.  We set $k_x = \pi/H_\mathrm{d}$.      
-
-Fig. \ref{compare_eigenvals_ts0d02} shows the unstable modes found for
-this setup. We find the usual VSI modes, here with $\omega> 3\hgas\OmK,\, s<
-0.2\hgas\OmK$. However, we also find modes with $\omega<s$. One of these,
-marked by the blue asterisk, has 
-frequency 
-\begin{align*}
-\sigma = (0.3631\ii - 0.1251)\hgas\OmK. 
-\end{align*}
-This growth rate corresponds to $8.8$ orbits, comparable to the $12$
-orbits reported by \citeauthor{loren15}. We visualize this mode in
-Fig. \ref{result2d_loren}. We find this mode 
-persists when $q=0$, so it is not the VSI. 
-Using Eq. \ref{streaming_dispersion} with the above parameters,  
-we also estimate a much smaller growth 
-rate for the streaming instability of 
-$O(10^{-3}\hgas\OmK)$, We thus also rule out
-SI, as did \citeauthor{loren15}. However, the mode disappears with $\tstop=0$, so it \emph{is}
-associated with finite dust-gas drag. 
-
-\begin{figure}
-  \includegraphics[width=\linewidth]{figures/compare_eigenvals_ts0d02}
-  \caption{Unstable modes in a locally isothermal, dusty disk
-    with stopping time  
-    $\tstop=0.02\OmK^{-1}$. Modes with $\omega>3$ are due to
-    VSI. The mode marked by the blue asterisk, visualized in
-    Fig. \protect\ref{result2d_loren}
-    , is associated with finite dust-gas
-    drag. 
-  }\label{compare_eigenvals_ts0d02}
-\end{figure}
+\subsection{Implications for numerical simulations}
+The dusty/adiabatic gas equivalence means that pure
+gas dynamics codes can be applied to simulate locally
+isothermal/polytropic dusty gas. One need not add any new 
+equations to evolve the dust component: 
+%In fact, no
+%modification is needed  
+%for strictly isothermal or polytropic gas perfectly-coupled to dust:  
+ the standard energy equation substitutes for the dust continuity
+equation. When $c_s$ or $K$ is not constant and/or $\tstop\neq0$ one
+should add corresponding source terms in the energy equation
+(e.g. Eq. \ref{poly_energy}). 
+The source term associated with dust-gas drag, $\mathcal{C}$, is 
+analogous to radiative diffusion \citep{price15}, which is also
+featured in many hydrodynamics codes.      
 
 
-\begin{figure}
-  \includegraphics[width=\linewidth]{figures/result2d_loren.ps}
-  \caption{Visualization of the mode marked by the blue asterisk in
-    Fig. \protect\ref{compare_eigenvals_ts0d02}. 
-    This is a possible eigenmode of the dusty instability discovered by  
-    \cite{loren15} in their numerical simulations. The instability growth timescale and 
-    radial spacing of the `toroidal vortices' are similar to that 
-    reported by \citeauthor{loren15}. This instability is driven by
-    dust-gas drag. The color scale shows the 
-    perturbed  
-    dust-to-gas ratio, $\delta\epsilon$; and the arrows show
-    $\sqrt{\rho}\left(\dd v_x, \dd v_z\right)$. 
-  }\label{result2d_loren}
-\end{figure}
+\subsection{Higher order corrections}
+%{\bf notes for self. maybe exclude in final. }
 
-One possible interpretation of this mode is `drag-driven VSI', to be 
-compared with `cooling-driven VSI' studied by \cite{lin15}. In the
-latter case, buoyancy forces are eliminated by fast
-cooling, allowing vertical shear to destabilize the disk. Now, in an
-isothermal dusty disk if $\tstop=0$ then mixture is 
-effectively adiabatic: dust-induced buoyancy forces are
-strongest. However, having $\tstop\neq0$ allow dust particles to slip
-past the gas, reducing buoyancy. That is, dust-gas drag
-provies an effective cooling. 
+The one-fluid formulation, 
+Eqs. \ref{masseq}---\ref{tempeq}, can 
+produce spuriously-growing modes with frequency $|\sigma|\gtrsim
+\Omega$ (see Appendix \S\ref{spurious_epi}). This 
+results from neglecting terms of $O(|\widetilde{\bm{v}}|^2)$ after converting
+the full two-fluid equations to the one-fluid formulation. The full
+one-fluid equations 
+%is significantly more complex than our 
+%model \cite[e.g.][]{laibe14}. It 
+ includes an evolutionary equation for $\widetilde{\bm{v}}$, which has no
+ hydrodynamic counter-part \citep{laibe14}. However, it is
+ still possible to improve upon 
+ the first-order formulation whilst retaining similarilty to  
+ standard hydrodynamics.  
+%without having the complexity of the full equations 
 
-We stress that this example only serves to highlight
-the possibility of new axisymmetric dust-drag instabilities in
-stratified disks. A major caveat of the above result is that 
-%the base state is not an exact equilibrium, because dust-settling would occur
-%in practice. (
- the background dust settling timescale is comparable to the instability
-growth timescale. It is essential to construct
-exact equilibria for a meaningful stability analysis. We defer this
-to future work.  
+The full one-fluid equations of motion includes the acceleration term 
+\begin{align}
+%\left.\frac{D\bm{v}}{Dt}\right|_\mathrm{add} = 
+%\bm{a} =  
+-\frac{1}{\rho}\nabla\cdot\left(\frac{\rhod\rhog}{\rho}\widetilde{\bm{v}}\otimes\widetilde{\bm{v}}\right) 
+\equiv  \frac{1}{\rho}\nabla\cdot \bm{T} 
+\end{align}
+\citep{youdin05a}, 
+where $\bm{T}$ is an effective stress tensor. 
+In the terminal velocity
+approximation with $\widetilde{\bm{v}} = \tstop 
+\nabla P/\rhog$, we have 
+\begin{align}
+\bm{T} = - \frac{\epsilon\tstop^2}{\rho}\nabla P \otimes \nabla P.
+\end{align}
+If we define 
+\begin{align}
+  \bm{g} \equiv \sqrt{4\pi G \epsilon \rho} \frac{\nabla P}{\rho}
+  \tstop,\label{effective_g} 
+\end{align}
+then
+\begin{align}
+\bm{T} = - \frac{1}{4\pi G} \bm{g}\otimes\bm{g}, \label{effective_gstress}
+\end{align}
+%{\bf tensor virial theorems?}
+which is just the anisotropic part of the  
+gravitational stress tensor in self-gravitating hydrodynamics 
+\citep{lynden-bell72}.
 
-%also unclear what are "proper" vertical bc for dusty disks 
+ However, unlike self-gravity, where $\bm{g}$ is
+determined through the Poisson equation; here $\bm{g}$ is directly
+related to $P$ (Eq. \ref{effective_g}), which itself obeys an 
+evolutionary equation (Eq. \ref{eff_energy}). 
+Nevertheless, Eq. \ref{effective_g}---\ref{effective_gstress}
+show that correlations in  pressure gradients lead to 
+momentum transport of the mixture as a whole. This is similar to Reynolds stresses in
+a turbulent disk \citep{balbus99}. In particular, 
+outwards angular momentum transport requires $\p_rP\p_\phi P > 0$.    
+
+In a following paper we will include $\bm{T}$ in the one-fluid
+equations and futher explore the analogy between dusty-gas and viscous
+hydrodynamics. 
+
+
+% \subsection{New dust-drag
+%   instabilities}\label{dust_as_thermo} 
+
+% %{\bf vsi enabled by drag? slipping between dust and gas reduces
+%  % effective buoyancy}
+
+% As described in \S\ref{dust_work}, 
+% the physical cause of dust-drag instabilities is a phase lag between
+% the pressure and density response in a dusty gas\footnote{
+% In fact, we expect a phase difference between pressure and the total
+% density  whenever $\tstop\neq0$; not just $\tstop\OmK\ll 1$ as 
+% considered in this work. This is simply because of the finite
+% relaxation time required for dust to respond to gas, and vice versa. 
+% An effective energy equation in the form of Eq. \ref{eff_energy} can
+% still be obtained for general $\tstop$. The
+% heat flux $\bm{F}$ in the cooling function $\mathcal{C}$ is determined
+% through solution to the relative velocity $\Delta \bm{v} =
+% \bm{v}_\mathrm{d}-\bm{v}_\mathrm{g}$ \citep{youdin05a,laibe14}.  We
+% thus expect the `pressure-density lag' interpretation of dust-drag 
+% instabilities to be generally applicable.}. 
+% This may be used to re-interpret the streaming instability or to
+% understand other dusty instabilities. For example,
+% \cite{loren15,loren16} have recently discovered a new axisymmetric 
+% instability in their two-fluid numerical simulations of dusty
+% protoplanetary disks. They find it leads to the formation of
+% `toroidal vortices'. 
+
+% %give numerical example 
+% We have applied our one-fluid stability analysis to find unstable modes  
+% similar to that described by \cite{loren15}. We use the same
+% parameters reported by them as follows. 
+% %we set $p=q=0$, which eliminates VSI and minimizes streaming
+% %instabilities as there is no radial pressure gradient at the disk
+% %midplane.   
+% The total metalicity is $Z=0.01$ and the dust scale-height $H_\mathrm{d} =
+% 0.4H_\mathrm{g}$, giving a maximum dust-to-gas ratio
+% $\mathrm{max}(\epsilon) = 0.025$. The midplane stopping time is 
+% $t_\mathrm{s0}=0.02\OmK^{-1}$. The gas disk parameters are $(p,q,
+% \hgas) =(-1.5, -1,0.05)$.  We set $k_x = \pi/H_\mathrm{d}$.      
+
+% Fig. \ref{compare_eigenvals_ts0d02} shows the unstable modes found for
+% this setup. We find the usual VSI modes, here with $\omega> 3\hgas\OmK,\, s<
+% 0.2\hgas\OmK$. However, we also find modes with $\omega<s$. One of these,
+% marked by the blue asterisk, has 
+% frequency 
+% \begin{align*}
+% \sigma = (0.3631\ii - 0.1251)\hgas\OmK. 
+% \end{align*}
+% This growth rate corresponds to $8.8$ orbits, comparable to the $12$
+% orbits reported by \citeauthor{loren15}. We visualize this mode in
+% Fig. \ref{result2d_loren}. We find this mode 
+% persists when $q=0$, so it is not the VSI. 
+% Using Eq. \ref{streaming_dispersion} with the above parameters,  
+% we also estimate a much smaller growth 
+% rate for the streaming instability of 
+% $O(10^{-3}\hgas\OmK)$, We thus also rule out
+% SI, as did \citeauthor{loren15}. However, the mode disappears with $\tstop=0$, so it \emph{is}
+% associated with finite dust-gas drag. 
+
+% \begin{figure}
+%   \includegraphics[width=\linewidth]{figures/compare_eigenvals_ts0d02}
+%   \caption{Unstable modes in a locally isothermal, dusty disk
+%     with stopping time  
+%     $\tstop=0.02\OmK^{-1}$. Modes with $\omega>3$ are due to
+%     VSI. The mode marked by the blue asterisk, visualized in
+%     Fig. \protect\ref{result2d_loren}
+%     , is associated with finite dust-gas
+%     drag. 
+%   }\label{compare_eigenvals_ts0d02}
+% \end{figure}
+
+
+% \begin{figure}
+%   \includegraphics[width=\linewidth]{figures/result2d_loren.ps}
+%   \caption{Visualization of the mode marked by the blue asterisk in
+%     Fig. \protect\ref{compare_eigenvals_ts0d02}. 
+%     This is a possible eigenmode of the dusty instability discovered by  
+%     \cite{loren15} in their numerical simulations. The instability growth timescale and 
+%     radial spacing of the `toroidal vortices' are similar to that 
+%     reported by \citeauthor{loren15}. This instability is driven by
+%     dust-gas drag. The color scale shows the 
+%     perturbed  
+%     dust-to-gas ratio, $\delta\epsilon$; and the arrows show
+%     $\sqrt{\rho}\left(\dd v_x, \dd v_z\right)$. 
+%   }\label{result2d_loren}
+% \end{figure}
+
+% One possible interpretation of this mode is `drag-driven VSI', to be 
+% compared with `cooling-driven VSI' studied by \cite{lin15}. In the
+% latter case, buoyancy forces are eliminated by fast
+% cooling, allowing vertical shear to destabilize the disk. Now, in an
+% isothermal dusty disk if $\tstop=0$ then mixture is 
+% effectively adiabatic: dust-induced buoyancy forces are
+% strongest. However, having $\tstop\neq0$ allow dust particles to slip
+% past the gas, reducing buoyancy. That is, dust-gas drag
+% provies an effective cooling. 
+
+% We stress that this example only serves to highlight
+% the possibility of new axisymmetric dust-drag instabilities in
+% stratified disks. A major caveat of the above result is that 
+% %the base state is not an exact equilibrium, because dust-settling would occur
+% %in practice. (
+%  the background dust settling timescale is comparable to the instability
+% growth timescale. It is essential to construct
+% exact equilibria for a meaningful stability analysis. We defer this
+% to future work.  
+
+% %also unclear what are "proper" vertical bc for dusty disks 
 
 \section{Summary}\label{summary}
 In this paper we develop an analogy between isothermal 

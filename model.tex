@@ -135,7 +135,7 @@ where $q$ is the power-law index for the disk temperature. For $q=0$
 the disk is strictly isothermal.  
 
 Notice Eq. \ref{eos} resembles an ideal gas equation of state but with  
-effective temperature $T_\mathrm{eff} = 
+a reduced temperature $\tilde{T} = 
 T_\mathrm{ref}\left(1-\tepsilon\right)$. %sound-speed $c_{s,\mathrm{eff}} = c_s\sqrt{\left(1 -
 This effective mixture  
 temperature is lowered with dust-loading. 
@@ -294,16 +294,17 @@ turbulence, which leads to dust diffusion counter-acting vertical
 settling \citep{takeuchi02, youdin07}. This complication is beyond the
 scope of this paper.  
 
-In this work, we assume that $\tstop$  is sufficiently small so
-that settling occurs on much longer timescales  than that of interest; or
-consider equilibria with $\mathcal{C}\equiv 0$, namely   
+In this work, consider equilibria with $\mathcal{C}\equiv 0$, namely   
 \begin{inparaenum}[1)] 
 \item 
   unstratified disks with finite dust-gas drag; %(\S\ref{si});  
 \item 
   perfectly-coupled dust with $\tstop=0$. %(\S\ref{results}). 
 \end{inparaenum} 
-Vertical settling is absent in both cases. 
+Vertical settling is absent in both cases. Alternatively, we are 
+assuming that $\tstop$  is sufficiently small such 
+that settling occurs on much longer timescales than the instabilities of interest. 
+
 
 %Eq. \ref{steady_dust} makes it difficult to obtain equilibrium
 %solutions explicitly. However, if the diffusive process is slow and
@@ -497,7 +498,7 @@ In Appendix
 %&  \sigma^2\int\rho\left(|\dd v_r|^2 + |\dd v_z|^2\right)dV \notag\\
   \sigma^2\mathcal{I}^2
 &= \int\left[ \rho
-  |\dd v_r|^2A + \rho  \dd v_z \dd v_r^* B + \rho \dd v_z^*\dd v_r C +
+  |\dd v_r|^2A + \rho  \left(\dd v_z \dd v_r^* + \dd v_z^*\dd v_r\right) B +
   \rho |\dd v_z|^2 D\phantom{\frac{1}{1}}\right. \notag\\
 &\phantom{===}  \left. + \frac{1}{P}\Bigl\lvert \nabla\cdot\left(P\dd
   \bm{v}\right)\Bigr\rvert^2\right]dV  -\int \left(\nabla\cdot\dd\bm{v}^*\right)\dd\mathcal{C}dV \notag\\
@@ -511,7 +512,7 @@ where
   \mathcal{I}^2 \equiv \int\rho\left(|\dd v_r|^2 + |\dd v_z|^2\right)dV
 \end{align}
 is the meridional kinetic energy, 
-and coefficients $A,B,C,D$ can be
+and coefficients $A,B,D$ be
 read off Eq. \ref{integral_ex}. %Note that $B=C$ from dynamical equilibrium
 %(Eq. \ref{vshear}). 
 We now consider various limits of Eq. \ref{int_rel}.    
@@ -525,10 +526,10 @@ adiabatically because the dust fraction $\tepsilon$ is advected with
 the gas. This is similar to entropy being conserved following an
 adiabatic gas when there is no heating or cooling.  
 
-In this case, the last two integrals in Eq. \ref{int_rel} vanish. Then 
-requiring $\sigma^2>0$  gives the criteria 
-for the axisymmtric \emph{stability} of an isothermal gas perfectly 
-coupled to dust,  
+In this case, the last two integrals in Eq. \ref{int_rel} vanish. 
+The condition for axisymmtric \emph{stability}, $\sigma^2>0$, 
+is met if the integrand cofficients satisfy $A+D>0$ and $AD-B^2>0$
+\citep[][Section 11.6]{ogilvie16}, which becomes 
 \begin{align}
   \kappa^2 + c_s^2 \nabla\ln{\rhog}\cdot\nabla\tepsilon &> 0,\label{dusty_solberg1}  \\
   -c_s^2\frac{\p\ln{\rhog}}{\p z}\left(-\kappa^2\frac{\p\tepsilon}{\p
@@ -550,14 +551,12 @@ expression for said criteria \citep{tassoul78}.
 
 
 \subsubsection{Order-of-magnitude estimates} 
-We evaluate the above stability criteria for the vertically-Gaussian
-distributions for the gas density and the dust-to-gas ratio as 
-described in \S\ref{eqm}. 
+We evaluate the above stability criteria for the equilibria described in \S\ref{eqm}. 
 %However, here we permit 
 %$\epsilon_0=\epsilon_0(r)$ and $\Htilde=\Htilde(r)$ to vary with
 %radius. 
-We assume the disk is approximately Keplerian so that
-$\kappa\simeq\OmK$. In terms of the dust-to-gas
+We assume the disk is approximately Keplerian so that $\kappa\simeq\OmK$, and that the vertical gas distribution is
+Gaussian. In terms of the dust-to-gas
 ratio $\epsilon$, Eq. \ref{dusty_solberg1}---\ref{dusty_solberg2}
 become   
 \begin{align}
