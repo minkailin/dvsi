@@ -39,8 +39,8 @@ frequency, we can use the
   \widetilde{\bm{v}} = \frac{\nabla
     P}{\rhog}\tstop 
 \end{align}
-\citep{jacquet11}. This equation implies that dust particles
-drift towards pressure maxima. 
+\citep{jacquet11}. This equation reflect the physical result that dust
+particles tend to drift towards pressure maxima. 
 
 In the limit of strong dust-gas drag, $\tstop\to0$, the mixture obeys 
 the first-order (in $\tstop$) single-fluid equations: 
@@ -102,9 +102,9 @@ thin-disk approximation for the stellar potential, appropriate for
 $|z|\ll r$. We shall adopt this approximate potential in order to
 obtain explicit expressions for disk equilibria (\S\ref{eqm}). 
 
-We include the gravitational potential of the mixture 
-$\psi$ for completeness but will neglect it throughout most of this
-work ($\psi \equiv 0$) unless explicitly stated otherwise.   
+The gravitational potential of the mixture 
+$\psi$ is included here for completeness, but we will mostly neglect
+it ($\psi \equiv 0$) unless explicitly stated otherwise.  
  
 \subsection{Locally isothermal equation of state}\label{loc_iso_eos}
 For later comparison it is convenient to re-write the temperature
@@ -135,10 +135,9 @@ where $q$ is the power-law index for the disk temperature. For $q=0$
 the disk is strictly isothermal.  
 
 Notice Eq. \ref{eos} resembles an ideal gas equation of state but with  
-a reduced temperature $\tilde{T} = 
+a reduced temperature $\widetilde{T} = 
 T_\mathrm{ref}\left(1-\tepsilon\right)$. %sound-speed $c_{s,\mathrm{eff}} = c_s\sqrt{\left(1 -
-This effective mixture  
-temperature is lowered with dust-loading. 
+This reduced temperature is lowered with dust-loading. 
 %   \tepsilon\right)}$. 
 %then the equation of state has the standard
 %form $P=c_{s,\mathrm{eff}}^2\rho$. 
@@ -190,11 +189,11 @@ for the pressure forces, then
   \right), 
 \end{align*}
 which is in the same form as cooling by radiative diffusion. In protoplanetary
-disks the heat flux, proportional to $\bm{F}$, is directly radially
-outwards and vertically upwards. This is simply a reflection of
-particle drift (inwards and downwards). Particle flux into a region contributes
-to `cooling' of that region because the effective temperature is
-lowered. 
+disks the corresponding heat flux, proportional to $\bm{F}$, is
+directly radially outwards and vertically upwards. This is simply a
+reflection of particle drift towards increasing pressure (inwards and 
+downwards). Particle flux into a region contributes to `cooling' of
+that region because the reduced temperature is lowered. 
 
 % Eq. \ref{eff_energy} can be written in conservative form,
 % \begin{align*}
@@ -219,10 +218,11 @@ in \S\ref{gen_poly}.
 \subsection{Entropy of an isothermal dusty gas }
 
 The specific entropy of an ideal gas is 
-$S = C_p\ln{\left(P^{1/\gamma}/\rhog\right)}$, where $C_p$ is the heat 
+$S = C_P\ln{\left(P^{1/\gamma}/\rhog\right)}$, where $C_P$ is the heat 
 capacity at constant pressure. 
 
-Since we have shown that a locally isothermal dusty gas effectively has $\gamma=1$ we can define an effective (dimensionless)   
+Since we have shown that a locally isothermal dusty gas effectively
+has $\gamma=1$ we can define an effective (dimensionless)    
 entropy for the \emph{mixture} as 
 \begin{align}
    \seff \equiv \ln \frac{P}{\rho} = \ln{\left[c_s^2(1-\tepsilon)\right]}.  
@@ -744,10 +744,23 @@ P\Delta\rho^*\right)>0$. Without loss of generality, take $\omega>0$
 and consider a mass element with $\Delta\rho = 1$. Then positive work 
 requires $\imag\left(\Delta
 P\right)<0$.  This corresponds to pressure perturbations \emph{lagging}
-behind that in density (or displacements).%, since the phase of
+behind that in density (or displacements), see Fig. \ref{lag_cartoon}
+for the case of dusty gas.   
+
+%, since the phase of
 %the assumed perturbations increase in time.  
 %$\imag\left(\Delta\rho\right)=0$.   
 
+
+\begin{figure}
+  \includegraphics[width=\linewidth,clip=true,trim=0cm 5cm 0cm 0cm]{figures/lag}
+  \caption{Phase relation for overstable modes in isothermal dusty
+    gas. Such modes require (Lagrangian) oscillations in the gas
+    pressure, which is directly proportional to the gas density, to
+    lag behind that in dust density. 
+    \label{lag_cartoon}
+  }
+\end{figure}
 
 
 \subsubsection{Physical requirement of dust-gas drag overstabilities}  
