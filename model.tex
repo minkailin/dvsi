@@ -142,8 +142,8 @@ This reduced temperature is lowered with dust-loading.
 %then the equation of state has the standard
 %form $P=c_{s,\mathrm{eff}}^2\rho$. 
 Since $\tepsilon$ typically decrease away from the midplane, we expect
-vertically isothermal dusty disks to in fact behave as if it had a
-temperture \emph{increasing} away from $z=0$.  
+vertically isothermal dusty disks to behave as if it had a temperture
+\emph{increasing} away from $z=0$.     
 
 \subsection{Effective energy equation}
 Although we have eliminated the need of an evolutionary energy
@@ -257,12 +257,26 @@ $D\seff/ D t = D\tepsilon/D t=0$. In this case the effective
 entropy is exactly conserved because the dust-fraction is `frozen in' the
 flow. 
 
-{\bf
+%{\bf
 \subsection{Physical disk conditions}
-physical disk conditions underwhich the above approx
-(small/well-coupled dust and isothermal gas) is applicable. smaller
-than mm at few tens of au. give dimensional numbers here
-}
+%physical disk conditions underwhich the above approx
+%(small/well-coupled dust and isothermal gas) is applicable. smaller
+%than mm at few tens of au. give dimensional numbers here
+%}
+
+The terminal velocity approximation applies to short
+stopping times, $\tstop\OmK\ll 1$; while the locally isothermal
+approximation applies to short cooling times, $t_\mathrm{cool}\OmK\ll
+1$. In typical protoplanetary disk
+models such as the Minimum Mass Solar Nebula, $\tstop$ decreases for
+smaller particles and/or at smaller radii \citep{youdin11}. However,
+$t_\mathrm{cool}$ is generally only small in the outer disk
+\citep{lin15,malygin17}. Combining these results, we estimate that our
+framework is best suited for mm (or smaller) sized particles at a few
+to 10s of AU in protoplanetary disks. However, note that the
+isothermal approximation may be relaxed to other fixed equations of
+state (see \S\ref{gen_poly}). 
+
 
 \section{Dynamical equilibria}\label{eqm}
  
@@ -547,14 +561,37 @@ Eq. \ref{dusty_solberg1}---\ref{dusty_solberg2} are in fact the
 the Solberg-Hoiland criteria for axisymmetric stability of adiabatic
 gas if one inserts $C_p\ln{\left(1 -
     \tepsilon\right)}$ for the entropy in the standard
-expression for said criteria \citep{tassoul78}.   
+expression for said criteria \citep{tassoul78}. 
+
+We expect Eq. \ref{dusty_solberg1} to be satisfied in typical
+protoplanetary disks where the dust-to-gas ratio increases in the same
+direction as the local pressure gradient, which is equivalent to the
+gas density gradient for isothermal gas. Thus to enable instability
+here we need to violate Eq. \ref{dusty_solberg2}. We explore this
+below. 
+
+
+\subsubsection{Vertically well-mixed dust}
+Here we consider the special case where the dust-to-gas ratio is
+uniform in $z$. Then the LHS of Eq. \ref{dusty_solberg2} becomes
+\begin{align}
+-\frac{c_s^4}{(1+\tepsilon)^4}\left(\frac{\p\ln{\rhog}}{\p
+    z}\right)^2\left(\frac{\p\epsilon}{\p r}\right)^2<0.
+\end{align}
+Thus the disk is \emph{unstable}, since there is no effective vertical 
+buoyancy to stabilize vertical motions. In fact, this situation is
+identical to the pure gas, adiabtic simulations of \cite{nelson13} in
+which the gas entropy is vertically uniform but has a radial
+gradient. There, \citeauthor{nelson13} indeed find instability. 
+
 
 
 \subsubsection{Order-of-magnitude estimates} 
-We evaluate the above stability criteria for the equilibria described in \S\ref{eqm}. 
-%However, here we permit 
-%$\epsilon_0=\epsilon_0(r)$ and $\Htilde=\Htilde(r)$ to vary with
-%radius. 
+In order to apply the stability criteria
+Eq. \ref{dusty_solberg1}---\ref{dusty_solberg2} to typical
+protoplanetary disks we conside the equilibria described in
+\S\ref{eqm}.  
+
 We assume the disk is approximately Keplerian so that $\kappa\simeq\OmK$, and that the vertical gas distribution is
 Gaussian. In terms of the dust-to-gas
 ratio $\epsilon$, Eq. \ref{dusty_solberg1}---\ref{dusty_solberg2}
@@ -631,12 +668,12 @@ Taking $\epsilon\sim 0.01$,  we find that
 for thin dust layers with $H_\epsilon \simeq \Hd\ll \Hg$,  instability
 requires $L_\epsilon\ll O(0.1\Hg)$, i.e. the dust-to-gas ratio must
 vary on an extremely short lengthscale. 
-%an extremely short  
-%radial length-scale in the dust-to-gas ratio. 
-This is unlikely to
-occur. On the other hand, if dust is well-mixed, say $\Hd\simeq
-0.99\Hg$, then instability only requires 
-$L_\epsilon\lesssim O(10\Hg)$, which is more realistic. 
+% %an extremely short  
+% %radial length-scale in the dust-to-gas ratio. 
+% This is unlikely to
+% occur. On the other hand, if dust is well-mixed, say $\Hd\simeq
+% 0.99\Hg$, then instability only requires 
+% $L_\epsilon\lesssim O(10\Hg)$, which is more realistic. 
 
 %This is responsible for 
 %the usual vertical shear instability in locally isothermal disks.
