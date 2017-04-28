@@ -1,24 +1,25 @@
 \section{
   Dusty vertical shear instability}\label{results} 
 
-We present numerical solutions for  
-vertically stratified, non-self-gravitating disks assuming perfectly coupled dust 
-($\tstop=0$). This is so that the equilibria defined in \S\ref{eqm} are exact
-steady states. In this limit any growing modes must be associated with
-the imposed temperature gradient (\S\ref{limits}). We are thus  
-examining the effect of dust-loading on the VSI, previously studied in 
-pure gas disks \citep[][\citetalias{lin15} in this section]{lin15}. 
+We present numerical solutions for vertically stratified,
+non-self-gravitating disks assuming perfectly coupled dust
+($\tstop=0$) so that the equilibria defined in \S\ref{eqm} 
+are exact steady states. 
 
-Except in  \S\ref{varHd}, we consider constant midplane
-dust-to-gas ratios $\epsilon_0$ and its characteristic height
-$H_\epsilon$. The latter is specified via the dust layer thickness
-$\Hd(r_0)$. 
-These, together with the perturbation radial wavenumber $k_x$, comprises main the
-parameters of the linear problem. We choose a power-law 
-midplane gas density profile, $\rho_\mathrm{g0}\propto r^p$ with $p =
--1.5$. The fiducial power-law index for the 
-temperature profile is $q=-1$; and we set the gas disk aspect-ratio
-$h_\mathrm{g}=0.05$. These values were also used by 
+Except in \S\ref{varHd}---\ref{vert_mixed}, we consider constant midplane dust-to-gas
+ratios $\epsilon_0$ and characteristic thickness $H_\epsilon$. Then
+the dust-to-gas ratio $\epsilon=\epsilon(z)$. In this limit any
+growing modes must be associated with the imposed temperature gradient
+(\S\ref{limits}). We are thus examining the effect of dust-loading on
+the VSI, previously studied in pure gas disks
+\citep[][\citetalias{lin15} in this section]{lin15}.   
+
+The parameters for this linear problem includes $\epsilon_0$, the dust
+layer thickness $\Hd(r_0)$, and the perturbation radial wavenumber
+$k_x$. We choose a power-law midplane gas density profile,
+$\rho_\mathrm{g0}\propto r^p$ with $p = -1.5$. The fiducial power-law
+index for the temperature profile is $q=-1$; and we set the gas disk
+aspect-ratio $h_\mathrm{g}=0.05$. These values were also used by  
 \citetalias{lin15}. 
 
 Two boundary conditions are needed for the $\tstop=0$
@@ -334,6 +335,32 @@ disk.
   \caption{Unstable VSI modes in the disk models of
     Fig. \protect\ref{compare_vshear_varHd}.  
     \label{vsi_dust_varHd}
+    }
+\end{figure}
+
+\subsection{Pure instability with vertically well-mixed
+  dust}\label{vert_mixed} 
+
+In \S\ref{vert_mixed_theory} we found that for strictly isothermal
+disks, a vertically-uniform dust-to-gas ratio can be unstable
+if $d\epsilon/dr\neq0$. To demonstate this numerically we consider the
+same disk as above but with $q=0$ and choose $H_\mathrm{d}$ such
+that $H_\epsilon=10^3\Hg$. Then vertical shear $\p_z\Omega$ is attributed
+to the radially-varying dust-to-gas ratio (see Eq. \ref{vshear2}).  
+
+We show unstable modes for this disk in
+Fig. \ref{vert_mixed_modes}. In order to obtain appreciable growth  
+rates, we needed to consider super-Solar metalicity $Z=0.03$ and high
+radial wavenumber $k_x\Hg=1800$. As expected from the discussion in
+\S\ref{vert_mixed_theory}, the disk admits purely growing modes with
+$\omega=0$. 
+
+\begin{figure}
+  \includegraphics[width=\linewidth]{figures/vert_mixed_modes} 
+  \caption{Unstable modes in a strictly isothermal disk ($q=0$) with
+    vertically uniform dust-to-gas ratio. The instability is due to
+    vertical shear $\p_z\Omega\neq0$ arising from radial variations in
+    the dust-to-gas ratio, $d\epsilon/dr\neq 0$. \label{vert_mixed_modes}
     }
 \end{figure}
 
