@@ -21,7 +21,7 @@ Introducing
   W \equiv \frac{\dd\rho}{\rho}, \quad Q \equiv \frac{\dd P}{\rho},
 \end{align}
 the linearized equations for 
-locally isothermal dusty gas with the pressure
+vertically isothermal dusty gas with the pressure
 equation in place of the dust-fraction
 (Eq. \ref{masseq}---\ref{momeq}, Eq. \ref{eff_energy}) are then:    
 
@@ -45,12 +45,12 @@ equation in place of the dust-fraction
 \dd\psi^{\prime\prime}  &= 4\pi G \rho W + k_x^2\dd\psi, \label{lin_sg}
 \end{align}  
 where $^\prime \equiv \p_z$ and recall $\bm{F} \equiv -\nabla
-P/\rho$. Self-gravity has been restored temporarily for the next
-section (only). The linearized dust-duffusion function 
+P/\rho$. Here we restore self-gravity temporarily for SGI in the next
+section. The linearized dust-duffusion function 
 $\dd\mathcal{C}$ is given in  Appendix \ref{lin_dust}. 
 % and $\dd\bm{F}$ is the linearized pressure
 %force, given in Appendix \ref{lin_press}. 
-Note that we have assumed a temperature profile that only depends on $r$.   
+%Note that we have assumed a temperature profile that only depends on $r$.   
 
 %; and 
 %\begin{align}
@@ -92,7 +92,8 @@ uniform and we neglect the vertical dimension
 in Eq. \ref{lin_mass}---\ref{lin_energy}. The linearized dust-gas drag
 term is then $-\delta\mathcal{C}/\rho = \tstop\tepsilon c_s^2k_x^2
 Q$. The thin-disk solution to Eq. \ref{lin_sg} is $\dd\psi = -2\pi G
-\Sigma W/\left|k_x\right|$    
+\Sigma W/\left|k_x\right|$, where $\Sigma$ is the total surface
+density. 
 
 These simplifications yield the dispersion relation
 \begin{align*}
@@ -116,7 +117,7 @@ self-gravitating gas disks \citep{gammie96,lin16}. In fact, if we
 identify $\nu \equiv \tstop \tepsilon c_s^2$ as a kinematic viscosity,
 then Eq. \ref{sgi_disp} is identical to \citeauthor{gammie96}'s Eq. 18. 
 
-This exercise shows that the one-fluid framework, futher simplified by
+This exercise shows that the one-fluid framework, further simplified by
 the terminal velocity approximation, is sufficient to capture SGI
 in the strong drag limit. 
 
@@ -194,6 +195,10 @@ rates vanish as $\varphi \to 0$.
 Thus the streaming instability indeed stems  
 from the gas pressure evolution lagging behind that of the dust 
 density. 
+
+In a future work we will perform a detailed comparison between the
+simplified one-fluid and full two-fluid frameworks in calculating SI. 
+
 
 %"generalized stokes number" would include other problem parameters,
 %e.g. wavenumber  

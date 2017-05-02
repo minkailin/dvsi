@@ -1,40 +1,42 @@
 \section{
   Dusty vertical shear instability}\label{results} 
 
-We present numerical solutions for vertically stratified,
+We now present numerical solutions for vertically stratified,
 non-self-gravitating disks assuming perfectly coupled dust
-($\tstop=0$) so that the equilibria defined in \S\ref{eqm} 
-are exact steady states. 
+($\tstop=0$) so the equilibria
+defined in \S\ref{eqm} are exact steady states.    
 
-Except in \S\ref{varHd}---\ref{vert_mixed}, we consider constant midplane dust-to-gas
-ratios $\epsilon_0$ and characteristic thickness $H_\epsilon$. Then
-the dust-to-gas ratio $\epsilon=\epsilon(z)$. In this limit any
-growing modes must be associated with the imposed temperature gradient
+Apart from \S\ref{varHd}---\ref{vert_mixed}, we consider constant
+midplane dust-to-gas ratios $\epsilon_0$ and characteristic thickness
+$H_\epsilon$. Then the dust-to-gas ratio $\epsilon=\epsilon(z)$. In 
+this limit any growing modes must be associated with the imposed temperature gradient
 (\S\ref{limits}). We are thus examining the effect of dust-loading on
-the VSI, previously studied in pure gas disks
+the VSI previously studied in pure gas disks 
 \citep[][\citetalias{lin15} in this section]{lin15}.   
 
 The parameters for this linear problem includes $\epsilon_0$, the dust
 layer thickness $\Hd(r_0)$, and the perturbation radial wavenumber
-$k_x$. We choose a power-law midplane gas density profile,
-$\rho_\mathrm{g0}\propto r^p$ with $p = -1.5$. The fiducial power-law
+$k_x$. We choose a midplane gas density profile 
+$\rho_\mathrm{g0}\propto r^{-3/2}$. The fiducial power-law 
 index for the temperature profile is $q=-1$; and we set the gas disk
 aspect-ratio $h_\mathrm{g}=0.05$. These values were also used by  
 \citetalias{lin15}. 
 
-Two boundary conditions are needed for the $\tstop=0$
-problem \citep[e.g.][]{lubow93}. We impose solid boundaries so that
-$\delta v_z(\pm\zmax)=0$. We solve the linearized equations as a
-generalized eigenvalue problem using a pseudo-spectral code adapted
+%Two boundary conditions are needed for the $\tstop=0$
+%problem \citep[e.g.][]{lubow93}. 
+We impose solid vertical boundaries so that $\delta
+v_z(\pm\zmax)=0$. We solve the linearized equations as a generalized
+eigenvalue problem using a pseudo-spectral code adapted  
 from \citetalias{lin15}. Amplitudes are expanded in Chebyshev
-polynomials up to order $N_z=512$. We check results using
-Eq. \ref{vsi_check}.      
+polynomials up to order $N_z=512$. %We check results using
+%Eq. \ref{vsi_check}.      
 
 \subsection{Qualitative expectations}\label{vsi_est}
 \citetalias{lin15} found the appropriate way to compare 
-destabilizing vertical shear to stabilizing vertical buoyancy is
-$r\p_z\Omega/\OmK$ against $N_z^2/\OmK^2$. We see from \S\ref{vertshear}
-and \S\ref{vbuoyancy} that $|r\p_z\Omega|\sim q h_\mathrm{g}\OmK$ for a
+vertical shear (destabilizing) and  vertical buoyancy (stabilizing)
+is $r\p_z\Omega/\OmK$  against $N_z^2/\OmK^2$. From 
+\S\ref{vertshear} and \S\ref{vbuoyancy} we find $|r\p_z\Omega|\sim q
+h_\mathrm{g}\OmK$ for a 
 thin, gas dominated disk; while $N_z^2\sim \epsilon\OmK^2$. Thus we
 expect dust-induced buoyancy forces to stabilize the disk against the
 VSI where $\epsilon \gtrsim h_\mathrm{g}$. 
@@ -60,7 +62,7 @@ $\epsilon_0=1$.
 \begin{figure}
   \includegraphics[width=\linewidth]{figures/compare_vshear_Nz2_fixHd} 
   \caption{Vertical shear rate (solid) compared to vertical buoyancy
-    (dotted) in a locally isothermal, dusty disl with midplane dust-to-gas ratio
+    (dotted) in a locally isothermal, dusty disk with midplane dust-to-gas ratio
     of $\epsilon_0=10^{-3}$ (black) and $\epsilon_0=1$ (blue). 
     The dust layer thickness is fixed to $\Hd=0.99\Hg$ so the 
     dust-to-gas ratio $\epsilon$ is approximately constant with
@@ -77,7 +79,7 @@ expected since $\epsilon_0 < \hgas$ (\S\ref{vsi_est}). Eigenvalues
 consists 
 of the roughly horizontal `body modes', and the nearly-vertical
 `surface modes' \citep[which are associated with the imposed vertical
-boundaries][]{barker15}.   
+boundaries, ][]{barker15}.   
 
 We find that increasing the dust-to-gas ratio reduce VSI growth
 rates. Notably, surface modes, which are typically fastest growing in
@@ -85,10 +87,10 @@ the dust-free case, are surpressed in dusty disks for $\epsilon_0\geq
 0.1$ (i.e. $\epsilon_0> \hgas$).   
 The body modes' growth rates remain $ O(h_\mathrm{g}\OmK)$ 
 but their oscillation frequency increases with
-$\epsilon_0$. %i.e. increases with buoyancing freq 
-The total number of modes do not change
+$\epsilon_0$. i.e. it increases with the vertical buoyancy. 
+The total number of modes do not change 
 significantly. This is in contrast with the effect of increasing
-cooling times, where \citetalias{lin15} find fewer unstable modes.
+cooling times, for which \citetalias{lin15} find fewer unstable modes.
 %until the system is eventually completely stable. 
 
 \begin{figure}
@@ -130,10 +132,10 @@ to the midplane.
 
 In Fig. \ref{vsi_dust_loading_vareps} we plot the growth rates as a
 function of $\epsilon_0$ for different perturbation wavenumbers
-$k_x$. We find dust-loading stabilizes the VSI more effectively for shorter
+$k_x$. Dust-loading stabilizes the VSI more effectively for shorter
 wavelength perturbations. This is because for high wavenumbers the
 dominant modes are surface modes, which are effectively stabilized by
-dust-loading since buoyancy forces are larges near the disk
+dust-loading as buoyancy forces are largest near the vertical 
 boundaries. The figure suggest that VSI becomes much less efficient
 for $\epsilon_0\gtrsim 0.1$ and $k_x\Hg\gtrsim 50$. 
 
@@ -150,11 +152,10 @@ for $\epsilon_0\gtrsim 0.1$ and $k_x\Hg\gtrsim 50$.
 
 
 
-\subsection{Effect of dust thickness} 
-We now vary the dust layer thickness $\Hd$ but fix the metalicity 
-$Z \equiv \epsilon_0 \Hd/\Hg = 0.03$. This then gives the
-required midplane dust-to-gas ratio. Since we will consider thin dust
-layers, here we use a smaller 
+\subsection{Effect of dust layer thickness} 
+We now vary $\Hd$ but fix the metalicity 
+$Z \equiv \epsilon_0 \Hd/\Hg = 0.03$ to obtain $\epsilon_0$. Since we
+will consider thin dust layers, here we use a smaller   
 domain with $\zmax=2\Hg$ so that $\epsilon$ does not become
 too small. 
 
@@ -194,7 +195,7 @@ frequencies
 since the vertical shear profile is similar throughout most of the
 disk. However, meridional motions are surpressed near the midplane of
 the $\Hd=0.1\Hg$ disk, as expected from the larger buoyancy frequency
-as compared to vertical shear there. This leads to a structure
+relative to vertical shear there. This leads to a structure
 analogous to PPD dead zones: a quiescent midplane between active
 surface layers \citep{gammie96}.  
 
@@ -218,7 +219,7 @@ rates are most affected by the vertical structure of the dust layer
 when the perturbation wavenumer is large. Notice VSI growth rates converge as
 $\Hd\to 0$. %to dust free values?    
 Thus a thin dust layer, however large its associated vertical shear,
-does not affect the VSI. The non-monotonic behavior for $\Hd\gtrsim
+does not affect VSI growth rates. The non-monotonic behavior for $\Hd\gtrsim
 0.5\Hg$ arises because the vertical buoyancy frequency 
 \begin{align*}
 N_z^2(H_d;z,Z) \simeq &Z\Hg z^2
@@ -242,15 +243,14 @@ of minima in growth rates in Fig. \ref{compare_eigenvals_fixZ}.
 \end{figure}
 
 \subsection{Axisymmetric stability of ultra-thin dust layers}
-In \S\ref{iso_perfect} we asserted that in the limit of perfectly
-coupled dust: radially smooth, strictly
-isothermal disks are stable against axisymmetric perturbations, no
-matter how thin the dust layer is. We now demonstrate this
-numerically. 
+The discussion in \S\ref{iso_perfect} imply strictly  
+isothermal disks with a radially uniform dust-to-gas ratio are
+stable against axisymmetric perturbations, no matter how thin the dust
+layer is. We now demonstrate this numerically. 
 
-For comparison with previous studies of dusty disks, we also use 
+To connect with previous studies, here  we also use 
 the Richardson number $\rich \equiv N_z^2/\left(r\p_z\Omega\right)^2$
-to label the calculations here \citep{youdin02}.   
+to label calculations \citep{youdin02}.   
 Numerical simulations show    
 non-axisymmetric instabilities develops when $\rich\lesssim0.1$, brought about
 by very thin dust layers \citep{chiang08, lee10}. We show that \emph{axisymmetric}
@@ -259,17 +259,17 @@ instabilities never develop, however small $\rich$.
 We shall consider ultra thin dust layers with $\Hd\leq 0.01\Hg$ and thus
 restrict the vertical domain to $\zmax = 0.02\Hg$. We fix the 
 metalicity $Z=0.01$ so the midpane dust-to-gas ratio $\epsilon_0$ is 
-$O(1)$.  We consider radial wavenumbers such $k_x\Hd=1$. 
+$O(1)$.  We consider radial wavenumbers with $k_x\Hd=1$. 
 
 Fig. \ref{ultra_thin} shows the maximum growth rate  as a function of
 the radial temperature gradient, $q$. For all cases the vertical
 shear is dominated by that due to the dust layer (see
 \S\ref{vertshear}). However, we see that growth rates $s\propto
-|q|$, i.e .growth rates vanish if the disk was strictly isothermal. 
-In particular, this holds for $\rich < 0.1$, the critical value
+|q|$, i.e .growth rates vanish in the strictly isothermal limit.  
+In particular, this holds for $\rich < 0.1$, the critical value 
 for non-axisymmetric instabilities. 
 
-Axisymmetric instability is associated with the thermal
+Axisymmetric instability here is associated with the thermal
 contribution to vertical shear: as $q\to0$,  $\p_z\Omega$ becomes
 entirely due to dust-settling and there is no instability ($s\to
 0$). This result is independent of $\rich$, so the Richardson number
@@ -293,17 +293,15 @@ layers.
 \subsection{Effect of a radially-varying dust-to-gas ratio}\label{varHd}
 %{\bf bonus stuff, maybe delete in final version}
 
-Here we allow the dust-to-gas ratio $\epsilon$ to depend on
-$r$. Specifically we let $\epsilon_0\propto r^{-1}$ and
-$H_\epsilon \propto \Hg$ (cf. constant values in the previous
-calculations). Then
-\begin{align*}
+We now consider a radially-varying dust-to-gas ratio. Specifically we
+let $\epsilon_0\propto r^{-1}$ and $H_\epsilon \propto \Hg$
+(cf. constant values in the previous calculations). Then
+\begin{align*} 
   \frac{\p\epsilon}{\p r} =
   \left(\frac{z^2}{H_\epsilon^2}\frac{d\ln{\Hg}}{dr} -
     \frac{1}{r}\right)\epsilon.   
 \end{align*}
-We fix $Z=0.01$, $\Hd=0.8\Hg$ at $r=r_0$, and
-$k_x\Hg=30$.      
+Here we fix $Z=0.01$, $\Hd=0.8\Hg$, and $k_x\Hg=30$.       
 
 Fig. \ref{compare_vshear_varHd} shows that a radially-varying
 dust-to-gas ratio increases the magnitude of the vertical shear rate
@@ -333,7 +331,9 @@ disk.
 \begin{figure}
   \includegraphics[width=\linewidth]{figures/compare_eigenvals_varHd} 
   \caption{Unstable VSI modes in the disk models of
-    Fig. \protect\ref{compare_vshear_varHd}.  
+    Fig. \protect\ref{compare_vshear_varHd}.  Black (blue) diamonds
+    are mode frequencies for a disk with radially uniform (varying)
+    dust-to-gas ratio. 
     \label{vsi_dust_varHd}
     }
 \end{figure}
@@ -343,22 +343,25 @@ disk.
 
 In \S\ref{vert_mixed_theory} we found that for strictly isothermal
 disks, a vertically-uniform dust-to-gas ratio can be unstable
-if $d\epsilon/dr\neq0$. To demonstate this numerically we consider the
+if $d\epsilon/dr\neq0$.  
+To demonstate this numerically we consider the
 same disk as above but with $q=0$ and choose $H_\mathrm{d}$ such
-that $H_\epsilon=10^3\Hg$. Then vertical shear $\p_z\Omega$ is attributed
-to the radially-varying dust-to-gas ratio (see Eq. \ref{vshear2}).  
+that $H_\epsilon=10^3\Hg$. Then vertical shear $\p_z\Omega$ is then
+attributed to the radially-varying dust-to-gas ratio (see
+Eq. \ref{vshear2}).    
 
 We show unstable modes for this disk in
-Fig. \ref{vert_mixed_modes}. In order to obtain appreciable growth  
+Fig. \ref{vert_mixed_modes}. In order to obtain appreciable growth   
 rates, we needed to consider super-Solar metalicity $Z=0.03$ and high
 radial wavenumber $k_x\Hg=1800$. As expected from the discussion in
 \S\ref{vert_mixed_theory}, the disk admits purely growing modes with
-$\omega=0$. 
+$\omega=0$. This is distinct from the growing oscillations associated
+with classic VSI discussed above. 
 
 \begin{figure}
   \includegraphics[width=\linewidth]{figures/vert_mixed_modes} 
-  \caption{Unstable modes in a strictly isothermal disk ($q=0$) with
-    vertically uniform dust-to-gas ratio. The instability is due to
+  \caption{Purely growing modes in a strictly isothermal disk ($q=0$) with
+    vertically uniform dust-to-gas ratio. The instability is due to 
     vertical shear $\p_z\Omega\neq0$ arising from radial variations in
     the dust-to-gas ratio, $d\epsilon/dr\neq 0$. \label{vert_mixed_modes}
     }
@@ -367,6 +370,7 @@ $\omega=0$.
 
 
 \subsection{Validity}
+{\bf maybe incorporate into intro to this section?}
 We considered $\tstop=0$ in order to perform stability analysis on an
 exact steady state. When $\tstop\neq0$, a stratified dusty 
 disk initialized as in \S\ref{eqm} would evolve 

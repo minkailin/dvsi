@@ -51,23 +51,23 @@ polytropic disk with $K=$constant, while one sets $c_s^2\to K$ in
 
 \subsubsection{Classic gravitational instabilities} %vertical structure 
 The addition of dust enhances gravitational
-instability (GI). This is because dust particles contribute to the
+instability (GI) because dust particles contribute to the
 total disk mass but not thermal pressure, which effectively lowers the
 disk temperature \citep[][]{thompson88,shi13}. For typical dust-loading 
 $\epsilon, Z\ll1$, this effect is unimportant. However, if $\epsilon$ is
-large (e.g. due to dust settling) then the reduced temperature $\tilde{T}$ may 
-be lowered to enable instability. 
+large (e.g. due to dust settling) then the reduced temperature
+$\widetilde{T}$ may be lowered to enable instability.  
 
 As noted in \S\ref{loc_iso_eos}, dust settling causes 
-$\tilde{T}$ to \emph{increase} away from the midplane. This contrasts
+$\widetilde{T}$ to \emph{increase} away from the midplane. This contrasts
 to previous studies of GI in vertically stratified disks
  where the temperature decreases
 from the midplane \citep[e.g.][]{mamat10, kim12,lin14c}. 
 While we expect only the total surface density and
 characteristic temperatures are relevant to stability  
-\citep{toomre64}, a non-trivial effective vertical temperature
+\citep{toomre64}, a non-trivial vertical temperature
 structure, induced by dust, may modify the vertical structure of 3D
-waves and unstable modes. We will examine this linear problem in a following 
+waves and unstable modes. We will examine this problem in a following 
 study.  
 
 Another potential connection to previous results for gas disks is  
@@ -80,7 +80,7 @@ appears in models of gravito-turbulent disks. Thus it may be
 conceivable that a massive dusty disk admit `dusty
 gravito-turbulence'. 
 
-
+ 
 
 
 
@@ -96,20 +96,25 @@ instability that operates in thin disks when it has radial structure
 \citep{lovelace99,li00}. These studies consider adiabatic pure gas and 
 show instability is possible if there is an extrema in the generalized
 potential vorticity 
-\begin{align}
- \mathcal{V} = \frac{\kappa^2}{2\Omega\Sigma}\mathcal{S}^{-2/\gamma},  
-\end{align} 
-where $\mathcal{S} = \Pi/\Sigma^\gamma$. Here, $\Sigma$ is the total
-surface density and $\Pi$ is the vertically integrated pressure. 
+%\begin{align}
+ $\mathcal{V}_\mathrm{g} =
+ \kappa^2\mathcal{S}_\mathrm{g}^{-2/\gamma}/2\Omega\Sigma_\mathrm{g}$, 
+%\end{align} 
+where $\mathcal{S}_\mathrm{g} = P/\Sigma_\mathrm{g}^\gamma$. Here $P$
+should be interpreted as the vertically integrated pressure. The
+non-linear result of the RWI is vortex formation \citep{li01}. 
 
-From the dusty/adiabatic gas equivalence, we deduce the corresponding
-condition for RWI in a (locally isothermal or polytroipc) dusty gas is
-also given by extrema in $\mathcal{V}$ with $\mathcal{S} = \exp{\left(\Gamma
-S_\mathrm{eff}\right)}$ and $\tepsilon = \Sigma_\mathrm{d}/\Sigma$. Since
-the effective entropy reflects the dust distribution, we expect that
-RWI may also be triggered by extrema in the dust-to-gas ratio, e.g. 
-narrow dust rings. This would lead to direction formation of dusty
-vortices. 
+The dusty/adiabatic gas analogy imply the condition for RWI in a
+polytropic dusty gas is given by extrema in  
+\begin{align}
+  \mathcal{V} =
+  \frac{\kappa^2}{2\Omega\Sigma}\frac{1}{K^{2/\Gamma}}\left(1+
+    \frac{\Sigma_\mathrm{d}}{\Sigma_\mathrm{g}}\right)^2.    
+\end{align}
+Thus we expect that RWI may also be triggered by extrema 
+in the dust-to-gas ratio, e.g. narrow dust rings/gaps. This may lead
+to direct formation of dusty vortices, as opposed to dust-trapping by  
+a pre-existing gas vortex \citep{barge95,lyra13}.  
 
 %{\bf so may it's not vortex formation then dust-trapping. could just
 %  form dusty vortices in one go}
@@ -117,11 +122,11 @@ vortices.
 %gap edges. thin dust rings. 
 
 \subsubsection{Convective overstability}
-The `convective overstability' (ConO) operates in dust-free, non-adiabatic disks 
-when there is an unstable radial buoyancy frequency ($N_r^2 < 0 $)
-combined with finite thermal relaxation time, $t_\mathrm{cool}\sim
-\OmK^{-1}$. This lead to growing epicycles
-\citep{klahr14,lyra14,latter16}.  
+The `convective overstability' (ConO) operates in pure gas, non-adiabatic disks 
+when there is a radial buoyancy frequency such that $N_r^2\equiv
+F_r\p_rS/C_P  < 0 $ and cooling times $t_\mathrm{cool}\sim \OmK^{-1}$. This
+combination leads to growing epicycles
+\citep{klahr14,lyra14,latter16}.     
 %with 
 %growth rate $\propto  -N_r^2$ 
 % Indeed, the effective radial buoyancy frequency in our dusty disk 
@@ -131,19 +136,28 @@ combined with finite thermal relaxation time, $t_\mathrm{cool}\sim
 %   -\frac{\rho}{P}F_r^2<0.  
 % \end{align}
 
-The conditions required for ConO might be realized in a locally
-isothermal dusty disk. Since $\p_rP < 0$ in typical disk models, 
-if the dust-induced radial entropy gradient is negative, then
-$N_r^2  =  F_r \p_r\seff < 0$. In 
-fact, the typical disk models used to study the streaming
-instability have zero background radial density gradient, in which
-case  $N_r^2= -\rho F_r^2/P$.  
+%The disk structure required for ConO might be realized in a locally
+%isothermal dusty disk. 
 
-Locally isothermal disks have $\tcool=0$, so the pure gas ConO cannot
+Now consider a strictly isothermal dusty disk where the relevant 
+entropy is dust-induced, $\seff =-\ln{(1+\rhod/\rhog)}$. 
+%The dusty/adiabatic gas
+%analogy implies the replacement $S\to\seff = -\ln{(1+\rhod/\rhog)}$ in
+%$N_r$. 
+Since $F_r\propto -\p_rP > 0$ in typical disk models, ConO would
+require $\p_r\seff<0$, implying the dust-to-gas ratio increases
+\emph{outwards}. This might be realized at special locations in
+protoplanetary disks.    
+
+%fact, the typical disk models used to study the streaming
+%instability have zero background radial density gradient, in which
+%case  $N_r^2= -\rho F_r^2/P < 0$.   
+
+Isothermal disks have $\tcool=0$, so the pure gas ConO cannot
 exist. However, we have shown that dust-gas drag provides an effective
-energy source/sink to the mixture. It would be
-interesting to explore whether or not dust-gas drag can provide the
-required `cooling' to enable a dusty version of the convective
+energy source/sink to the mixture (\S\ref{energy_analogy}). It would be
+interesting to explore whether or not dust-gas drag can provide the 
+required `cooling' to enable a dusty version of the convective 
 overstability. 
 
 %Furthermore, 
@@ -172,25 +186,27 @@ overstability.
 \subsubsection{Zombie vortices}
 
 The `zombie vortex instability' (ZVI) is a non-axisymmetric,
-non-linear (or finite-amplitude) instability in gas disks
-\citep{marcus15}. It operates by exciting `critical layers' which role
-up into vortices, exciting further critical layers. The result is an
-array of vortices. These critical
-layers are locations where the intrinsic wave frequency of a
-disturbance matches the local vertical buoyancy frequency
+non-linear instability discovered in pure gas disks
+\citep{marcus15,umurhan16d}. It operates by having finite-amplitude perturbations
+exciting `critical layers' which role 
+up into vortices, exciting further critical layers. The process
+repeats itself and the result is an array of vortices. These critical 
+layers are locations where the intrinsic wave frequency of a 
+disturbance matches the local vertical buoyancy frequency 
 \citep{marcus13}.  
 
-Since buoyancy is critical for the ZVI, it requires an almost
-purely adiabatic gas ($\tcool\OmK\gg 1$). This limits its
-applicability to the inner most parts of typical protoplanetary disks
-\citep{lesur16}. 
+Since the necessary physical ingredient for the ZVI is vertical
+buoyancy, it requires an almost purely adiabatic gas ($\tcool\OmK\gg
+1$). This limits its applicability to typical protoplanetary disks at
+$\lesssim 1$AU \citep{lesur16, malygin17}. However, this consideration
+assumes a dust-free disk.  
 
-However, we have show that dust-loading an isothermal disk also
-induces an effective buoyancy. This effect is maximized when dust is
+On the other hand, we have show that dust-loading an isothermal disk
+also induces an effective buoyancy. This effect is maximized when dust is
 perfectly coupled to the gas. It is thus natural to ask whether or not
 the required adiabatic conditions for ZVI can be realized through
-dust-loading, and thus produce a `dusty ZVI'. 
-
+dust-loading, and thus produce a `dusty ZVI'. This may allow the ZVI
+to operate at $\gtrsim 1$AU. 
 
 \subsection{Implications for numerical simulations}
 The dusty/adiabatic gas equivalence means that pure
@@ -205,12 +221,20 @@ equation. When $c_s$ or $K$ is not constant and/or $\tstop\neq0$ one
 should add corresponding source terms in the energy equation
 (e.g. Eq. \ref{poly_energy}). 
 The source term associated with dust-gas drag, $\mathcal{C}$, is 
-analogous to radiative diffusion \citep{price15}, which is also
-featured in many hydrodynamics codes.      
+analogous to radiative diffusion \citep{price15} or thermal
+conduction, which is also common in modern hydrodynamics codes.       
 
+We have taken advantage of the dusty/adiabatic gas equivalence to 
+convert the popular
+\textsc{Pluto}\footnote{\url{http://plutocode.ph.unito.it/}}      
+hydrodynamics code into a dusty gas dynamics code appropriate for
+simulating protoplanetary disks coupled to small dust. We will apply 
+our modified code --- d\textsc{Pluto} --- to the streaming instability
+and disk-planet interactions in an upcoming publication (Lin et al.,
+in preparation).   
 
 \subsection{Higher order corrections}
-%{\bf notes for self. maybe exclude in final. }
+{\bf notes for self. maybe exclude in final. }
 
 The one-fluid formulation, 
 Eqs. \ref{masseq}---\ref{tempeq}, can 
@@ -382,13 +406,13 @@ hydrodynamics.
 % %also unclear what are "proper" vertical bc for dusty disks 
 
 \section{Summary}\label{summary}
-In this paper we develop an analogy between isothermal 
+In this paper we develop a physical analogy between isothermal 
 dusty-gas and adiabatic, pure gas. The correspondence arises
 because drag forces reduce the relative velocity between gas and
 dust. In the limit of perfect dust-gas coupling, $\tstop \to 0$,  
  dust is entrained in 
 the gas. Then the dust-to-gas ratio $\rhod/\rhog$ is conserved
-following the flow. This is analogous to entropy being conserved
+following the flow. This property is analogous to entropy being conserved
 following a adiabatic, pure gas. 
 
 For finite dust-gas drag, $\tstop\neq 0$, the dust content of a 

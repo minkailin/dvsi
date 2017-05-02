@@ -85,26 +85,27 @@ $T_\mathrm{ref}$ on a timescale of $\tcool$. We will shortly simplify
 the problem by considering rapid cooling, $\tcool\to0$. 
 
 
-The total gravitational potential is $\Phi_\mathrm{tot}=\Phi + \psi$,
-where $\Phi$ originates from a star of mass $M_*$, 
+The total gravitational potential is $\Phi_\mathrm{tot}=\Phi +
+\psi$. Here $\Phi$ originates from a star of mass $M_*$, 
 \begin{align}\label{thin_disk_potential}
   \Phi(r,z) =-\frac{GM_*}{\sqrt{r^2 + z^2}}\simeq
-  -\frac{GM_*}{r}\left(1 - \frac{z^2}{2r^2}\right), 
+  -\frac{GM_*}{r}\left(1 - \frac{z^2}{2r^2}\right),  
 \end{align}
-and $\psi$ is the disk potential satisfying
-\begin{align}
-  \nabla^2\psi = 4 \pi G \rho.
-\end{align}
-Here, $G$ is the gravitational constant, and $(r,\phi, z)$ are 
-cylindrical co-ordinates centered on the star.  
+where $(r,\phi, z)$ are cylindrical co-ordinates centered on the star.   
 The second equality in Eq. \ref{thin_disk_potential} is the 
 thin-disk approximation for the stellar potential, appropriate for
 $|z|\ll r$. We shall adopt this approximate potential in order to
 obtain explicit expressions for disk equilibria (\S\ref{eqm}). 
 
-The gravitational potential of the mixture 
-$\psi$ is included here for completeness, but we will mostly neglect
-it ($\psi \equiv 0$) unless explicitly stated otherwise.  
+The disk's own gravitational potential $\psi$ is included for
+completeness, but we will mostly neglect it unless stated
+otherwise. In such cases $\psi$   
+satisfies  
+\begin{align}
+  \nabla^2\psi = 4 \pi G \rho,
+\end{align}
+where $G$ is the gravitational constant. 
+
  
 \subsection{Locally isothermal equation of state}\label{loc_iso_eos}
 For later comparison it is convenient to re-write the temperature
@@ -145,7 +146,7 @@ Since $\tepsilon$ typically decrease away from the midplane, we expect
 vertically isothermal dusty disks to behave as if it had a temperture
 \emph{increasing} away from $z=0$.     
 
-\subsection{Effective energy equation}
+\subsection{Effective energy equation}\label{energy_analogy}
 Although we have eliminated the need of an evolutionary energy
 equation (Eq. \ref{realenergy}) by choosing a locally isothermal
 equation of state (Eq. \ref{eos}), we show that the mixture 
@@ -295,29 +296,34 @@ with $P=P(\tepsilon,\rho)$ given by the equation of state
 (Eq. \ref{eos}). An explicit solution is presented in
 \S\ref{steady_state}.  
 However, disk structures obtained this way generally do not satisfy 
-the steady state effective energy Eq. \ref{eff_energy} because
-$\mathcal{C}\neq0$ for general solutions to
-Eq. \ref{steady_momr}---\ref{steady_momz}. 
+the steady state effective energy Eq. \ref{eff_energy} because typically 
+$\mathcal{C}\neq0$.  
+%for general solutions to 
+%Eq. \ref{steady_momr}---\ref{steady_momz}. 
 
-In practice, dust particles settle to the disk midplane on a timescale 
-$t_\mathrm{settle}\sim 1/\OmK^2\tstop$, although for tightly-coupled dust
-particles this is much longer than that to establish vertical
-hydrostatic equilibrium in the gas component ($\sim 1/\OmK$).  
-True steady states may be calculated by invoking an underlying gas
-turbulence, which leads to dust diffusion counter-acting vertical
-settling \citep{takeuchi02, youdin07}. This complication is beyond the
-scope of this paper.  
+% Dust particles settle to the disk midplane on a timescale 
+% $t_\mathrm{settle}\sim 1/\OmK^2\tstop$, although for tightly-coupled dust
+% particles this is much longer than that to establish vertical
+% hydrostatic equilibrium in the gas component ($\sim 1/\OmK$).  
+% True steady states may be calculated by invoking an underlying gas
+% turbulence, which leads to dust diffusion counter-acting vertical
+% settling \citep{takeuchi02, youdin07}. This complication is beyond the
+% scope of this paper.  
 
-In this work, consider equilibria with $\mathcal{C}\equiv 0$, namely   
+In order to have a well-defined stability problem, we formally
+take equilibria with $\mathcal{C}\equiv 0$, namely      
 \begin{inparaenum}[1)] 
 \item 
-  unstratified disks with finite dust-gas drag; %(\S\ref{si});  
+  unstratified or 2D disks with finite dust-gas drag; %(\S\ref{si});   
 \item 
   perfectly-coupled dust with $\tstop=0$. %(\S\ref{results}). 
 \end{inparaenum} 
-Vertical settling is absent in both cases. Alternatively, we are 
-assuming that $\tstop$  is sufficiently small such 
-that settling occurs on much longer timescales than the instabilities of interest. 
+Alternatively, we are assuming that $\tstop$  is sufficiently small
+such that the evolution of the background disk (e.g. dust-settling) 
+occur on much longer timescales than the 
+instabilities of interest.  
+
+
 
 
 %Eq. \ref{steady_dust} makes it difficult to obtain equilibrium
@@ -454,7 +460,7 @@ such that $\delta^2\ll \epsilon$. Otherwise, vertical shear is
 associated with the radial temperature gradient. %However, axisymmtric
 %\emph{instability} always caused by $\p_rc_s^2$.  
 
-\subsection{Vertical buoyancy}\label{vbuoyancy}
+\subsection{Dusty vertical buoyancy}\label{vbuoyancy}
 Having identified the entropy of an isothermal dusty gas, we find the
 vertical buoyancy frequency $N_z$ of the mixture is given by 
 \begin{align}
@@ -490,10 +496,10 @@ drag diminishes the dust-induced buoyancy.
 
 In this section we discuss the basic properties of the 
 dusty-gas mixture using Eqs.\ref{masseq}--\ref{momeq} with 
-Eq. \ref{eff_energy} in place of the dust continuity equation. Our
-discussion is based on the corresponding axisymmetric linearized
-equations. A variable $X$ is
-subject to Eulerian perturbations of the form 
+Eq. \ref{eff_energy} in place of the dust continuity
+equation. Self-gravity is neglected here. Our discussion is based on
+the corresponding axisymmetric linearized equations. A variable $X$ is
+subject to Eulerian perturbations of the form  
 \begin{align}
  \real\left[ \delta X(r,z)\exp{\left(-\ii\sigma t\right)}\right], 
 \end{align}
@@ -503,8 +509,9 @@ write
   \sigma = \ii s - \omega,
 \end{align}
 where $s$ and $\omega$ are the growth rate and real frequencies,
-respectively. Thus perturbations have time dependence $e^{st +
-  \ii\omega t}$.  
+respectively. Then perturbations have time dependence $e^{st +
+  \ii\omega t}$.  Thus for $\omega>0$, perturbations rotate
+anti-clockwise in the complex plane. 
 
 In Appendix
 \ref{var_prin} we derive the integral relation,  
@@ -560,74 +567,68 @@ square of the epicylic frequency. %We assume $\kappa^2>0$.
 Eq. \ref{dusty_solberg1}---\ref{dusty_solberg2} are in fact the 
 the Solberg-Hoiland criteria for axisymmetric stability of adiabatic
 gas if one inserts $C_p\ln{\left(1 -
-    \tepsilon\right)}$ for the entropy in the standard
+    \tepsilon\right)}$ for the entropy into the standard
 expression for said criteria \citep{tassoul78}. 
 
 We expect Eq. \ref{dusty_solberg1} to be satisfied in typical
 protoplanetary disks where the dust-to-gas ratio increases in the same
 direction as the local pressure gradient, which is equivalent to the
-gas density gradient for isothermal gas. Thus for instability
-here we need to violate Eq. \ref{dusty_solberg2}. We explore this
-below. 
+gas density gradient for isothermal gas. {\bf ref for drift} Thus for
+instability we need to violate Eq. \ref{dusty_solberg2}. We explore
+this below. 
 
 
 \subsubsection{Vertically well-mixed dust}\label{vert_mixed_theory}
-Here we consider the special case where the dust-to-gas ratio is
-uniform in $z$. Then the LHS of Eq. \ref{dusty_solberg2} becomes
+In the special case where the dust-to-gas ratio is
+uniform in $z$ the LHS of Eq. \ref{dusty_solberg2} becomes
 \begin{align}
 -\frac{c_s^4}{(1+\tepsilon)^4}\left(\frac{\p\ln{\rhog}}{\p
     z}\right)^2\left(\frac{\p\epsilon}{\p r}\right)^2<0.
 \end{align}
-Thus the disk is \emph{unstable}, since there is no effective vertical 
-buoyancy to stabilize vertical motions. This situation is
+Thus the disk is \emph{unstable}, because there is no effective vertical 
+buoyancy to stabilize vertical motions ($N_z=0$). This situation is 
 identical to the pure gas, adiabtic simulations of \cite{nelson13}
 where the gas entropy is vertically uniform but has a radial
 gradient. The authors indeed find instability. We give a numerical
 example in the dusty context in \S\ref{vert_mixed}.   
 
-\subsubsection{Order-of-magnitude estimates} 
-In order to apply the stability criteria
-Eq. \ref{dusty_solberg1}---\ref{dusty_solberg2} to typical
-protoplanetary disks we conside the equilibria described in
-\S\ref{eqm}. We assume the disk is approximately Keplerian so that $\kappa\simeq\OmK$, and that the vertical gas distribution is  
+\subsubsection{Application to protoplanetary disks} 
+%In order to apply the stability criteria
+%Eq. \ref{dusty_solberg1}---\ref{dusty_solberg2} to typical
+%protoplanetary disks 
+We now consider the specific equilibria described in 
+\S\ref{eqm}. We assume the disk is approximately Keplerian so that
+$\kappa\simeq\OmK$, and that the vertical gas distribution is   
 Gaussian. In terms of the dust-to-gas
-ratio $\epsilon$, Eq. \ref{dusty_solberg1}---\ref{dusty_solberg2}
-become   
+ratio $\epsilon$, Eq. \ref{dusty_solberg2}
+becomes 
 \begin{align}
-  &1 + \frac{\epsilon}{\left(1+
-    \epsilon\right)^2}\left(h_\mathrm{g}^2\frac{\p\ln{\rhog}}{\p\ln{r}}
-  \frac{\p\ln{\epsilon}}{\p\ln{r}} + 
-  \frac{z^2}{\Htilde^2}\right)>0 \label{stability_est1},   \\ 
+  % &1 + \frac{\epsilon}{\left(1+
+  %   \epsilon\right)^2}\left(h_\mathrm{g}^2\frac{\p\ln{\rhog}}{\p\ln{r}}
+  % \frac{\p\ln{\epsilon}}{\p\ln{r}} + 
+  % \frac{z^2}{\Htilde^2}\right)>0 \label{stability_est1},   \\ 
 &1 - \frac{\epsilon
   h_\mathrm{g}^2}{\left(1+\epsilon\right)^2}
   \frac{\p\ln{\epsilon}}{\p\ln{r}}\left(-\frac{\p\ln{\rhog}}{\p\ln{r}}+\frac{\Htilde^2}{H_\mathrm{g}^2}\frac{\p\ln{\epsilon}}{\p\ln{r}}\right)
   > 0 \label{stability_est2},
 \end{align}
-\emph{for stability}. 
+for \emph{stability}. The second term is usually stabilizing in 
+PPDs. The third term is always destabilizing, but is small in smooth,
+thin disks with radial gradients $O(1/r)$,  $h_\mathrm{g}\ll 1$,
+provided that $H_\epsilon/\Hg$ is not large (e.g. some dust settling
+has occured). This means that typical dusty PPDs are stable to
+axisymmetric perturbations, a result valid for arbitrarily thin dust
+layers. 
 
-Eq. \ref{stability_est1}---\ref{stability_est2} are easily satisfied
-in thin accretion disks where radial gradients are $O(1/r)$, 
-$h_\mathrm{g}\ll 1$ and $\Htilde/H_\mathrm{g}$ not too
-large.  Then the
-magnitude of the second term on the left-hand-side  of either
-inequality is much less than unity. Thus radially smooth, strictly
-isothermal disks perfectly coupled with dust are stable against
-axisymmetric perturbations. This result holds for arbitrarily thin
-dust layers. 
-
-%Such disks are stable against
-%axisymmetric perturbations.  
-
-\subsubsection{Instability at dust edges}
-Notice the left-hand-side of Eq. \ref{stability_est2} is a quadratic in
-$\p_r\epsilon$. It is possible to
-violate this inequality for sufficiently large (in magnitude) radial
-gradients  in the dust-to-gas ratio, 
+To violate Eq. \ref{stability_est2} and obtain instability, notice the 
+LHS is a quadratic in $\p_r\epsilon$. Thus instability is possible for
+sufficiently large (in magnitude) radial gradients  in the dust-to-gas
+ratio,  
 \begin{align}
   \frac{\p\ln{\epsilon}}{\p\ln{r}} > \chi_+ \quad \mathrm{or} \quad 
   \frac{\p\ln{\epsilon}}{\p\ln{r}} < \chi_-,
 \end{align}
-\emph{for instability}, where
+for \emph{instability}, where
 \begin{align}\label{spm}
 \chi_\pm = \frac{1}{2}\frac{H_\mathrm{g}^2}{\Htilde^2} 
   \left[
@@ -639,9 +640,8 @@ gradients  in the dust-to-gas ratio,
   }
   \,\right]. 
 \end{align} 
-In typical accretion disks where $\p_r\rhog<0$, it is easier to
-achieve instability at a given radius for increasing dust-to-gas
-ratios in outwards ($\p_r\epsilon > 0$), and vice versa.  
+In typical accretion disks where $\p_r\rhog<0$, instability is easier
+for increasing dust-to-gas ratios ($\p_r\epsilon > 0$).  
 
 We can neglect density gradients in Eq. \ref{spm} 
 if $r\p_r\ln{\rhog}\sim O(1)$ and $H_\epsilon/\Hgas\gg
@@ -662,39 +662,23 @@ $L_\epsilon\ll O(\Htilde)$, i.e. its vertical lengthscale,
 then the system is potentially unstable.  
 Taking $\epsilon\sim 0.01$,  we find that 
 for thin dust layers with $H_\epsilon \simeq \Hd\ll \Hg$,  instability
-requires $L_\epsilon\ll O(0.1\Hg)$, i.e. the dust-to-gas ratio must
-vary on an extremely short lengthscale. 
-% %an extremely short  
-% %radial length-scale in the dust-to-gas ratio. 
-% This is unlikely to
-% occur. On the other hand, if dust is well-mixed, say $\Hd\simeq
-% 0.99\Hg$, then instability only requires 
-% $L_\epsilon\lesssim O(10\Hg)$, which is more realistic. 
-
-%This is responsible for 
-%the usual vertical shear instability in locally isothermal disks.
-%However, we may obtain an integral
-%relation for linear, axisymmetric waves with frequency $\sigma$ (see
-%Appendix \ref{var_prin}, where we also account for finite $\tstop$) in
-%the form:   
-%If $c_s$ is constant, then $\sigma^2$ is real, and 
-%the first integral leads to the previous Solberg-Hoiland criteria for 
-%axisymmetric stability. However, when $c_s$ is non-uniform, 
+requires $L_\epsilon\ll O(0.1\Hg)$, i.e. the dust-to-gas ratio must 
+vary on an extremely short lengthscale. This might be achieved, for
+example, at sharp edges associated with gaps opened by giant planets. 
+{\bf mention this is equivalent to sharp entropy gradients?}
 
 \subsection{Thermodynamics of dust-drag instabilities}\label{dust_work}
 Now consider constant $c_s$ but $\tstop\neq0$. 
 Eq. \ref{int_rel} indicates that $\sigma^2$ is generally complex, so
-we may have growing oscillations. %Writing $\sigma =
-%-\omega + \ii s$ where $\omega$ and $s$ are the real frequency and
-%growth rates, respectively, 
-The imaginary part of Eq. \ref{int_rel}
-gives  
+we may have growing oscillations, or overstability, due to dust-gas
+friction. This is seen by taking the imaginary part of
+Eq. \ref{int_rel} 
 \begin{align}
 %  s = \frac{\imag\int \left(\nabla\cdot\dd\bm{v}^*\right)\dd\mathcal{C}dV}{2\omega\int\rho\left(|\dd
 %    v_r|^2 + |\dd v_z|^2\right)dV}, \label{thermal_instability}
   s = \frac{\imag\int \left(\nabla\cdot\dd\bm{v}^*\right)\dd\mathcal{C}dV}{2\omega\mathcal{I}^2}, \label{thermal_instability}
 \end{align} 
-assuming $\omega\neq0$. This represents overstability due to dust-gas friction. 
+assuming $\omega\neq0$. %This represents overstability due to dust-gas friction. 
 Since drag ($\delta \mathcal{C}$) appears as a source term in our
 effective energy equation, the quantity 
 $\imag\left[\left(\nabla\cdot\dd\bm{v}^*\right)\dd\mathcal{C}\right]$
@@ -706,8 +690,8 @@ instabilities in stars \citep{cox67}. We thus interpret
 dust-drag overstabilities in a similar way, 
 adapting from the treatment of stellar 
 pulsations by \cite{cox67} and lecture notes by \cite{samadi15} and 
-J. Christensen-Dalsgaard\footnote{\url{http://astro.phys.au.dk/$\sim$jcd/oscilnotes/print-chap-full.pdf}}.      
-
+J. Christensen-Dalsgaard\footnote{\url{http://astro.phys.au.dk/$\sim$jcd/oscilnotes/print-chap-full.pdf}}.        
+ 
 %and disks
 %\cite{kato78}. 
 
@@ -796,7 +780,7 @@ for the case of dusty gas.
 \end{figure}
 
 
-\subsubsection{Physical requirement of dust-gas drag overstabilities}  
+\subsubsection{Physical property of dust-gas drag overstabilities}  
 
 %We now use physical arguments to show that $\mathcal{W}>0$ if pressure
 %perturbations (from the gas) lags behind the total density of the gas
@@ -831,12 +815,13 @@ postive work if
 \begin{align*}
 -\sgn\left(\omega\right)\imag\left(\Delta\rhog\Delta\rhod^*\right)>0,
 \end{align*}
-meaning that gas follows dust. Instabilities are thus not possible if the
-gas does not respond to dust-drag (i.e. no back-reaction). The
-pressure-density lag shown in Fig. \ref{pdv_cartoon} is achieved if, 
-after a parcel reaches maximum total density, its 
-gas content is still increasing ($A$ to $B$). This in turn implies a sufficiently
-large particle flux \emph{out} of the parcel.   
+meaning that gas follows dust (Fig. \ref{lag_cartoon}). Instabilities
+are thus not possible if the gas does not respond to dust-drag
+(i.e. no back-reaction). The pressure-density lag shown in
+Fig. \ref{lag_cartoon} is achieved if, after a parcel reaches maximum
+total density, its  gas content is still increasing (see $A$ to $B$ in
+Fig. \ref{pdv_cartoon}). This in turn implies a sufficiently large
+particle flux \emph{out} of the parcel.    
 
 %{\bf lagrangian derivative follows the mixture.}
 % this highlights one
@@ -846,22 +831,25 @@ large particle flux \emph{out} of the parcel.
 This thermodynamic interpretation does not explain 
 \emph{why} drag forces causes gas pressure to lag behind the dust
 density, but shows 
-that this \emph{must} be the case for any growing modes associated the
+that this \emph{must} be the case for any growing oscillations associated the
 dust-gas drag. To rigorously understand how dust-drag causes this 
 lag requires an explicit solution to the linearized equations with 
 detailed treatment of the function $\mathcal{C}$. However, given the complexity of
 $\mathcal{C}$ (see Appendix \ref{lin_dust}), we might generally expect
- dusty disks to  support a range of stable and unstable modes, with the
+ dusty disks to  support a range of stable and overstable modes, with the
 latter being associated with pressure-density lag. 
-
-Indeed, \cite{jacquet11} explains the essence of the streaming 
-instability in dusty protoplanetary disks as dust accumulation
-(and hence compression) at a pressure bump, which then drags the 
-gas towards it (and hence heating) to strengthen the pressure
-bump. That is, heating occurs upon compression, as in stellar  
-pulsational instabilities \citep{cox67}. In \S\ref{si} we check that the
+%Indeed, \cite{jacquet11} explains the essence of the streaming 
+%instability in dusty protoplanetary disks as dust accumulation
+%(and hence compression) at a pressure bump, which then drags the 
+%gas towards it (and hence heating) to strengthen the pressure
+%bump. That is, heating occurs upon compression, as in stellar  
+%pulsational instabilities \citep{cox67}.
+ In \S\ref{si} we check that the
 streaming instability fits into this thermodynamic interpretation in
 the strong drag limit.  
+
+
+
 
 %A phase difference was also noted in the 
 %numerical calculations of the streaming instability by 
