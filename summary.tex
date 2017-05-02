@@ -94,7 +94,7 @@ gravito-turbulence'.
 The Rossby wave instability (RWI) is a non-axisymmetric, 2D shear
 instability that operates in thin disks when it has radial structure
 \citep{lovelace99,li00}. These studies consider adiabatic pure gas and 
-show instability is possible if there is an extrema in the generalized
+show instability is possible if there is an extremum in the generalized
 potential vorticity 
 %\begin{align}
  $\mathcal{V}_\mathrm{g} =
@@ -105,7 +105,7 @@ should be interpreted as the vertically integrated pressure. The
 non-linear result of the RWI is vortex formation \citep{li01}. 
 
 The dusty/adiabatic gas analogy imply the condition for RWI in a
-polytropic dusty gas is given by extrema in  
+polytropic dusty gas disk is an extremum   
 \begin{align}
   \mathcal{V} =
   \frac{\kappa^2}{2\Omega\Sigma}\frac{1}{K^{2/\Gamma}}\left(1+
@@ -188,7 +188,7 @@ overstability.
 The `zombie vortex instability' (ZVI) is a non-axisymmetric,
 non-linear instability discovered in pure gas disks
 \citep{marcus15,umurhan16d}. It operates by having finite-amplitude perturbations
-exciting `critical layers' which role 
+exciting `critical layers' which roll 
 up into vortices, exciting further critical layers. The process
 repeats itself and the result is an array of vortices. These critical 
 layers are locations where the intrinsic wave frequency of a 
@@ -197,27 +197,28 @@ disturbance matches the local vertical buoyancy frequency
 
 Since the necessary physical ingredient for the ZVI is vertical
 buoyancy, it requires an almost purely adiabatic gas ($\tcool\OmK\gg
-1$). This limits its applicability to typical protoplanetary disks at
+1$). This limits its applicability in typical protoplanetary disks to 
 $\lesssim 1$AU \citep{lesur16, malygin17}. However, this consideration
 assumes a dust-free disk.  
 
 On the other hand, we have show that dust-loading an isothermal disk
-also induces an effective buoyancy. This effect is maximized when dust is
-perfectly coupled to the gas. It is thus natural to ask whether or not
+also induces an effective buoyancy. % This effect is maximized when dust is
+% perfectly coupled to the gas
+. It is thus natural to ask whether or not
 the required adiabatic conditions for ZVI can be realized through
 dust-loading, and thus produce a `dusty ZVI'. This may allow the ZVI
-to operate at $\gtrsim 1$AU. 
+to operate at $\gtrsim 1$AU in PPDs. 
 
 \subsection{Implications for numerical simulations}
 The dusty/adiabatic gas equivalence means that pure
 gas dynamics codes can be applied to simulate locally
-isothermal/polytropic dusty gas. One need not add any new 
-equations to evolve the dust component: 
+isothermal/polytropic dusty gas. One need not implement a separate 
+equation for the dust component: 
 %In fact, no
 %modification is needed  
 %for strictly isothermal or polytropic gas perfectly-coupled to dust:  
  the standard energy equation substitutes for the dust continuity
-equation. When $c_s$ or $K$ is not constant and/or $\tstop\neq0$ one
+equation. When $c_s$ (or $K$) is not constant and/or $\tstop\neq0$ one
 should add corresponding source terms in the energy equation
 (e.g. Eq. \ref{poly_energy}). 
 The source term associated with dust-gas drag, $\mathcal{C}$, is 
@@ -234,9 +235,9 @@ and disk-planet interactions in an upcoming publication (Lin et al.,
 in preparation).   
 
 \subsection{Higher order corrections}
-{\bf notes for self. maybe exclude in final. }
+{\bf notes for self. maybe exclude in final. maybe move into appendix}
 
-The one-fluid formulation, 
+The simplified one-fluid formulation, 
 Eqs. \ref{masseq}---\ref{tempeq}, can 
 produce spuriously-growing modes with frequency $|\sigma|\gtrsim
 \Omega$ (see Appendix \S\ref{spurious_epi}). This 
@@ -291,9 +292,9 @@ momentum transport of the mixture as a whole. This is similar to Reynolds stress
 a turbulent disk \citep{balbus99}. In particular, 
 outwards angular momentum transport requires $\p_rP\p_\phi P > 0$.    
 
-In a following paper we will include $\bm{T}$ in the one-fluid
-equations and futher explore the analogy between dusty-gas and viscous
-hydrodynamics. 
+% In a following paper we will include $\bm{T}$ in the one-fluid
+% equations and futher explore the analogy between dusty-gas and viscous
+% hydrodynamics. 
 
 
 % \subsection{New dust-drag
@@ -406,7 +407,7 @@ hydrodynamics.
 % %also unclear what are "proper" vertical bc for dusty disks 
 
 \section{Summary}\label{summary}
-In this paper we develop a physical analogy between isothermal 
+In this paper we develop the analogy between isothermal 
 dusty-gas and adiabatic, pure gas. The correspondence arises
 because drag forces reduce the relative velocity between gas and
 dust. In the limit of perfect dust-gas coupling, $\tstop \to 0$,  
@@ -415,14 +416,15 @@ the gas. Then the dust-to-gas ratio $\rhod/\rhog$ is conserved
 following the flow. This property is analogous to entropy being conserved
 following a adiabatic, pure gas. 
 
-For finite dust-gas drag, $\tstop\neq 0$, the dust content of a 
-parcel of the mixture is no longer conserved. The parcel 
+For finite drag, $\tstop\neq 0$, the dust content of a 
+parcel of the dusty-gas mixture is no longer conserved. The parcel 
 can exchange dust particles with neighboring parcels. % owing 
 %to dust-gas relative drift. 
-This is analogous to heat exchange between a parcel of pure gas and its surroundings.   
+This is analogous to heat exchange between a parcel of pure gas and
+its surroundings.    
 
 We explicitly show that for a fixed gas equation of state, the  
-evolutionary equation for $\rhod/\rhog$ may be replaced by an 
+evolutionary equation for the dust-to-gas ratio $\rhod/\rhog$ may be replaced by an 
 effective energy equation. This leads to a 
 natural definition of the effective entropy of isothermal dusty gas as  
 \begin{align*}
@@ -430,45 +432,48 @@ natural definition of the effective entropy of isothermal dusty gas as
 \end{align*}
 %This allows us to define the buoyancy frequency of an isothermal 
 %dusty gas. 
-Finite dust-gas friction then appears as an energy
+The effect of finite dust-gas friction appears as an energy
 source term.  This analogy with standard 
-hydrodynamics with cooling/heating allow us to obtain dusty analogs of gaseous
+hydrodynamics with cooling/heating allow us to find dusty analogs of gaseous
 instabilities, and provide thermodynamical interpretations of  
 dust-drag instabilities. 
 
 
-We obtain the Solberg-Hoiland criteria for axisymmetric stability for
-strictly isothermal, perfectly-coupled dusty gas.  
+We obtain an analog of the Solberg-Hoiland criteria for
+axisymmetric stability for strictly isothermal, perfectly-coupled dusty gas.  
 Applying this to typical protoplanetary disks, we find that 
 the vertical shear associated with dust 
  layers \emph{cannot} lead to axisymmetric  
-  instabilities, however thin the dust layer is.   
-%This is consistent with the fact that only 
-%\emph{non-axisymmetric} Kelvin-Helmholtz instabilities have been 
-%observed in numerical simulations in the perfectly-coupled limit 
-%\citep{chiang08,barranco09,lee10}. 
+  instabilities, however thin the dust layer is.    
 Instead, sharp radial  edges in the dust-to-gas ratio could destabilized the
 disk, as these imply sharp gradients in the disk's effective entropy
-profile. % {\bf presumably this limits how sharp dust rings can be} 
+profile. Alternatively, if the dust is vertically well-mixed, then any
+radial gradient in $\rhod/\rhog$ can destabilize the disk. 
+
+ % {\bf presumably this limits how sharp dust rings can be} 
+
 
 We  apply our thermodynamic framework to interpret
 the streaming instability \citep[SI, ][]{youdin05a,jacquet11} and to generalize the vertical shear
 instability \citep[VSI, ][]{nelson13,lin15} to dusty disks. We
-explicitly show that the SI occurs because the evolution of gas
-pressure lags behind  dust density; a general property of 
+explicitly show in SI the evolution of gas
+pressure lags behind dust density; and is in fact a general property of 
 overstabilities driven by strong dust-gas drag. 
 It takes a finite time for the gas to respond to
 the dust motion. A lag implies there exists a time interval where 
-the gas pressure of a parcel of the mixture is increasing whilst dust is already being expelled.  
-The dusty gas then does positive work, which goes into amplifying
-oscillation amplitudes. This interpretation is analogous to stellar pulsational
+the gas pressure of a parcel of the dusty-gas mixture is increasing whilst dust is already being expelled.  
+The dusty gas then does positive work that amplifies 
+oscillations. This interpretation is analogous to stellar pulsational
 instabilities \citep{cox67}. 
 
 For the VSI we find dust-loading is generally stabilizing. In our disk models 
 dust-loading does not affect VSI growth rates significantly, but
 meridional motions may be suppressed where the dust-induced
 vertical buoyancy dominates over vertical shear, consistent with our
-previous study \citep{lin15}. Since the dust-induced buoyancy forces increase away from the midplane, we find dust-loading can stabilize `surface modes' of the VSI, that would otherwise have the largest growth rates.  
+previous study \citep{lin15}. Since the dust-induced buoyancy forces
+increase away from the midplane, we find dust-loading can stabilize
+`surface modes'  of the VSI, that would otherwise have the largest
+growth rates.   
 
 We also discuss future applications of our thermodynamic framework to 
 study dusty protoplanetary disks. Because isothermal dusty gas has an
@@ -479,10 +484,6 @@ Furthermore, hydrodynamic instabilities driven by thermal cooling, such as VSI i
 stably-stratified disks \citep{lin15} or the `Convective
 Overstability' \citep{klahr14, lyra14},  may also find dusty analogs 
 because finite dust-gas drag is equivalent to a heat sink/source. 
-
-
-
-
 
 %In particular, we emphasize the 
 %physical origin of any instability driven by strong dust-gas
