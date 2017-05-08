@@ -257,13 +257,13 @@ dust-gas drag instabilities, and apply it to the streaming instability.
 We also study the effect of dust-loading on the vertical shear
 instability \citep[VSI,][]{nelson13,lin15,barker15}. 
 
-This paper is organized as follows. We first
-explain in \S\ref{grow_osc} a general result of fluid dynamics that
-underpins the rest of our study. We describe how 
-a pressure-density phase lag in fluids can lead to 
-instability. Consequently, an analogy between dusty gas and  
-pure hydrodynamics allow us to interpret dusty-gas instabilities 
-within a thermodynamics framework.  
+This paper is organized as follows. In \S\ref{key_idea} we first
+describe, without derivation, the analogy between dusty gas and    
+ideal hydrodynamics. We then discuss in 
+\S\ref{grow_osc} a general result of fluid dynamics that
+underpins the bulk of our study: intabilities due to 
+pressure-density phase lags. This means that dusty-gas phenomena, such
+as SI, have thermodynamical interpretations.  
 
 We begin our formal discussion in \S\ref{setup} by listing the 
 basic equations describing tightly-coupled dusty gas. We show that for a
@@ -281,6 +281,39 @@ discuss future applications of the dusty/adiabatic gas equivalence in
 
 
 
+
+\section{Dust-free modeling of dusty protoplanetary disks}\label{key_idea}
+{\bf is this section needed?} 
+The key concept we introduce in this work is the description
+of dusty protoplanetary disks \emph{without} having dust as an
+explicit variable. This is best illustrated by writing down our model  
+equations that describe a mixture of isothermal gas and small
+dust particles: 
+\begin{align}  
+  &\frac{\p \rho}{\p t} + \nabla\cdot\left(\rho\bm{v}\right)= 0, \label{mass0}\\ 
+  &\frac{\p\bm{v}}{\p t} + \bm{v}\cdot\nabla\bm{v} = -
+  \frac{1}{\rho}\nabla  P - \nabla \Phi_*,\label{mom0}\\ 
+ & \frac{\p P}{\p t} + \bm{v}\cdot\nabla P 
+  = - P \nabla\cdot\bm{v}
+                + \mathcal{C}(\rho, P; \tstop)\label{en0}, 
+\end{align}
+where $\rho=\rhod + \rhog$ is the total density, $P$ is the pressure,
+$\Phi_*$ is the stellar gravitational potential,   
+and $\mathcal{C}$ represent effects of dust-gas drag, which
+is paremterized by the stopping time $\tstop$.     
+
+Eq. \ref{mass0}---\ref{en0} appear identical to adiabatic gas dynamics, even  
+though they physically represents a two-phase, dusty-gas. The main
+difference is the term $\mathcal{C}$. Here it does not represent
+physical cooling (as the system is isothermal). Instead, dust-gas drag
+causes particles to drift, hence by momentum conservation a gas drift
+in the opposite direction, which changes the pressure distribution.   
+
+Since the above equations are similar to ideal gas dynamics, it 
+means that many of the results derived for ideal hydrodynamics can be  
+generalized to dusty disks without additional effort. This includes 
+the important effect of phase lags between density and pressure in
+fluids, discussed next. 
 
 \section{Growing oscillations by doing work}\label{grow_osc}
 A general result in fluid dynamics is that work is done whenever the
@@ -350,7 +383,8 @@ relevant density here is the total density $\rho = \rhod + \rhog$,
 but the fluid pressure $P$ is due to gas only. If dust were 
 perfectly-coupled to the gas, then $P$ and $\rho$ would be in phase, 
 and there is no work done. However, for finite dust-gas drag, $\rhod$ and
-$\rhog$ are not neccessarily in phase, because dust particles can drift relative to the gas. 
+$\rhog$ are not neccessarily in phase, because dust particles can
+drift relative to the gas.   
 \emph{If} this causes $P$ to lag 
 $\rho$, then the positive work done would lead to growing
 oscillations. Indeed, we show that this is true for the streaming
