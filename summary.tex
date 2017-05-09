@@ -67,22 +67,18 @@ While we expect only the total surface density and
 characteristic temperatures are relevant to stability  
 \citep{toomre64}, a non-trivial vertical temperature
 structure, induced by dust, may modify the vertical structure of 3D
-waves and unstable modes. We will examine this problem in a following 
-study.  
+waves and unstable modes. 
 
 Another potential connection to previous results for gas disks is  
 gravito-turbulence. Cooling, self-gravitating gaseous disks 
 sustain a turbulent state where shock heating due to gravitational 
-instabilities are balanced by thermal losses
-\citep{gammie01}. Now, dust-gas drift behaves like thermal diffusion
-or cooling (Eq. \ref{eff_energy}), similar to how radiative cooling 
-appears in models of gravito-turbulent disks. Thus it may be
-conceivable that a massive dusty disk admit `dusty
-gravito-turbulence'. 
-
- 
-
-
+instabilities are balanced by radiative cooling 
+\citep{gammie01}. Since dust-gas drift appears as a diffusion or 
+cooling in our framework (Eq. \ref{eff_energy}), it may be conceivable
+to have `dusty gravito-turbulence'. As self-gravity increases the
+local density, the associated pressure maxima attract dust-particles,
+but the back-reaction onto the gas may try to flatten the pressure
+bump \citep{taki16}. 
 
 %see also
 %\S\ref{loc_iso_eos}
@@ -111,8 +107,8 @@ polytropic dusty gas disk is an extremum
   \frac{\kappa^2}{2\Omega\Sigma}\frac{1}{K^{2/\Gamma}}\left(1+
     \frac{\Sigma_\mathrm{d}}{\Sigma_\mathrm{g}}\right)^2.    
 \end{align}
-Thus we expect that RWI may also be triggered by extrema 
-in the dust-to-gas ratio, e.g. narrow dust rings/gaps. This may lead
+Thus RWI may also be triggered by extrema 
+in the dust-to-gas ratio, e.g. narrow dust rings/gaps. This may lead 
 to direct formation of dusty vortices, as opposed to dust-trapping by  
 a pre-existing gas vortex \citep{barge95,lyra13}.  
 
@@ -158,8 +154,8 @@ also lead to the mid-plane dust-to-gas ratio to increase outwards
 Isothermal disks have $\tcool=0$, so the pure gas ConO cannot
 exist. However, we have shown that dust-gas drag provides an effective
 energy source/sink to the mixture (\S\ref{energy_analogy}). It would be
-interesting to explore whether or not dust-gas drag can provide the 
-required `cooling' to enable a `dusty convective 
+interesting to explore whether or not dust-gas drag can play the role
+of cooling to enable a `dusty convective 
 overstability'. 
 
 %Furthermore, 
@@ -190,26 +186,23 @@ overstability'.
 The `zombie vortex instability' (ZVI) is a non-axisymmetric,
 non-linear instability discovered in pure gas disks
 \citep{marcus15,umurhan16d}. It operates by having finite-amplitude perturbations
-exciting `critical layers' which roll 
+exciting `critical layers',  where the intrinsic wave frequency of the
+perturbation matches the local vertical buoyancy frequency 
+\citep{marcus13}. These critical layers roll 
 up into vortices, exciting further critical layers. The process
-repeats itself and the result is an array of vortices. These critical 
-layers are locations where the intrinsic wave frequency of a 
-disturbance matches the local vertical buoyancy frequency 
-\citep{marcus13}.  
+repeats itself and the result is an array of vortices. 
 
 Since the necessary physical ingredient for the ZVI is vertical
 buoyancy, it requires an almost purely adiabatic gas ($\tcool\OmK\gg
 1$). This limits its applicability in typical protoplanetary disks to 
 $\lesssim 1$AU \citep{lesur16, malygin17}. However, this consideration
-assumes a dust-free disk.  
+assumes a dust-free disk as far as the dynamics is concerned. 
 
-On the other hand, we have show that dust-loading an isothermal disk
-also induces an effective buoyancy. % This effect is maximized when dust is
-% perfectly coupled to the gas
-. It is thus natural to ask whether or not
+On the other hand, we have show that dust-loading induces an effective
+buoyancy even in isothermal disks. It is thus natural to ask whether or not
 the required adiabatic conditions for ZVI can be realized through
 dust-loading, and thus produce `dusty ZVI'. This may allow the zombie
-vortices to exist at $\gtrsim 1$AU in PPDs. 
+vortices to develop $\gtrsim 1$AU in PPDs. 
 
 \subsection{Implications for numerical simulations}
 The dusty/adiabatic gas equivalence means that pure
@@ -230,7 +223,7 @@ conduction, which is also common in modern hydrodynamics codes.
 We have taken advantage of the dusty/adiabatic gas equivalence to 
 convert the popular
 \textsc{Pluto}\footnote{\url{http://plutocode.ph.unito.it/}}      
-hydrodynamics code into a dusty gas dynamics code appropriate for
+hydrodynamics code \citep{mignone07} into a dusty gas dynamics code appropriate for
 simulating protoplanetary disks coupled to small dust. We will apply 
 our modified code --- d\textsc{Pluto} --- to the streaming instability
 and disk-planet interactions in an upcoming publication (Lin et al.,
@@ -441,8 +434,8 @@ instabilities, and provide thermodynamical interpretations of
 dust-drag instabilities. 
 
 
-We obtain an analog of the Solberg-Hoiland criteria for
-axisymmetric stability for strictly isothermal, perfectly-coupled dusty gas.  
+We obtain the equivalent Solberg-Hoiland criteria for the 
+axisymmetric stability of strictly isothermal, perfectly-coupled dusty gas.  
 Applying this to typical protoplanetary disks, we find that 
 the vertical shear associated with dust 
  layers \emph{cannot} lead to axisymmetric  
@@ -459,8 +452,8 @@ We  apply our thermodynamic framework to interpret
 the streaming instability \citep[SI, ][]{youdin05a,jacquet11} and to generalize the vertical shear
 instability \citep[VSI, ][]{nelson13,lin15} to dusty disks. We
 explicitly show in SI the evolution of gas
-pressure lags behind dust density; and is in fact a general property of 
-overstabilities driven by strong dust-gas drag. 
+pressure lags behind dust density. This is in fact a general property of 
+instabilities driven by dust-gas drag. 
 It takes a finite time for the gas to respond to
 the dust motion. A lag implies there exists a time interval where 
 the gas pressure of a parcel of the dusty-gas mixture is increasing whilst dust is already being expelled.  
@@ -481,7 +474,7 @@ We also discuss future applications of our thermodynamic framework to
 study dusty protoplanetary disks. Because isothermal dusty gas has an
 effective entropy, we suggest that purely hydrodynamic processes, such
 as the Rossby Wave Instability \citep{li00} or the `Zombie Vortex
-Instability' \citep{marcus15} could have dusty counter-parts.   
+Instability' \citep{marcus15}, where entropy plays a role, could have dusty counter-parts.   
 Furthermore, hydrodynamic instabilities driven by thermal cooling, such as VSI in
 stably-stratified disks \citep{lin15} or the `Convective
 Overstability' \citep{klahr14, lyra14},  may also find dusty analogs 

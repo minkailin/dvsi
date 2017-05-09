@@ -52,7 +52,7 @@ the first-order (in $\tstop$) single-fluid equations:
   &\frac{D T}{D t} = - \left(\gamma-1\right)T\nabla\cdot\bm{v} +
   \mathcal{H}_\mathrm{drag} + \mathcal{H}_\mathrm{eff}  - \Lambda  \label{tempeq} 
 \end{align}
-\citep{laibe14}, where $D/Dt \equiv \p_t + \bm{v}\cdot\nabla$ is the Lagragian
+\citep{laibe14,price15}, where $D/Dt \equiv \p_t + \bm{v}\cdot\nabla$ is the Lagragian
 derivative \emph{following the mixture} with center-of-mass velocity  
 \begin{align}
   \bm{v} \equiv \frac{\rhog\bm{v}_\mathrm{g} + 
@@ -78,7 +78,7 @@ one-fluid description \citep[see][ for details]{laibe14}. We also
 include a simple model of radiative cooling,
 \begin{align}
   \Lambda = \frac{T -
-    T_\mathrm{ref}}{t_\mathrm{cool}}, \label{realenergy} 
+    T_\mathrm{ref}}{t_\mathrm{cool}}, \label{cooling} 
 \end{align}
 which relaxes the mixture back to a prescribed temperature profile   
 $T_\mathrm{ref}$ on a timescale of $\tcool$. We will shortly simplify
@@ -93,7 +93,7 @@ The total gravitational potential is $\Phi_\mathrm{tot}=\Phi +
 \end{align}
 where $(r,\phi, z)$ are cylindrical co-ordinates centered on the star, and 
 $G$ is the gravitational constant. The second equality is the  
-thin-disk approximation for the stellar potential, appropriate for
+thin-disk approximation, appropriate for
 $|z|\ll r$. We shall adopt this approximate potential in order to
 obtain explicit expressions for disk equilibria (\S\ref{eqm}). 
 
@@ -109,7 +109,7 @@ For later comparison it is convenient to re-write the temperature
 evolution, Eq. \ref{tempeq}, to that for the pressure: 
 \begin{align}
   \frac{\p P}{\p t} + \bm{v}_\mathrm{g}\cdot\nabla P = - \gamma P
-  \nabla\cdot \bm{v}_\mathrm{g}  + \mathcal{H} 
+  \nabla\cdot \bm{v}_\mathrm{g}  + \mathcal{H}\label{real_pressure}
 %\frac{\rho \mathcal{R}}{\mu}\frac{T
 %  - T_\mathrm{ref}}{t_\mathrm{cool}}, \label{realenergy}
 \end{align}
@@ -135,7 +135,7 @@ the disk is strictly isothermal.
 Notice Eq. \ref{eos} resembles an ideal gas equation of state but with  
 a reduced temperature $\widetilde{T} = 
 T_\mathrm{ref}\left(1-\tepsilon\right)$. %sound-speed $c_{s,\mathrm{eff}} = c_s\sqrt{\left(1 -
-This reduced temperature is lowered with dust-loading. 
+This reduced temperature decreases with dust-loading. 
 %   \tepsilon\right)}$. 
 %then the equation of state has the standard
 %form $P=c_{s,\mathrm{eff}}^2\rho$. 
@@ -144,17 +144,17 @@ vertically isothermal dusty disks to behave as if it had a temperture
 \emph{increasing} away from $z=0$.     
 
 \subsection{Effective energy equation}\label{energy_analogy}
-Although we have eliminated the need of an evolutionary energy
-equation (Eq. \ref{realenergy}) by choosing a locally isothermal
+Although we have eliminated the true energy
+equation (Eq. \ref{tempeq}) by fixing a locally isothermal
 equation of state (Eq. \ref{eos}), we show that the mixture 
-nevertheless obeys an effective evolutionary energy equation. This is
+nevertheless obeys an effective energy equation. This is
 because advection of the dust-fraction, described by
 Eq. \ref{dusteq}, can be transformed into an energy-like 
-equation. We 
+equation. 
 %We show that for a prescribed temperature distribution, the mixture
 %obeys an evolutionary energy equation, due to the advection of the
 %dust-fraction. 
-eliminate $\tepsilon$ in favor of $P$, 
+Eliminating $\tepsilon$ in favor of $P$, 
 \begin{align*}
   \tepsilon = 1 - \frac{P}{c_s^2(r,z)\rho}, 
 \end{align*}
@@ -168,12 +168,12 @@ then Eq. \ref{dusteq} becomes
   \frac{P}{c_s^2\rho}\right)\nabla 
   P\right].
 \end{align}
-Comparing with Eq. \ref{realenergy}, we see that 
+Comparing with Eq. \ref{real_pressure}, we see that 
 Eq. \ref{eff_energy} is the energy equation for an ideal gas of
 adiabatic index $\gamma=1$, but now with the imposed temperature
 gradient $\nabla c_s^2$ and dust-gas drag $\mathcal{C}$ playing the
 role of radiative cooling ($\Lambda$ in 
-Eq. \ref{realenergy}). 
+Eq. \ref{tempeq}). 
 
 %In this form, the function $\mathcal{C}$ can be interpreted
 %as a cooling term.    
@@ -209,9 +209,9 @@ that region because the reduced temperature is lowered.
 
 %We comment that 
 
-An effective energy equation can also be derived for other 
-fixed gas equations of state, such as polytropic gas. We discuss this
-in \S\ref{gen_poly}.
+%An effective energy equation can also be derived for other 
+%fixed gas equations of state, such as polytropic gas. We discuss this
+%in \S\ref{gen_poly}.
 
 \subsection{Entropy of an isothermal dusty gas }
 
@@ -261,20 +261,19 @@ flow.
 %(small/well-coupled dust and isothermal gas) is applicable. smaller
 %than mm at few tens of au. give dimensional numbers here
 %}
-
-The terminal velocity approximation applies to short
-stopping times, $\tstop\OmK\ll 1$; while the locally isothermal
-approximation applies to short cooling times, $t_\mathrm{cool}\OmK\ll
+The above correspondence between isothermal dusty gas and adiabatic
+pure gas is derived under the terminal velocity approximation, which applies
+to short stopping times, $\tstop\OmK\ll 1$; and the locally isothermal
+approximation, which applies to short cooling times, $t_\mathrm{cool}\OmK\ll
 1$. In typical protoplanetary disk
 models such as the Minimum Mass Solar Nebula, $\tstop$ decreases for
 smaller particles and/or at smaller radii \citep{youdin11}. However,
 $t_\mathrm{cool}$ is generally only small in the outer disk
-\citep{lin15,malygin17}. Combining these results, we estimate that our
-framework is best suited for mm (or smaller) sized particles at a few
+\citep{lin15,malygin17}. Combining these results, we estimate the 
+correspondence applicable to particles less than mm in size at a few
 to 10s of AU in protoplanetary disks. However, note that the
 isothermal approximation may be relaxed to other fixed equations of
 state (see \S\ref{gen_poly}). 
-
 
 \section{Dynamical equilibria}\label{eqm}
  
@@ -308,7 +307,7 @@ $\mathcal{C}\neq0$.
 % scope of this paper.  
 
 In order to have a well-defined stability problem, we formally
-take equilibria with $\mathcal{C}\equiv 0$, namely      
+consider equilibria with $\mathcal{C}\equiv 0$. Namely      
 \begin{inparaenum}[1)] 
 \item 
   unstratified or 2D disks with finite dust-gas drag; %(\S\ref{si});   
@@ -483,7 +482,8 @@ unchanged. The increased weight of the fluid resists vertical
 oscillations and hence there is an associated buoyancy force. However,
 if $\tstop\neq0$ so the gas-dust coupling is imperfect, then gas is no
 longer `weighed down' by the dust, and can slip past it. Thus finite
-drag diminishes the dust-induced buoyancy.   
+drag diminishes the dust-induced buoyancy. This is similar to reducing
+gas buoyancy through cooling \citep{lin15}. 
 
 
  % N_z^2 
@@ -545,7 +545,7 @@ the gas. This is similar to entropy being conserved following an
 adiabatic gas when there is no heating or cooling.  
 
 In this case, the last two integrals in Eq. \ref{int_rel} vanish. 
-The condition for axisymmtric \emph{stability}, $\sigma^2>0$, 
+Then the condition for axisymmtric \emph{stability}, $\sigma^2>0$, 
 is met if the integrand cofficients satisfy $A+D>0$ and $AD-B^2>0$
 \citep[][Section 11.6]{ogilvie16}, which becomes 
 \begin{align}
@@ -570,14 +570,14 @@ expression for said criteria \citep{tassoul78}.
 We expect Eq. \ref{dusty_solberg1} to be satisfied in typical
 protoplanetary disks where the dust-to-gas ratio increases in the same
 direction as the local pressure gradient, which is equivalent to the
-gas density gradient for isothermal gas. {\bf ref for drift} Thus for
+gas density gradient for isothermal gas. Thus for 
 instability we need to violate Eq. \ref{dusty_solberg2}. We explore
 this below. 
 
 
 \subsubsection{Vertically well-mixed dust}\label{vert_mixed_theory}
 In the special case where the dust-to-gas ratio is
-uniform in $z$ the LHS of Eq. \ref{dusty_solberg2} becomes
+uniform in $z$ the left-hand-side of Eq. \ref{dusty_solberg2} becomes
 \begin{align}
 -\frac{c_s^4}{(1+\tepsilon)^4}\left(\frac{\p\ln{\rhog}}{\p
     z}\right)^2\left(\frac{\p\epsilon}{\p r}\right)^2<0.
@@ -610,12 +610,15 @@ becomes
   > 0 \label{stability_est2},
 \end{align}
 for \emph{stability}. The second term is usually stabilizing in 
-PPDs. The third term is always destabilizing, but is small in smooth,
-thin disks with radial gradients $O(1/r)$,  $h_\mathrm{g}\ll 1$,
+PPDs for reasons given in \S\ref{iso_perfect}. The third term is
+always destabilizing, but is small in smooth, thin disks with radial
+gradients $O(1/r)$, $h_\mathrm{g}\ll 1$, 
 provided that $H_\epsilon/\Hg$ is not large (e.g. some dust settling
 has occured). This means that typical dusty PPDs are stable to
-axisymmetric perturbations, a result valid for arbitrarily thin dust
-layers. 
+axisymmetric perturbations, a conclusion valid for arbitrarily thin
+dust layers. 
+
+%%%%%%%%%%%%%%%%%%
 
 To violate Eq. \ref{stability_est2} and obtain instability, notice the 
 LHS is a quadratic in $\p_r\epsilon$. Thus instability is possible for
@@ -758,7 +761,7 @@ P\Delta\rho^*\right)>0$. Without loss of generality, take $\omega>0$
 and consider a mass element with $\Delta\rho = 1$. Then positive work 
 requires $\imag\left(\Delta
 P\right)<0$.  This corresponds to pressure perturbations \emph{lagging}
-behind that in density (or displacements), see Fig. \ref{lag_cartoon}
+behind that in density, see Fig. \ref{lag_cartoon}
 for the case of dusty gas.   
 
 %, since the phase of
@@ -813,12 +816,15 @@ postive work if
 -\sgn\left(\omega\right)\imag\left(\Delta\rhog\Delta\rhod^*\right)>0,
 \end{align*}
 meaning that gas follows dust (Fig. \ref{lag_cartoon}). Instabilities
-are thus not possible if the gas does not respond to dust-drag
-(i.e. no back-reaction). The pressure-density lag shown in
-Fig. \ref{lag_cartoon} is achieved if, after a parcel reaches maximum
-total density, its  gas content is still increasing (see $A$ to $B$ in
-Fig. \ref{pdv_cartoon}). This in turn implies a sufficiently large
-particle flux \emph{out} of the parcel.    
+are thus not possible if the gas does not respond to dust 
+(i.e. no back-reaction).% {\bf can we say this means that any effective
+%  dust-drag instability require high dust to gas ratios?} 
+The pressure-density lag shown in
+Fig. \ref{lag_cartoon} is achieved if, just after the total density of a 
+parcel maximizes, its gas content
+is increasing, which requires a sufficiently large
+particle flux \emph{out} of the parcel. See $A$ to $B$ in 
+Fig. \ref{pdv_cartoon}. 
 
 %{\bf lagrangian derivative follows the mixture.}
 % this highlights one

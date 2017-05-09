@@ -2,20 +2,43 @@
   Dusty vertical shear instability}\label{results} 
 
 We now present numerical solutions for vertically stratified,
-non-self-gravitating disks assuming perfectly coupled dust
-($\tstop=0$) so the equilibria
-defined in \S\ref{eqm} are exact steady states.    
+non-self-gravitating disks, assuming perfectly coupled dust. 
+We formally take $\tstop=0$ so the equilibria defined in \S\ref{eqm} 
+are exact steady states. In reality,   
+%\subsection{Validity}
+%{\bf maybe incorporate into intro to this section?}
+%We considered $\tstop=0$ in order to perform stability analysis on an
+%exact steady state. 
+%When $\tstop\neq0$, a stratified dusty 
+%disk initialized as in \S\ref{eqm} would evolve 
+%as 
+dust settles to the midplane on a timescale $t_\mathrm{settle}\sim 
+1/\tstop\OmK^2$ \citep{takeuchi02}. However, we expect the 
+perfectly-coupled limit to be valid  
+provided timescales of interest $t_\mathrm{grow}\ll
+t_\mathrm{settle}$. For the VSI this translates to 
+%Since VSI growth rates are $O(h_\mathrm{g}\OmK)$, 
+%we require  
+%\begin{align}
+ $ \tstop\OmK \ll h_\mathrm{g}. $
+%\end{align} 
+For thin PPDs, this is satisfied for $\tstop\OmK \ll O(10^{-2})$.   
 
-Apart from \S\ref{varHd}---\ref{vert_mixed}, we consider constant
+
+We first consider constant
 midplane dust-to-gas ratios $\epsilon_0$ and characteristic thickness
 $H_\epsilon$. Then the dust-to-gas ratio $\epsilon=\epsilon(z)$. In 
-this limit any growing modes must be associated with the imposed temperature gradient
-(\S\ref{limits}). We are thus examining the effect of dust-loading on
-the VSI previously studied in pure gas disks 
-\citep[][\citetalias{lin15} in this section]{lin15}.   
+this limit any growing modes must be associated with the imposed
+temperature gradient (see \S\ref{limits}). We are then studying the
+effect of dust-loading on the VSI previously studied in pure gas
+disks \citep[][\citetalias{lin15} in this section]{lin15}. In 
+\S\ref{varHd} we allow $\p_r\epsilon\neq 0$, and in 
+\S\ref{vert_mixed} we consider VSI driven entirely by radial
+gradients in the dust-to-gas ratio (as discussed in
+\S\ref{vert_mixed_theory}).  
 
-The parameters for this linear problem includes $\epsilon_0$, the dust
-layer thickness $\Hd(r_0)$, and the perturbation radial wavenumber
+The parameters for the linear problem includes $\epsilon_0$, the dust
+layer thickness $\Hd$, and the perturbation radial wavenumber
 $k_x$. We choose a midplane gas density profile 
 $\rho_\mathrm{g0}\propto r^{-3/2}$. The fiducial power-law 
 index for the temperature profile is $q=-1$; and we set the gas disk
@@ -87,10 +110,11 @@ the dust-free case, are surpressed in dusty disks for $\epsilon_0\geq
 0.1$ (i.e. $\epsilon_0> \hgas$).   
 The body modes' growth rates remain $ O(h_\mathrm{g}\OmK)$ 
 but their oscillation frequency increases with
-$\epsilon_0$. i.e. it increases with the vertical buoyancy. 
+dust-loading, i.e. it increases with the vertical buoyancy. 
 The total number of modes do not change 
 significantly. This is in contrast with the effect of increasing
-cooling times, for which \citetalias{lin15} find fewer unstable modes.
+cooling times in an adiabatic gas disk, for which \citetalias{lin15}
+find fewer unstable modes. 
 %until the system is eventually completely stable. 
 
 \begin{figure}
@@ -113,9 +137,9 @@ $\epsilon_0=1$. Dust-loading preferentially
 stabilizes the disk atmosphere against the VSI, restricting
 meridional motions to $|z|\lesssim 2\Hg$. 
 This is consistent with Fig. \ref{compare_vshear_fixHd} comparing the basic state vertical
-shear and buoyancy. Notice also maxium perturbtions to the dust-to-gas ratio,
-$\delta\epsilon$, shifts from disk boundaries 
-to the midplane.  
+shear and buoyancy. % Notice also maxium perturbtions to the dust-to-gas ratio,
+% $\delta\epsilon$, shifts from disk boundaries 
+% to the midplane.  
 
 \begin{figure}
 %  \includegraphics[scale=0.54, clip=true, trim=0cm 2.5cm 0cm 0cm]{figures/result2d_dg1d-3.ps}\\
@@ -264,14 +288,14 @@ $O(1)$.  We consider radial wavenumbers with $k_x\Hd=1$.
 Fig. \ref{ultra_thin} shows the maximum growth rate  as a function of
 the radial temperature gradient, $q$. For all cases the vertical
 shear is dominated by that due to the dust layer (see
-\S\ref{vertshear}). However, we see that growth rates $s\propto
-|q|$, i.e .growth rates vanish in the strictly isothermal limit.  
+\S\ref{vertshear}). However, we see that $s\propto
+|q|$, i.e growth rates vanish in the strictly isothermal limit.  
 In particular, this holds for $\rich < 0.1$, the critical value 
 for non-axisymmetric instabilities. 
 
 Axisymmetric instability here is associated with the thermal
 contribution to vertical shear: as $q\to0$,  $\p_z\Omega$ becomes
-entirely due to dust-settling and there is no instability ($s\to
+entirely due to $\p_z\epsilon$ and there is no instability ($s\to
 0$). This result is independent of $\rich$, so the Richardson number
 is does not characterize the axisymmetric stability of dust
 layers. 
@@ -346,7 +370,7 @@ disks, a vertically-uniform dust-to-gas ratio can be unstable
 if $d\epsilon/dr\neq0$.  
 To demonstate this numerically we consider the
 same disk as above but with $q=0$ and choose $H_\mathrm{d}$ such
-that $H_\epsilon=10^3\Hg$. Then vertical shear $\p_z\Omega$ is then
+that $H_\epsilon=10^3\Hg$. Then vertical shear $\p_z\Omega$ is 
 attributed to the radially-varying dust-to-gas ratio (see
 Eq. \ref{vshear2}).    
 
@@ -369,22 +393,5 @@ with classic VSI discussed above.
 
 
 
-\subsection{Validity}
-{\bf maybe incorporate into intro to this section?}
-We considered $\tstop=0$ in order to perform stability analysis on an
-exact steady state. When $\tstop\neq0$, a stratified dusty 
-disk initialized as in \S\ref{eqm} would evolve 
-%due to dust-gas relative drift. In particular, in the
-%absence of turbulent/diffusive processes, dust particles 
-as dust settles to the
-midplane on a timescale $t_\mathrm{settle}\sim 1/\tstop\OmK^2$
-\citep{takeuchi02}. However, we expect the above results to remain
-valid provided the VSI growth
-timescale $t_\mathrm{grow}\ll t_\mathrm{settle}$. Since 
-VSI growth rates are $O(h_\mathrm{g}\OmK)$, we require 
-\begin{align}
-  \tstop\OmK \ll h_\mathrm{g}. 
-\end{align} 
-For thin PPDs with $h_\mathrm{g}\sim 0.05$, this is satisfied 
-for $\tstop\OmK \ll O(10^{-2})$.  
+
 
