@@ -243,7 +243,7 @@ sound-speed profile. This physically represents short cooling times
 
 Under these two approximations, we show that the equations of 
 isothermal dusty gas dynamics are equivalent to that of adiabatic, pure gas
-dynamics. This is because tightly-coupled dust particles are almost
+dynamics (Fig. \ref{concept_chart}). This is because tightly-coupled dust particles are almost
 entrained in the gas, which is analogous to the advection
 of entropy following an adiabatic fluid. We show that the   
 effective entropy of isothermal dusty gas scales with its gas
@@ -300,16 +300,19 @@ discuss future applications of the dusty/adiabatic gas equivalence in
   \tikzstyle{line} = [draw, -triangle 45,thick]  
   \begin{center}
     \begin{tikzpicture}[node distance=5cm]
-      \node[process](ellip){isothermal gas + dust};
-      \node[process,right of=ellip, node distance = 6cm](gi){adiabatic gas};
-      \path [line](ellip) -- node [yshift=.8em] {\textcolor{blue}{equivalent}} (gi);
-      \path [line](gi) -- node [yshift=-.8em] {for small particles} (ellip);
+      \node[process](ellip){isothermal gas+dust+drag};
+      \node[process,right of=ellip, node distance = 5.5cm](gi){pure 
+        gas+cooling};
+      \path [line](ellip) -- node [yshift=.8em]
+      {\textcolor{blue}{equivalent} for} (gi);
+      \path [line](gi) -- node [yshift=-.8em] {small particles} (ellip);
     \end{tikzpicture}
  \end{center}
 \caption{The central concept of this work. A mixture of small particles
-  and isothermal gas behave similarly to an adiabatic, pure gas. This
-  permits one to use the equations of ideal hydrodynamics to study
-  dust-gas dynamics. }
+  coupled to isothermal gas behave similarly to an adiabatic, pure gas
+  subject to cooling.  This
+  permits one to use the equations for standard hydrodynamics to study
+  dust-gas dynamics. \label{concept_chart}}
 \end{figure}
 
 \section{Dust-free modeling of dusty protoplanetary disks}\label{key_idea}
