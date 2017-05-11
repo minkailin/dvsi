@@ -10,6 +10,9 @@
 \usepackage{paralist}
 \usepackage{url}
 \usepackage{bm}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows}
+
 %\usepackage{hyperref}
 %\usepackage[font=small,format=plain,labelfont=bf,up,textfont=it,up]{caption}
 \newcommand{\p}{\partial}
@@ -292,7 +295,22 @@ discuss future applications of the dusty/adiabatic gas equivalence in
 \S\ref{discussion} before summarizing in \S\ref{summary}. 
 
 
-
+\begin{figure}
+\tikzstyle{process} = [rectangle, minimum width=2cm, minimum height=1cm, text centered, draw=black, fill=orange!30]
+  \tikzstyle{line} = [draw, -triangle 45,thick]  
+  \begin{center}
+    \begin{tikzpicture}[node distance=5cm]
+      \node[process](ellip){isothermal gas + dust};
+      \node[process,right of=ellip, node distance = 6cm](gi){adiabatic gas};
+      \path [line](ellip) -- node [yshift=.8em] {\textcolor{blue}{equivalent}} (gi);
+      \path [line](gi) -- node [yshift=-.8em] {for small particles} (ellip);
+    \end{tikzpicture}
+ \end{center}
+\caption{The central concept of this work. A mixture of small particles
+  and isothermal gas behave similarly to an adiabatic, pure gas. This
+  permits one to use the equations of ideal hydrodynamics to study
+  dust-gas dynamics. }
+\end{figure}
 
 \section{Dust-free modeling of dusty protoplanetary disks}\label{key_idea}
 {\bf is this section needed?} 
@@ -329,6 +347,9 @@ means that many of the results derived for ideal hydrodynamics can be
 generalized to dusty disks without additional effort. This includes 
 the important consequence of phase lags between density and pressure,
 discussed next.  
+
+
+
 
 \section{Growing oscillations by doing work}\label{grow_osc}
 A general result in fluid dynamics is that work is done whenever
