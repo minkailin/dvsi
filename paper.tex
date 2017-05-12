@@ -317,33 +317,42 @@ discuss future applications of the dusty/adiabatic gas equivalence in
 
 \section{Dust-free modeling of dusty protoplanetary disks}\label{key_idea}
 {\bf is this section needed?} 
-The key concept we introduce in this work is the description
-of dusty protoplanetary disks \emph{without} explicit dust
+The key concept we introduce in this work is the description 
+of dusty protoplanetary disks \emph{without} explicit dust 
 equations. This is best illustrated by writing down our model   
-equations for a mixture of isothermal gas and small
+equations for a mixture of isothermal gas and small 
 dust particles: 
 \begin{align}  
   &\frac{\p \rho}{\p t} + \nabla\cdot\left(\rho\bm{v}\right)= 0, \label{mass0}\\ 
   &\frac{\p\bm{v}}{\p t} + \bm{v}\cdot\nabla\bm{v} = -
   \frac{1}{\rho}\nabla  P - \nabla \Phi_*,\label{mom0}\\ 
  & \frac{\p P}{\p t} + \bm{v}\cdot\nabla P 
-  = - P \nabla\cdot\bm{v}
-                + \mathcal{C}(\rho, P; \tstop)\label{en0}, 
+  = - P \nabla\cdot\bm{v} - \nabla\cdot\bm{\mathcal{F}}
+%                + \mathcal{C}(\rho, P; \tstop)
+\label{en0}, 
 \end{align}
 where $\rho=\rhod + \rhog$ is the total density, $P$ is the pressure,
 $\Phi_*$ is the stellar gravitational potential,   
-and $\mathcal{C}$ represent effects of dust-gas drag, which
-is paremterized by the stopping time $\tstop$ ($\mathcal{C}=0$ for
-$\tstop=0$). Similar equations for dusty-gas are given by
-\cite{price15}. 
+and $\bm{\mathcal{F}}$ model effects of dust-gas drag, explained below. 
+%$\mathcal{C}$ represent effects of dust-gas drag, which
+%is paremterized by the stopping time $\tstop$ ($\mathcal{C}=0$ for
+%$\tstop=0$). 
+Similar equations for dusty-gas are given by
+\cite{price15}.  
 
-Eq. \ref{mass0}---\ref{en0} appear identical to adiabatic gas
-dynamics, even though they physically represents a two-phase,
-dusty-gas. The main difference is the term $\mathcal{C}$. Here it does
-not represent physical cooling, as the system is isothermal by
-assumption. Instead, dust-gas drag causes particles to drift, hence by
-momentum conservation a gas drift in the opposite direction, which
-changes the pressure distribution.    
+Eq. \ref{mass0}---\ref{en0} appear identical to pure gas
+dynamics, but they physically represents a two-phase, 
+dusty gas. The mixture obeys mass and momentum conservation as usual,
+but also an energy-like equation, even though the system is
+isothermal by assumption. The term $\bm{\mathcal{F}}\propto -\tstop
+\nabla P$ is not a true heat flux. Instead, it reflects 
+particle flux towards pressure maximum due to dust-gas drag 
+\citep{weidenschilling77}. The back-reaction onto the gas then changes
+the pressure distribution.      
+
+
+%weidenschilling7
+
 
 Since the above equations are similar to ideal gas dynamics, it 
 means that many of the results derived for ideal hydrodynamics can be  
