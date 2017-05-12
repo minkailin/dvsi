@@ -333,7 +333,7 @@ dust particles:
 \end{align}
 where $\rho=\rhod + \rhog$ is the total density, $P$ is the pressure,
 $\Phi_*$ is the stellar gravitational potential,   
-and $\bm{\mathcal{F}}$ model effects of dust-gas drag, explained below. 
+and $\bm{\mathcal{F}}=~\bm{\mathcal{F}}(\rho, P; \tstop)$ model effects of dust-gas drag, explained below. 
 %$\mathcal{C}$ represent effects of dust-gas drag, which
 %is paremterized by the stopping time $\tstop$ ($\mathcal{C}=0$ for
 %$\tstop=0$). 
@@ -344,7 +344,7 @@ Eq. \ref{mass0}---\ref{en0} appear identical to pure gas
 dynamics, but they physically represents a two-phase, 
 dusty gas. The mixture obeys mass and momentum conservation as usual,
 but also an energy-like equation, even though the system is
-isothermal by assumption. The term $\bm{\mathcal{F}}\propto -\tstop
+isothermal by assumption. The term $-\bm{\mathcal{F}}\propto \tstop
 \nabla P$ is not a true heat flux. Instead, it reflects 
 particle flux towards pressure maximum due to dust-gas drag 
 \citep{weidenschilling77}. The back-reaction onto the gas then changes
