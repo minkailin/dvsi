@@ -210,35 +210,88 @@ simplified one-fluid and full two-fluid frameworks in calculating SI.
 %  because bump is larger. (move gas from higher density to lower
 %  density produce asymmetric bump/trough.}
 
-\begin{deluxetable*}{llrrrrrr}
+% \begin{deluxetable*}{llrrrrrr}
+%   \tablecolumns{8}
+%   \tablecaption{Selected eigenfrequencies for the streaming
+%     instability. \label{si_compare}
+%   }
+%   \tablehead{
+%     \colhead{Mode} & 
+%     \colhead{$\tau_\mathrm{s}\OmK$} &
+%     \colhead{$\epsilon$} &
+%      \colhead{$K_{x,z}$} &
+%       \colhead{$\sigma/\OmK$ (two-fluid)} &
+%     \colhead{$\sigma/\OmK$ (one-fluid)} &
+%     \colhead{$\mathcal{W}$ (arbitrary units)} &
+%       \colhead{$\Delta P$ lag}
+%   }
+% \startdata
+%  linA, \cite{youdin07b} &  $0.1$       & 3.0 & 30    & $0.3480 +
+%  0.4190\ii$ & $0.3640 + 0.4249\ii$ & $0.90$ & $30\degr$\\ 
+
+% linB, \cite{youdin07b} & $0.1$        &  0.2 & 6 & $-0.4999 +
+% 0.0155\ii$&   $-0.4981 + 0.0054\ii$  & $1.54$ & $1.2\degr$ \\
+
+% linC,  \cite{bai10b}  & $10^{-2}$   &  2.0 & 1500&   $0.1049 +
+% 0.5981\ii$   &  $0.1338 + 0.6650\ii$  & $0.15$& $11\degr$ \\
+
+% linD, \cite{bai10b} &  $10^{-3}$   &  2.0 & 2000 & $0.3225 + 
+% 0.3154\ii$& $0.3219 + 0.3154\ii$ &  $1.28$ & $22\degr$ 
+% \enddata
+% \end{deluxetable*}
+
+
+\begin{deluxetable*}{rrrrrr}
   \tablecolumns{8}
-  \tablecaption{Selected eigenfrequencies for the streaming
+  \tablecaption{Selected modes of the streaming
     instability. \label{si_compare}
   }
-  \tablehead{
-    \colhead{Mode} & 
-    \colhead{$\tau_\mathrm{s}\OmK$} &
-    \colhead{$\epsilon$} &
-     \colhead{$K_{x,z}$} &
-      \colhead{$\sigma/\OmK$ (two-fluid)} &
-    \colhead{$\sigma/\OmK$ (one-fluid)} &
-    \colhead{$\mathcal{W}$ (arbitrary units)} &
-      \colhead{$\Delta P$ lag}
-  }
+%  \tablehead{
+%    \colhead{Mode} & 
+%    \colhead{$\tau_\mathrm{s}\OmK$} &
+%    \colhead{$\epsilon$} &
+%     \colhead{$K_{x,z}$} &
+%    \colhead{Complex frequency} &
+%    \colhead{$\sigma/\OmK$} &
+%    \colhead{Work done} &
+%    \colhead{$\mathcal{W}/\left|\Delta P\Delta\rho^*/\rho\right|$} &
+%    \colhead{Pressure-density lag} &
+%    \colhead{$\varphi$} 
+%  }
 \startdata
- linA, \cite{youdin07b} &  $0.1$       & 3.0 & 30    & $0.3480 +
- 0.4190\ii$ & $0.3640 + 0.4249\ii$ & $0.90$ & $30\degr$\\ 
-
-linB, \cite{youdin07b} & $0.1$        &  0.2 & 6 & $-0.4999 +
-0.0155\ii$&   $-0.4981 + 0.0054\ii$  & $1.54$ & $1.2\degr$ \\
-
-linC,  \cite{bai10b}  & $10^{-2}$   &  2.0 & 1500&   $0.1049 +
-0.5981\ii$   &  $0.1338 + 0.6650\ii$  & $0.15$& $11\degr$ \\
-
-linD, \cite{bai10b} &  $10^{-3}$   &  2.0 & 2000 & $0.3225 + 
-0.3154\ii$& $0.3219 + 0.3154\ii$ &  $1.28$ & $22\degr$ 
+\hline\hline
+\multicolumn{2}{c}{Complex frequency, $\sigma/\OmK$} &
+\multicolumn{2}{c}{Work done, $\mathcal{W}/\left|\Delta P\Delta\rho^*/\rho\right|$} &
+\multicolumn{2}{c}{Pressure-density lag, $\varphi$} \\
+\hline
+ \multicolumn{1}{c}{two-fluid} &
+ \multicolumn{1}{c}{one-fluid} &
+ \multicolumn{1}{c}{two-fluid} &
+ \multicolumn{1}{c}{one-fluid} &
+ \multicolumn{1}{c}{two-fluid} &
+ \multicolumn{1}{c}{one-fluid} \\
+\hline
+\multicolumn{6}{c}{\textcolor{blue}{linA\tablenotemark{$\dagger$}: $\tau_\mathrm{s}\OmK=0.1$, $K_{x,z}=30$, $\rhog/\rhod = 3$}}\\
+\hline
+ $0.3480 + 0.4190\ii$ & $0.3640 + 0.4249\ii$ & $0.078$ & $0.090$ & $27\degr$ & $30\degr$  \\
+\hline
+\multicolumn{6}{c}{\textcolor{blue}{linB\tablenotemark{$\dagger$}: $\tau_\mathrm{s}\OmK=0.1$, $K_{x,z}=6$, $\rhog/\rhod = 0.2$}} \\
+\hline
+$-0.4999 + 0.0155\ii$&   $-0.4981 + 0.0054\ii$ & 0.025   & $0.0054$ & $5.8\degr$  &  $1.2\degr$  \\
+\hline
+\multicolumn{6}{c}{\textcolor{blue}{linC\tablenotemark{$\ddagger$}: $\tau_\mathrm{s}\OmK=10^{-2}$, $K_{x,z}=1500$, $\rhog/\rhod = 2$}} \\
+\hline
+$0.1049 + 0.5981\ii$   &  $0.1338 + 0.6650\ii$ & 0.0076 & $0.013$ & $8.3\degr$ &$11\degr$  \\
+\hline
+\multicolumn{6}{c}{\textcolor{blue}{linD\tablenotemark{$\ddagger$}: $\tau_\mathrm{s}\OmK=10^{-3}$, $K_{x,z}=2000$, $\rhog/\rhod = 2$}} \\
+\hline
+$0.3225 +  0.3154\ii$& $0.3219 + 0.3154\ii$ &  $0.061$ & $0.061$  & $22\degr$ & $22\degr$  
 \enddata
+\tablenotetext{$\dagger$}{\cite{youdin07b}}
+\tablenotetext{$\ddagger$}{\cite{bai10b}}
 \end{deluxetable*}
+
+
 
 
 % \subsection{Eulerian interpretation}

@@ -69,8 +69,11 @@ pro streaming, eta=eta, kx=kx, kz=kz, dgratio=dgratio, tstop=tstop
   lagrangian_Q = Q1 + xi_x*(-2d0*(1d0-dfrac)*eta)
   lagrangian_Q2 = Q2 + xi_x*(-2d0*(1d0-dfrac)*eta)
   
-  work1 = imaginary(lagrangian_Q)*freq(grid)*1d4 
-  work2 = imaginary(lagrangian_Q2)*freq(grid)*1d4 
+  work1 = imaginary(lagrangian_Q)*freq(grid)/2.
+  work2 = imaginary(lagrangian_Q2)*freq(grid)/2.
+
+  work1/= abs(lagrangian_Q)
+  work2/= abs(lagrangian_Q2)
 
   print, 'freq, growth, work'
   print, freq(grid), growth(grid), work1, work2, format='(4(e22.15,x))'
