@@ -241,7 +241,7 @@ simplified one-fluid and full two-fluid frameworks in calculating SI.
 % \end{deluxetable*}
 
 
-\begin{deluxetable*}{rrrrrr}
+\begin{deluxetable*}{lrrrrrr}
   \tablecolumns{8}
   \tablecaption{Selected modes of the streaming
     instability. \label{si_compare}
@@ -260,31 +260,37 @@ simplified one-fluid and full two-fluid frameworks in calculating SI.
 %  }
 \startdata
 \hline\hline
+\multicolumn{1}{c}{Mode ($\tau_\mathrm{s}\OmK$, $K_{x,z}, \rhog/\rhod$)} &
 \multicolumn{2}{c}{Complex frequency, $\sigma/\OmK$} &
 \multicolumn{2}{c}{Work done, $\mathcal{W}/\left|\Delta P\Delta\rho^*/\rho\right|$} &
 \multicolumn{2}{c}{Pressure-density lag, $\varphi$} \\
 \hline
+\multicolumn{1}{c}{} &
  \multicolumn{1}{c}{two-fluid} &
  \multicolumn{1}{c}{one-fluid} &
  \multicolumn{1}{c}{two-fluid} &
- \multicolumn{1}{c}{one-fluid} &
+ \multicolumn{1}{r}{one-fluid} &
  \multicolumn{1}{c}{two-fluid} &
- \multicolumn{1}{c}{one-fluid} \\
-\hline
-\multicolumn{6}{c}{\textcolor{blue}{linA\tablenotemark{$\dagger$}: $\tau_\mathrm{s}\OmK=0.1$, $K_{x,z}=30$, $\rhog/\rhod = 3$}}\\
-\hline
- $0.3480 + 0.4190\ii$ & $0.3640 + 0.4249\ii$ & $0.078$ & $0.090$ & $27\degr$ & $30\degr$  \\
-\hline
-\multicolumn{6}{c}{\textcolor{blue}{linB\tablenotemark{$\dagger$}: $\tau_\mathrm{s}\OmK=0.1$, $K_{x,z}=6$, $\rhog/\rhod = 0.2$}} \\
-\hline
+ \multicolumn{1}{r}{one-fluid} \\
+ \hline
+% \multicolumn{6}{c}{\textcolor{blue}{linA\tablenotemark{$\dagger$}: $\tau_\mathrm{s}\OmK=0.1$, $K_{x,z}=30$, $\rhog/\rhod = 3$}}\\
+% \hline
+linA\tablenotemark{$\dagger$} ($0.1, 30, 3$) &
+$0.3480 + 0.4190\ii$ & $0.3640 + 0.4249\ii$ & $0.078$ & $0.090$ & $27\degr$ & $30\degr$  \\
+% \hline
+% \multicolumn{6}{c}{\textcolor{blue}{linB\tablenotemark{$\dagger$}: $\tau_\mathrm{s}\OmK=0.1$, $K_{x,z}=6$, $\rhog/\rhod = 0.2$}} \\
+% \hline
+linB\tablenotemark{$\dagger$} ($0.1, 6,0.2$) &
 $-0.4999 + 0.0155\ii$&   $-0.4981 + 0.0054\ii$ & 0.025   & $0.0054$ & $5.8\degr$  &  $1.2\degr$  \\
-\hline
-\multicolumn{6}{c}{\textcolor{blue}{linC\tablenotemark{$\ddagger$}: $\tau_\mathrm{s}\OmK=10^{-2}$, $K_{x,z}=1500$, $\rhog/\rhod = 2$}} \\
-\hline
+% \hline
+% \multicolumn{6}{c}{\textcolor{blue}{linC\tablenotemark{$\ddagger$}: $\tau_\mathrm{s}\OmK=10^{-2}$, $K_{x,z}=1500$, $\rhog/\rhod = 2$}} \\
+% \hline
+linC\tablenotemark{$\ddagger$} ($10^{-2}, 1500, 2$) &
 $0.1049 + 0.5981\ii$   &  $0.1338 + 0.6650\ii$ & 0.0076 & $0.013$ & $8.3\degr$ &$11\degr$  \\
-\hline
-\multicolumn{6}{c}{\textcolor{blue}{linD\tablenotemark{$\ddagger$}: $\tau_\mathrm{s}\OmK=10^{-3}$, $K_{x,z}=2000$, $\rhog/\rhod = 2$}} \\
-\hline
+% \hline
+% \multicolumn{6}{c}{\textcolor{blue}{linD\tablenotemark{$\ddagger$}: $\tau_\mathrm{s}\OmK=10^{-3}$, $K_{x,z}=2000$, $\rhog/\rhod = 2$}} \\
+% \hline
+linD\tablenotemark{$\ddagger$} ($10^{-3}, 2000, 2$) &
 $0.3225 +  0.3154\ii$& $0.3219 + 0.3154\ii$ &  $0.061$ & $0.061$  & $22\degr$ & $22\degr$  
 \enddata
 \tablenotetext{$\dagger$}{\cite{youdin07b}}
