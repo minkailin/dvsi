@@ -190,24 +190,42 @@ as
 \end{align*}
 %where we have applied the isothermal equation of state for the second equality.
 then $\varphi > 0 $ indicates gas density lagging behind dust density,
-which is true for all the cases. In particular, `linB' indicates that
-growth rates vanish as $\varphi \to 0$.  Thus the streaming
-instability is indeed associated with a phase lag between gas and dust
-density evolutions. 
+which is true for all the cases. %In particular, `linB' indicates that
+%growth rates vanish as $\varphi \to 0$.  
+Thus the streaming instability is indeed associated with a phase lag
+between gas and dust density evolutions. 
 
-In a future work we will perform a detailed comparison between the
-simplified one-fluid and full two-fluid frameworks in calculating SI. 
+In Fig. \ref{si_compare_fig} we compare the most unstable SI 
+mode as a function of $\taus$ at fixed $K_z=30$ and $\epsilon =3$. The
+solid line is obtained from a full, two-fluid linear analysis 
+\citep[similar to][]{youdin05a, kowalik13}. The one-fluid results are
+obtained by solving the dispersion relation
+Eq. \ref{streaming_dispersion}, both numerically (green asterisks) and
+analytically with additional approximations and considerations
+(organge diamonds). The analytic model is described in Appendix 
+\ref{si_dust_rich}. 
 
+Both results based on the one-fluid framework compares well with the 
+full, two-fluid analysis, only breaking down at a relatively large
+$\taus\OmK\gtrsim 0.1$. It is interesting to see for large $\taus$ the 
+two-fluid phase lag drops, along with the growth rate. Notcie also the
+phase lag remains finite as $\taus\to0$ because the optimum $K_x$
+diverges (this is explained in Appendix \ref{si_dust_rich}). 
 
-
+In a future work we will perform a more detailed parameter survey to
+compare the simplified one-fluid and full two-fluid frameworks in
+calculating SI.  
 
 \begin{figure}
 \includegraphics[width=\linewidth]{figures/si_2f_1f_compare}
 \caption{{\bf in case the paper isn't long enough} Comparison of the linear
-streaming instability obtained from a full two-fluid analysis and the current 
-one-fluid framework simplified by the terminal velocity approximation. The vertical
+streaming instability between a full two-fluid analysis (solid
+line), the current one-fluid framework simplified by the terminal
+velocity approximation (green asterisks) and an analytic solution to
+the one-fluid dispersion relation in the dust-rich limit (organge
+diamonds, see also Appendix \ref{si_dust_rich}). The vertical 
 wavenumber is fixed and growth rates are maximized over $K_x$. 
-\label{si_compare}}
+\label{si_compare_fig}}
 \end{figure}
 %"generalized stokes number" would include other problem parameters,
 %e.g. wavenumber  
