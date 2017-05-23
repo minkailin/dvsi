@@ -334,37 +334,41 @@ dispersion relation of \citet{youdin05a}.
 
 \subsection{Approximate solutions in the dust-rich limit}\label{si_dust_rich}
 Here we seek analytic solutions for the streaming instability by 
-examining limiting cases and with further approximations. We shall fix
-$k_z$ and $\fdust>1/2$ (the dust-rich case), and maximize growth rates
-over $k_x$. We consider small stopping times, $\tau_\mathrm{s}\to0$,
-and assume that the optimum $k_x\to\infty$ but that
-$k_x\tau_\mathrm{s}$ remain bounded.       
+examining limiting cases and with additional approximations. We will
+fix $k_z, \fdust$ and maximize growth rates over $k_x$. It turns out
+simple solutions exist in the dust-rich case with 
+$\fdust$ near unity. We consider small stopping times, 
+$\tau_\mathrm{s}\to0$, and assume that the corresponding optimum
+$k_x\to\infty$.        
 
 We begin with the incompressible dispersion
 relation, Eq. \ref{streaming_incompressible}. We assume a Keplerian
-disk and neglect the quartic  
-term because it is higher order in $\tau_\mathrm{s}$ (see also
-\S\ref{spurious_epi})  In dimensionless form: 
+disk ($\Omega=\kappa=\OmK$), and low frequency  modes 
+($|\sigma|\ll \OmK$), which leads to neglecting the quartic  
+term. (This is also necessary to avoid spurious modes, see
+\S\ref{spurious_epi}.)  In dimensionless form:   
 \begin{align}
   \nu^3 + \st\left[\ii\tepsilon + 2 K_x \fg \left(1-\fdust\right)\right]\nu^2
   - \left(\frac{K_z}{K_x}\right)^2\nu - 2\st K_x \fg
   \left(1-2\fdust\right)\left(\frac{K_z}{K_x}\right)^2 = 0,\label{dimless_cubic}
 \end{align}
-where $\nu = \sigma/\Omega$, $\st = \taus\Omega$, $\fg = 1-\fdust$ (the gas
-fraction), and recall $K_{x,z}=k_{x,z}\eta r$. We have used $F_r =
-2\eta \fg r \Omega^2$ and considered large $K_x$. 
+where $\nu = \sigma/\OmK$, $\st = \taus\OmK$, $\fg = 1-\fdust$ (the gas
+fraction), and recall $K_{x,z}=\eta r k_{x,z}$. We have used $F_r =
+2\eta \fg r \Omega^2$ and considered large $K_x$.  
 
-Full analytic expressions for cubic roots are unwieldy. To proceed
-in an a tractable manner, let us \emph{assume} at this stage that the
-quadratic term can be neglected compare to the last term. This amounts
-to assuming a  sufficiently \emph{large} $K_z$ such that :
+Analytic expressions for cubic roots are unwieldy. To keep the problem
+tractable, let us \emph{assume} at this stage that the quadratic term
+can be neglected compare to the last term. That is, 
+%This amounts 
+%to assuming a  sufficiently \emph{large} $K_z$ such that :
 \begin{align}
 \left|\frac{\ii\fdust}{2K_x\fg} + \left(1 -
       \fdust\right)\right| \left|K_x\nu\right|^2 \ll
-  K_z^2\left(2\fdust - 1\right) \label{min_kz}
+  K_z^2\left(2\fdust - 1\right). \label{min_kz}
 \end{align}
-This will be checked later. (For fixed $\fdust$ and $K_x\to\infty$, the
-imaginary term can be neglected.)
+(For fixed $\fdust$ but allowing $K_x\to\infty$, the imaginary term can be
+neglected.) We show in \S\ref{si_dust_rich_approx} that this
+simplification is valid for dust-rich disks.  
 
 Eq. \ref{dimless_cubic} now becomes the depressed cubic 
 \begin{align}
@@ -372,45 +376,47 @@ Eq. \ref{dimless_cubic} now becomes the depressed cubic
 \end{align}
 where $\calP$ and $\calQ$ can be read off Eq. \ref{dimless_cubic}. This can be
 solved with Vieta's substitution 
-\begin{align*}
-\nu = \mu + \frac{\calP}{3\mu},
-\end{align*}
+\begin{align}
+\nu = \mu + \frac{\calP}{3\mu},\label{si_vieta}
+\end{align}
 then Eq. \ref{depressed_cubic} becomes a quadratic for $\mu^3$,
 \begin{align}
 \mu^6 - \calQ\mu^3 + \frac{\calP^3}{27} = 0. 
 \end{align}
 The solution is
 \begin{align}
-  \mu^3 &= \frac{\calQ}{2}\left(1\pm \sqrt{1 -
-      \frac{4\calP^3}{27\calQ^2}}\right)\notag\\
-  & = \st \fg (1- 2\fdust)\frac{K_z^2}{K_x}\left\{1 \pm \sqrt{1 -
+  \mu^3 = \frac{\calQ}{2}\left(1\pm \sqrt{1 -
+      \frac{4\calP^3}{27\calQ^2}}\right) 
+   = \st \fg (1- 2\fdust)\frac{K_z^2}{K_x}\left\{1 \pm \sqrt{1 -
       \frac{K_z^2}{27K_x^2\left[\st K_x \fg
           \left(1-2\fdust\right)\right]^2}}\right\}.  
 \end{align}
-At this point we assume $K_z$ is sufficiently \emph{small} such that
-the term $\propto K_z^2$ inside the square root may be neglected. That
-is, 
+At this point we assume the term $\propto K_z^2$ inside the square
+root may be neglected. That is, 
 \begin{align}
   K_z^2 \ll 27 \left(K_x^2\st\right)^2 \left[\fg
           \left(1-2\fdust\right)\right]^2. \label{max_kz}
 %27 K_x^2 \left[\st K_x \fg
 %          \left(1-2\fdust\right)\right]^2.
 \end{align}
-This will be checked later. Remembering that we are considering the
-dust-rich case so that $1-2\fdust<0$, the solution for $\mu$ is   
+We show in \S\ref{si_dust_rich} that this is readily satisfied. Then
+$\mu \simeq \mathcal{Q}^{1/3}$.  
+
+Now, remembering that we are considering the dust-rich limit with 
+$1-2\fdust<0$, the explicit solution for $\mu$ is    
 \begin{align}
 \mu = \left[2\st\fg \left(2\fdust
     -1\right)\frac{K_z^2}{K_x}\right]^{1/3}e^{\ii\pi/3}. \label{mu_explicit} 
 \end{align}
-We have chosen the root for instability. We can now write down the
-solution for the eigenfrequency $\nu$:
+We have chosen the complex root for instability. Inserting this into
+Eq. \ref{si_vieta} gives the eigenfrequency $\nu$:
 \begin{align}
-\real{(\nu)} &= \frac{1}{2}\left(|\mu| + \frac{K_z^2}{3
-    K_x^2|\mu|}\right)\notag\\
+\real{(\nu)} %&= \frac{1}{2}\left(|\mu| + \frac{K_z^2}{3
+%    K_x^2|\mu|}\right)\notag\\
 &= \frac{1}{2}\left(\calA \st^{1/3}K_x^{-1/3} + \calB
     \st^{-1/3}K_x^{-5/3}\right),\\
-\imag{(\nu)} &= \frac{\sqrt{3}}{2}\left(|\mu| - \frac{K_z^2}{3
-    K_x^2|\mu|}\right),\notag\\
+\imag{(\nu)} %&= \frac{\sqrt{3}}{2}\left(|\mu| - \frac{K_z^2}{3
+%    K_x^2|\mu|}\right),\notag\\
 &= \frac{\sqrt{3}}{2}\left(\calA \st^{1/3}K_x^{-1/3} - \calB
     \st^{-1/3}K_x^{-5/3}\right),
 \end{align}
@@ -431,45 +437,44 @@ Maximizing growth rates over $K_x$ by setting $\p \imag{(\nu)}/\p K_x
 = 0$, we find the optium wavenumber is given by
 \begin{align}
   K_x = \left(\frac{5\calB}{\calA}\right)^{3/4}\st^{-1/2} =
-  \left(\frac{5}{3}\right)^{3/4}\sqrt{\frac{K_z}{2\fg\left(2\fdust-1\right)\st}}. 
+  \left(\frac{5}{3}\right)^{3/4}\sqrt{\frac{K_z}{2\fg\left(2\fdust-1\right)\st}}. \label{si_dust_rich_optkx}
 \end{align}
 The maximum growth rate is then 
 \begin{align}
-  \mathrm{max}\left(s\right) =
-  \frac{2\sqrt{3}\calA^{5/4}}{5^{5/4}\calB^{1/4}}\sqrt{\st}\OmK =
-  \frac{2\sqrt{2}\times3^{3/4}}{5^{5/4}}\sqrt{\fg\left(2\fdust-1\right)K_z\st}\OmK.
+  \mathrm{max}\left[\imag{(\nu)}\right] =
+  \frac{2\sqrt{3}\calA^{5/4}}{5^{5/4}\calB^{1/4}}\sqrt{\st} =
+  \frac{2\sqrt{2}\times3^{3/4}}{5^{5/4}}\sqrt{\fg\left(2\fdust-1\right)K_z\st}.\label{si_dust_rich_grow}
 \end{align}
-and the corresponding (dimensional) real frequency satisfies
-$\real{(\sigma)} =  \sqrt{3}s/2$. 
-
-From the above result we see that as $\taus\to0$, the most unstable
-radial wavelength diverges, $K_x\propto \taus^{-1/2} \to \infty$ with
-a vanishing growth rate, $\mathrm{max}(s)\propto \sqrt{\taus}\to 0$.   
-
-
+and the real frequency $\real{(\nu)} =
+(\sqrt{3}/2)\imag{(\nu)}$. We see that as $\taus\to0$, the most unstable
+radial wavenumber diverges, $K_x\propto \taus^{-1/2} \to \infty$ with 
+a vanishing growth rate, $\mathrm{max}(s)\propto \sqrt{\taus}\to
+0$. This corresponds to instability at arbitrarily small radial
+lengthscales.    
 
 \subsubsection{Finite phase lag as $\taus\to 0$}  
 An interesting property of the special solutions described above is
 that there is always a phase lag between the Lagrangian pressure and
 density perturbations. Since $\real{(\nu)}>0$, the phase lag may be
-defined as $\varphi = \arg{\left(\Delta P \Delta \rho^*\right)}$. For
-SI we neglect the background density gradients, so $\Delta\rho = 
-\delta\rho$. It may be shown that in the limit of large $K_x$ 
-that $\Delta P \simeq \ii \delta v_x \p_rP/\sigma$. To obtain $\dd v_x$ we use Eq. \ref{streaming_vx} 
-assuming low frequency modes, $|\sigma|\ll \kappa^2$, valid for
-$\taus\to 0$ as shown above. Now, the expression for $\dd v_x$ involves
-the Eulerian pressure perturbation, $\delta P$. For this we use
-Eq. \ref{si_QW1} and assume incompressibility. 
+defined as $\varphi = \arg{\left(\Delta P \Delta \rho^*\right)}$. %For
+%SI we neglect the background density gradients, so $\Delta\rho
+%\simeq  \delta\rho$ but retain the background pressure gradient. 
+(Note that we may set $\Delta\rho = 1$ without loss of generality.) 
+It may be shown that in the limit of large $K_x$  that $\Delta P
+\simeq \ii \delta v_x \p_rP/\sigma$. To obtain $\dd v_x$ we use
+Eq. \ref{streaming_vx} in the low frequency limit. The expression for $\dd v_x$ involves
+the Eulerian pressure perturbation, $\delta P$, for which we use 
+Eq. \ref{si_QW1} and assume incompressibility ($\zeta\to0$).  
 
-With these simplifications (in addition to those already made in the
-previous section), the phase lag $\varphi$ is given via 
+With these additional simplifications the phase lag $\varphi$ is given
+via  
 \begin{align}
   \tan{\varphi} = \frac{\imag{\left(\Delta
         P\Delta\rho^*\right)}}{\real{\left(\Delta
         P\Delta\rho^*\right)}}\simeq\frac{K_x\imag{(\nu)}}{2\fg^2\st
       K_x^2 + K_x \real{(\nu)}}. 
 \end{align}
-From here it is clear for the solutions derived above, where
+From here it is clear for the above solutions, where
 $K_x\propto \st^{-1/2}$ and $\nu \propto \st^{1/2}$, that $\varphi$ is
 a constant. Explicitly inserting the solutions give 
 \begin{align}
@@ -480,23 +485,23 @@ For the case shown in Fig. \ref{si_compare_fig} with $\fdust=0.75$, we
 have $\varphi\simeq 26\degr$, comparable to the $\sim 30\degr$
 obtained from numerical solutions. 
 
-\subsubsection{Validty of the approximations}
-The solution above require $K_z$ be sufficiently large for
-Eq. \ref{min_kz} but also sufficiently small for
-Eq. \ref{max_kz}. Inserting the above solutions, we find the
-requirement from Eq. \ref{min_kz} becomes 
+\subsubsection{Validty of the approximations}\label{si_dust_rich_approx}
+Inserting the solutions for the most unstable mode 
+%(Eq. \ref{si_dust_rich_optkx}---\ref{si_dust_rich_grow} with ) 
+we find the assumption in Eq. \ref{min_kz} becomes  
 \begin{align}
   \fdust \gg \frac{12}{17}\simeq 0.7.
 \end{align}
-However, since $\fdust \leq 1$, this requirement can only be marginally
-satisfied. We find that this mostly give errors in the real
+Since $\fdust \leq 1$, this requirement can only be marginally
+satisfied. However, we find that this mostly give errors in the real
 frequency (see Fig. \ref{si_compare_fig}), while growth rates are
-still captured. On the other hand, Eq. \ref{max_kz} becomes the trivial 
-inequality \begin{align}
+still captured correctly. 
+On the other hand, the assumption of Eq. \ref{max_kz} becomes the trivial
+inequality \begin{align} 
   1\ll \frac{27}{4}\left(\frac{5}{3}\right)^3\simeq 30,
 \end{align}
-so Eq. \ref{max_kz} is satisified, which justifies the solution for
-$\mu$ in Eq. \ref{mu_explicit}. 
+so Eq. \ref{max_kz} is satisified, which justifies the approximate solution for 
+$\mu$ in Eq. \ref{mu_explicit}.  
 
 
 
