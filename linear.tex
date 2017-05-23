@@ -122,10 +122,11 @@ the terminal velocity approximation, is sufficient to capture SGI
 in the strong drag limit. 
 
 \subsection{Streaming instability}\label{si}
-We now consider 3D but non-self-gravitating disks.  
-In the special case of an unstratified disk (neglecting the vertical
-component of the stellar gravity), we may also Fourier analyze in $z$
-to obtain an algebraic dispersion relation of the form  
+We now consider 3D disks without self-gravity. We neglect the vertical     
+component of the stellar gravity, appropriate for studying regions
+near the disk midplane. This  
+allows us to Fourier analyze in $z$ to obtain 
+an algebraic dispersion relation of the form  
 $\sum_{j=0}^{5}c_j(k_x,k_z)\sigma^j = 0$, where $k_z$ is a real
 vertical wavenumber. The coefficients $c_j$ can be read 
 off Eq. \ref{streaming_dispersion} in  Appendix \ref{compressible_streaming}. 
@@ -137,44 +138,45 @@ $\tstop$ \citep{youdin05a,jacquet11}.
 
 %{\bf note: kappa2 accounts for dust effect assuming smallh=0.05}
 
-We solve the full dispersion relation, Eq. \ref{streaming_dispersion} for selected cases where SI  
-growth rates have been 
-calculated analytically from full two-fluid disk models and confirmed
-with particle-gas numerical simulations 
-\citep[namely][]{youdin07b,bai10b}. These authors use normalized
+In Table \ref{si_compare} we solve the full dispersion relation
+(Eq. \ref{streaming_dispersion}) numerically for selected cases where
+analytic SI growth rates have been verified with particle-gas
+numerical simulations \citep[namely][]{youdin07b,bai10b}.  
+Following previous works on SI, we use normalized 
 wavenumbers $K_{x,z} = \eta r k_{x,z}$ where
 \begin{align} 
   \eta \equiv -\frac{1}{2\rhog r\OmK^2}\frac{\p P}{\p r} = 
   \frac{1}{2\left(1-\tepsilon\right)}\frac{F_r}{r\OmK^2}, 
 \end{align} 
-measures the pressure offset of Keplerian rotation. We use
-$\eta=0.05c_s/r\OmK$. They also define the stopping time as
-$\tau_\mathrm{s}=\tstop/(1-\tepsilon)$.  
+measures the pressure offset of Keplerian rotation. We fix 
+$\eta=0.05c_s/r\OmK$. In this section section we also quote the
+particle stopping time $\tau_\mathrm{s}=\tstop/(1-\tepsilon)$.    
 
-Table \ref{si_compare} compares the eigenfrequencies obtained from the
-one-fluid dispersion relation to that from the above studies. As  
-expected eigenfrequencies agree better with decreasing $\tstop$ since
-in that limit the mixture behaves more like a single fluid. Most 
-importantly, we find the work done $\mathcal{W}>0$ in all cases, and
-hence find growing oscillations. 
+The eigenfrequencies obtained from the one-fluid dispersion relation 
+are compared that from a full, two-fluid analysis \citep[similar 
+to][]{youdin05a, kowalik13}. As expected eigenfrequencies agree better
+with decreasing $\taus$ since in that limit the mixture behaves more 
+like a single fluid. Most importantly, we find the work done
+$\mathcal{W}>0$ in all cases, and hence find growing oscillations. 
 
 %{\bf note: important to use largrangian pressure pert properly}
 
-We also checked the growth rates $s$ satisfy 
-\begin{align} 
-  s = \frac{\left|\sigma\right|^2\imag\left(\Delta P
-    \Delta\rho^*/\rho\right)}{2\real\left(\sigma\right)\rho\left(\left|\dd
-  v_x\right|^2+\left|\dd
-  v_z\right|^2\right)}, \label{si_check}
-\end{align}
-as implied by Eq. \ref{thermal_instability} and
-Eq. \ref{pdv}. %, or directly from
-%Eq. \ref{streaming_mass}---\ref{streaming_vz}. 
-Interestingly, we find in dust-rich disks with 
-$\epsilon>1$, Eq. \ref{si_check} can be satisified with $\Delta
-P\simeq \ii\dd v_x \p_rP/\sigma$, i.e. the radial pressure gradient
-is responsible for growth. Conversely, for `linB' with $\epsilon
-< 1$, one can approximate $\Delta P \simeq \dd P$ in Eq. \ref{si_check}. %This
+% We also checked the growth rates $s$ satisfy 
+% \begin{align} 
+%   s = \frac{\left|\sigma\right|^2\imag\left(\Delta P
+%     \Delta\rho^*/\rho\right)}{2\real\left(\sigma\right)\rho\left(\left|\dd
+%   v_x\right|^2+\left|\dd
+%   v_z\right|^2\right)}, \label{si_check}
+% \end{align}
+% as implied by Eq. \ref{thermal_instability} and
+% Eq. \ref{pdv}. %, or directly from
+% %Eq. \ref{streaming_mass}---\ref{streaming_vz}. 
+% Interestingly, we find in dust-rich disks with 
+% $\epsilon>1$, Eq. \ref{si_check} can be satisified with $\Delta
+% P\simeq \ii\dd v_x \p_rP/\sigma$, i.e. the radial pressure gradient
+% is responsible for growth. Conversely, for `linB' with $\epsilon
+% < 1$, one can approximate $\Delta P \simeq \dd P$ in Eq. \ref{si_check}.
+% This
 %suggests that for SI in gas-dominated disks, the distinction between
 %Eulerian and Lagragian pressure perturbations is unimportant. 
 %{\bf but weak growth in this case}
@@ -185,51 +187,16 @@ In Table \ref{si_compare} we also calculate the phase difference
 between the Lagragian pressure perturbation and density perturbations
 as    
 \begin{align*} 
-\varphi \equiv -\sgn(\omega)\arg\left(\Delta P\Delta\rho^*\right)
-        = \sgn(\omega)\arg\left(\Delta\rhog^*\Delta\rhod\right),\notag
+\varphi&\equiv \sgn{\left[\real{(\sigma)}\right]}\arg\left(\Delta
+  P\Delta\rho^*\right).\notag 
+%\notag\\
+%       &= \sgn{\left[\real{(\sigma)}\right]}\arg\left(\Delta\rhog^*\Delta\rhod\right).\notag
 \end{align*}
-%where we have applied the isothermal equation of state for the second equality.
-then $\varphi > 0 $ indicates gas density lagging behind dust density,
-which is true for all the cases. %In particular, `linB' indicates that
-%growth rates vanish as $\varphi \to 0$.  
-Thus the streaming instability is indeed associated with a phase lag
-between gas and dust density evolutions. 
-
-In Fig. \ref{si_compare_fig} we compare the most unstable SI 
-mode as a function of $\taus$ at fixed $K_z=30$ and $\epsilon =3$. The
-solid line is obtained from a full, two-fluid linear analysis 
-\citep[similar to][]{youdin05a, kowalik13}. The one-fluid results are
-obtained by solving the dispersion relation
-Eq. \ref{streaming_dispersion}, both numerically (green asterisks) and
-analytically with additional approximations and considerations
-(organge diamonds). The analytic model is described in Appendix 
-\ref{si_dust_rich}. 
-
-Both results based on the one-fluid framework compares well with the 
-full, two-fluid analysis, only breaking down at a relatively large
-$\taus\OmK\gtrsim 0.1$. It is interesting to see for large $\taus$ the 
-two-fluid phase lag drops, along with the growth rate. Notcie also the
-phase lag remains finite as $\taus\to0$ because the optimum $K_x$
-diverges (this is explained in Appendix \ref{si_dust_rich}). 
-
-In a future work we will perform a more detailed parameter survey to
-compare the simplified one-fluid and full two-fluid frameworks in
-calculating SI.  
-
-\begin{figure}
-\includegraphics[width=\linewidth]{figures/si_2f_1f_compare}
-\caption{{\bf in case the paper isn't long enough} Comparison of the linear
-streaming instability between a full two-fluid analysis (solid
-line), the current one-fluid framework simplified by the terminal
-velocity approximation (green asterisks) and an analytic solution to
-the one-fluid dispersion relation in the dust-rich limit (organge
-diamonds, see also Appendix \ref{si_dust_rich}). The vertical 
-wavenumber is fixed and growth rates are maximized over $K_x$. 
-\label{si_compare_fig}}
-\end{figure}
-%"generalized stokes number" would include other problem parameters,
-%e.g. wavenumber  
-
+(Note that $\Delta P = \delta P + \ii \dd v_x \p_rP/\sigma$, and it is
+important to include the global radial pressure gradient here.) Then 
+$\varphi > 0 $ indicates gas pressure lagging behind total density, 
+which is true for all the cases. Thus SI is indeed associated with
+such a phase lag. 
 
 %{\bf suppose large scale pressure grad drops outwards. 
 %pert the sys by kicking more dust inwards. gas moves out, into region 
@@ -324,6 +291,48 @@ $0.3225 +  0.3154\ii$& $0.3219 + 0.3154\ii$ &  $0.061$ & $0.061$  & $22\degr$ & 
 \tablenotetext{$\dagger$}{\cite{youdin07b}}
 \tablenotetext{$\ddagger$}{\cite{bai10b}}
 \end{deluxetable*}
+
+In Fig. \ref{si_compare_fig} we calculate the most unstable SI 
+mode as a function of $\taus$ at fixed $K_z=30$ and $\epsilon =3$. We
+compare results between the full, two-fluid linear analysis and the
+one-fluid framework. We also include an analytic model, described in Appendix 
+\ref{si_dust_rich}, based on the one-fluid dispersion relation with 
+additional approximations (orange diamonds).
+
+Both results based on the one-fluid framework compares well with the 
+full, two-fluid analysis, only breaking down at a relatively large
+$\taus\OmK\gtrsim 0.1$. For larger $\taus$ the two-fluid phase
+lag drops, along with the growth rate. This suggest that a
+non-vanishing phase lag is necessary for instability. However, the
+magnitude of the phase lag does not correlate with growth rates. In
+fact, $\varphi$ remains finite as $|\sigma|, \taus\to0$ (but
+non-zero). This arises because the optimum $K_x\propto \taus^{-1/2}$
+diverges (see Appendix \ref{si_dust_rich}).   
+
+In a future work we will perform a more detailed parameter survey to
+compare the simplified one-fluid and full two-fluid frameworks in
+calculating SI.  
+
+\begin{figure}
+\includegraphics[width=\linewidth]{figures/si_2f_1f_compare}
+\caption{Comparison of the linear
+streaming instability between a full two-fluid analysis (solid
+line), the one-fluid framework simplified by the terminal
+velocity approximation (green asterisks) and an analytic solution to
+the one-fluid dispersion relation in the dust-rich limit (orange
+diamonds, see also Appendix \ref{si_dust_rich}). The vertical 
+wavenumber is fixed and growth rates are maximized over $K_x$. 
+\label{si_compare_fig}}
+\end{figure}
+
+
+
+
+
+
+%"generalized stokes number" would include other problem parameters,
+%e.g. wavenumber  
+
 
 
 
