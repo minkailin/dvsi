@@ -173,7 +173,7 @@ streaming instability
 \citep[SI,][]{youdin05a,youdin07b,johansen07}, secular gravitational
 instabilities \citep[SGI,][]{ward00,youdin11,michikoshi12,takahashi14} and
 Kelvin-Helmholtz instabilities
-\citep{goldreich1973, chiang08,barranco09,lee10}. These instabilities 
+\citep{goldreich73, chiang08,barranco09,lee10}. These instabilities 
 can trigger turbulence, and (in different regimes) promote or inhibit 
 planetesimal formation. 
 More recently, new 
@@ -187,7 +187,7 @@ understood.
 Current state-of-the-art models of dusty protoplanetary
 disks directly simulate gas dynamics coupled to explicit
 Lagragian dust particles
-\citep{johansen2006, nelson10,bai10,yang14,zhu14,gibbons15,simon16,baruteau16}. 
+\citep{johansen06, nelson10,bai10,yang14,zhu14,gibbons15,simon16,baruteau16}. 
 The equation of motion for each particle is solved 
 including dust-gas drag; the strength of which is measured 
 by a stopping time $\tstop$ --- the decay timescale for the 
@@ -204,68 +204,95 @@ velocity $\rhog$, $\bm{v}_\mathrm{g}$ and $\rhod$,
 $\bm{v}_\mathrm{d}$, respectively. Source terms are introduced into
 the momentum/energy equations to model dust-gas drag. This approach
 can take advantage of existing numerical methods/codes for
-simulating pure gas dynamics. 
+simulating pure gas dynamics. A practical difficulty with this approach is the need to numerical stabilize the pressureless dust fluid with (e.g.) artificial diffusion.
 
 %refs 
 
-It is possible to re-formulate the two-fluid equations into that for a
-single fluid with total density $\rho$ and center-of-mass
-velocity $\bm{v}$ of the dusty gas mixture
-\citep{laibe14}. The standard hydrodynamic equations for
-$\rho$ and $\bm{v}$ are supplemented by evolutionary equations for
-the dust-to-gas ratio $\rhod/\rhog$ and the relative dust-gas velocity
-$\Delta\bm{v}\equiv \bm{v}_\mathrm{d}-\bm{v}_\mathrm{g}$. The latter also contributes to 
-additional source terms in the momentum and energy equations.  
+%AY: reworded b/c (a) I didn't think it was clear enough that the one fluid simplification wasn't exact and (b) that this tight coiupling limit needed to be emphasized more.
 
-The one-fluid approach is appropriate for 
-simulating gas tightly coupled to dust particles with small $\tstop$.  
-This can be numerically challenging for two-fluid models and 
-following Lagragian particles; but is straight forward with the 
-one-fluid formulation \citep{price15}.  The single fluid framework 
-also has the important advantage that it is 
-amenable to standard analytical methods \citep{youdin05a,jacquet11}.  
-This is the necessary approach to gain physical insight.  
+The two-fluid equations for dust and gas can be reformulated into 
+equivalent dynamical equations for the center of mass velocity $\bm{v}$
+and the relative dust-gas velocity  $\Delta\bm{v}\equiv \bm{v}_\mathrm{d}-\bm{v}_\mathrm{g}$ 
+\citep{youdin05a}. In this reformulation, continuity equations for dust and gas can be replaced 
+by the mass conservation of total density $\rho$ plus the evolution of the dust-to-gas ratio 
+(or dust fraction, \citealp{laibe14}).
+
+The advantage of this reformulation arises in the tight coupling limit of  $\tstop \ll 1/\Omega$, where the orbital frequency $\Omega$ sets the characteristic timescale in many disk dynamics problems.
+Models with two fluids or with Lagrangian solids are numerically difficult to evaluate in this regime, due to stiff drag forces.  
+In the reformulated equations, however, the center of mass motion does not experience drag forces and thus is not stiff.  Moreover the relative motion satisfies the terminal-velocity approximation and can be eliminated from the equations.  This single fluid framework for a well-coupled dust-gas mixture facilitates numerical calculations \citep{price15}. and also simplifies analytic calculations \citep{youdin05a,jacquet11}, which is useful for gaining insight.  
+
+%It is possible to re-formulate the two-fluid equations into that for a
+%single fluid with total density $\rho$ and center-of-mass
+%velocity $\bm{v}$ of the dusty gas mixture
+%\citep{laibe14}. The standard hydrodynamic equations for
+%$\rho$ and $\bm{v}$ are supplemented by evolutionary equations for
+%the dust-to-gas ratio $\rhod/\rhog$ and the relative dust-gas velocity
+%$\Delta\bm{v}\equiv \bm{v}_\mathrm{d}-\bm{v}_\mathrm{g}$. The latter also contributes to 
+%additional source terms in the momentum and energy equations.  
+%
+%The one-fluid approach is appropriate for 
+%simulating gas tightly coupled to dust particles with small $\tstop$.  
+%This can be numerically challenging for two-fluid models and 
+%following Lagragian particles; but is straight forward with the 
+%one-fluid formulation \citep{price15}.  The single fluid framework 
+%also has the important advantage that it is 
+%amenable to standard analytical methods \citep{youdin05a,jacquet11}.  
+%This is the necessary approach to gain physical insight.  
 
 
-In this work, we are motivated to develop a general analytical
-framework to study the stability of dusty protoplanetary 
-disks by drawing on the physical and mathematical parallel between
-dusty gas and standard hydrodynamics. This is possible in certain limits of astrophysical
-interest, allowing us to interpret dusty phenomena through standard
-hydrodynamics.   
+%AY: Attempted to clarify a bit by separating more the analogy and it's applications.
 
-We consider tightly coupled dust particles with $\tstop\Omega\ll
-1$, where $\Omega$ is the disk orbital frequency. We may then use the
-`terminal velocity approximation' to set the dust-gas relative drift
-to $\Delta \bm{v} = \tstop\nabla
-P/\rhog$, where $P$ is the gas pressure \citep{youdin05a, 
-  jacquet11,laibe14}. This approximation reflects the physical result
-that dust particles tend to drift towards pressure maximum. 
+In this work, we develop a parallel between this single-fluid description of dust-gas mixtures and standard hydrodynamics.
+Specifically we recast the evolution of the dust-to-gas ratio as an energy equation for the thermal content of a fluid.
+This parallel is most precise when the gas in the dust/gas mixture obeys a locally isothermal equation of state for the gas, $P = c_s^2\rhog$, where $c_s$ is a prescribed sound-speed profile.  Thus we make this approximation which holds when cooling times are short \citep{lin15}, as with protoplanetary disks 
+ whose temperature is set by external irradiation
+\citep{chiang97,stam08}. 
+
+
+%are motivated to develop a general analytical
+%framework to study the stability of dusty protoplanetary 
+%disks by drawing on the physical and mathematical parallel between
+%dusty gas and standard hydrodynamics. This is possible in certain limits of astrophysical
+%interest, allowing us to interpret dusty phenomena through standard
+%hydrodynamics.   
+
+%AY: a bit detailed for an introduction, plus the idea of terminal velocity needed to be introduced earlier as the basis of the slngle fluid equations, I thought.
+%We consider tightly coupled dust particles with $\tstop\Omega\ll
+%1$, where $\Omega$ is the disk orbital frequency. We may then use the
+%`terminal velocity approximation' to set the dust-gas relative drift
+%to $\Delta \bm{v} = \tstop\nabla
+%P/\rhog$, where $P$ is the gas pressure \citep{youdin05a, 
+%  jacquet11,laibe14}. This approximation reflects the physical result
+%that dust particles tend to drift towards pressure maximum. 
  
- We also consider irradiated protoplanetary disks 
- in which the temperature is set externally
-\citep{chiang97,stam08}. This allows us to adopt a locally isothermal
-equation of state, $P = c_s^2\rhog$, where $c_s$ is a prescribed
-sound-speed profile. This physically represents short cooling times
-\citep{lin15}.   
+% We also consider irradiated protoplanetary disks 
+% in which the temperature is set externally
+%\citep{chiang97,stam08}. This allows us to adopt a locally isothermal
+%equation of state, $P = c_s^2\rhog$, where $c_s$ is a prescribed
+%sound-speed profile. This physically represents short cooling times
+%\citep{lin15}.   
 
-Under these two approximations, we show that the equations of 
-isothermal dusty gas dynamics are equivalent to that of adiabatic, pure gas
-dynamics (Fig. \ref{concept_chart}). This is because tightly-coupled dust particles are almost
-entrained in the gas, which is analogous to the advection
-of entropy following an adiabatic fluid. We show that the   
-effective entropy of isothermal dusty gas scales with its gas
-fraction. Finite dust-gas drag act as effective heating/cooling: the relative
+Under these two approximations of strong drag and isothermal gas, we show that the equations of 
+ dusty gas dynamics are equivalent to that of nearly adiabatic (i.e. slowly cooling) gas
+dynamics without dust (Fig. \ref{concept_chart}).  The basis of the analogy is that the entrainment 
+of tightly-coupled dust particles in gas flows is similar to the advection
+of entropy in an adiabatic fluid. %We show that the   
+%effective entropy of isothermal dusty gas scales with its gas
+%fraction.  %AY: too technical for introduction.
+Finite dust-gas drag act as effective heating/cooling: the relative
 drift between dust and gas causes a fluid parcel to exchange dust
 particles with its surroundings; an effect similar to heat exchange
-between a gas parcel and its surroundings.   
+between a gas parcel and its surroundings.   Needless to say the effective heating term must have a 
+specific form, which we derive, for the equivalency to hold.
 
 %suitable for 
 %analytic studies 
 %more importantly, can understood 
 
-By re-casting the dusty problem into standard  
-hydrodynamics, we can apply established methods to generalize previous stability 
+The purpose of our physical and mathematical parallel between
+dusty gas and standard hydrodynamics is to gain a deeper understanding of the dynamics
+and stability of dusty disks.  
+We can apply established methods to generalize previous stability 
 results for pure gas dynamics to dusty disks.  
 We show that strictly isothermal protoplanetary disks with
 perfectly-coupled dust are generally 
@@ -279,25 +306,22 @@ instability previously considered in pure gas disks
 \citep[VSI,][]{nelson13,lin15,barker15}.  
 
 
-This paper is organized as follows. We first present, without
-derivation, the correspondence between dusty gas and     
-ideal hydrodynamics in \S\ref{key_idea}. In \S\ref{grow_osc} 
-we discuss a key idea in fluid dynamics, relevant to our 
-discussion on  SI and VSI: instabilities associated with
+This paper is organized as follows. 
+%AY: or not? %We first present, without
+%derivation, the correspondence between dusty gas and     
+%ideal hydrodynamics in \S\ref{key_idea}. 
+In \S\ref{grow_osc} 
+we describe a key insight of our study, that pressure (i.e. ``PdV") work explains the basis of several instabilities, including SI and VSI, in terms of
 pressure-density phase lags.   
 %This means that dusty-gas phenomena, such 
 %as SI and VSI, have thermodynamical interpretations.  
-
-We begin our formal discussion in \S\ref{setup} by listing the 
-basic equations describing tightly-coupled dusty gas. We show that for a
-fixed equation of state, these are in 
-fact the usual hydrodynamic equations in disguise. 
-We describe equilibrium solutions in \S\ref{eqm} that are used in
-explicit calculations. In \S\ref{limits} we discuss 
+We begin our formal discussion in \S\ref{setup} by transforming the
+basic equations describing tightly-coupled dusty gas into  hydrodynamic equations with a special cooling function. 
+We derive equilibrium solutions in \S\ref{eqm}, which we use in our explicit stability calculations. In \S\ref{limits} we analyze the 
 general stability properties of dusty disks. We then move onto
 explicit stability analyses. In  
-\S\ref{linear_problem} we list the linearized equations and show that 
-they reproduce previous results for SGI and SI. In \S\ref{results} we
+\S\ref{linear_problem} we show that our linearized equations 
+reproduce the SGI and SI in the tight coupling regime. In \S\ref{results} we
 extend the VSI to dusty disks. We   
 discuss future applications of the dusty/adiabatic gas equivalence in 
 \S\ref{discussion} before summarizing in \S\ref{summary}. 
