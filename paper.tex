@@ -101,19 +101,19 @@
  % \title{Dust-free modeling of dusty protoplanetary disks I:
 %axisymmetric stability}
 \author{Min-Kai Lin\altaffilmark{1,2,3}}
-\author{Andrew N. Youdin\altaffilmark{1}}
+\author{Andrew N. Youdin\altaffilmark{2}}
 %\affil{Department of Astronomy and Steward Observatory, 
 %University of
  % Arizona, Tucson, AZ 85721, USA\\
 %Institute of Astronomy and Astrophysics, Academia Sinica, 
 %Taipei 10617, Taiwan}
-\altaffiltext{1}{Department of Astronomy and Steward Observatory, 
-University of
-Arizona, Tucson, AZ 85721, USA}
-\altaffiltext{2}{Steward Theory Fellow}
-\altaffiltext{3}{Institute of Astronomy and Astrophysics, Academia Sinica, 
+\altaffiltext{1}{Institute of Astronomy and Astrophysics, Academia Sinica, 
 Taipei 10617, Taiwan
 }
+\altaffiltext{2}{Department of Astronomy and Steward Observatory, 
+University of
+Arizona, Tucson, AZ 85721, USA}
+\altaffiltext{3}{Steward Theory Fellow}
 \email{mklin@asiaa.sinica.edu.tw}
 
 \begin{abstract}
@@ -176,7 +176,7 @@ streaming instability
 \citep[SI,][]{youdin05a,youdin07b,johansen07}, secular gravitational
 instabilities \citep[SGI,][]{ward00,youdin11,michikoshi12,takahashi14} and
 Kelvin-Helmholtz instabilities
-\citep{goldreich73, chiang08,barranco09,lee10}. These instabilities 
+\citep{goldreich1973, chiang08,barranco09,lee10}. These instabilities 
 can trigger turbulence, and (in different regimes) promote or inhibit 
 planetesimal formation. 
 More recently, new 
@@ -190,7 +190,7 @@ understood.
 Current state-of-the-art models of dusty protoplanetary
 disks directly simulate gas dynamics coupled to explicit
 Lagragian dust particles
-\citep{johansen06, nelson10,bai10,yang14,zhu14,gibbons15,simon16,baruteau16}. 
+\citep{johansen2006, nelson10,bai10,yang14,zhu14,gibbons15,simon16,baruteau16}. 
 The equation of motion for each particle is solved 
 including dust-gas drag; the strength of which is measured 
 by a stopping time $\tstop$ --- the decay timescale for the 
@@ -222,7 +222,9 @@ by the mass conservation of total density $\rho$ plus the evolution of the dust-
 
 The advantage of this reformulation arises in the tight coupling limit of  $\tstop \ll 1/\Omega$, where the orbital frequency $\Omega$ sets the characteristic timescale in many disk dynamics problems.
 Models with two fluids or with Lagrangian solids are numerically difficult to evaluate in this regime, due to stiff drag forces.  
-In the reformulated equations, however, the center of mass motion does not experience drag forces and thus is not stiff.  Moreover the relative motion satisfies the terminal-velocity approximation and can be eliminated from the equations.  This single fluid framework for a well-coupled dust-gas mixture facilitates numerical calculations \citep{price15}. and also simplifies analytic calculations \citep{youdin05a,jacquet11}, which is useful for gaining insight.  
+In the reformulated equations, however, the center of mass motion does
+not experience drag forces and thus is not stiff.  Moreover,
+for $\tstop\Omega\ll 1$ the relative motion satisfies the terminal-velocity approximation and can be eliminated from the equations.  This single fluid framework for a well-coupled dust-gas mixture facilitates numerical calculations \citep{price15}; and also simplifies analytic calculations \citep{youdin05a,jacquet11}, which is useful for gaining insight.  
 
 %It is possible to re-formulate the two-fluid equations into that for a
 %single fluid with total density $\rho$ and center-of-mass
@@ -299,9 +301,11 @@ We can apply established methods to generalize previous stability
 results for pure gas dynamics to dusty disks.  
 We show that strictly isothermal protoplanetary disks with
 perfectly-coupled dust are generally 
-stable to axisymmetric perturbations.%, regardless of how  thin the dust
+stable to axisymmetric perturbations, unless the 
+dust-to-gas ratio varies more rapidly in radius than in height.  
+%, regardless of how  thin the dust
 %layer is. 
-{\bf should we mention vertically well mixed case here?} 
+%{\bf should we mention vertically well mixed case here?} 
 We put forward a thermodynamical interpretation of 
 dust-gas drag instabilities, and apply it to the streaming instability.   
 We also study the effect of dust-loading on the vertical shear
@@ -319,12 +323,16 @@ pressure-density phase lags.
 %This means that dusty-gas phenomena, such 
 %as SI and VSI, have thermodynamical interpretations.  
 We begin our formal discussion in \S\ref{setup} by transforming the
-basic equations describing tightly-coupled dusty gas into  hydrodynamic equations with a special cooling function. 
-We derive equilibrium solutions in \S\ref{eqm}, which we use in our explicit stability calculations. In \S\ref{limits} we analyze the 
-general stability properties of dusty disks. We then move onto
-explicit stability analyses. In  
-\S\ref{linear_problem} we show that our linearized equations 
-reproduce the SGI and SI in the tight coupling regime. In \S\ref{results} we
+basic equations describing tightly-coupled dusty gas into
+hydrodynamic equations with a special cooling function.  Here we also
+formalize the concept of dust-induced entropy and buoyancy. 
+%We derive equilibrium solutions in \S\ref{eqm}, which we use in our
+%explicit stability calculations.
+In \S\ref{limits} we analyze the general stability properties of dusty
+disks. We then move onto explicit stability analyses in
+\S\ref{linear_problem}, were we show that dusty edges are unstable,
+and revisit the SGI and SI in the tight
+coupling regime. In \S\ref{results} we
 extend the VSI to dusty disks. We   
 discuss future applications of the dusty/adiabatic gas equivalence in 
 \S\ref{discussion} before summarizing in \S\ref{summary}. 
@@ -350,50 +358,50 @@ discuss future applications of the dusty/adiabatic gas equivalence in
   dust-gas dynamics. \label{concept_chart}}
 \end{figure}
 
-\section{Dust-free modeling of dusty protoplanetary disks}\label{key_idea}
-{\bf is this section needed?} 
-The key concept we introduce in this work is the description 
-of dusty protoplanetary disks \emph{without} explicit dust 
-equations. This is best illustrated by writing down our model   
-equations for a mixture of isothermal gas and small 
-dust particles: 
-\begin{align}  
-  &\frac{\p \rho}{\p t} + \nabla\cdot\left(\rho\bm{v}\right)= 0, \label{mass0}\\ 
-  &\frac{\p\bm{v}}{\p t} + \bm{v}\cdot\nabla\bm{v} = -
-  \frac{1}{\rho}\nabla  P - \nabla \Phi_*,\label{mom0}\\ 
- & \frac{\p P}{\p t} + \bm{v}\cdot\nabla P 
-  = - P \nabla\cdot\bm{v} - \nabla\cdot\bm{\mathcal{F}}
-%                + \mathcal{C}(\rho, P; \tstop)
-\label{en0}, 
-\end{align}
-where $\rho=\rhod + \rhog$ is the total density, $P$ is the pressure,
-$\Phi_*$ is the stellar gravitational potential,   
-and $\bm{\mathcal{F}}=~\bm{\mathcal{F}}(\rho, P; \tstop)$ model effects of dust-gas drag, explained below. 
-%$\mathcal{C}$ represent effects of dust-gas drag, which
-%is paremterized by the stopping time $\tstop$ ($\mathcal{C}=0$ for
-%$\tstop=0$). 
-Similar equations for dusty-gas are given by
-\cite{price15}.  
+% \section{Dust-free modeling of dusty protoplanetary disks}\label{key_idea}
+% {\bf is this section needed?} 
+% The key concept we introduce in this work is the description 
+% of dusty protoplanetary disks \emph{without} explicit dust 
+% equations. This is best illustrated by writing down our model   
+% equations for a mixture of isothermal gas and small 
+% dust particles: 
+% \begin{align}  
+%   &\frac{\p \rho}{\p t} + \nabla\cdot\left(\rho\bm{v}\right)= 0, \label{mass0}\\ 
+%   &\frac{\p\bm{v}}{\p t} + \bm{v}\cdot\nabla\bm{v} = -
+%   \frac{1}{\rho}\nabla  P - \nabla \Phi_*,\label{mom0}\\ 
+%  & \frac{\p P}{\p t} + \bm{v}\cdot\nabla P 
+%   = - P \nabla\cdot\bm{v} - \nabla\cdot\bm{\mathcal{F}}
+% %                + \mathcal{C}(\rho, P; \tstop)
+% \label{en0}, 
+% \end{align}
+% where $\rho=\rhod + \rhog$ is the total density, $P$ is the pressure,
+% $\Phi_*$ is the stellar gravitational potential,   
+% and $\bm{\mathcal{F}}=~\bm{\mathcal{F}}(\rho, P; \tstop)$ model effects of dust-gas drag, explained below. 
+% %$\mathcal{C}$ represent effects of dust-gas drag, which
+% %is paremterized by the stopping time $\tstop$ ($\mathcal{C}=0$ for
+% %$\tstop=0$). 
+% Similar equations for dusty-gas are given by
+% \cite{price15}.  
 
-Eq. \ref{mass0}---\ref{en0} appear identical to pure gas
-dynamics, but they physically represents a two-phase, 
-dusty gas. The mixture obeys mass and momentum conservation as usual,
-but also an energy-like equation, even though the system is
-isothermal by assumption. The term $-\bm{\mathcal{F}}\propto \tstop
-\nabla P$ is not a true heat flux. Instead, it reflects 
-particle flux towards pressure maximum due to dust-gas drag 
-\citep{weidenschilling77}. The back-reaction onto the gas then changes
-the pressure distribution.      
-
-
-%weidenschilling7
+% Eq. \ref{mass0}---\ref{en0} appear identical to pure gas
+% dynamics, but they physically represents a two-phase, 
+% dusty gas. The mixture obeys mass and momentum conservation as usual,
+% but also an energy-like equation, even though the system is
+% isothermal by assumption. The term $-\bm{\mathcal{F}}\propto \tstop
+% \nabla P$ is not a true heat flux. Instead, it reflects 
+% particle flux towards pressure maximum due to dust-gas drag 
+% \citep{weidenschilling77}. The back-reaction onto the gas then changes
+% the pressure distribution.      
 
 
-Since the above equations are similar to ideal gas dynamics, it 
-means that many of the results derived for ideal hydrodynamics can be  
-generalized to dusty disks without additional effort. This includes 
-the important consequence of phase lags between density and pressure,
-discussed next.  
+% %weidenschilling7
+
+
+% Since the above equations are similar to ideal gas dynamics, it 
+% means that many of the results derived for ideal hydrodynamics can be  
+% generalized to dusty disks without additional effort. This includes 
+% the important consequence of phase lags between density and pressure,
+% discussed next.  
 
 
 

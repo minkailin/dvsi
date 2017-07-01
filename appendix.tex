@@ -3,14 +3,16 @@
 Here we consider the more general equation of state for the gas with
 $P = K \rhog^{\Gamma}$ where $K$ is a prescribed function of position
 and $\Gamma$ is a constant. The effective energy equation is then
-Eq. \ref{poly_energy}. % We also include the self-gravitational
+Eq. \ref{poly_energy}, which generalizes
+Eq. \ref{eff_energy}. Linearizing this along with Eq. \ref{masseq},
+\ref{momeq},  and \ref{poisson} gives:  
+
+% We also include the self-gravitational
 % potential $\psi$ of the gas
 % plus dust mixture, which satisfies 
 % %\begin{align}
 % $  \nabla^2 \psi  = 4 \pi G \rho. $
 % %\end{align} 
-The linearized equations for axisymmetric
-disturbances are  
 
 \begin{align}
   \ii\sigma\frac{\delta\rho}{\rho} &= \nabla\cdot\dd\bm{v} +
@@ -195,9 +197,9 @@ vertical momentum equation; and
 We consider small grains in the Epstein regime, with fixed internal
 density and size, so that
 \begin{align}
-  \tstop  =  \frac{K}{\rho c_s}\label{epstein}
+  \tstop  \propto  \frac{1}{\rho c_s}\label{epstein}
 \end{align}
-\citep{price15}, where $K$ is a constant. Then the dust diffusion
+\citep{price15}. Then the dust diffusion
 function becomes
 \begin{align}
   \mathcal{C} \equiv c_s^2\nabla\cdot\left(\tepsilon\tstop\nabla
