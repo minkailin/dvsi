@@ -1,6 +1,256 @@
-\section{Linearized equations}\label{linear_problem}
-To compute explicit solutions to the linear problem, 
-we consider radially-localized axisymmetric disturbances of the form  
+
+
+
+
+\section{Application to protoplanetary disks}\label{linear_problem}
+We now examine instabilities in dusty protoplanetary disks
+based on explicit descriptions of the equilibrium state. We first show
+that sharp radial edges in the dust component are unstable. We then
+revisit two well-known instabilities in dusty gas using the
+hydrodynamic framework developed thusfar, namly secular graviational
+instabilities and the streaming instability. 
+
+\subsection{Disk structure with a prescribed dust distribution}\label{steady_state}  
+We assume a Gaussian profile in the
+dust-to-gas ratio,    
+\begin{align}\label{dust_gauss}
+  \epsilon(r,z) = \epsilon_0(r)
+  \exp{\left[-\frac{z^2}{2\Htilde^2(r)}\right]}. 
+\end{align}
+%For simplicity we assume the dust-to-gas ratio at the mid-plane
+%$\epsilon_0$, as well as its characteristic scale-height
+%$\widetilde{H}$, are both constant.
+% We take the mid-plane dust-to-gas ratio
+%to be a power-law in radius,  
+%\begin{align}
+%  \epsilon_0(r) = \epsilon_{00}\left(\frac{r}{r_0}\right)^{-d},  
+%\end{align}
+%where $\epsilon_{00}$ is the dust-to-gas ratio at the fiducial radius
+%$r_0$.  
+Inserting Eq. \ref{dust_gauss} into vertical hydrostatic equilibrium,
+Eq. \ref{steady_momz} and integrating with the approximate
+gravitational potential (Eq. \ref{thin_disk_potential}) we obtain the
+gas density as
+\begin{align}
+  &\rhog(r,z)= \notag\\
+&\rho_\mathrm{g0}(r)\exp{\left\{ - \frac{z^2}{2\Hgas^2}
+    -\epsilon_0\frac{\Htilde^2}{\Hgas^2}\left[1 -
+      \exp{\left(-\frac{z^2}{2\Htilde^2}\right)}\right] \right\}}, 
+\end{align}
+where
+\begin{align}
+  \Hgas = \frac{c_s}{\OmK}, \quad \OmK \equiv \sqrt{\frac{GM_*}{r^3}},   
+\end{align}
+is the gas scale-height in the dust-free limit and $\OmK$ is the
+Keplerian frequency, respectively. 
+
+We usually consider gas-dominated disks with $\epsilon_0 < 1$.  
+Then $\rhog(r,z)$ is effectively Gaussian, as in the 
+dust-free case. The dust density is approximately 
+\begin{align}
+  \rhod \simeq \epsilon_0\rho_\mathrm{g0}(r) \exp
+        {\left(-\frac{z^2}{2H_\mathrm{d}^2}\right)}, 
+\end{align}
+with 
+\begin{align}
+  \frac{1}{H_\mathrm{d}^2} = \frac{1}{\Htilde^2} + \frac{1}{\Hgas^2}, 
+\end{align}
+and $H_\mathrm{d}$ is the dust-scale height. In numerical
+calculations, we  we specify $H_\mathrm{d}< \Hgas$ to obtain 
+$\Htilde$ for input. 
+
+Finally, we define 
+\begin{align}
+  Z \equiv \epsilon_0\frac{\Hd}{\Hg} \simeq
+  \frac{\Sigma_\mathrm{d}}{\Sigma_\mathrm{g}} 
+\end{align}
+as a measure of the local metalicity, where $\Sigma_\mathrm{d}$ and
+$\Sigma_\mathrm{g}$ are the dust and gas surface densities,
+respectively. The second equality holds for $\epsilon_0\ll1$.  
+
+%\Sigma_\mathrm{d}$ and the gas
+%surface density $\Sigma_\mathrm{g}$.  
+
+\subsubsection{Orbital frequency} 
+In the thin-disk approximation, the disk orbital frequency is 
+\begin{align}
+  \Omega(r,z) = \OmK(r)\left[1 - \frac{3}{2}\frac{z^2}{r^2} +
+    \frac{h_\mathrm{g}^2}{\left(1+\epsilon\right)}\frac{\p}{\p\ln{r}}\ln{\left(c_s^2\rhog\right)}
+    \right]^{1/2}, 
+\end{align}
+where 
+\begin{align}
+  h_\mathrm{g} \equiv \frac{\Hgas}{r}
+\end{align}
+is the characteristic disk aspect-ratio. 
+
+\subsubsection{Vertical shear}\label{vertshear}
+The mixture possess vertical shear. To see this, we eliminate $\Phi$
+between Eq. \ref{steady_momr}---\ref{steady_momz} to 
+obtain 
+\begin{align}\label{vshear}
+  r\frac{\p \Omega^2}{\p z} 
+%&= \frac{\p\ln{\rho}}{\p r}\frac{\p}{\p
+%    z}\left[c_s^2(1-\tepsilon)\right] - \frac{\p\ln{\rho}}{\p z}
+%  \frac{\p}{\p r} \left[c_s^2(1-\tepsilon)\right]\\  
+   = \frac{1}{\rho}\left(\frac{\p P}{\p r}\frac{\p \seff}{\p z} -\frac{\p
+    P}{\p z}\frac{\p \seff}{\p r} \right). 
+\end{align}
+Writing Eq. \ref{vshear} in terms of the gas density and dust-to-gas
+ratio with a power-law temperature profile (Eq. \ref{power_temp}) gives 
+\begin{align}\label{vshear2}
+  &r\frac{\p \Omega^2}{\p z}  =
+  \frac{c_s^2(r)}{\left(1+\epsilon\right)^2}\left\{
+  \frac{\p\epsilon}{\p r}\frac{\p\ln{\rhog}}{\p z}
+%  -\frac{\p\epsilon}{\p z}\left[\frac{\p\ln{\rhog}}{\p r} + \frac{q}{r}\right]\right.\notag\\
+ -\frac{\p\epsilon}{\p z}\frac{\p\ln{P}}{\p r}\right.\notag\\
+  &\phantom{ r\frac{\p \Omega^2}{\p z}  =
+    \frac{c_s^2(r)}{\left(1+\epsilon\right)^2}\left\{\right\} }
+  \left. -\frac{q}{r} \left(1+\epsilon\right)\frac{\p\ln{\rhog}}{\p z}
+  \right\}. 
+\end{align}
+The first two terms correspond to vertical shear caused by spatial
+variations in the dust-to-gas ratio. The third term
+proportional to $q$ corresponds to vertical shear due to the 
+radial temperature gradient, and survives in the dust-free limit. 
+
+We can compare these sources by 
+evaluating them using the equilibrium
+solutions in \S\ref{steady_state}. We assume the disk is radially
+smooth so that $\p_r\sim 1/r$. % and the dust-to-gas ratio
+% $\epsilon\ll1$. 
+This gives 
+
+\begin{align}\label{vshear_split}
+  \frac{\left|r\p_z\Omega\right|_{\text{
+        dust/gas gradient}}}{\left|r\p_z\Omega\right|_{\text{
+        temp. gradient}}} \sim
+ % \epsilon \frac{\mathrm{max}\left(\delta^2,
+  %  1\right)}{\left|q\right|\left(\epsilon + \delta^2\right)},
+ \epsilon \frac{\mathrm{max}\left(\delta^2,
+    1\right)}{\left|q\right|\left(1+\epsilon\right)\delta^2},
+\end{align}
+where $\delta\equiv \Htilde/\Hgas$. 
+Since $|q|=O(1)$ in PPDs, Eq. \ref{vshear_split} indicates that
+vertical shear due to variations in the dust-to-gas ratio dominates 
+over that due to the radial temperature gradient for thin dust layers
+such that $\delta^2\ll \epsilon$. Otherwise, vertical shear is
+associated with the radial temperature gradient. %However, axisymmtric
+%\emph{instability} always caused by $\p_rc_s^2$.  
+
+
+
+
+
+
+\subsubsection{Dusty vertical buoyancy}\label{vbuoyancy}
+For the above equilibria the vertical buoyancy frequency is given
+explicitly as 
+\begin{align}
+  N_z^2 =
+  %\frac{c_s^2(r)}{\left(1+\epsilon\right)^2}\frac{\p\ln\rhog}{\p 
+%  z}\frac{\p\epsilon}{\p z} \\ &
+  %                                =
+ \frac{\epsilon}{\left(1+\epsilon\right)^2}\left(\frac{z}{\Htilde}\right)^2\OmK^2\notag,  
+\end{align}
+where we have used $c_s=c_s(r)$. Then 
+\begin{align*}
+N_z\lesssim
+O\left(\sqrt{\epsilon_0}\OmK\right). 
+\end{align*}
+However, for well-mixed dust layers such that $H_\epsilon \gg \Hg$, 
+$\mathrm{max}\left(N_z\right)$ may occur outside a finite vertical domain.  
+
+\subsection{Instability of dusty edges} 
+Here we apply the dusty analog of the Solberg-Hoiland criteria derived
+in \S\ref{iso_perfect}. As discussed there, the first criterion in
+generally satisifed. Thus we only consider the second condition,
+Eq. \ref{dusty_solberg2}. 
+
+We assume the disk is approximately Keplerian so that
+$\kappa\simeq\OmK$, and that the vertical gas distribution is   
+Gaussian. In terms of the dust-to-gas
+ratio $\epsilon$, Eq. \ref{dusty_solberg2}
+becomes 
+\begin{align}
+  % &1 + \frac{\epsilon}{\left(1+
+  %   \epsilon\right)^2}\left(h_\mathrm{g}^2\frac{\p\ln{\rhog}}{\p\ln{r}}
+  % \frac{\p\ln{\epsilon}}{\p\ln{r}} + 
+  % \frac{z^2}{\Htilde^2}\right)>0 \label{stability_est1},   \\ 
+&1 - \frac{\epsilon
+  h_\mathrm{g}^2}{\left(1+\epsilon\right)^2}
+  \frac{\p\ln{\epsilon}}{\p\ln{r}}\left(-\frac{\p\ln{\rhog}}{\p\ln{r}}+\frac{\Htilde^2}{H_\mathrm{g}^2}\frac{\p\ln{\epsilon}}{\p\ln{r}}\right)
+  > 0 \label{stability_est2},
+\end{align}
+for \emph{stability}. The second term is usually stabilizing in 
+PPDs for reasons given in \S\ref{iso_perfect}. The third term is
+always destabilizing, but is small in smooth, thin disks with radial
+gradients $O(1/r)$, $h_\mathrm{g}\ll 1$, 
+provided that $H_\epsilon/\Hg$ is not large (e.g. some dust settling
+has occured). This means that typical dusty PPDs are stable to
+axisymmetric perturbations, a conclusion valid for arbitrarily thin
+dust layers. 
+
+%%%%%%%%%%%%%%%%%%
+
+To violate Eq. \ref{stability_est2} and obtain instability, notice the 
+LHS is a quadratic in $\p_r\epsilon$. Thus instability is possible for
+sufficiently large (in magnitude) radial gradients  in the dust-to-gas
+ratio,  
+\begin{align}
+  \frac{\p\ln{\epsilon}}{\p\ln{r}} > \chi_+ \quad \mathrm{or} \quad 
+  \frac{\p\ln{\epsilon}}{\p\ln{r}} < \chi_-,
+\end{align}
+for \emph{instability}, where
+\begin{align}\label{spm}
+\chi_\pm = \frac{1}{2}\frac{H_\mathrm{g}^2}{\Htilde^2} 
+  \left[
+  \frac{\p\ln{\rhog}}{\p\ln{r}} \pm 
+  \sqrt{
+  \left(\frac{\p\ln{\rhog}}{\p\ln{r}}\right)^2 + 
+  4 \frac{\Htilde^2}{H_\mathrm{g}^2}
+  \frac{\left(1+\epsilon\right)^2}{\epsilon h_\mathrm{g}^2}
+  }
+  \,\right]. 
+\end{align} 
+In typical accretion disks where $\p_r\rhog<0$, instability is easier
+for increasing dust-to-gas ratios ($\p_r\epsilon > 0$).  
+
+We can neglect density gradients in Eq. \ref{spm} 
+if $r\p_r\ln{\rhog}\sim O(1)$ and $H_\epsilon/\Hgas\gg
+\sqrt{\epsilon}\hgas$. For example, if $\epsilon\simeq 0.01$ and
+$\hgas\simeq 0.05$, then we require $H_\epsilon/\Hg\gg
+5\times10^{-3}$. (So the dust layer thickness $\Hd\gg 5
+\times10^{-3}\Hgas$ as well.) Then 
+instability requires 
+\begin{align}\label{dust_edge}
+\left|\frac{\p\ln{\epsilon}}{\p r}\right| \gtrsim
+  \frac{1}{\Htilde}\frac{\left(1+\epsilon\right)}{\sqrt{\epsilon}}.
+%\simeq
+ % \frac{1}{\sqrt{\epsilon}H_\epsilon}, 
+\end{align}
+%where the second equality applies to $\epsilon\ll 1$. 
+That is, if the radial lengthscale of the dust-to-gas ratio 
+is much less its vertical lengthscale, $L_\epsilon\ll O(\Htilde)$, 
+then the system is  unstable.  
+Taking $\epsilon\sim 0.01$,  we find that 
+for thin dust layers with $H_\epsilon \simeq \Hd\ll \Hg$,  instability
+requires $L_\epsilon\ll O(0.1\Hg)$, i.e. the dust-to-gas ratio must 
+vary on an extremely short lengthscale. This might be achieved, for
+example, at sharp edges associated with gaps opened by giant planets. 
+
+Technically, the above discussion is only applicable to strictly
+isothermal disks perfectly coupled to dust (see \S\ref{iso_perfect}). 
+However, since dusty edges translate to sharp entropy gradients (see
+\S\ref{dusty_entropy}), we may generally expect sharp features in the
+dust distribution of protoplanetary disks to be unstable.  
+
+
+%{\bf mention this is equivalent to sharp entropy gradients?}
+
+\subsection{Radially localized linear problem}
+We now specialize further and compute explicit solutions to the linear
+problem. We consider radially-localized axisymmetric disturbances of the form  
 \begin{align}
   \delta X (r, z) = \delta X_1(r,z)\exp{(\ii k_x r)},
 \end{align} 
@@ -45,7 +295,8 @@ equation in place of the dust-fraction
 \dd\psi^{\prime\prime}  &= 4\pi G \rho W + k_x^2\dd\psi, \label{lin_sg}
 \end{align}  
 where $^\prime \equiv \p_z$ and recall $\bm{F} \equiv -\nabla
-P/\rho$. Here we restore self-gravity temporarily for SGI in the next
+P/\rho$. We have temporarily restored self-gravity  to
+discuss SGI in the next
 section. The linearized dust-duffusion function 
 $\dd\mathcal{C}$ is given in  Appendix \ref{lin_dust}. 
 % and $\dd\bm{F}$ is the linearized pressure
@@ -82,7 +333,9 @@ vertical shear instability.
 
 %\section{Connection to previous results}
 
-\subsection{Secular gravitational instability}\label{sgi}
+
+
+\subsubsection{Secular gravitational instability}\label{sgi}
 We first consider a razor-thin, self-gravitating disk so that $\rho =
 \Sigma\delta(z)$. Here $\delta$ is the Dirac delta function and $\Sigma$ is
 the total surface density. Now $\epsilon$ and 
@@ -121,7 +374,7 @@ This exercise shows that the one-fluid framework, further simplified by
 the terminal velocity approximation, is sufficient to capture SGI
 in the strong drag limit. 
 
-\subsection{Streaming instability}\label{si}
+\subsubsection{Streaming instability}\label{si}
 We now consider 3D disks without self-gravity. We neglect the vertical     
 component of the stellar gravity, appropriate for studying regions
 near the disk midplane. This  
