@@ -273,7 +273,7 @@ define the disk vertical buoyancy frequency $N_z$ as
 %Typically in a thin, smooth disk we have $|N_r|\ll |N_z|$. 
 where the second equality assumes a vertically isothermal disk. A
 similar definition exists for the radial buoyancy frequency
-$N_r$. Typically in a thin, smooth disk we have $|N_r|\ll |N_z|$. 
+$N_r$. However, in thin, smooth disks we have $|N_r|\ll |N_z|$.  
 
 A vertical buoyancy force exists even in vertically isothermal
 dusty disks, because coupling gas to dust particles increases
@@ -332,7 +332,24 @@ with $P=P(\tepsilon,\rho)$ given by the equation of state
 \S\ref{steady_state}, when we explicitly analyse the stability of
 protoplanetary disks. 
 
-However, disk structures obtained this way generally do not satisfy 
+The mixture possess vertical shear. To see this, we eliminate $\Phi$
+between Eq. \ref{steady_momr}---\ref{steady_momz} to 
+obtain 
+\begin{align}\label{vshear}
+  r\frac{\p \Omega^2}{\p z} 
+%&= \frac{\p\ln{\rho}}{\p r}\frac{\p}{\p
+%    z}\left[c_s^2(1-\tepsilon)\right] - \frac{\p\ln{\rho}}{\p z}
+%  \frac{\p}{\p r} \left[c_s^2(1-\tepsilon)\right]\\  
+   = \frac{1}{\rho}\left(\frac{\p P}{\p r}\frac{\p \seff}{\p z} -\frac{\p
+    P}{\p z}\frac{\p \seff}{\p r} \right). 
+\end{align}
+Since $\seff$ depends on $\tepsilon$, we see that radial gradients in
+the dust-to-gas ratio also drives vertical shear \citep[cf. that 
+driven by $\p_z\epsilon$ usually discussed in dusty disks,  
+e.g.][]{chiang08}. 
+
+However, disk structures obtained from
+Eq. \ref{steady_momr}---\ref{steady_momz} generally do not satisfy  
 the steady state effective energy Eq. \ref{eff_energy} because typically 
 $\mathcal{C}\neq0$.  In order to have a well-defined stability problem, we formally
 consider equilibria with $\mathcal{C}\equiv 0$. Namely      
@@ -444,9 +461,11 @@ left-hand-side of Eq. \ref{dusty_solberg2} becomes
 -\frac{c_s^4}{(1+\tepsilon)^4}\left(\frac{\p\ln{\rhog}}{\p
     z}\right)^2\left(\frac{\p\epsilon}{\p r}\right)^2<0.
 \end{align}
-Such an isothermal dusty disk is \emph{unstable} because there is no effective vertical 
-buoyancy to stabilize vertical motions ($N_z=0$). This situation is 
-identical to the pure gas, adiabtic simulations of \cite{nelson13}
+Such an isothermal dusty disk is \emph{unstable} but there is no
+effective vertical buoyancy to stabilize vertical motions ($N_z=0$)
+that can tap into the free energy associated with  
+vertical shear due to the radial gradient in the dust-to-gas ratio. 
+This situation is identical to the pure gas, adiabtic simulations of \cite{nelson13}
 where the gas entropy is vertically uniform but has a radial
 gradient. The authors indeed find instability. We give a numerical
 example in the dusty context in \S\ref{vert_mixed}.   
