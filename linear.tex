@@ -4,7 +4,8 @@
 
 \section{Application to protoplanetary disks}\label{linear_problem}
 We now examine instabilities in dusty protoplanetary disks
-based on explicit descriptions of the equilibrium state. We first show
+based on explicit descriptions of the equilibrium state. We first
+specify explicit disk structures to analyze. We show 
 that sharp radial edges in the dust component are unstable. We then
 revisit two well-known instabilities in dusty gas using the
 hydrodynamic framework developed thusfar, namly secular graviational
@@ -44,9 +45,9 @@ where
 is the gas scale-height in the dust-free limit and $\OmK$ is the
 Keplerian frequency, respectively. 
 
-We usually consider gas-dominated disks with $\epsilon_0 < 1$.  
-Then $\rhog(r,z)$ is effectively Gaussian, as in the 
-dust-free case. The dust density is approximately 
+In gas-dominated disks with $\epsilon_0 < 1$ the gas distribution
+$\rhog(r,z)$ is close to Gaussian, as in the   
+dust-free case, and the dust density is approximately 
 \begin{align}
   \rhod \simeq \epsilon_0\rho_\mathrm{g0}(r) \exp
         {\left(-\frac{z^2}{2H_\mathrm{d}^2}\right)}, 
@@ -55,9 +56,9 @@ with
 \begin{align}
   \frac{1}{H_\mathrm{d}^2} = \frac{1}{\Htilde^2} + \frac{1}{\Hgas^2}, 
 \end{align}
-and $H_\mathrm{d}$ is the dust-scale height. In numerical
-calculations, we  we specify $H_\mathrm{d}< \Hgas$ to obtain 
-$\Htilde$ for input. 
+and $H_\mathrm{d}$ is the dust-scale height.% In numerical
+%calculations, we  we specify $H_\mathrm{d}< \Hgas$ to obtain 
+%$\Htilde$ for input. 
 
 Finally, we define 
 \begin{align}
@@ -72,7 +73,7 @@ respectively. The second equality holds for $\epsilon_0\ll1$.
 %surface density $\Sigma_\mathrm{g}$.  
 
 \subsubsection{Orbital frequency} 
-In the thin-disk approximation, the disk orbital frequency is 
+From Eq. \ref{steady_momr}} the disk orbital frequency is 
 \begin{align}
   \Omega(r,z) = \OmK(r)\left[1 - \frac{3}{2}\frac{z^2}{r^2} +
     \frac{h_\mathrm{g}^2}{\left(1+\epsilon\right)}\frac{\p}{\p\ln{r}}\ln{\left(c_s^2\rhog\right)}
