@@ -2,86 +2,93 @@
 We model an accretion disk as a mixture of gas with dust treated as a 
 pressureless fluid. We denote their density and
 velocity field as $(\rhog,\bm{v}_\mathrm{g})$ and
-$(\rhod,\bm{v}_\mathrm{d})$, respectively. The mixture has a single 
-temperature $T$, and its pressure $P$ arise solely from the 
-gas component. %neglect turbulence, viscosity, self-g and b fields.  
+$(\rhod,\bm{v}_\mathrm{d})$, respectively. The 
+mixture has total density \begin{align}
+  \rho \equiv \rhog + \rhod,
+\end{align}
+and center of mass velocity, 
+\begin{align}
+  \bm{v} \equiv \frac{\rhog\bm{v}_\mathrm{g} + 
+    \rhod\bm{v}_\mathrm{d}}{\rho}, 
+\end{align}
+a single temperature $T$, and its pressure $P$ arise solely from the  
+gas component. Our goal is to obtain a set of equations
+describing the dust-gas mixture that resembles standard, single-phase
+hydrodynamics. 
+%This is possible by considering
+%strongly coupled dust particles (but not neccessarily perfectly
+%coupled) and an isothermal gas equation of state.  
 
-The two fluids interact via a drag force parameterized by the relative stopping 
+%\subsection{Terminal velocity approximation}
+
+The dust and gas fluids interact via a drag force parameterized by the relative stopping 
 time $\tstop$ such that 
 \begin{align}  
   \rhod\left.\frac{\p \bm{v}_\mathrm{d}}{\p t}\right|_\mathrm{drag}= -
   \rhog\left.\frac{\p \bm{v}_\mathrm{g}}{\p t}\right|_\mathrm{drag}=
-  - \frac{\rhog\rhod}{\rho}\frac{\widetilde{\bm{v}}}{\tstop}. 
+  - \frac{\rhog\rhod}{\rho}\frac{\left(\bm{v}_\mathrm{d} - \bm{v}_\mathrm{g}\right)}{\tstop}. 
 \end{align}
-is the dust-gas friction force per unit volume, where
-\begin{align}
-  \widetilde{\bm{v}} \equiv\bm{v}_\mathrm{d} - \bm{v}_\mathrm{g} 
-\end{align}
-is the dust-gas velocity difference; and 
-\begin{align}
-  \rho \equiv \rhog + \rhod
-\end{align}
-is the total density. 
-Note that $\tstop$ 
+is the dust-gas friction force per unit volume.%, where
+%\begin{align}
+%  \widetilde{\bm{v}} \equiv\bm{v}_\mathrm{d} - \bm{v}_\mathrm{g} 
+%\end{align}
+%is the dust-gas velocity difference. 
+ Note that $\tstop$ 
 differs slightly from the \emph{particle} stopping time $\tau_\mathrm{s} =
 \tstop\rho/\rhog$ used in some studies
-\citep[e.g.][]{youdin05a,jacquet11}.   
+\citep[e.g.][]{youdin05a}. 
 
-In general $\widetilde{\bm{v}}$ obeys a complicated evolutionary equation
-\citep[see, e.g.][]{youdin05a}. However, for tightly-coupled dust
+In general the relative velocity $\bm{v}_\mathrm{d} -
+\bm{v}_\mathrm{g}$ obeys a complicated evolutionary equation 
+\citep[see, e.g.][]{youdin05a}.% obtained from taking the difference
+%between evolutionary equations for $\bm{v}_\mathrm{g}$ and
+%$\bm{v}_\mathrm{d}$. 
+ However, for tightly-coupled dust
 particles with $\tstop\OmK\ll 1 $, where $\OmK$ is the Keplerian orbital
 frequency, we can use the 
 `terminal velocity approximation' to set %The dust-gas velocity difference 
 %Then so that the dust-gas velocity
 %difference is 
 \begin{align}
-  \widetilde{\bm{v}} = \frac{\nabla
+  \bm{v}_\mathrm{d} - \bm{v}_\mathrm{g} = \frac{\nabla
     P}{\rhog}\tstop 
 \end{align}
-\citep{jacquet11}. This equation reflect the physical result that dust
-particles tend to drift towards pressure maxima. 
+\citep{jacquet11}. This equation reflects the well-known effect of 
+particle drift towards pressure maxima \citep{weidenschilling77}. 
 
-In the limit of strong dust-gas drag, $\tstop\to0$, the mixture obeys 
-the first-order (in $\tstop$) single-fluid equations: 
+%\subsection{One-fluid equations for dusty gas}
+
+Under the terminal velocity approximation the dust-gas mixture obeys   
+the first-order (in $\tstop$) one-fluid equations: 
 \begin{align} 
   &\frac{D\rho}{Dt} = -\rho\nabla\cdot\bm{v}, \label{masseq}\\ 
+   &\frac{D\tepsilon}{Dt} = -\frac{1}{\rho} \nabla \cdot \left(\tepsilon 
+     \tstop \nabla P \right),\label{dusteq}\\
   &\frac{D\bm{v}}{Dt} = - \nabla\Phi_\mathrm{tot} - \frac{1}{\rho}\nabla  P, \label{momeq}\\ 
-  &\frac{D\tepsilon}{Dt} = -\frac{1}{\rho} \nabla \cdot \left(\tepsilon 
-  \tstop \nabla P \right),\label{dusteq}\\
   &\frac{D T}{D t} = - \left(\gamma-1\right)T\nabla\cdot\bm{v} +
-  \mathcal{H}_\mathrm{drag} + \mathcal{H}_\mathrm{eff}  - \Lambda  \label{tempeq} 
-\end{align}
-\citep{laibe14,price15}, where $D/Dt \equiv \p_t + \bm{v}\cdot\nabla$ is the Lagragian
-derivative \emph{following the mixture} with center-of-mass velocity  
-\begin{align}
-  \bm{v} \equiv \frac{\rhog\bm{v}_\mathrm{g} + 
-    \rhod\bm{v}_\mathrm{d}}{\rho}. 
-\end{align}
-For an ideal gas the pressure is given
+  \mathcal{H} + \mathcal{H}_\mathrm{eff}  - \Lambda  \label{tempeq} 
+\end{align} 
+\citep[see ][for a detailed derivation from the two-fluid
+equations]{laibe14,price15}, where $D/Dt \equiv \p_t +
+\bm{v}\cdot\nabla$ is the Lagragian 
+derivative \emph{following the mixture}'s center-of-mass velocity $\bm{v}$. 
+For an ideal gas the pressure is given 
 by $P = \mathcal{R}\rhog T/\mu $, where $\mathcal{R}$ is
 the gas constant and $\mu$ is the mean molecular weight. 
+
+
 
 Eq. \ref{dusteq} results from mass conservation of dust, where 
 \begin{align}
   \tepsilon \equiv \frac{\rhod}{\rho}  = \frac{\epsilon}{1+\epsilon} 
 \end{align}
 is the dust-fraction and $\epsilon=\rhod/\rhog$ is the usual
-dust-to-gas ratio. Note that Eq. \ref{dusteq} is 
-equivalent to Eq. 46 of \cite{jacquet11}. 
+dust-to-gas ratio. If $\tstop=0$ then the 
+dust-to-gas ratio is conserved following the fluid. Otherwise, 
+$\epsilon$ evolves due to particle drift in response to pressure
+gradients. Note that Eq. \ref{dusteq} is equivalent to Eq. 46 of 
+\cite{jacquet11}. 
 
-For the mixture's temperature evolution, Eq. \ref{tempeq}, $\gamma$ is
-the adiabatic index; $\mathcal{H}_\mathrm{drag}$ represents heating
-due to dust-gas drag and $\mathcal{H}_\mathrm{eff}$ is an effective
-energy source arising from transforming from the two-fluid to
-one-fluid description \citep[see][ for details]{laibe14}. We also
-include a simple model of radiative cooling,
-\begin{align}
-  \Lambda = \frac{T -
-    T_\mathrm{ref}}{t_\mathrm{cool}}, \label{cooling} 
-\end{align}
-which relaxes the mixture back to a prescribed temperature profile   
-$T_\mathrm{ref}$ on a timescale of $\tcool$. We will shortly simplify
-the problem by considering rapid cooling, $\tcool\to0$. 
 
 
 The total gravitational potential is $\Phi_\mathrm{tot}=\Phi +
@@ -94,8 +101,7 @@ where $(r,\phi, z)$ are cylindrical co-ordinates centered on the star, and
 $G$ is the gravitational constant. The second equality is the  
 thin-disk approximation, appropriate for
 $|z|\ll r$. We shall adopt this approximate potential in order to
-obtain explicit expressions for disk equilibria (\S\ref{eqm}). 
-
+obtain explicit expressions for disk equilibria (\S\ref{steady_state}). 
 The disk's own gravitational potential $\psi$ is included for
 completeness, but we will mostly neglect it unless stated
 otherwise. In such cases $\psi$ satisfies the Poisson equation 
@@ -103,19 +109,33 @@ otherwise. In such cases $\psi$ satisfies the Poisson equation
   \nabla^2\psi = 4 \pi G \rho.\label{poisson}
 \end{align}
 
-\subsection{Locally isothermal equation of state}\label{loc_iso_eos}
-For later comparison it is convenient to re-write the temperature
-evolution, Eq. \ref{tempeq}, to that for the pressure: 
-\begin{align}
-  \frac{\p P}{\p t} + \bm{v}_\mathrm{g}\cdot\nabla P = - \gamma P
-  \nabla\cdot \bm{v}_\mathrm{g}  + \mathcal{H}\label{real_pressure}
-%\frac{\rho \mathcal{R}}{\mu}\frac{T
-%  - T_\mathrm{ref}}{t_\mathrm{cool}}, \label{realenergy}
-\end{align}
-where $\mathcal{H}$ collects together dust-drag heating and radiative
-cooling. 
 
-We now simplify the gas energy equation by considering short cooling 
+For the mixture's temperature evolution, Eq. \ref{tempeq}, $\gamma$ is
+the adiabatic index; $\mathcal{H}$ represents heating (which would
+include that due to dust-gas friction) and $\mathcal{H}_\mathrm{eff}$
+is an effective source term arising from transforming from the
+two-fluid to one-fluid formalism \citep[see][ for
+details]{laibe14}. We also include a simple model of radiative
+cooling, 
+\begin{align}
+  \Lambda = \frac{T -
+    T_\mathrm{ref}}{t_\mathrm{cool}}, \label{cooling} 
+\end{align}
+which relaxes the mixture back to a prescribed temperature profile   
+$T_\mathrm{ref}$ on a timescale of $\tcool$. We will shortly simplify
+the problem by considering rapid cooling, $\tcool\to0$. 
+
+Eq. \ref{masseq}---\ref{tempeq} are not yet equivalent to standard 
+hydrodynamics, which typically evolves two scalar fields: the density and
+temperature (or pressure). By contrast, Eq. \ref{masseq}---\ref{tempeq}
+involves 3 scalars: $\rho$, $\tepsilon$, and $T$. 
+However, we can establish an  analogy by fixing the gas
+equation of state, thus eliminating Eq. \ref{tempeq}; but then reform 
+the dust-to-gas ratio evolution equation (\ref{dusteq}) into an
+energy-like equation. 
+
+\subsection{Locally isothermal equation of state}\label{loc_iso_eos}
+We simplify the gas energy equation by considering short cooling 
 times $\tcool\to 0$, appropriate for the outer parts of an irradiated
 protoplanetary disk \citep{chiang97,lin15}. Then the disk temperature
 $T = T_\mathrm{ref}$ at all times, and so we may
@@ -124,7 +144,7 @@ adopt a locally isothermal equation of state
   P = c_s^2(r,z)\rhog = c_s^{2}\left(1 - \tepsilon\right)\rho,   
 \end{align}
 where $c_s(r,z)= \sqrt{\mathcal{R}T_\mathrm{ref}/\mu}$ is a prescribed
-sound-speed profile fixed in time. In practice we consider vertically 
+sound-speed profile fixed in time. In most applications we consider vertically 
 isothermal disks with \begin{align}\label{power_temp}
   c_s^2(r) \propto r^{q},
 \end{align}
@@ -139,11 +159,11 @@ This reduced temperature decreases with dust-loading.
 %then the equation of state has the standard
 %form $P=c_{s,\mathrm{eff}}^2\rho$. 
 Since $\tepsilon$ typically decrease away from the midplane, we expect
-vertically isothermal dusty disks to behave as if it had a temperture
-\emph{increasing} away from $z=0$.     
+vertically isothermal dusty disks to behave as if the temperture
+\emph{increased} away from $z=0$.     
 
 \subsection{Effective energy equation}\label{energy_analogy}
-Although we have eliminated the true energy
+Although we have deleted the true energy
 equation (Eq. \ref{tempeq}) by fixing a locally isothermal
 equation of state (Eq. \ref{eos}), we show that the mixture 
 nevertheless obeys an effective energy equation. This is
@@ -166,16 +186,31 @@ then Eq. \ref{dusteq} becomes
 \mathcal{C}&\equiv c_s^2 \nabla\cdot\left[\tstop\left(1 -
   \frac{P}{c_s^2\rho}\right)\nabla 
   P\right].
-\end{align}
-Comparing with Eq. \ref{real_pressure}, we see that 
-Eq. \ref{eff_energy} is the energy equation for an ideal gas of
-adiabatic index $\gamma=1$, but now with the imposed temperature
-gradient $\nabla c_s^2$ and dust-gas drag $\mathcal{C}$ playing the
-role of radiative cooling ($\Lambda$ in 
-Eq. \ref{tempeq}). 
+\end{align} 
+For comparison with the standard energy equation in hydrodynamics,
+re-writing Eq. \ref{tempeq} for a pure ideal gas with $P \propto
+\rhog T$, and reverting back to gas velocities, gives  
+%For later comparison it is convenient to re-write the temperature
+%evolution, Eq. \ref{tempeq}, to that for the pressure: 
+\begin{align}
+  \frac{\p P}{\p t} + \bm{v}_\mathrm{g}\cdot\nabla P = - \gamma P
+  \nabla\cdot \bm{v}_\mathrm{g}  +
+  \frac{P}{T}\left(\mathcal{H} -
+    \Lambda\right).\label{real_pressure} 
+%\frac{\rho \mathcal{R}}{\mu}\frac{T
+%  - T_\mathrm{ref}}{t_\mathrm{cool}}, \label{realenergy}
+\end{align} 
+We can thus interpret Eq. \ref{eff_energy} as the energy equation for
+and ideal gas with adiabatic index $\gamma=1$, but now with the
+imposed temperature gradient $\nabla c_s^2$ and dust-gas drag $\mathcal{C}$ 
+acting as source terms. 
 
+%playing the
+%role of radiative cooling ($\Lambda$ in 
+%Eq. \ref{tempeq}). 
 %In this form, the function $\mathcal{C}$ can be interpreted
-%as a cooling term.    
+%as a cooling term. 
+   
 If we denote 
 \begin{align}
   \bm{F} \equiv  - \frac{\nabla P}{\rho}
@@ -186,7 +221,7 @@ for the pressure forces, then
   \right), 
 \end{align*}
 which is in the same form as cooling by radiative diffusion. In protoplanetary
-disks the corresponding heat flux, proportional to $\bm{F}$, is
+disks the corresponding `heat flux', proportional to $\bm{F}$, is
 directly radially outwards and vertically upwards. This is simply a
 reflection of particle drift towards increasing pressure (inwards and 
 downwards). Particle flux into a region contributes to `cooling' of
@@ -219,11 +254,12 @@ $S = C_P\ln{\left(P^{1/\gamma}/\rhog\right)}$, where $C_P$ is the heat
 capacity at constant pressure. 
 
 Since we have shown that a locally isothermal dusty gas effectively
-has $\gamma=1$ we can define an effective (dimensionless)    
+has $\gamma=1$ we can define an effective 
 entropy for the \emph{mixture} as 
 \begin{align}
    \seff \equiv \ln \frac{P}{\rho} = \ln{\left[c_s^2(1-\tepsilon)\right]}.  
 \end{align} 
+The constant heat capacity has been absorbed into $\seff$. 
 %This follows naturally by combining the effective 
 %energy Eq. \ref{eff_energy} and Eq. \ref{masseq}. 
 Then 
@@ -231,7 +267,7 @@ Then
   \frac{D \seff}{D t} = \bm{v}\cdot\nabla\ln{c_s^2} +
   \frac{c_s^2}{P}\nabla\cdot\left(\tstop\tepsilon\nabla P\right), 
 \end{align*}
-which is just the statement of entropy evolution in standard  
+which is equivalent to entropy evolution in standard  
 hydrodynamics, albeit with source terms. With an effective
 entropy defined this way, many of the  
 results concerning the stability of (locally) isothermal dusty gas
@@ -256,8 +292,8 @@ flow.
 
 
 %\subsection{Dusty buoyancy forces}
-Having identified the entropy of an isothermal dusty gas, we can also
-define the disk vertical buoyancy frequency $N_z$ as   
+We can now define the vertical buoyancy frequency $N_z$ of the mixture
+as    
 %$N_z$ of the mixture is given by 
 \begin{align}
   N_z^2 \equiv - \frac{1}{\rho}\frac{\p P}{\p z}\frac{\p \seff}{\p z}
@@ -271,9 +307,12 @@ define the disk vertical buoyancy frequency $N_z$ as
  % \frac{\epsilon}{\left(1+\epsilon\right)^2}\left(\frac{z}{\Htilde}\right)^2\OmK^2\notag,  
 \end{align}
 %Typically in a thin, smooth disk we have $|N_r|\ll |N_z|$. 
-where the second equality assumes a vertically isothermal disk. A
-similar definition exists for the radial buoyancy frequency
-$N_r$. However, in thin, smooth disks we have $|N_r|\ll |N_z|$.  
+where the second equality assumes a vertically isothermal disk. 
+Protoplanetary disks have $\p_z\rhog<0$, thus stability against
+convection ($N_z^2>0$) requires $\p_z\tepsilon <0 $. This is equivalent to
+entropy increasing away from the midplane. A similar expression exists
+for the radial buoyancy frequency $N_r$, but $|N_r|\ll |N_z|$ in thin,
+smooth disks. 
 
 A vertical buoyancy force exists even in vertically isothermal
 dusty disks, because coupling gas to dust particles increases
@@ -300,7 +339,7 @@ models such as the Minimum Mass Solar Nebula, $\tstop$ decreases for
 smaller particles and/or at smaller radii \citep{youdin11}. However,
 $t_\mathrm{cool}$ is generally only small in the outer disk
 \citep{lin15,malygin17}. Combining these results, we estimate the 
-correspondence applicable to particles less than mm in size at a few
+correspondence will be applicable to particles less than mm in size at a few
 to 10s of AU in protoplanetary disks. However, note that the
 isothermal approximation may be relaxed to other fixed equations of
 state (see \S\ref{gen_poly}). 
@@ -454,12 +493,12 @@ direction as the local pressure gradient, which is equivalent to the
 gas density gradient for isothermal gas. 
 
 On the other hand, Eq. \ref{dusty_solberg2} can be violated in
-disks if the dust is vertically well-mixed ($\p_z\epsilon =
-0$) but  radially-varying ($\p_r\epsilon\neq0$). In this case the
+disks if the dust is vertically well-mixed ($\p_z\tepsilon =
+0$) but  radially-varying ($\p_r\tepsilon\neq0$). In this case the
 left-hand-side of Eq. \ref{dusty_solberg2} becomes
 \begin{align}
--\frac{c_s^4}{(1+\tepsilon)^4}\left(\frac{\p\ln{\rhog}}{\p
-    z}\right)^2\left(\frac{\p\epsilon}{\p r}\right)^2<0.
+-c_s^4\left(\frac{\p\ln{\rhog}}{\p
+    z}\right)^2\left(\frac{\p\tepsilon}{\p r}\right)^2<0.
 \end{align}
 Such an isothermal dusty disk is \emph{unstable} but there is no
 effective vertical buoyancy to stabilize vertical motions ($N_z=0$)
