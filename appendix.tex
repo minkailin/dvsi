@@ -4,7 +4,7 @@ Here we consider the more general equation of state for the gas with
 $P = K \rhog^{\Gamma}$ where $K$ is a prescribed function of position
 and $\Gamma$ is a constant. The effective energy equation is then
 Eq. \ref{poly_energy}, which generalizes
-Eq. \ref{eff_energy}. Linearizing this along with Eq. \ref{masseq},
+Eq. \ref{eff_energy}. Assuming axisymmetry throughout, we linearize this equation along with Eq. \ref{masseq},  
 \ref{momeq},  and \ref{poisson} gives:  
 
 % We also include the self-gravitational
@@ -15,11 +15,15 @@ Eq. \ref{eff_energy}. Linearizing this along with Eq. \ref{masseq},
 % %\end{align} 
 
 \begin{align}
-  \ii\sigma\frac{\delta\rho}{\rho} &= \nabla\cdot\dd\bm{v} +
-  \dd\bm{v}\cdot\nabla\ln{\rho},\label{lin_mass_full}\\
-%  \ii\sigma\frac{\delta P}{P} &= \nabla\cdot\dd\bm{v} +
-   \ii\sigma\frac{\delta P}{P} &= \Gamma \nabla\cdot\dd\bm{v} +
-  \dd\bm{v}\cdot\nabla\ln{P} - \dd\bm{v}\cdot\nabla\ln{K} - \frac{\dd\mathcal{C}}{P}.\label{lin_energy_full}\\
+%  \ii\sigma\frac{\delta\rho}{\rho} &= \nabla\cdot\dd\bm{v} +
+%  \dd\bm{v}\cdot\nabla\ln{\rho},\label{lin_mass_full}\\
+ \ii\sigma\frac{\Delta\rho}{\rho} &= \ii\sigma\frac{\delta\rho}{\rho} - 
+  \dd\bm{v}\cdot\nabla\ln{\rho} =  \nabla\cdot\dd\bm{v},\label{lin_mass_full}\\
+ %  \ii\sigma\frac{\delta P}{P} &= \Gamma \nabla\cdot\dd\bm{v} +
+ % \dd\bm{v}\cdot\nabla\ln{P} - \dd\bm{v}\cdot\nabla\ln{K} - \frac{\dd\mathcal{C}}{P}.\label{lin_energy_full}\\
+  \ii\sigma\frac{\Delta P}{P} &= \ii\sigma\frac{\delta P}{P} -
+  \dd\bm{v}\cdot\nabla\ln{P} = 
+\Gamma \nabla\cdot\dd\bm{v}  - \dd\bm{v}\cdot\nabla\ln{K} - \frac{\dd\mathcal{C}}{P}.\label{lin_energy_full}\\
   -\ii\sigma\dd v_r  &= 2\Omega\dd v_\phi + 
   \hat{\bm{r}} \cdot \delta\bm{F} -  \hat{\bm{r}} \cdot \nabla\dd\psi ,\\
   \ii\sigma\dd v_\phi &= \frac{\kappa^2}{2\Omega}\dd v_r + \frac{\p
@@ -28,10 +32,23 @@ Eq. \ref{eff_energy}. Linearizing this along with Eq. \ref{masseq},
 \nabla^2 \delta\psi & = 4\pi G \dd\rho. 
 \end{align}  
 where the linearizd pressure force $\delta \bm{F}$ is given in
-Appendix \ref{lin_press}. These equations do not assume the
-radially-local approximation used in numerical computations. From the
-linearized meridional momentum equations, we find  
+Appendix \ref{lin_press}. Recall $\Delta = \delta +
+\bm{\xi}\cdot\nabla$ is the Lagrangian derivative and $\bm{\xi}$ is the
+Lagrangian displacement. For axisymmetric flow, we have
+$\ii\sigma\bm{\xi}\cdot\nabla = -\dd\bm{v}\cdot\nabla$.  These equations do not assume the
+radially-local approximation used in numerical computations. Note that
+Eq. \ref{lin_mass_full}---\ref{lin_energy_full} imply 
+\begin{align}
+\left|\sigma\right|^2\frac{\Delta P}{P}\frac{\Delta \rho^*}{\rho} =
+\Gamma\left|\nabla\cdot\dd\bm{v}\right|^2 -
+\nabla\cdot\dd\bm{v}^*\left(\dd\bm{v}\cdot\nabla\ln{K} + \frac{\dd\mathcal{C}}{P}\right),
+\end{align}
+so the first (real) term on the right hand side does not contribute to
+$\imag{\left(\Delta P\Delta\rho^*\right)}$. Setting $K$ to constant
+and taking the imaginary part gives Eq. \ref{pdv}. 
 
+From the
+linearized meridional momentum equations, we find  
 \begin{align}
   \sigma^2\int\rho\left(|\dd v_r|^2 + |\dd v_z|^2\right)dV = \int\left( \rho
   \kappa^2 |\dd v_r|^2 + \rho r\frac{\p \Omega^2}{\p z} \dd v_z \dd

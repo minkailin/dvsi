@@ -73,7 +73,7 @@ respectively. The second equality holds for $\epsilon_0\ll1$.
 %surface density $\Sigma_\mathrm{g}$.  
 
 \subsubsection{Orbital frequency} 
-From Eq. \ref{steady_momr}} the disk orbital frequency is 
+From Eq. \ref{steady_momr} the disk orbital frequency is 
 \begin{align}
   \Omega(r,z) = \OmK(r)\left[1 - \frac{3}{2}\frac{z^2}{r^2} +
     \frac{h_\mathrm{g}^2}{\left(1+\epsilon\right)}\frac{\p}{\p\ln{r}}\ln{\left(c_s^2\rhog\right)}
@@ -125,8 +125,8 @@ where $\delta\equiv \Htilde/\Hgas$.
 Since $|q|=O(1)$ in PPDs, Eq. \ref{vshear_split} indicates that
 vertical shear due to variations in the dust-to-gas ratio dominates 
 over that due to the radial temperature gradient for thin dust layers
-such that $\delta^2\ll \epsilon$. Otherwise, vertical shear is
-associated with the radial temperature gradient. %However, axisymmtric
+such that $\delta^2\ll \epsilon$. %Otherwise, vertical shear is
+%associated with the radial temperature gradient. %However, axisymmtric
 %\emph{instability} always caused by $\p_rc_s^2$.  
 
 
@@ -154,9 +154,9 @@ $\mathrm{max}\left(N_z\right)$ may occur outside a finite vertical domain.
 
 \subsection{Instability of dusty edges} 
 Here we apply the dusty analog of the Solberg-Hoiland criteria derived
-in \S\ref{iso_perfect}. As discussed there, the first criterion in
-generally satisifed. Thus we only consider the second condition,
-Eq. \ref{dusty_solberg2}. 
+in \S\ref{iso_perfect} assuming strictly isothermal gas. As discussed
+there, the first criterion in generally satisifed. Thus we only
+consider the second condition, Eq. \ref{dusty_solberg2}.  
 
 We assume the disk is approximately Keplerian so that
 $\kappa\simeq\OmK$, and that the vertical gas distribution is   
@@ -168,9 +168,13 @@ becomes
   %   \epsilon\right)^2}\left(h_\mathrm{g}^2\frac{\p\ln{\rhog}}{\p\ln{r}}
   % \frac{\p\ln{\epsilon}}{\p\ln{r}} + 
   % \frac{z^2}{\Htilde^2}\right)>0 \label{stability_est1},   \\ 
+% &1 - \frac{\epsilon
+%   h_\mathrm{g}^2}{\left(1+\epsilon\right)^2}
+%   \frac{\p\ln{\epsilon}}{\p\ln{r}}\left(-\frac{\p\ln{\rhog}}{\p\ln{r}}+\frac{\Htilde^2}{H_\mathrm{g}^2}\frac{\p\ln{\epsilon}}{\p\ln{r}}\right)
+%   > 0 \label{stability_est2},
 &1 - \frac{\epsilon
   h_\mathrm{g}^2}{\left(1+\epsilon\right)^2}
-  \frac{\p\ln{\epsilon}}{\p\ln{r}}\left(-\frac{\p\ln{\rhog}}{\p\ln{r}}+\frac{\Htilde^2}{H_\mathrm{g}^2}\frac{\p\ln{\epsilon}}{\p\ln{r}}\right)
+  \frac{\p\ln{\epsilon}}{\p\ln{r}}\left(-\frac{\p\ln{P}}{\p\ln{r}}+\frac{\Htilde^2}{H_\mathrm{g}^2}\frac{\p\ln{\epsilon}}{\p\ln{r}}\right)
   > 0 \label{stability_est2},
 \end{align}
 for \emph{stability}. The second term is usually stabilizing in 
@@ -179,7 +183,7 @@ always destabilizing, but is small in smooth, thin disks with radial
 gradients $O(1/r)$, $h_\mathrm{g}\ll 1$, 
 provided that $H_\epsilon/\Hg$ is not large (e.g. some dust settling
 has occured). This means that typical dusty PPDs are stable to
-axisymmetric perturbations, a conclusion valid for arbitrarily thin
+axisymmetric perturbations, even for arbitrarily thin
 dust layers. 
 
 %%%%%%%%%%%%%%%%%%
@@ -194,21 +198,30 @@ ratio,
 \end{align}
 for \emph{instability}, where
 \begin{align}\label{spm}
+% \chi_\pm = \frac{1}{2}\frac{H_\mathrm{g}^2}{\Htilde^2} 
+%   \left[
+%   \frac{\p\ln{\rhog}}{\p\ln{r}} \pm 
+%   \sqrt{
+%   \left(\frac{\p\ln{\rhog}}{\p\ln{r}}\right)^2 + 
+%   4 \frac{\Htilde^2}{H_\mathrm{g}^2}
+%   \frac{\left(1+\epsilon\right)^2}{\epsilon h_\mathrm{g}^2}
+%   }
+%   \,\right]. 
 \chi_\pm = \frac{1}{2}\frac{H_\mathrm{g}^2}{\Htilde^2} 
   \left[
-  \frac{\p\ln{\rhog}}{\p\ln{r}} \pm 
+  \frac{\p\ln{P}}{\p\ln{r}} \pm 
   \sqrt{
-  \left(\frac{\p\ln{\rhog}}{\p\ln{r}}\right)^2 + 
+  \left(\frac{\p\ln{P}}{\p\ln{r}}\right)^2 + 
   4 \frac{\Htilde^2}{H_\mathrm{g}^2}
   \frac{\left(1+\epsilon\right)^2}{\epsilon h_\mathrm{g}^2}
   }
   \,\right]. 
 \end{align} 
-In typical accretion disks where $\p_r\rhog<0$, instability is easier
+In typical accretion disks where $\p_rP<0$, instability is easier
 for increasing dust-to-gas ratios ($\p_r\epsilon > 0$).  
 
-We can neglect density gradients in Eq. \ref{spm} 
-if $r\p_r\ln{\rhog}\sim O(1)$ and $H_\epsilon/\Hgas\gg
+We can neglect pressure gradients in Eq. \ref{spm} 
+if $r\p_r\ln{P}\sim O(1)$ and $H_\epsilon/\Hgas\gg
 \sqrt{\epsilon}\hgas$. For example, if $\epsilon\simeq 0.01$ and
 $\hgas\simeq 0.05$, then we require $H_\epsilon/\Hg\gg
 5\times10^{-3}$. (So the dust layer thickness $\Hd\gg 5
@@ -230,11 +243,11 @@ requires $L_\epsilon\ll O(0.1\Hg)$, i.e. the dust-to-gas ratio must
 vary on an extremely short lengthscale. This might be achieved, for
 example, at sharp edges associated with gaps opened by giant planets. 
 
-Technically, the above discussion is only applicable to strictly
-isothermal disks perfectly coupled to dust (see \S\ref{iso_perfect}). 
-However, since dusty edges translate to sharp entropy gradients (see
+Technically, the above discussion is only applicable when $c_s$ is
+constant and $\tstop=0$ (see \S\ref{iso_perfect}). However, since
+dusty edges translate to sharp entropy gradients (
 \S\ref{dusty_entropy}), we may generally expect sharp features in the
-dust distribution of protoplanetary disks to be unstable.  
+dust distribution of protoplanetary disks to be unstable.    
 
 
 %{\bf mention this is equivalent to sharp entropy gradients?}
