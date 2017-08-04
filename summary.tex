@@ -225,67 +225,69 @@ convert the popular
 \textsc{Pluto}\footnote{\url{http://plutocode.ph.unito.it/}}      
 hydrodynamics code \citep{mignone07} into a dusty gas dynamics code appropriate for
 simulating protoplanetary disks coupled to small dust. We will apply 
-our modified code --- d\textsc{Pluto} --- to the streaming instability
-and disk-planet interactions in an upcoming publication (Lin et al.,
-in preparation).   
+this modified code ---d\textsc{Pluto}--- to study dusty disk-planet interaction (Lin et al., 
+in preparation). Preliminary results indicate the simplified one-fluid 
+approach can reproduce features such as dusty rings associated with 
+planet-induced gaps similar to that obtained from explicit two-fluid
+simulations \citep[e.g.][]{dong17}. 
 
-\subsection{Higher order corrections}
-{\bf notes for self. maybe exclude in final. maybe move into appendix}
+% \subsection{Higher order corrections}
+% {\bf notes for self. maybe exclude in final. maybe move into appendix}
 
-The simplified one-fluid formulation, 
-Eqs. \ref{masseq}---\ref{tempeq}, can 
-produce spuriously-growing modes with frequency $|\sigma|\gtrsim
-\Omega$ (see Appendix \S\ref{spurious_epi}). This 
-results from neglecting terms of $O(|\bm{v}_\mathrm{d}-\bm{v}_\mathrm{g}|^2)$ after converting
-the full two-fluid equations to the one-fluid formulation. The full
-one-fluid equations 
-%is significantly more complex than our 
-%model \cite[e.g.][]{laibe14}. It 
- includes an evolutionary equation for $\widetilde{\bm{v}}\equiv\bm{v}_\mathrm{d}-\bm{v}_\mathrm{g}$, which has no
- hydrodynamic counter-part \citep{laibe14}. However, it is
- still possible to improve upon 
- the first-order formulation whilst retaining similarilty to  
- standard hydrodynamics.  
-%without having the complexity of the full equations 
+% The simplified one-fluid formulation, 
+% Eqs. \ref{masseq}---\ref{tempeq}, can 
+% produce spuriously-growing modes with frequency $|\sigma|\gtrsim
+% \Omega$ (see Appendix \S\ref{spurious_epi}). This 
+% results from neglecting terms of $O(|\bm{v}_\mathrm{d}-\bm{v}_\mathrm{g}|^2)$ after converting
+% the full two-fluid equations to the one-fluid formulation. The full
+% one-fluid equations 
+% %is significantly more complex than our 
+% %model \cite[e.g.][]{laibe14}. It 
+%  includes an evolutionary equation for $\widetilde{\bm{v}}\equiv\bm{v}_\mathrm{d}-\bm{v}_\mathrm{g}$, which has no
+%  hydrodynamic counter-part \citep{laibe14}. However, it is
+%  still possible to improve upon 
+%  the first-order formulation whilst retaining similarilty to  
+%  standard hydrodynamics.  
+% %without having the complexity of the full equations 
 
-The full one-fluid equations of motion includes the acceleration term 
-\begin{align}
-%\left.\frac{D\bm{v}}{Dt}\right|_\mathrm{add} = 
-%\bm{a} =  
--\frac{1}{\rho}\nabla\cdot\left(\frac{\rhod\rhog}{\rho}\widetilde{\bm{v}}\otimes\widetilde{\bm{v}}\right) 
-\equiv  \frac{1}{\rho}\nabla\cdot \bm{T} 
-\end{align}
-\citep{youdin05a}, 
-where $\bm{T}$ is an effective stress tensor. 
-In the terminal velocity
-approximation with $\widetilde{\bm{v}} = \tstop 
-\nabla P/\rhog$, we have 
-\begin{align}
-\bm{T} = - \frac{\epsilon\tstop^2}{\rho}\nabla P \otimes \nabla P.
-\end{align}
-If we define 
-\begin{align}
-  \bm{g} \equiv \sqrt{4\pi G \epsilon \rho} \frac{\nabla P}{\rho}
-  \tstop,\label{effective_g} 
-\end{align}
-then
-\begin{align}
-\bm{T} = - \frac{1}{4\pi G} \bm{g}\otimes\bm{g}, \label{effective_gstress}
-\end{align}
-%{\bf tensor virial theorems?}
-which is just the anisotropic part of the  
-gravitational stress tensor in self-gravitating hydrodynamics 
-\citep{lynden-bell72}.
+% The full one-fluid equations of motion includes the acceleration term 
+% \begin{align}
+% %\left.\frac{D\bm{v}}{Dt}\right|_\mathrm{add} = 
+% %\bm{a} =  
+% -\frac{1}{\rho}\nabla\cdot\left(\frac{\rhod\rhog}{\rho}\widetilde{\bm{v}}\otimes\widetilde{\bm{v}}\right) 
+% \equiv  \frac{1}{\rho}\nabla\cdot \bm{T} 
+% \end{align}
+% \citep{youdin05a}, 
+% where $\bm{T}$ is an effective stress tensor. 
+% In the terminal velocity
+% approximation with $\widetilde{\bm{v}} = \tstop 
+% \nabla P/\rhog$, we have 
+% \begin{align}
+% \bm{T} = - \frac{\epsilon\tstop^2}{\rho}\nabla P \otimes \nabla P.
+% \end{align}
+% If we define 
+% \begin{align}
+%   \bm{g} \equiv \sqrt{4\pi G \epsilon \rho} \frac{\nabla P}{\rho}
+%   \tstop,\label{effective_g} 
+% \end{align}
+% then
+% \begin{align}
+% \bm{T} = - \frac{1}{4\pi G} \bm{g}\otimes\bm{g}, \label{effective_gstress}
+% \end{align}
+% %{\bf tensor virial theorems?}
+% which is just the anisotropic part of the  
+% gravitational stress tensor in self-gravitating hydrodynamics 
+% \citep{lynden-bell72}.
 
- However, unlike self-gravity, where $\bm{g}$ is
-determined through the Poisson equation; here $\bm{g}$ is directly
-related to $P$ (Eq. \ref{effective_g}), which itself obeys an 
-evolutionary equation (Eq. \ref{eff_energy}). 
-Nevertheless, Eq. \ref{effective_g}---\ref{effective_gstress}
-show that correlations in  pressure gradients lead to 
-momentum transport of the mixture as a whole. This is similar to Reynolds stresses in
-a turbulent disk \citep{balbus99}. In particular, 
-outwards angular momentum transport requires $\p_rP\p_\phi P > 0$.    
+%  However, unlike self-gravity, where $\bm{g}$ is
+% determined through the Poisson equation; here $\bm{g}$ is directly
+% related to $P$ (Eq. \ref{effective_g}), which itself obeys an 
+% evolutionary equation (Eq. \ref{eff_energy}). 
+% Nevertheless, Eq. \ref{effective_g}---\ref{effective_gstress}
+% show that correlations in  pressure gradients lead to 
+% momentum transport of the mixture as a whole. This is similar to Reynolds stresses in
+% a turbulent disk \citep{balbus99}. In particular, 
+% outwards angular momentum transport requires $\p_rP\p_\phi P > 0$.    
 
 % In a following paper we will include $\bm{T}$ in the one-fluid
 % equations and futher explore the analogy between dusty-gas and viscous
