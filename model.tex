@@ -28,7 +28,7 @@ time $\tstop$ such that
   \rhog\left.\frac{\p \bm{v}_\mathrm{g}}{\p t}\right|_\mathrm{drag}=
   - \frac{\rhog\rhod}{\rho}\frac{\left(\bm{v}_\mathrm{d} - \bm{v}_\mathrm{g}\right)}{\tstop}. 
 \end{align}
-is the dust-gas friction force per unit volume.%, where
+is the dust-gas friction force per unit volume. %, where
 %\begin{align}
 %  \widetilde{\bm{v}} \equiv\bm{v}_\mathrm{d} - \bm{v}_\mathrm{g} 
 %\end{align}
@@ -45,7 +45,7 @@ In general the relative velocity $\bm{v}_\mathrm{d} -
 %$\bm{v}_\mathrm{d}$. 
  However, for tightly-coupled dust
 particles with $\tstop\OmK\ll 1 $, where $\OmK$ is the Keplerian orbital
-frequency, we can use the 
+frequency (since we are interested in protoplanetary disks), we can use the 
 `terminal velocity approximation' to set %The dust-gas velocity difference 
 %Then so that the dust-gas velocity
 %difference is 
@@ -78,12 +78,17 @@ the gas constant and $\mu$ is the mean molecular weight.
 
 
 
-Eq. \ref{dusteq} results from mass conservation of dust, where 
+Eq. \ref{dusteq} is obtained from the dust continuity equation,  
+$\p_t\rhod + \nabla\cdot\left(\rhod\bm{v}_\mathrm{d}\right)= 0$, 
+by writing 
+$\bm{v}_\mathrm{d}=\bm{v} + \tstop\nabla P/\rho$, and eliminating  
+$\rhod$ in favor of the dust fraction $\tepsilon$: 
 \begin{align}
-  \tepsilon \equiv \frac{\rhod}{\rho}  = \frac{\epsilon}{1+\epsilon} 
+  \tepsilon \equiv \frac{\rhod}{\rho}  = \frac{\epsilon}{1+\epsilon},
 \end{align}
-is the dust-fraction and $\epsilon=\rhod/\rhog$ is the usual
-dust-to-gas ratio. If $\tstop=0$ then the 
+where $\epsilon=\rhod/\rhog$ is the usual
+dust-to-gas ratio. 
+If $\tstop=0$ then the 
 dust-to-gas ratio is conserved following the fluid. Otherwise, 
 $\epsilon$ evolves due to particle drift in response to pressure
 gradients. Note that Eq. \ref{dusteq} is equivalent to Eq. 46 of 
@@ -91,8 +96,9 @@ gradients. Note that Eq. \ref{dusteq} is equivalent to Eq. 46 of
 
 
 
-The total gravitational potential is $\Phi_\mathrm{tot}=\Phi +
-\psi$. Here $\Phi$ originates from a star of mass $M_*$, 
+The total gravitational potential $\Phi_\mathrm{tot}=\Phi +
+\psi$ includes that from a central star of mass $M_*$ and the disk's own
+potential $\psi$. We adopt 
 \begin{align}\label{thin_disk_potential}
   \Phi(r,z) =-\frac{GM_*}{\sqrt{r^2 + z^2}}\simeq
   -\frac{GM_*}{r}\left(1 - \frac{z^2}{2r^2}\right),  
@@ -100,21 +106,22 @@ The total gravitational potential is $\Phi_\mathrm{tot}=\Phi +
 where $(r,\phi, z)$ are cylindrical co-ordinates centered on the star, and 
 $G$ is the gravitational constant. The second equality is the  
 thin-disk approximation, appropriate for
-$|z|\ll r$. We shall adopt this approximate potential in order to
+$|z|\ll r$. We use this approximate form in order to
 obtain explicit expressions for disk equilibria (\S\ref{steady_state}). 
-The disk's own gravitational potential $\psi$ is included for
-completeness, but we will mostly neglect it unless stated
-otherwise. In such cases $\psi$ satisfies the Poisson equation 
+The disk potential $\psi$ satisfies the Poisson equation
 \begin{align}
   \nabla^2\psi = 4 \pi G \rho.\label{poisson}
 \end{align}
+We include $\psi$ for
+completeness, but we will mostly neglect it unless stated
+otherwise.  
 
 
-For the mixture's temperature evolution, Eq. \ref{tempeq}, $\gamma$ is
-the adiabatic index; $\mathcal{H}$ represents heating (which would
-include that due to dust-gas friction) and $\mathcal{H}_\mathrm{eff}$
-is an effective source term arising from transforming from the
-two-fluid to one-fluid formalism \citep[see][ for
+For the mixture's temperature evolution, Eq. \ref{tempeq}, reflects the gas energy equation. 
+Here $\gamma$ is 
+the adiabatic index; $\mathcal{H}$ represents gas heating and $\mathcal{H}_\mathrm{eff}$ 
+is an effective source term arising from transforming from the 
+two-fluid to one-fluid variables \citep[see][ for 
 details]{laibe14}. We also include a simple model of radiative
 cooling, 
 \begin{align}
@@ -128,14 +135,14 @@ the problem by considering rapid cooling, $\tcool\to0$.
 Eq. \ref{masseq}---\ref{tempeq} are not yet equivalent to standard 
 hydrodynamics, which typically evolves two scalar fields: the density and
 temperature (or pressure). By contrast, Eq. \ref{masseq}---\ref{tempeq}
-involves 3 scalars: $\rho$, $\tepsilon$, and $T$. 
+involves three scalars: $\rho$, $\tepsilon$, and $T$. 
 However, we can establish an  analogy by fixing the gas
 equation of state, thus eliminating Eq. \ref{tempeq}; but then reform 
 the dust-to-gas ratio evolution equation (\ref{dusteq}) into an
 energy-like equation. 
 
 \subsection{Locally isothermal equation of state}\label{loc_iso_eos}
-We simplify the gas energy equation by considering short cooling 
+We simplify the energy equation by considering short cooling 
 times $\tcool\to 0$, appropriate for the outer parts of an irradiated
 protoplanetary disk \citep{chiang97,lin15}. Then the disk temperature
 $T = T_\mathrm{ref}$ at all times, and so we may
@@ -173,7 +180,7 @@ equation.
 %We show that for a prescribed temperature distribution, the mixture
 %obeys an evolutionary energy equation, due to the advection of the
 %dust-fraction. 
-Eliminating $\tepsilon$ in favor of $P$, 
+Writing $\tepsilon=\tepsilon(P,\rho)$ using Eq. \ref{eos}
 \begin{align*}
   \tepsilon = 1 - \frac{P}{c_s^2(r,z)\rho}, 
 \end{align*}

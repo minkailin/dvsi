@@ -132,7 +132,7 @@
  perfectly coupled, thin dust layers cannot cause axisymmetric 
  instabilties; 
 \item 
- radial dust edges are unstable if dust is vertically well-mixed;  
+ radial dust edges are unstable if the dust is vertically well-mixed;  
 \item 
   the streaming instability neccessarily involves a gas pressure
   response 
@@ -218,8 +218,8 @@ The two-fluid equations for dust and gas can be reformulated into
 equivalent dynamical equations for the center of mass velocity $\bm{v}$
 and the relative dust-gas velocity  $\bm{v}_\mathrm{d}-\bm{v}_\mathrm{g}$ 
 \citep{youdin05a}. In this reformulation, continuity equations for dust and gas can be replaced 
-by the mass conservation of total density $\rho$ plus the evolution of the dust-to-gas ratio 
-(or dust fraction, \citealp{laibe14}).
+by the mass conservation of total density $\rho$ plus the evolution of the dust-to-gas ratio $\rhod/\rhog$ 
+(or dust fraction, $\rhod/\rho$, \citealp{laibe14}).
 
 This reformulation is particularly advantageous in the tight coupling limit of  $\tstop \ll 1/\Omega$, where the orbital frequency $\Omega$ sets the characteristic timescale in many disk dynamics problems.
 Models with two fluids or with Lagrangian solids are numerically difficult to evaluate in this regime, due to stiff drag forces.  
@@ -297,10 +297,10 @@ specific form, which we derive, for the equivalency to hold.
 
 The purpose of our physical and mathematical parallel between
 dusty gas and standard hydrodynamics is to gain a deeper understanding of the dynamics
-and stability of dusty disks.  
+and stability of dusty protoplanetary disks.  
 We can apply established methods to generalize previous stability 
 results for pure gas dynamics to dusty disks.  
-We show that strictly isothermal protoplanetary disks with
+We show that strictly isothermal disks with 
 perfectly-coupled dust are generally 
 stable to axisymmetric perturbations, unless the 
 dust-to-gas ratio varies more rapidly in radius than in height.  
@@ -460,7 +460,8 @@ $r$ from the star \citep{chiang97}. Since $P\propto \rhog T$ for an
 ideal gas, %the pressure of a gas parcel varies with  
 %position as well. 
 there is no reason to expect $P$ and $\rhog$ to 
-be in phase as a gas parcel oscillates between different radii. In
+be in phase as a gas parcel oscillates between different radii and adopt the corresponding local temperatures. 
+ In 
 fact, we will show that this is a fundamental property of the vertical
 shear instability \citep{lin15}.   
 
@@ -473,14 +474,14 @@ perfectly-coupled to the gas, then $P$ and $\rho$ would be in phase,
 and there is no work done. However, for finite dust-gas drag, $\rhod$ and
 $\rhog$ are not neccessarily in phase, because dust particles can
 drift relative to the gas.   
-\emph{If} this causes $P$ to lag 
+If this causes $P$ to lag 
 $\rho$, then the positive work done would lead to growing
 oscillations. Indeed, we show that this is true for the streaming
 instability. 
 
 In order to apply this thermodynamic interpretation of dust-gas drag
 instabilities, we need to develop a formal analogy between dusty-gas
-and pure gas dynamics. We show this is possible in the limit of
+and pure hydrodynamics. We show this is possible in the limit of
 strong drag and a fixed gas equation of state. 
 
 \input{model}
