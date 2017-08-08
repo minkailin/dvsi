@@ -5,7 +5,7 @@ $P = K \rhog^{\Gamma}$ where $K$ is a prescribed function of position
 and $\Gamma$ is a constant. The effective energy equation is then
 Eq. \ref{poly_energy}, which generalizes
 Eq. \ref{eff_energy}. Assuming axisymmetry throughout, we linearize this equation along with Eq. \ref{masseq},  
-\ref{momeq},  and \ref{poisson} gives:  
+\ref{momeq},  and \ref{poisson} to give:   
 
 % We also include the self-gravitational
 % potential $\psi$ of the gas
@@ -23,7 +23,7 @@ Eq. \ref{eff_energy}. Assuming axisymmetry throughout, we linearize this equatio
  % \dd\bm{v}\cdot\nabla\ln{P} - \dd\bm{v}\cdot\nabla\ln{K} - \frac{\dd\mathcal{C}}{P}.\label{lin_energy_full}\\
   \ii\sigma\frac{\Delta P}{P} &= \ii\sigma\frac{\delta P}{P} -
   \dd\bm{v}\cdot\nabla\ln{P} = 
-\Gamma \nabla\cdot\dd\bm{v}  - \dd\bm{v}\cdot\nabla\ln{K} - \frac{\dd\mathcal{C}}{P}.\label{lin_energy_full}\\
+\Gamma \nabla\cdot\dd\bm{v}  - \dd\bm{v}\cdot\nabla\ln{K} - \frac{\dd\mathcal{C}}{P},\label{lin_energy_full}\\
   -\ii\sigma\dd v_r  &= 2\Omega\dd v_\phi + 
   \hat{\bm{r}} \cdot \delta\bm{F} -  \hat{\bm{r}} \cdot \nabla\dd\psi ,\\
   \ii\sigma\dd v_\phi &= \frac{\kappa^2}{2\Omega}\dd v_r + \frac{\p
@@ -119,7 +119,7 @@ by parts and ignoring surface integrals, the last term is
 \end{align}
 where  $\seff\equiv\ln{(P^{1/\Gamma}/\rho)}$. 
 The self-gravitational part of Eq. \ref{meridional} is, again
-nelgecting surface terms when integrating by parts, 
+neglecting surface terms when integrating by parts, 
 \begin{align}
 -\int \ii\sigma \rho \nabla\dd\psi \cdot\dd  \bm{v}^* &= \int \ii\sigma
   \dd\psi \nabla\cdot\left(\rho\dd\bm{v}^*\right) dV
@@ -189,7 +189,7 @@ radially-local approximation, are
 \begin{align}
   &\dd F_r = - W F_r - \ii k_x Q,\\
   &\dd F_z = - W F_z - \left[Q^\prime + Q
-    \left(\ln{\rho}\right)^\prime\right]  = - \ii\sigma \dd v_z, 
+    \left(\ln{\rho}\right)^\prime\right]  = - \ii\sigma \dd v_z + \dd\psi^\prime, 
 \end{align} 
 where the last equality is the linearized
 vertical momentum equation; and 
@@ -204,7 +204,7 @@ vertical momentum equation; and
       2}\right]\right\}\notag\\
     &= \left[\left(\p_r\ln{\rho}-\ii k_x\right)F_r - \nabla\cdot\bm{F} +
       F_z^\prime\right]W + \left(\ii k_x \p_r\ln{\rho} + k_x^2\right)Q  -
-      \ii\sigma \dd v_z^\prime.
+      \ii\sigma \dd v_z^\prime + \dd\psi^{\prime\prime}.
 \end{align}
 
 
@@ -266,10 +266,11 @@ radially-local approximation are given by
 %\end{align}
 
 \section{One-fluid dispersion relation for the streaming instability}\label{compressible_streaming}
-We consider an unstratified disk with $\Phi = \Phi (r)$ so that $\p_zP = \p_z\rho =
-0$. The background $\p_rP/\rho$, $\tepsilon$ are constant
-input parameters. Then for the Epstein drag law, Eq. \ref{epstein}, we
-have $\mathcal{C}=0$ in the background state. 
+We consider an unstratified disk with $\Phi = \Phi (r)$ (by setting $z=0$ in Eq. \ref{thin_disk_potential})  
+so that $\p_zP = \p_z\rho = 
+0$. The background $\p_rP/\rho$, $\tepsilon$ are constant 
+input parameters. %Then for the Epstein drag law, Eq. \ref{epstein}, we
+%have $\mathcal{C}=0$ in the background state. 
 We Fourier analyze in $r$ and $z$ so that $\p_z\to \ii k_z$ and
 $\p_r\to \ii k_x$ when acting on perturbations, and denote $|\bm{k}|^2
 \equiv k_x^2 + k_z^2$. We consider large $k_x$ and thus neglect background
@@ -291,7 +292,7 @@ equations are, after eliminating the azimuthal velocity:
 \end{align}
 %{\bf bg pressure gradient neglected in energy eq (is this ok? could
 %  fix, but get more complicated dispersion}
-The artifical factor $\zeta = 1$  is inserted to keep track of the
+The artificial factor $\zeta = 1$  is inserted to keep track of the
 left-hand-side of the energy equation.  Setting $\zeta$ to zero is
 equivalent to assuming incompressible gas \citep{jacquet11}. 
 The linearized dust diffusion
@@ -363,9 +364,9 @@ $k_x\to\infty$.
 We begin with the incompressible dispersion
 relation, Eq. \ref{streaming_incompressible}. We assume a Keplerian
 disk ($\Omega=\kappa=\OmK$), and low frequency  modes 
-($|\sigma|\ll \OmK$), which leads to neglecting the quartic  
+($|\sigma|\ll \OmK$), which allows us to neglect the quartic  
 term. (This is also necessary to avoid spurious modes, see
-\S\ref{spurious_epi}.)  In dimensionless form:   
+\S\ref{spurious_epi}.)  In dimensionless form, the dispersion relation is 
 \begin{align}
   \nu^3 + \st\left[\ii\tepsilon + 2 K_x \fg \left(1-\fdust\right)\right]\nu^2
   - \left(\frac{K_z}{K_x}\right)^2\nu - 2\st K_x \fg
@@ -453,7 +454,7 @@ where
 \end{align}
 
 Maximizing growth rates over $K_x$ by setting $\p \imag{(\nu)}/\p K_x
-= 0$, we find the optium wavenumber is given by
+= 0$, we find the optimum wavenumber is given by
 \begin{align}
   K_x = \left(\frac{5\calB}{\calA}\right)^{3/4}\st^{-1/2} =
   \left(\frac{5}{3}\right)^{3/4}\sqrt{\frac{K_z}{2\fg\left(2\fdust-1\right)\st}}. \label{si_dust_rich_optkx}
@@ -469,7 +470,7 @@ and the real frequency $\real{(\nu)} =
 radial wavenumber diverges, $K_x\propto \taus^{-1/2} \to \infty$ with 
 a vanishing growth rate, $\mathrm{max}(s)\propto \sqrt{\taus}\to
 0$. This corresponds to instability at arbitrarily small radial
-lengthscales.    
+length scales.    
 
 \subsubsection{Finite phase lag as $\taus\to 0$}  
 An interesting property of the special solutions described above is
@@ -504,7 +505,7 @@ For the case shown in Fig. \ref{si_compare_fig} with $\fdust=0.75$, we
 have $\varphi\simeq 26\degr$, comparable to the $\sim 30\degr$
 obtained from numerical solutions. 
 
-\subsubsection{Validty of the approximations}\label{si_dust_rich_approx}
+\subsubsection{Validity of the approximations}\label{si_dust_rich_approx}
 Inserting the solutions for the most unstable mode 
 %(Eq. \ref{si_dust_rich_optkx}---\ref{si_dust_rich_grow} with ) 
 we find the assumption in Eq. \ref{min_kz} becomes  
@@ -519,7 +520,7 @@ On the other hand, the assumption of Eq. \ref{max_kz} becomes the trivial
 inequality \begin{align} 
   1\ll \frac{27}{4}\left(\frac{5}{3}\right)^3\simeq 30,
 \end{align}
-so Eq. \ref{max_kz} is satisified, which justifies the approximate solution for 
+so Eq. \ref{max_kz} is satisfied, which justifies the approximate solution for 
 $\mu$ in Eq. \ref{mu_explicit}.  
 
 
@@ -597,10 +598,10 @@ $\mu$ in Eq. \ref{mu_explicit}.
 \subsection{Spuriously growing epicycles}\label{spurious_epi}
 
 A caveat of the dispersion relations 
-Eq. \ref{streaming_dispersion} and \ref{streaming_incompressible} is
-that they admit spurious unstable modes with $|\sigma|\gtrsim \Omega$
-that violates the one-fluid framework used in this
-paper. We demonstrate this below by considering the
+Eq. \ref{streaming_dispersion} and \ref{streaming_incompressible} is 
+that they admit spurious unstable modes with $|\sigma|\gtrsim \Omega$. 
+This violates the one-fluid approximation to model dusty gas. 
+We demonstrate this below by considering the 
 incompressible dispersion relation. (We checked numerically that
 compressibilty has negligible effects on the modes examined.) 
 
@@ -613,8 +614,9 @@ becomes
   2K_x\frac{\fg}{\fdust}\left(1-\fdust\right)\right]=0\label{kz_zero_si} 
 \end{align} 
 in dimensionless form. Neglecting the quadratic term leads to
-stability, $\imag{(\nu)}<0$, as found by \cite{youdin05a} in their full
-two-fluid analysis.  
+stability, $\imag{(\nu)}<0$. This is consistent with a full two-fluid analysis 
+\citep{youdin05a}.  
+ 
 % However, the real and imaginary parts of Eq. \ref{kz_zero_si}  are
 % \begin{align}
 % \omega\left(2 s + \frac{1}{\epsilon\tstop}\right) - \frac{k_xF_r}{\epsilon} & =
@@ -644,11 +646,11 @@ Accordingly, growth is possible if
 %t_{\mathrm{s}0}$. 
 Alternatively, for fixed $\taus$ growth is enabled
 by a sufficiently large $K_x$. Unlike the streaming instability,
-which is strongly surpressed when $\fdust=1/2$, these modes can still
+which is strongly suppressed when $\fdust=1/2$, these modes can still
 grow at equal dust-to-gas ratio.  
 
 These growing epicycles with $|\omega|\gtrsim \kappa$ are absent in
-full two-fluid models \citep{youdin05a}. The discrepency lies in the
+full two-fluid models \citep{youdin05a}. The discrepancy lies in the
 fact that the one-fluid equations, to first order in $\taus$, are
 only valid for low-frequency waves with $|\sigma|\lesssim 
 \Omega$. Thus only low-frequency modes should be retained from
@@ -662,7 +664,7 @@ Fig. \ref{dusty_growth1} show unstable modes found from
 Eq. \ref{streaming_dispersion} as a function of $K_z$ at fixed $K_x 
 = 1500$, $\epsilon=2$ and $\taus\OmK=0.01$.  
 The (spurious) overstable dusty epicycles' growth
-rates are weakly depedent on $K_z$ and are well approximated by
+rates are weakly dependent on $K_z$ and are well approximated by
 that in the $K_z=0$ limit, Eq. \ref{epi_grow}. 
 %, which becomes 
 %\begin{align*} 
@@ -671,7 +673,7 @@ that in the $K_z=0$ limit, Eq. \ref{epi_grow}.
 %  -1 \right]
 %\end{align*}
 %in the above notation. 
-For the case considerd in Fig. \ref{dusty_growth1} we find
+For the case considered in Fig. \ref{dusty_growth1} we find
 $s\simeq0.067\OmK$, as observed. By contrast, the streaming
 instability requires $K_z>0$, and dominates when
 $K_z\gtrsim 100$. 
@@ -684,7 +686,7 @@ $K_z\gtrsim 100$.
   }
 \end{figure}
 
-Caution must be taken if the first-order one-fluid equations are used
+Care must be taken if the first-order one-fluid equations are used
 to simulate dusty gas. 
 %One should ensure that the physical dust-gas instabilty
 %(which should have low-frequency in order for the first-order one-fluid
@@ -700,7 +702,7 @@ disks where a range of $K_z$ is allowed, the streaming instability
 should dominate. 
 
 Thus simulations based on the first-order one-fluid equations should
-be set up to surpress these spurious epicycles. This might be
+be set up to suppress these spurious epicycles. This might be
 achieved, for example, through physical or numerical viscosity to
 eliminate high-$k_x$ modes, since for fixed disk/dust parameters these
 spurious epicycles only operate at sufficiently small radial

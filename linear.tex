@@ -5,11 +5,11 @@
 \section{Application to protoplanetary disks}\label{linear_problem}
 We now examine instabilities in dusty protoplanetary disks
 based on explicit descriptions of the equilibrium state. We first
-specify explicit disk structures to analyze. We show 
-that sharp radial edges in the dust component are unstable. We then
+specify the disk structures to be analyzed. We show  
+that sharp radial edges in the dust-to-gas ratio can render the disk unstable. We then 
 revisit two well-known instabilities in dusty gas using the
-hydrodynamic framework developed thusfar, namly secular graviational
-instabilities and the streaming instability. 
+hydrodynamic framework developed thus far, namely secular gravitational (SGI) 
+instabilities and the streaming instability (SI).  
 
 \subsection{Disk structure with a prescribed dust distribution}\label{steady_state}  
 We assume a Gaussian profile in the
@@ -103,7 +103,7 @@ gives the disk's explicit vertical shear profile:
 The first two terms correspond to vertical shear caused by spatial
 variations in the dust-to-gas ratio. The third term
 proportional to $q$ corresponds to vertical shear due to the 
-radial temperature gradient, and survives in the dust-free limit. 
+radial temperature gradient, which survives in the dust-free limit. 
 
 We can compare these sources by 
 evaluating them using the equilibrium
@@ -135,7 +135,7 @@ such that $\delta^2\ll \epsilon$. %Otherwise, vertical shear is
 
 
 \subsubsection{Dusty vertical buoyancy}\label{vbuoyancy}
-For the above equilibria the vertical buoyancy frequency is given
+For the above equilibrium the vertical buoyancy frequency is given
 explicitly as 
 \begin{align}
   N_z^2 =
@@ -155,7 +155,7 @@ $\mathrm{max}\left(N_z\right)$ may occur outside a finite vertical domain.
 \subsection{Instability of dusty edges} 
 Here we apply the dusty analog of the Solberg-Hoiland criteria derived
 in \S\ref{iso_perfect} assuming strictly isothermal gas. As discussed
-there, the first criterion in generally satisifed. Thus we only
+there, the first criterion is generally satisfied. Thus we only
 consider the second condition, Eq. \ref{dusty_solberg2}.  
 
 We assume the disk is approximately Keplerian so that
@@ -182,14 +182,14 @@ PPDs for reasons given in \S\ref{iso_perfect}. The third term is
 always destabilizing, but is small in smooth, thin disks with radial
 gradients $O(1/r)$, $h_\mathrm{g}\ll 1$, 
 provided that $H_\epsilon/\Hg$ is not large (e.g. some dust settling
-has occured). This means that typical dusty PPDs are stable to
+has occurred). This means that typical dusty PPDs are stable to
 axisymmetric perturbations, even for arbitrarily thin
 dust layers. 
 
 %%%%%%%%%%%%%%%%%%
 
 To violate Eq. \ref{stability_est2} and obtain instability, notice the 
-LHS is a quadratic in $\p_r\epsilon$. Thus instability is possible for
+left hand side is a quadratic in $\p_r\epsilon$. Thus instability is possible for
 sufficiently large (in magnitude) radial gradients  in the dust-to-gas
 ratio,  
 \begin{align}
@@ -241,7 +241,7 @@ then the system is  unstable.
 Taking $\epsilon\sim 0.01$,  we find that 
 for thin dust layers with $H_\epsilon \simeq \Hd\ll \Hg$,  instability
 requires $L_\epsilon\ll O(0.1\Hg)$, i.e. the dust-to-gas ratio must 
-vary on an extremely short lengthscale. This might be achieved, for
+vary on an extremely short radial lengthscale. This might be achieved, for
 example, at sharp edges associated with gaps opened by giant planets. 
 
 Technically, the above discussion is only applicable when $c_s$ is
@@ -253,7 +253,7 @@ dust distribution of protoplanetary disks to be unstable.
 
 %{\bf mention this is equivalent to sharp entropy gradients?}
 
-\subsection{Radially localized linear problem}
+\subsection{Radially local problem}
 We now specialize further and compute explicit solutions to the linear
 problem. We consider radially-localized axisymmetric disturbances of the form  
 \begin{align}
@@ -278,7 +278,7 @@ Introducing
 the linearized equations for 
 vertically isothermal dusty gas with the pressure
 equation in place of the dust-fraction
-(Eq. \ref{masseq}---\ref{momeq}, Eq. \ref{eff_energy}) are then:    
+(Eq. \ref{masseq}, \ref{momeq}, \ref{poisson}, \ref{eff_energy}) are then:    
 
 \begin{align}
   \ii\sigma W &= \ii k_x \dd v_r + \dd v_z^\prime +
@@ -302,7 +302,7 @@ equation in place of the dust-fraction
 where $^\prime \equiv \p_z$ and recall $\bm{F} \equiv -\nabla
 P/\rho$. We have temporarily restored self-gravity  to
 discuss SGI in the next
-section. The linearized dust-duffusion function 
+section. The linearized dust-diffusion function 
 $\dd\mathcal{C}$ is given in  Appendix \ref{lin_dust}. 
 % and $\dd\bm{F}$ is the linearized pressure
 %force, given in Appendix \ref{lin_press}. 
@@ -319,14 +319,13 @@ $\dd\mathcal{C}$ is given in  Appendix \ref{lin_dust}.
 %problem, $\dd\bm{F}$ is purely meridional. 
 
 Eq. \ref{lin_mass}---\ref{lin_sg} is a set of ordinary
-differntial equations in $z$. All coefficients and amplitudes are
+differential equations in $z$. All coefficients and amplitudes are
 evaluated at a fiducial radius $r=r_0$, but their full $z$-dependence
 is retained. We next discuss solutions to these equations.  We first
-show that the above equations yield the secular
-gravitational instability and streaming instability in the strong
+show that the above equations yield the SGI and SI in the strong
 drag regime in \S\ref{sgi} and \S\ref{si}, respectively. We then
-consider 3D, stratified disks in \S\ref{results} to study the dusty
-vertical shear instability.
+consider 3D, stratified disks in \S\ref{results} to study how the addition of  dust 
+affects the vertical shear instability. 
 
 %for a
 %razor-thin, self-gravitating disk in \S\ref{sgi}; and for 3D
@@ -341,11 +340,11 @@ vertical shear instability.
 
 
 \subsubsection{Secular gravitational instability}\label{sgi}
-We first consider a razor-thin, self-gravitating disk so that $\rho =
-\Sigma\delta(z)$. Here $\delta$ is the Dirac delta function and $\Sigma$ is
-the total surface density. Now $\epsilon$ and 
-$\tepsilon$ refers to the global dust-to-gas ratio and dust 
-fraction, respectively. The background disk is
+Consider a razor-thin, self-gravitating disk so that $\rho =
+\Sigma\delta(z)$, where $\delta$ is the Dirac delta function and $\Sigma$ is
+the total surface density. Here $\epsilon = \Sigma_\mathrm{d}/\Sigma_\mathrm{g}$ and 
+$\tepsilon=\Sigma_\mathrm{d}/\Sigma$, where $\Sigma_\mathrm{d,g}$ are the dust and gas surface densities. 
+The background disk is 
 uniform and we neglect the vertical dimension   
 in Eq. \ref{lin_mass}---\ref{lin_energy}. The linearized dust-gas drag
 term is then $-\delta\mathcal{C}/\rho = \tstop\tepsilon c_s^2k_x^2
@@ -442,7 +441,7 @@ $\mathcal{W}>0$ in all cases, and hence find growing oscillations.
 %in that case the gro 
 
 In Table \ref{si_compare} we also calculate the phase difference
-between the Lagragian pressure perturbation and density perturbations
+between the Lagrangian pressure perturbation and density perturbations
 as    
 \begin{align*} 
 \varphi&\equiv \sgn{\left[\real{(\sigma)}\right]}\arg\left(\Delta
@@ -556,17 +555,18 @@ $0.3225 +  0.3154\ii$& $0.3219 + 0.3154\ii$ &  $0.061$ & $0.061$  & $22\degr$ & 
 \end{deluxetable*}
 
 In Fig. \ref{si_compare_fig} we calculate the most unstable SI 
-mode as a function of $\taus$ at fixed $K_z=30$ and $\epsilon =3$. We
+mode as a function of $\taus$ at fixed $K_z=30$ and $\epsilon =3$. Growth rates are maximized over $K_x$. 
+We 
 compare results between the full, two-fluid linear analysis and the
-one-fluid framework. We also include an analytic model, described in Appendix 
+one-fluid framework. We also include an analytic model, developed in Appendix 
 \ref{si_dust_rich}, based on the one-fluid dispersion relation with 
-additional approximations (orange diamonds).
+additional approximations (orange diamonds). 
 
 Both results based on the one-fluid framework compares well with the 
 full, two-fluid analysis, only breaking down at a relatively large
 $\taus\OmK\gtrsim 0.1$. For larger $\taus$ the two-fluid phase
 lag drops, along with the growth rate. This suggest that a
-non-vanishing phase lag is necessary for instability. However, the
+non-vanishing phase lag is indeed necessary for instability. However, the
 magnitude of the phase lag does not correlate with growth rates. In
 fact, $\varphi$ remains finite as $|\sigma|, \taus\to0$ (but
 non-zero). This arises because the optimum $K_x\propto \taus^{-1/2}$
@@ -574,13 +574,13 @@ diverges (see Appendix \ref{si_dust_rich}).
 
 In a future work we will perform a more detailed parameter survey to
 compare the simplified one-fluid and full two-fluid frameworks in
-calculating SI.  
+calculating SI.   
 
 \begin{figure}
 \includegraphics[width=\linewidth]{figures/si_2f_1f_compare}
-\caption{Comparison of the linear
-streaming instability between a full two-fluid analysis (solid
-line), the one-fluid framework simplified by the terminal
+\caption{Comparison of the linear 
+streaming instability between a full two-fluid analysis (solid 
+line), the one-fluid framework simplified by the terminal 
 velocity approximation (green asterisks) and an analytic solution to
 the one-fluid dispersion relation in the dust-rich limit (orange
 diamonds, see also Appendix \ref{si_dust_rich}). The vertical 

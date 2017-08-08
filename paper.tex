@@ -130,11 +130,11 @@
 \begin{inparaenum}[1)] 
 \item 
  perfectly coupled, thin dust layers cannot cause axisymmetric 
- instabilties; 
+ instabilities; 
 \item 
  radial dust edges are unstable if the dust is vertically well-mixed;  
 \item 
-  the streaming instability neccessarily involves a gas pressure
+  the streaming instability necessarily involves a gas pressure
   response 
   that lags behind dust density; 
 %  the streaming instability neccessarily involves a phase lag between
@@ -190,7 +190,7 @@ understood.
 %particles 
 Current state-of-the-art models of dusty protoplanetary
 disks directly simulate gas dynamics coupled to explicit
-Lagragian dust particles
+Lagrangian dust particles
 \citep{johansen2006, nelson10,bai10,yang14,zhu14,gibbons15,simon16,baruteau16}. 
 The equation of motion for each particle is solved 
 including dust-gas drag; the strength of which is measured 
@@ -348,7 +348,7 @@ discuss future applications of the dusty/adiabatic gas equivalence in
     \end{tikzpicture}
  \end{center}
 \caption{The central concept of this work. A mixture of small particles
-  coupled to isothermal gas behave similarly to an adiabatic, pure gas
+  imperfectly coupled to isothermal gas behave similarly to an adiabatic, pure gas
   subject to cooling.  This
   permits one to use the equations for standard hydrodynamics to study
   dust-gas dynamics. \label{concept_chart}}
@@ -407,7 +407,7 @@ A general result in fluid dynamics is that work is done whenever
 oscillations in the pressure and density of the fluid are not in
 phase. If  the average work done is positive, then oscillation
 amplitudes grow: the work done allows the system to `overshoot' beyond 
-the amplitude of preceeding oscillations.   
+the amplitude of preceding oscillations.   
 
 %To see this, we first compute the work done
 %assuming periodic oscillations. We then show that if the work done is positive, then the
@@ -424,7 +424,7 @@ phase lag arises because the fluid has two components (gas and dust,
 see below) but the following description is general. 
 
 From $A$ to $B$, a fluid parcel is expanding to return to 
-equilbrium, but pressure is still 
+equilibrium, but pressure is still 
 increasing. This over-compensation will cause the parcel to expand
 beyond the maximum volume of the previous cycle. 
 Similarly, from $C$ to $D$ the parcel is already contracting towards
@@ -443,8 +443,8 @@ descending.
   \caption{Thermodynamic interpretation of growing oscillations in a
     fluid. Top: pressure and density evolution in time. 
     Bottom: oscillation cycle in the P-V plane. In the case shown, 
-    dust-drag causes 
-    pressure to lag behind density, which results in a clockwise path in
+    dust-drag causes  
+    pressure (due to gas only) to lag behind total density. This results in a clockwise path in
     the P-V plane, implying positive work done by the fluid, which 
      would increase oscillation amplitudes.  
     \label{pdv_cartoon}
@@ -472,7 +472,7 @@ relevant density here is the total density $\rho = \rhod + \rhog$,
 but the fluid pressure $P$ is due to gas only. If dust were 
 perfectly-coupled to the gas, then $P$ and $\rho$ would be in phase, 
 and there is no work done. However, for finite dust-gas drag, $\rhod$ and
-$\rhog$ are not neccessarily in phase, because dust particles can
+$\rhog$ are not necessarily in phase, because dust particles can
 drift relative to the gas.   
 If this causes $P$ to lag 
 $\rho$, then the positive work done would lead to growing
@@ -488,8 +488,13 @@ strong drag and a fixed gas equation of state.
 \input{linear}
 \input{result}
 \input{summary}
+\acknowledgements
+We thank P. Loren-Aguilar for initial discussions that motivated this study. We also thank 
+C. Baruteau, R. Dong, J. Fung, S. Inutsuka, W. Lyra, and M. Pessah 
+for comments during the course of this project. This work is supported by the Theoretical Institute for Advanced Research in Astrophysics 
+(TIARA) based in Academia Sinica Institute of Astronomy and Astrophysics (ASIAA) and NASA Astrophysics Theory Program grant NNX17AK59G. 
 
-%{\bf acknowledgements. s. inutsuka for asking about kz=0 limit}
+
 
 \appendix
 \input{appendix}
