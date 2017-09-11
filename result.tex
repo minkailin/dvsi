@@ -327,14 +327,20 @@ let $\epsilon_0\propto r^{-1}$ and $H_\epsilon \propto \Hg$
   \left(\frac{z^2}{H_\epsilon^2}\frac{d\ln{\Hg}}{dr} -
     \frac{1}{r}\right)\epsilon.   
 \end{align*}
-Here we fix $Z=0.01$, $\Hd=0.8\Hg$, and $k_x\Hg=30$.       
+Here we fix $Z=0.01$, $\Hd=0.8\Hg$.       
 
 Fig. \ref{compare_vshear_varHd} shows that a radially-varying
 dust-to-gas ratio increases the magnitude of the vertical shear rate
-away from the midplane (see also Eq. \ref{vshear2}). Thus we find
-higher VSI growth rates, as shown in Fig. \ref{vsi_dust_varHd}. 
-Surfaces modes are more effectively enhanced by the additional vertical 
-shear induced by $\p_r\epsilon$. However, all growth rates remain
+away from the midplane (see also Eq. \ref{vshear2}). Thus we {\bf
+  typically} find higher VSI growth rates, as shown in
+Fig. \ref{vsi_dust_varHd}. 
+Surfaces modes, {\bf appearing at high $k_x$}, are more effectively
+enhanced by the additional vertical shear induced by
+$\p_r\epsilon$. {\bf We find that low frequency body modes with small
+  $k_x$ are more affected by radial variations in the 
+  dust-to-gas ratio.}    
+
+However, all growth rates remain
 $O(\hgas\OmK)$. Importantly, the increase in the growth rate of the
 fundamental mode is small. We do not expect the radial
 dependence in $\epsilon$ to significantly affect the VSI in a dusty
@@ -357,9 +363,10 @@ disk.
 \begin{figure}
   \includegraphics[width=\linewidth]{figures/compare_eigenvals_varHd} 
   \caption{Unstable VSI modes in the disk models of
-    Fig. \protect\ref{compare_vshear_varHd}.  Black (blue) diamonds
+    Fig. \protect\ref{compare_vshear_varHd}. {\bf Diamonds (asterisks) 
     are mode frequencies for a disk with radially uniform (varying)
-    dust-to-gas ratio. 
+    dust-to-gas ratio. The radial wavenumbers are $k_xH_g = 10$
+    (green),$k_xH_g = 30$ (black) and $k_xH_g = 100$ (orange). }
     \label{vsi_dust_varHd}
     }
 \end{figure}
@@ -369,20 +376,35 @@ disk.
 
 In \S\ref{iso_perfect} we found that for strictly isothermal
 disks, a vertically-uniform dust-to-gas ratio can be unstable
-if $d\epsilon/dr\neq0$.  
-To demonstrate this numerically we consider the
-same disk as above but with $q=0$ and choose $H_\mathrm{d}$ such
-that $H_\epsilon=10^3\Hg$. Then vertical shear $\p_z\Omega$ is 
+if $d\epsilon/dr\neq0$.   
+{\bf
+To demonstrate this numerically we set $q=0$ and $H_\mathrm{d}$ such
+that $H_\epsilon=10^3\Hg$. We let $\rhod/\rhog \propto r^{-d}$
+with different power indices $d$. The metalicity is fixed to $Z=0.03$.  
+In these cases vertical shear $\p_z\Omega$ is 
 attributed to the radially-varying dust-to-gas ratio (see
 Eq. \ref{vshear2}).    
+}
 
-We show unstable modes for this disk in
-Fig. \ref{vert_mixed_modes}. In order to obtain appreciable growth   
-rates, we consider super-Solar metalicity $Z=0.03$ and high
-radial wavenumber $k_x\Hg=1800$. As expected from the discussion in
+{\bf We show unstable modes in 
+Fig. \ref{vert_mixed_modes}.} 
+%In order to obtain appreciable growth   
+%rates, we consider super-Solar metalicity $Z=0.03$ and high
+%radial wavenumber $k_x\Hg=1800$. 
+As expected from the discussion in
 \S\ref{iso_perfect}, the disk admits purely growing modes with
 $\omega=0$. This is distinct from the growing oscillations associated
 with classic VSI discussed above. 
+
+{\bf We find in smooth disks large 
+  $k_x$ is needed for appreciable growth rates, e.g. $k_xH_g=1800$
+  with $\rhod/\rhog\propto r^{-1}$. 
+  Local shearing box simulations \citep[e.g.][]{bai10b,yang16} may 
+  be required to study the non-linear evolution of such short 
+  wavelengths. Alternatively, as shown in Fig. \ref{vert_mixed_modes},
+  a rapidly varying dust-to-gas ratio permits dynamical instability at
+  longer radial wavelengths. 
+}
 
 \begin{figure}
   \includegraphics[width=\linewidth]{figures/vert_mixed_modes} 
@@ -393,7 +415,11 @@ with classic VSI discussed above.
     }
 \end{figure}
 
-
-
+%{\bf
+%  \subsection{Implications for protoplanetary disks}
+%dust settling, dust-induced buoyancy 
+%The above calculations 
+%radial d/g -> radial temp profile 
+%}
 
 
