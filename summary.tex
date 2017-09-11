@@ -3,14 +3,45 @@
 \section{Discussion}\label{discussion}
 
 
+{\bf
+
 %pros and cons 
 %energy analogy not restricted to term vel approx 
 %spurious modes
 
+\subsection{Applications and limitations}
 
+The main application we envision for the dusty/adiabatic gas analogy 
+to develop physical interpretations of dust-gas instabilities; and to find 
+dusty analogs of pure gas instabilities in protoplanetary disks, 
+which is discussed in \S\ref{dust_analogs}. One can also exploit the similarity to adapt existing
+hydrodynamic codes to simulate dusty protoplanetary disks (see \S\ref{dust_sims}). 
 
+It is important to keep in mind the assumptions 
+used to develop our thermodynamic model of dusty gas. 
+The terminal velocity approximation, $\bm{v}_\mathrm{d} - \bm{v}_\mathrm{g} = \tstop \nabla P /\rhog$, was employed from the outset. 
+%It assumes  
+%the dust-gas relative drift $\bm{v}_mathrm{d} - \bm{v}_\mathrm{g} = \tstop \nabla P /\rhog$ 
+This is applicable to small particles with 
+$\tstop\OmK\ll 1$, but the precise critical value is problem-dependent. For the linear streaming instability,
+even $\tstop\OmK \sim 0.1$ can be captured by simplified one-fluid equations 
+(Fig. \ref{si_compare_fig}). On the other hand, the simplified equations contain spurious modes that
+may overwhelm physical instabilities in certain situations (see \S\ref{spurious_epi}).  %Ultimately, one must check against the full equations. 
 
-
+However, our thermodynamic interpretation of dust-gas drift does \emph{not} in fact depend on the terminal velocity approximation.  
+Once the gas equation of state is fixed and the true energy equation deleted, 
+the dust continuity equation can be converted to a new effective energy equation. 
+%This source term reflects  
+%a heat flux proportional to $\bm{v}_\mathrm{d} - \bm{v}_\mathrm{g}$, which must generally be solved via a separate 
+%evolutionary equation \citep{laibe14}. Nevertheless, this does not change the interpretation of dusty gas as a single ideal fluid subject to cooling.  
+As an example, for strictly isothermal dusty gas we obtain   
+\begin{align}
+\frac{DP}{Dt} = - P\nabla\cdot\bm{v} + c_s^2\nabla\cdot\left[\fdust\left(1-\fdust\right)\rho\left(\bm{v}_\mathrm{d} - \bm{v}_\mathrm{g}\right)\right], \label{no_term_vel} 
+\end{align}
+\citep[see also][]{laibe14}. This equation does not use the terminal velocity approximation (which would give Eq. \ref{eff_energy}), but 
+ we see that dust-gas relative drift can be regarded as a heat flux within the mixture. Calculating this heat flux generally requires solving the evolutionary equation for 
+$\bm{v}_\mathrm{d} - \bm{v}_\mathrm{g}$. Nevertheless, one can still consider the dusty-gas as a single fluid subject to cooling. 
+}
 
 \subsection{Generalization to locally polytropic disks}\label{gen_poly}
 
@@ -56,7 +87,7 @@ polytropic disk with $K=$constant, while one sets $c_s^2\to K$ in
 
 
 
-\subsection{Dusty analogs of other gaseous instabilities}  
+\subsection{Dusty analogs of other gaseous instabilities} \label{dust_analogs} 
 
 %gi
 %rwi 
@@ -218,7 +249,7 @@ dust-loading (specifically a vertical gradient in the dust-to-gas ratio),
 and thus produce `dusty ZVI'. This may allow the zombie 
 vortices to develop $\gtrsim 1$AU in PPDs. 
 
-\subsection{Implications for numerical simulations}
+\subsection{Implications for numerical simulations}\label{dust_sims}
 The dusty/adiabatic gas equivalence means that pure
 gas dynamics codes can be applied to simulate locally
 isothermal/polytropic dusty gas. One need not implement a separate 
@@ -486,8 +517,8 @@ previous study \citep{lin15}.
 Since the dust-induced buoyancy forces
 increase away from the midplane, we find dust-loading can stabilize
 `surface modes'  of the VSI, that would otherwise have the largest
-growth rates. {\bf We also showed that radial variations in
-  $\rhod/\rhog$ translates to an effectively non-uniform radial temperature
+growth rates. {\bf We also show that radial variations in
+  $\rhod/\rhog$ effectively translates to a non-uniform radial temperature
   profile, and the resulting vertical shear can lead to instability,
   even if the true sound-speed is constant. 
 }  
