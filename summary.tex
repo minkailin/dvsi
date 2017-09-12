@@ -19,28 +19,52 @@ hydrodynamic codes to simulate dusty protoplanetary disks (see \S\ref{dust_sims}
 
 It is important to keep in mind the assumptions 
 used to develop our thermodynamic model of dusty gas. 
-The terminal velocity approximation, $\bm{v}_\mathrm{d} - \bm{v}_\mathrm{g} = \tstop \nabla P /\rhog$, was employed from the outset. 
+The terminal velocity approximation, $\bm{v}_\mathrm{d} -
+\bm{v}_\mathrm{g} = \tstop \nabla P /\rhog$, was employed from the
+outset. 
 %It assumes  
-%the dust-gas relative drift $\bm{v}_mathrm{d} - \bm{v}_\mathrm{g} = \tstop \nabla P /\rhog$ 
-This is applicable to small particles with 
-$\tstop\OmK\ll 1$, but the precise critical value is problem-dependent. For the linear streaming instability,
-even $\tstop\OmK \sim 0.1$ can be captured by simplified one-fluid equations 
-(Fig. \ref{si_compare_fig}). On the other hand, the simplified equations contain spurious modes that
-may overwhelm physical instabilities in certain situations (see \S\ref{spurious_epi}).  %Ultimately, one must check against the full equations. 
+%the dust-gas relative drift $\bm{v}_mathrm{d} - \bm{v}_\mathrm{g} =
+%\tstop \nabla P /\rhog$ 
+This is applicable to small particles with short stopping times and
+strongly coupled to the gas. Generally we require $\tstop$ to be the
+shortest timescale in the physical problem. For  
+example, to study dust settling, we require $\tstop \ll
+t_\mathrm{settle}\sim 1/\tstop\OmK^2$, or 
+$\tstop\OmK \ll 1$. 
 
-However, our thermodynamic interpretation of dust-gas drift does \emph{not} in fact depend on the terminal velocity approximation.  
+However, the validity of the simplified one-fluid equations may be
+problem-dependent, and not just on the terminal velocity 
+approximation. For example, Table \ref{si_compare} shows the dust-rich
+`linA' mode and dust-poor `linB' mode of the streaming instability
+have the same $\tstop$, but the former is accurately captured by the
+simplified equations, while the latter is not.  This suggests that for
+the streaming instability the simplified equations is better suited
+for $\rhod/\rhog>1$. The simplified equations may also contain spurious
+modes in certain situations (see \S\ref{spurious_epi}). 
+
+%Ultimately,
+                                %one must 
+                                %c heck against the full equations.  
+
+Note that our thermodynamic interpretation of dust-gas drift does
+\emph{not} in fact depend on the terminal velocity approximation.   
 Once the gas equation of state is fixed and the true energy equation deleted, 
 the dust continuity equation can be converted to a new effective energy equation. 
-%This source term reflects  
-%a heat flux proportional to $\bm{v}_\mathrm{d} - \bm{v}_\mathrm{g}$, which must generally be solved via a separate 
-%evolutionary equation \citep{laibe14}. Nevertheless, this does not change the interpretation of dusty gas as a single ideal fluid subject to cooling.  
 As an example, for strictly isothermal dusty gas we obtain   
 \begin{align}
-\frac{DP}{Dt} = - P\nabla\cdot\bm{v} + c_s^2\nabla\cdot\left[\fdust\left(1-\fdust\right)\rho\left(\bm{v}_\mathrm{d} - \bm{v}_\mathrm{g}\right)\right], \label{no_term_vel} 
+\frac{DP}{Dt} = - P\nabla\cdot\bm{v} +
+c_s^2\nabla\cdot\left[\fdust\left(1-\fdust\right)\rho\left(\bm{v}_\mathrm{d}
+    - \bm{v}_\mathrm{g}\right)\right]. \label{no_term_vel}  
 \end{align}
-\citep[see also][]{laibe14}. This equation does not use the terminal velocity approximation (which would give Eq. \ref{eff_energy}), but 
- we see that dust-gas relative drift can be regarded as a heat flux within the mixture. Calculating this heat flux generally requires solving the evolutionary equation for 
-$\bm{v}_\mathrm{d} - \bm{v}_\mathrm{g}$. Nevertheless, one can still consider the dusty-gas as a single fluid subject to cooling. 
+This equation does not use
+the terminal velocity approximation (which gives
+Eq. \ref{eff_energy}); evaluating the right-hand-side generally 
+requires solving an evolutionary equation for $\bm{v}_\mathrm{d} - 
+\bm{v}_\mathrm{g}$ \citep{laibe14}. Nevertheless,
+Eq. \ref{no_term_vel} shows that dust-gas relative drift can be
+interpreted as a heat flux within the dust-gas mixture. Thus, even 
+without the terminal velocity approximation we can 
+regard the dusty-gas as a single ideal fluid subject to cooling.   
 }
 
 \subsection{Generalization to locally polytropic disks}\label{gen_poly}
@@ -528,7 +552,7 @@ growth rates. {\bf We also show that radial variations in
   t_\mathrm{settle} \sim 1/\tstop\OmK^2$ \citep{takeuchi02}, compared 
   with typical VSI growth timescales, $t_\mathrm{grow}\sim 
   1/h_\mathrm{g}\OmK$. This suggest that particles with $\tstop\OmK\lesssim 
-  h_g$ cannot settle against the VSI. On the 
+  h_\mathrm{g}$ cannot settle against the VSI. On the 
   other hand, larger particles with $\tstop\OmK\gtrsim h_g$ should
   settle to form a dusty midplane. In fact, our calculations suggest that
   settling would stabilize the disk against VSI, and allow

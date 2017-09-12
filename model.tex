@@ -610,19 +610,23 @@ is the Lagrangian derivative, and the
 spatial integral is taken over the total mass $M$ of the mixture and
 $dm$ is a mass element. 
 
-Noting that only products of perturbations contribute to
-$\mathcal{W}$, we find that for periodic oscillations (time dependence 
-$e^{\ii\omega t}$ and real $\omega$): 
+{\bf We consider perturbations such that 
+  \begin{align}
+ P \to P + \real\left(\Delta P e^{-\ii\sigma t}\right)
+ \end{align}
+ and similarly for $\rho$. Here, the Lagrangian 
+ perturbation $\Delta$ of a variable $X$ is $\Delta X = \delta X + \bm{\xi}\cdot\nabla X$
+ and $\bm{\xi}$ is the Lagrangian displacement ($\xi_{x,z} =  \ii\dd
+ v_{x,z}/\sigma$). Inserting the above pressure and density fields
+ into Eq. \ref{work_def}, and noting that only products of
+ perturbations contribute to $\mathcal{W}$ after time-averaging, we
+ find for periodic oscillations (time dependence $e^{\ii\omega t}$ and
+ real $\omega$) that:  
+}
 \begin{align}
   \mathcal{W} = - \frac{\omega}{2} \int \imag\left(\Delta P
   \frac{\Delta \rho^*}{\rho}\right)dV,\label{work_real}
 \end{align}
-where %the integral is taken over the volume of the
-%mixture; and 
- the Lagrangian perturbation $\Delta$ of a variable $X$ is 
-$\Delta X = \delta X + \bm{\xi}\cdot\nabla X$ 
-and $\bm{\xi}$ is the
-Lagrangian displacement ($    \xi_{x,z} =  \ii \dd v_{x,z}/\sigma$).  
 Eq. \ref{work_real} show that a phase difference between gas pressure and
 the total density leads to work done
 ($\mathcal{W}\neq0$).  

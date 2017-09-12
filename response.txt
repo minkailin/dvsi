@@ -1,0 +1,128 @@
+We thank the referee for a prompt report, which helped to improve the
+clarity of the manuscript. We have made revisions in bold, and further
+explain them below. 
+
+
+Major points:
+
+* The section 2 is interesting as it relates the work done by
+  pressure, when not in phase with density, to the growth of
+  oscillations. Although I understand that it is a link between the
+  pure gas context and the dusty flow case (because the drag force
+  acting on the gas can dephase density), I think the authors should
+  approach the point later in the paper. In my opinion, it would be
+  more adequate to approach it at the end of or after the actual
+  section 3 (single fluid description of dusty gas). Then it is
+  relevant to make the parallel with the pure gas dynamics. It is also
+  a way to explain the analogy that appears in parag. 3.3 "The
+  physical reason for this analogy..." 
+
+  We appreciate the referee’s suggestion that section 2 might make
+  sense if moved.  With respect, our choice for the placement of this
+  section is meant for readers who are lack the technical expertise of
+  the reviewer. Specifically, our goal is to summarize a main result
+  and a key physical insight, which motivates the technical
+  derivation of the dusty/adiabatic gas analogy. We added a new
+  paragraph at the beginning of section 2 to state its purpose. 
+  We hope section 2 motivates further reading and of course any reader
+  can revisit  section 2 (section 4.4 refers back to it). 
+
+While the referee is certainly correct that the single fluid analogy
+needs to made, we have attempted to explain the concept in the
+introduction. In any event, we hope the referee will agree to some
+authorial prerogative in the order of presentation.  
+  
+* In section 6 on the numerical results, in particular parag. 6.5 and
+  6.6, I wonder which growth rates are obtained with different radial
+  mode numbers. It would be an advantage to see other values as in Fig
+  8. In 6.5 kx is 30, does the instability change with smaller, larger
+  modes? It is worse in 6.6, where kx is very large, 1800. Is it
+  relevant to have such a high radial mode, that could barely be
+  resolved in non linear numerical simulations? Finally, in a general,
+  I think that a more physical summary of the results of the section 6
+  should be provided. It is almost limited now to a description of the
+  results. 
+
+  For section 6.5 we have updated Fig. 14 to include cases with
+  different kx. All growth rates remain the same order of
+  magnitude. The effect of a radial varation in rhod/rhog is also
+  similar between different kx. However, surface modes only appear at
+  high kx (as found for pure gas VSI, Barker & Latter, 2017)  
+
+  For section 6.6 we also updated Fig. 15 with more kx values. 
+  We find to obtain instability with smaller kx, one needs a more
+  rapidly-varying dust-to-gas ratio. We do not dwell 
+  on this case because we have already shown, using the more general
+  analyses in section 4.3 and 5.2 
+
+  Note that while the original case with high kx=1800 may not be  
+  resolved in global simulations, it can be resolved in local shearing
+  boxes. Simulations of SI in fact consider even larger
+  kx = O(10^3/h), where h= H/R is the gas aspect-ratio. See, Bai &
+  Stone (2010) and Yang & Johansen (2017), for example. 
+
+  In section 8 we extend the summary on the results of section
+  6. We discuss possible implications of our results in 
+  realistic disks with finite stopping times. In particular, we
+  suggest the criterion for particles to settle against the VSI. 
+
+* The section 7 'Discussion' is for the moment a list of common
+  instabilities that could be triggered by the effect of the drag in
+  the framework of the one-fluid approximation. Even if it is very
+  interesting, it may be too speculative; I would not limit the
+  discussion only to this. The authors may first discuss more about
+  the limitations/assets of their approach based on the numerical
+  results obtained in section 6, which will give arguments to the
+  possible numerical implementation of the method (see parag. 7.3). In
+  particular, what is the impact of the terminal velocity
+  approximation? How much reliable the results and the accuracy of the
+  approach are with a finite St number? For example, what do you
+  expect for a typical value of 0.01-0.1 (dust or pebble), for which
+  it is known that the terminal velocity is inappropriate? 
+
+  We have added a new section 7.1 on the application and limitations
+  of the one-fluid framework. 
+
+  The terminal velocity approximation from the requires ts to be small
+  compared to other timescales in the problem. Since 1/Omega is the
+  typical `fast' timescale for disks, we generally require ts*Omega <<
+  1, but the exact critical value is problem-dependent. 
+
+  Fig. 4 showsthat the one-fluid framework can gives accurate
+  streaming instability growth rates in dust-rich disks even for
+  ts*Omega = 0.1. However, the dust-poor `linB' mode in Table 1 (also
+  with ts*Omega=0.1) is not accurately captured by the one-fluid framework. 
+  This suggest that the terminal velocity approximation is not the
+  only condition required for the one-fluid equations to give accurate
+  results. In the case of the streaming instability, it seems that one
+  also requires rhod > rhog.   
+
+* In the Appendix: parag. D.2.2, the authors check if two assumptions
+  done during the calculations are valid (eq D11 and eq D16). But it
+  seems that they compute the values with the results obtained after
+  using these approximations. Please clarify 
+
+  We retitled this section to `Consistency check' since, as the
+  referee pointed out, we simply checked that the assumptions made to
+  obtain the explicit solutions are self-consistent. The
+  approximations are ultimately justified by comparison to numerical
+  solutions in Fig. 4. 
+
+* Last point: the authors should re read carefully the article, indeed
+  some sentences are not completly made agree with their later
+  modifications. 
+
+  We have proof-read the new manuscript. 
+
+Minor points:
+
+* parag 4.4.1 Can you explain briefly in the manuscript how to obtain
+  the eq 33. ? 
+
+  Additional description (Eq. 33) is now included. 
+
+* parag. 5.1.2 Can you clarify the text related to eq 47, one cannot
+  see clearly which terms are the second and the third. Maybe one can
+  say : "The first term in brackets is usually stabilizing ... " 
+
+  This is clarified. 
