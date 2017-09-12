@@ -27,10 +27,10 @@ Major points:
   We hope section 2 motivates further reading and of course any reader
   can revisit  section 2 (section 4.4 refers back to it). 
 
-While the referee is certainly correct that the single fluid analogy
-needs to made, we have attempted to explain the concept in the
-introduction. In any event, we hope the referee will agree to some
-authorial prerogative in the order of presentation.  
+  While the referee is certainly correct that the single fluid analogy
+  needs to made, we have attempted to explain the concept in the
+  introduction. In any event, we hope the referee will agree to some
+  authorial prerogative in the order of presentation.  
   
 * In section 6 on the numerical results, in particular parag. 6.5 and
   6.6, I wonder which growth rates are obtained with different radial
@@ -52,8 +52,9 @@ authorial prerogative in the order of presentation.
   For section 6.6 we also updated Fig. 15 with more kx values. 
   We find to obtain instability with smaller kx, one needs a more
   rapidly-varying dust-to-gas ratio. We do not dwell 
-  on this case because we have already shown, using the more general
-  analyses in section 4.3 and 5.2 
+  on this section because we have already shown, using the more general
+  analyses in section 4.3 and 5.2, that disks with a radial variation in
+  rhod/rhog are unstable if dust is vertically well-mixed.    
 
   Note that while the original case with high kx=1800 may not be  
   resolved in global simulations, it can be resolved in local shearing
