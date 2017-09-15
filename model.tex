@@ -51,7 +51,7 @@ frequency (since we are interested in protoplanetary disks), we can use the
 %difference is 
 \begin{align}
   \bm{v}_\mathrm{d} - \bm{v}_\mathrm{g} = \frac{\nabla
-    P}{\rhog}\tstop 
+    P}{\rhog}\tstop\label{term_vel_approx} 
 \end{align}
 \citep{jacquet11}. This equation reflects the well-known effect of 
 particle drift towards pressure maximum  \citep{weidenschilling77}. 
@@ -562,7 +562,8 @@ example in the dusty context in \S\ref{vert_mixed}.
 \subsection{Thermodynamics of dust-drag instabilities}\label{dust_work}
 The physical interpretation of \S\ref{grow_osc} is here derived in
 detail. Consider constant $c_s$ but $\tstop\neq0$ (so $\delta\mathcal{C}
-\neq 0$). Eq. \ref{int_rel} indicates that $\sigma^2$ is generally complex, so
+\neq 0$). Eq. \ref{int_rel} indicates that $\sigma^2$ is generally complex, {\bf unless
+the second integral on the right-hand-side is real. Thus } 
 we may have growing oscillations, or overstability, due to dust-gas
 friction. This is seen by taking the imaginary part of
 Eq. \ref{int_rel} 
@@ -592,11 +593,12 @@ J. Christensen-Dalsgaard\footnote{\url{http://astro.phys.au.dk/$\sim$jcd/oscilno
 \subsubsection{Work done by dusty gas} 
 
 The physical interpretation of Eq. \ref{thermal_instability} is that 
-work done by pressure forces in the dusty gas leads to growth in
-oscillation amplitudes. To demonstrate this, we calculate the average
+work done by pressure forces in the dusty gas leads to growth {\bf ($s>0$) or decay ($s<0$)} 
+%{\bf work done by pressure forces in the dusty gas modifies
+in oscillation amplitudes. 
+To demonstrate this, we calculate the average
 work done assuming periodic oscillations, and show that if the average
-work done is positive, then the 
-oscillation amplitude would actually grow. 
+work done is positive, then the oscillation amplitude would actually grow. 
 
 Consider oscillations in the dusty gas with period $T_p$. 
 The average rate of work done is 
@@ -610,12 +612,12 @@ is the Lagrangian derivative, and the
 spatial integral is taken over the total mass $M$ of the mixture and
 $dm$ is a mass element. 
 
-{\bf We consider perturbations such that 
+{\bf Here we consider Lagragian perturbations such that 
   \begin{align}
  P \to P + \real\left(\Delta P e^{-\ii\sigma t}\right)
  \end{align}
- and similarly for $\rho$. Here, the Lagrangian 
- perturbation $\Delta$ of a variable $X$ is $\Delta X = \delta X + \bm{\xi}\cdot\nabla X$
+is the pressure of a fluid element (and similarly for $\rho$). 
+ The Lagrangian perturbation $\Delta$ of a variable $X$ is $\Delta X = \delta X + \bm{\xi}\cdot\nabla X$
  and $\bm{\xi}$ is the Lagrangian displacement ($\xi_{x,z} =  \ii\dd
  v_{x,z}/\sigma$). Inserting the above pressure and density fields
  into Eq. \ref{work_def}, and noting that only products of
@@ -706,7 +708,7 @@ is attributed to finite dust-gas drag.
 %For dusty gas, the work done during oscillations 
  %is attributed to finite dust-gas drag. 
 The relative 
-drift between gas and dust causes a phase difference between the two
+drift between gas and dust{\bf, which only exists if $\tstop\nabla P \neq 0$ (Eq. \ref{term_vel_approx}),} causes a phase difference between the two
 components, and hence between pressure and total density. 
 
 A parcel of the strictly isothermal dusty-gas mixture does 

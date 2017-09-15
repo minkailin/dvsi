@@ -274,29 +274,39 @@ and thus produce `dusty ZVI'. This may allow the zombie
 vortices to develop $\gtrsim 1$AU in PPDs. 
 
 \subsection{Implications for numerical simulations}\label{dust_sims}
-The dusty/adiabatic gas equivalence means that pure
-gas dynamics codes can be applied to simulate locally
-isothermal/polytropic dusty gas. One need not implement a separate 
-equation for the dust component: 
-%In fact, no
-%modification is needed  
+{\bf The one-fluid model with the terminal velocity approximation, Eq. \ref{masseq}---\ref{momeq}, 
+has been applied to simulate dusty protoplanetary disks \citep{dipierro15,ragusa17}. These studies 
+explicitly evolve the dust density.  
+}
+
+{\bf However, the dusty/adiabatic gas equivalence identified in this paper
+means that one need not implement a separate equation for the dust component in
+locally isothermal/polytropic gas. The standard energy equation substitutes for the dust continuity 
+equation. Thus pure gas dynamic codes can be used to simulate protoplanetary dusty disks. 
+} %means that pure 
+%gas dynamics codes can be applied to simulate locally 
+%isothermal/polytropic dusty gas. One need not implement a separate 
+%equation for the dust component: 
 %for strictly isothermal or polytropic gas perfectly-coupled to dust:  
- the standard energy equation substitutes for the dust continuity
-equation. When $c_s$ (or $K$) is not constant and/or $\tstop\neq0$ one
+% the standard energy equation substitutes for the dust continuity
+%equation. 
+When {\bf the sound-speed} $c_s$ (or $K$) is not constant and/or the dust-gas coupling is imperfect, $\tstop\neq0$, one
 should add corresponding source terms in the energy equation
 (e.g. Eq. \ref{poly_energy}). 
 The source term associated with dust-gas drag, $\mathcal{C}$, is 
-analogous to radiative diffusion \citep{price15} or thermal
+analogous to radiative diffusion \citep{price15} or thermal 
 conduction, which is also common in modern hydrodynamics codes.       
 
 We have taken advantage of the dusty/adiabatic gas equivalence to 
 convert the popular
 \textsc{Pluto}\footnote{\url{http://plutocode.ph.unito.it/}}      
 hydrodynamics code \citep{mignone07} into a dusty gas dynamics code appropriate for
-simulating protoplanetary disks coupled to small dust. We will apply 
+simulating protoplanetary disks coupled to small dust. {\bf In fact, our code is unaware it is modeling dusty gas.} 
+We will apply 
 this modified code ---d\textsc{Pluto}--- to study dusty disk-planet interaction (Lin et al., 
-in preparation). Preliminary results indicate the simplified one-fluid 
-approach can reproduce features such as dusty rings associated with 
+in preparation). 
+Preliminary results {\bf show our approach} %indicate the simplified one-fluid 
+reproduce features such as dusty rings associated with 
 planet-induced gaps similar to that obtained from explicit two-fluid
 simulations \citep[e.g.][]{dong17}. 
 
@@ -557,7 +567,7 @@ growth rates. {\bf We also show that radial variations in
   settle to form a dusty midplane. In fact, our calculations suggest that
   settling would stabilize the disk against VSI, and allow
   further settling. The result may be a quiet, dusty midplane \citep[unless non-axisymmetric
-  instabilities develop][]{chiang08} with VSI-turbulent gaseous
+  instabilities develop, ][]{chiang08} with VSI-turbulent gaseous
   atmospheres. 
 }
 
