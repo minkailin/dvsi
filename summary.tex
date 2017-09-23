@@ -12,7 +12,7 @@
 \subsection{Applications and limitations}
 
 The main application we envision for the dusty/adiabatic gas analogy 
-to develop physical interpretations of dust-gas instabilities; and to find 
+is to develop physical interpretations of dust-gas instabilities; and to find 
 dusty analogs of pure gas instabilities in protoplanetary disks, 
 which is discussed in \S\ref{dust_analogs}. One can also exploit the similarity to adapt existing
 hydrodynamic codes to simulate dusty protoplanetary disks (see \S\ref{dust_sims}). 
@@ -32,15 +32,22 @@ example, to study dust settling, we require $\tstop \ll
 t_\mathrm{settle}\sim 1/\tstop\OmK^2$, or 
 $\tstop\OmK \ll 1$. 
 
-However, the validity of the simplified one-fluid equations may be
-problem-dependent, and not just on the terminal velocity 
-approximation. For example, Table \ref{si_compare} shows the dust-rich
+%However, the validity of the simplified one-fluid equations may be
+%problem-dependent, and not just on the terminal velocity 
+%approximation. 
+
+However, the validity of the terminal velocity approximation depends
+not just on $\tstop$, but also on the value of the dust gas-ratio, and
+possibly the problem itself. 
+%You can decide if this is a relevant improvement, and whether to
+%include. 
+For example, Table \ref{si_compare} shows the dust-rich
 `linA' mode and dust-poor `linB' mode of the streaming instability
 have the same $\tstop$, but the former is accurately captured by the
 simplified equations, while the latter is not.  This suggests that for
 the streaming instability the simplified equations is better suited
 for $\rhod/\rhog>1$. The simplified equations may also contain spurious
-modes in certain situations (see \S\ref{spurious_epi}). 
+modes in certain limits (see \S\ref{spurious_epi}). 
 
 %Ultimately,
                                 %one must 
@@ -483,8 +490,13 @@ simulations \citep[e.g.][]{dong17}.
 % %also unclear what are "proper" vertical bc for dusty disks 
 
 \section{Summary}\label{summary}
-In this paper we develop the analogy between isothermal 
-dusty-gas and pure ideal gas. The correspondence arises
+{\bf
+In this paper, we examine the conditions under which the presence of
+dust can trigger instabilities in gaseous protoplanetary disks.  To this end, 
+we develop an analogy between isothermal  dusty-gas and pure ideal
+gas. 
+} 
+The correspondence arises
 because drag forces reduce the relative velocity between gas and
 dust. In the limit of perfect dust-gas coupling, with stopping time $\tstop \to 0$,  
  dust is entrained in 
@@ -554,7 +566,7 @@ increase away from the midplane, we find dust-loading can stabilize
 growth rates. {\bf We also show that radial variations in
   $\rhod/\rhog$ can trigger a type of VSI, even when the 
   usual sources of vertical shear -- vertical dust gradients and radial 
-  temperature gradients -- are completely absent.  
+  temperature gradients -- are negligible.  
   %effectively translates to a non-uniform radial temperature
   %profile, and the resulting vertical shear can lead to instability,
   %even if the true sound-speed is constant. 
@@ -566,7 +578,7 @@ growth rates. {\bf We also show that radial variations in
   with typical VSI growth timescales, $t_\mathrm{grow}\sim 
   1/h_\mathrm{g}\OmK$. This suggest that particles with $\tstop\OmK\lesssim 
   h_\mathrm{g}$ cannot settle against the VSI. On the 
-  other hand, larger particles with $\tstop\OmK\gtrsim h_g$ should
+  other hand, larger particles with $\tstop\OmK\gtrsim h_\mathrm{g}$ should
   settle to form a dusty midplane. In fact, our calculations suggest that
   settling would stabilize the disk against VSI, and allow
   further settling. The result may be a quiet, dusty midplane \citep[unless non-axisymmetric
