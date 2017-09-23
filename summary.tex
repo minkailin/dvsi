@@ -12,7 +12,7 @@
 \subsection{Applications and limitations}
 
 The main application we envision for the dusty/adiabatic gas analogy 
-is to develop physical interpretations of dust-gas instabilities; and to find 
+is to develop physical interpretations of dust-gas drag instabilities; and to find 
 dusty analogs of pure gas instabilities in protoplanetary disks, 
 which is discussed in \S\ref{dust_analogs}. One can also exploit the similarity to adapt existing
 hydrodynamic codes to simulate dusty protoplanetary disks (see \S\ref{dust_sims}). 
@@ -36,9 +36,9 @@ $\tstop\OmK \ll 1$.
 %problem-dependent, and not just on the terminal velocity 
 %approximation. 
 
-However, the validity of the terminal velocity approximation depends
-not just on $\tstop$, but also on the value of the dust gas-ratio, and
-possibly the problem itself. 
+However, the validity of the terminal velocity approximation may not
+only depend on $\tstop$. The value of the dust gas-ratio and the
+problem itself may also be important. 
 %You can decide if this is a relevant improvement, and whether to
 %include. 
 For example, Table \ref{si_compare} shows the dust-rich
@@ -46,7 +46,7 @@ For example, Table \ref{si_compare} shows the dust-rich
 have the same $\tstop$, but the former is accurately captured by the
 simplified equations, while the latter is not.  This suggests that for
 the streaming instability the simplified equations is better suited
-for $\rhod/\rhog>1$. The simplified equations may also contain spurious
+for $\rhod/\rhog>1$. The simplified equations also contain spurious
 modes in certain limits (see \S\ref{spurious_epi}). 
 
 %Ultimately,
@@ -54,7 +54,7 @@ modes in certain limits (see \S\ref{spurious_epi}).
                                 %c heck against the full equations.  
 
 Note that our thermodynamic interpretation of dust-gas drift does
-\emph{not} in fact depend on the terminal velocity approximation.   
+\emph{not} actually depend on the terminal velocity approximation.   
 Once the gas equation of state is fixed and the true energy equation deleted, 
 the dust continuity equation can be converted to a new effective energy equation. 
 As an example, for strictly isothermal dusty gas we obtain   
@@ -65,7 +65,7 @@ c_s^2\nabla\cdot\left[\fdust\left(1-\fdust\right)\rho\left(\bm{v}_\mathrm{d}
 \end{align}
 This equation does not use
 the terminal velocity approximation (which gives
-Eq. \ref{eff_energy}); evaluating the right-hand-side generally 
+Eq. \ref{eff_energy}). Evaluating the right-hand-side generally 
 requires solving an evolutionary equation for $\bm{v}_\mathrm{d} - 
 \bm{v}_\mathrm{g}$ \citep{laibe14}. Nevertheless,
 Eq. \ref{no_term_vel} shows that dust-gas relative drift can be
@@ -287,7 +287,7 @@ explicitly evolve the dust density.
 }
 
 {\bf However, the dusty/adiabatic gas equivalence identified in this paper
-means that one need not implement a separate equation for the dust component in
+means that one need not implement a separate module for simulating the dust component in
 locally isothermal/polytropic gas. The standard energy equation substitutes for the dust continuity 
 equation. Thus pure gas dynamic codes can be used to simulate protoplanetary dusty disks. 
 } %means that pure 
@@ -308,7 +308,8 @@ We have taken advantage of the dusty/adiabatic gas equivalence to
 convert the popular
 \textsc{Pluto}\footnote{\url{http://plutocode.ph.unito.it/}}      
 hydrodynamics code \citep{mignone07} into a dusty gas dynamics code appropriate for
-simulating protoplanetary disks coupled to small dust. {\bf In fact, our code is unaware it is modeling dusty gas.} 
+simulating protoplanetary disks coupled to small dust. {\bf In fact,
+  our code is unaware of the fact that it is modeling dusty gas.} 
 We will apply 
 this modified code ---d\textsc{Pluto}--- to study dusty disk-planet interaction (Lin et al., 
 in preparation). 

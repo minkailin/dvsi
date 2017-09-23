@@ -1,6 +1,7 @@
 We thank the referee for a prompt report, which helped to improve the
 clarity of the manuscript. We have made revisions in bold, and further
-explain them below. 
+explain them below. We also revised parts of the manuscript in
+response to comments from colleagues. 
 
 
 Major points:
@@ -47,7 +48,7 @@ Major points:
   different kx. All growth rates remain the same order of
   magnitude. The effect of a radial variation in rhod/rhog is also
   similar between different kx. However, surface modes only appear at
-  high kx (as found for pure gas VSI, Barker & Latter, 2017)  
+  high kx (as found for pure gas VSI, Barker & Latter, 2015)  
 
   For section 6.6 we also updated Fig. 15 with more kx values. 
   We find to obtain instability with smaller kx, one needs a more
