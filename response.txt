@@ -19,9 +19,9 @@ Major points:
 
   We appreciate the referee’s suggestion that section 2 might make
   sense if moved.  With respect, our choice for the placement of this
-  section is meant for readers who are lack the technical expertise of
+  section is meant for readers who lack the technical expertise of
   the reviewer. Specifically, our goal is to summarize a main result
-  and a key physical insight, which motivates the technical
+  and a key physical insight, and thereby to motivate the technical
   derivation of the dusty/adiabatic gas analogy. We added a new
   paragraph at the beginning of section 2 to state its purpose. 
   We hope section 2 motivates further reading and of course any reader
@@ -45,7 +45,7 @@ Major points:
 
   For section 6.5 we have updated Fig. 14 to include cases with
   different kx. All growth rates remain the same order of
-  magnitude. The effect of a radial varation in rhod/rhog is also
+  magnitude. The effect of a radial variation in rhod/rhog is also
   similar between different kx. However, surface modes only appear at
   high kx (as found for pure gas VSI, Barker & Latter, 2017)  
 
@@ -89,7 +89,7 @@ Major points:
   typical `fast' timescale for disks, we generally require ts*Omega <<
   1, but the exact critical value is problem-dependent. 
 
-  Fig. 4 showsthat the one-fluid framework can gives accurate
+  Fig. 4 shows that the one-fluid framework gives accurate
   streaming instability growth rates in dust-rich disks even for
   ts*Omega = 0.1. However, the dust-poor `linB' mode in Table 1 (also
   with ts*Omega=0.1) is not accurately captured by the one-fluid framework. 
