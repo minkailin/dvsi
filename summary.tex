@@ -3,7 +3,7 @@
 \section{Discussion}\label{discussion}
 
 
-{\bf
+{
 
 %pros and cons 
 %energy analogy not restricted to term vel approx 
@@ -281,12 +281,12 @@ and thus produce `dusty ZVI'. This may allow the zombie
 vortices to develop $\gtrsim 1$AU in PPDs. 
 
 \subsection{Implications for numerical simulations}\label{dust_sims}
-{\bf The one-fluid model with the terminal velocity approximation, Eq. \ref{masseq}---\ref{momeq}, 
+{ The one-fluid model with the terminal velocity approximation, Eq. \ref{masseq}---\ref{momeq}, 
 has been applied to simulate dusty protoplanetary disks \citep{dipierro15,ragusa17}. These studies 
 explicitly evolve the dust density.  
 }
 
-{\bf However, the dusty/adiabatic gas equivalence identified in this paper
+{ However, the dusty/adiabatic gas equivalence identified in this paper
 means that one need not implement a separate module for simulating the dust component in
 locally isothermal/polytropic gas. The standard energy equation substitutes for the dust continuity 
 equation. Thus pure gas dynamic codes can be used to simulate protoplanetary dusty disks. 
@@ -297,7 +297,7 @@ equation. Thus pure gas dynamic codes can be used to simulate protoplanetary dus
 %for strictly isothermal or polytropic gas perfectly-coupled to dust:  
 % the standard energy equation substitutes for the dust continuity
 %equation. 
-When {\bf the sound-speed} $c_s$ (or $K$) is not constant and/or the dust-gas coupling is imperfect, $\tstop\neq0$, one
+When { the sound-speed} $c_s$ (or $K$) is not constant and/or the dust-gas coupling is imperfect, $\tstop\neq0$, one
 should add corresponding source terms in the energy equation
 (e.g. Eq. \ref{poly_energy}). 
 The source term associated with dust-gas drag, $\mathcal{C}$, is 
@@ -308,12 +308,12 @@ We have taken advantage of the dusty/adiabatic gas equivalence to
 convert the popular
 \textsc{Pluto}\footnote{\url{http://plutocode.ph.unito.it/}}      
 hydrodynamics code \citep{mignone07} into a dusty gas dynamics code appropriate for
-simulating protoplanetary disks coupled to small dust. {\bf In fact,
+simulating protoplanetary disks coupled to small dust. { In fact,
   our code is unaware of the fact that it is modeling dusty gas.} 
 We will apply 
 this modified code ---d\textsc{Pluto}--- to study dusty disk-planet interaction (Lin et al., 
 in preparation). 
-Preliminary results {\bf show our approach} %indicate the simplified one-fluid 
+Preliminary results { show our approach} %indicate the simplified one-fluid 
 reproduce features such as dusty rings associated with 
 planet-induced gaps similar to that obtained from explicit two-fluid
 simulations \citep[e.g.][]{dong17}. 
@@ -491,7 +491,7 @@ simulations \citep[e.g.][]{dong17}.
 % %also unclear what are "proper" vertical bc for dusty disks 
 
 \section{Summary}\label{summary}
-{\bf
+{
 In this paper, we examine the conditions under which the presence of
 dust can trigger instabilities in gaseous protoplanetary disks.  To this end, 
 we develop an analogy between isothermal  dusty-gas and pure ideal
@@ -564,7 +564,7 @@ previous study \citep{lin15}.
 Since the dust-induced buoyancy forces
 increase away from the midplane, we find dust-loading can stabilize
 `surface modes'  of the VSI, that would otherwise have the largest
-growth rates. {\bf We also show that radial variations in
+growth rates. { We also show that radial variations in
   $\rhod/\rhog$ can trigger a type of VSI, even when the 
   usual sources of vertical shear -- vertical dust gradients and radial 
   temperature gradients -- are negligible.  
@@ -574,7 +574,7 @@ growth rates. {\bf We also show that radial variations in
 }  
 
 %implications for realistic disks
-{\bf In a realistic disk, dust particles settle on a timescale $
+{ In a realistic disk, dust particles settle on a timescale $
   t_\mathrm{settle} \sim 1/\tstop\OmK^2$ \citep{takeuchi02}, compared 
   with typical VSI growth timescales, $t_\mathrm{grow}\sim 
   1/h_\mathrm{g}\OmK$. This suggest that particles with $\tstop\OmK\lesssim 
